@@ -1,0 +1,14 @@
+* {
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+svg {
+  border: 1px dashed;
+  border-color: black;
+}
+
+span {
+  margin-right: 15px;
+  border: 1px dashed;
+  border-color: yellow;
+}

@@ -1,5 +1,7 @@
 import Icons from "./index";
 
+import "./IconsDemo.css";
+
 function IconsDemo() {
   const names = Object.keys(Icons);
   names.map(name => {
@@ -15,22 +17,23 @@ function IconsDemo() {
     }
     // @ts-expect-error ts-migrate(7053)
     const Component = Icons[name];
-    const icon = <div key={name} style={{margin: "15px"}}>
-      <span style={{marginRight: "15px"}}>
+    const icon = <div key={name}>
+      <span>
         {name}
       </span>
-      <span style={{marginRight: "15px"}}>
+      <span>
         <Component />
       </span>
-      <span style={{marginRight: "15px"}}>
+      <span>
         <Component size={64} />
       </span>
-      <span style={{marginRight: "15px"}}>
+      <span>
         <Component black />
       </span>
-      <span style={{backgroundColor: "black", marginRight: "15px"}}>
+      <span style={{backgroundColor: "lightgrey"}}>
         <Component light />
       </span>
+      <hr/>
     </div>
     icons.push(icon)
   }
