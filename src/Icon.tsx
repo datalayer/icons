@@ -1,7 +1,6 @@
 import React from "react";
 
 const DEFAULT_SIZE = 16;
-
 const DEFAULT_VIEWBOX = "0 0 24 24";
 
 export type IconProps = {
@@ -27,14 +26,9 @@ const Icon = ({
   viewBox,
   ...rest
 }: React.PropsWithChildren<IconProps>): React.ReactElement<React.ComponentProps<any>, any> => {
-
   const size = rest.size ? rest.size + "px" : `${DEFAULT_SIZE}px`;
-/*
-  let fill = "#57606B";
+  let fill = "currentColor";
   if (rest.color) fill = rest.color;
-  else if (rest.light) fill = "#FFF";
-  else if (rest.black) fill = "#000";
-*/
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -42,21 +36,21 @@ const Icon = ({
       width={size}
       height={size}
       className={className}
-//      fill={fill}
-      fill="currentColor"
+      fill={fill}
       onClick={onClick}
       {...rest.outerProps}
       style={{
 //        fill: "currentColor",
-//        display: "inline-block",
-//        verticalAlign: "text-bottom",
+        display: "inline-block",
+        userSelect: "none",
+        verticalAlign: "text-bottom",
+        overflow: "visible"
 //        ...rest.outerProps?.style
       }}
     >
       {children}
     </svg>
   );
-
 }
 
 export default Icon;

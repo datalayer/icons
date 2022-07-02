@@ -1,8 +1,5 @@
 // https://github.com/primer/react/issues/2103
-
-// react-override.d.ts
 import 'react'
-
 declare module 'react' {
   /**
    * Temporary override for Primer/react to typecheck properly, since it uses `React.FC` internally
