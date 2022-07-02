@@ -83,10 +83,12 @@ const OcticonsGallery = () => {
 const IconsDemo = () => {
   return (
     <BaseStyles>
-      <SvgStyle>
-        <IconsGallery/>
-      </SvgStyle>
-      <OcticonsGallery/>
+      <ThemeProvider dayScheme="light" nightScheme="dark_dimmed">
+        <SvgStyle>
+          <IconsGallery/>
+        </SvgStyle>
+        <OcticonsGallery/>
+      </ThemeProvider>
     </BaseStyles>
   )
 }

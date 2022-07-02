@@ -29,12 +29,12 @@ const Icon = ({
 }: React.PropsWithChildren<IconProps>): React.ReactElement<React.ComponentProps<any>, any> => {
 
   const size = rest.size ? rest.size + "px" : `${DEFAULT_SIZE}px`;
-
+/*
   let fill = "#57606B";
   if (rest.color) fill = rest.color;
   else if (rest.light) fill = "#FFF";
   else if (rest.black) fill = "#000";
-
+*/
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
