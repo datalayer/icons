@@ -42,7 +42,8 @@ const Icon = ({
       width={size}
       height={size}
       className={className}
-      fill={fill}
+//      fill={fill}
+      fill="currentColor"
       onClick={onClick}
       {...rest.outerProps}
       style={{
