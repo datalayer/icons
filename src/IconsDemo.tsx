@@ -1,7 +1,7 @@
-import { useRef, useCallback } from "react";
-import { toPng, toJpeg } from 'html-to-image'
+import React, { useRef, useCallback } from "react";
+import { toPng } from 'html-to-image'
 // import Pdf from 'react-to-pdf';
-import { ThemeProvider, BaseStyles, IconButton } from "@primer/react";
+import { ThemeProvider, BaseStyles, IconButton, Heading, Text } from "@primer/react";
 import styled from "styled-components";
 import Icons from "./index";
 
@@ -20,22 +20,25 @@ const SvgStyle = styled.span`
 
 const IconLine = (props: {name: string}) => {
   const { name } = props;
-  const ref = useRef<any>(null);
-  const downloadPng = useCallback(() => {
+  const refDay = useRef<any>(null);
+  const refNight = useRef<any>(null);
+  const downloadPng = useCallback((e: React.MouseEvent<HTMLElement>, ref: React.MutableRefObject<any>, type: string) => {
+    e.preventDefault();
     if (ref.current === null) {
       return
     }
     toPng(ref.current, { cacheBust: true, })
       .then((dataUrl: string) => {
         const link = document.createElement('a')
-        link.download = `${name}.png`
+        link.download = `${name}_${type}.png`
         link.href = dataUrl
         link.click()
       })
       .catch((err: Error) => {
         console.log(err)
       })
-  }, [ref]);
+  }, [refDay, refNight]);
+/*
   const downloadJpg = useCallback(() => {
     if (ref.current === null) {
       return
@@ -51,10 +54,16 @@ const IconLine = (props: {name: string}) => {
         console.log(err)
       })
   }, [ref]);
-
+*/
   // @ts-expect-error ts-migrate(7053)
   const IconComponent = Icons[name];
   const icon = <div>
+    <ThemeProvider colorMode="day">
+      <IconButton size="medium" sx={{marginRight: "15px"}} icon={IconComponent} ref={refDay} onClick={(e: React.MouseEvent<HTMLElement>) => downloadPng(e, refDay, "day")}/>
+    </ThemeProvider>
+    <ThemeProvider colorMode="night">
+      <IconButton size="medium" sx={{marginRight: "15px"}} icon={IconComponent} ref={refNight} onClick={(e: React.MouseEvent<HTMLElement>) => downloadPng(e, refNight, "night")}/>
+    </ThemeProvider>
     <SvgStyle>
       <span>
         {name}
@@ -62,24 +71,16 @@ const IconLine = (props: {name: string}) => {
       <span>
         <IconComponent />
       </span>
-      <span>
-        <IconComponent size={64} />
+      <span style={{backgroundColor: "lightgrey"}}>
+        <IconComponent light />
       </span>
       <span>
         <IconComponent black />
       </span>
-      <span style={{backgroundColor: "lightgrey"}}>
-        <IconComponent light />
+      <span>
+        <IconComponent size={64} />
       </span>
     </SvgStyle>
-    <ThemeProvider colorMode="day">
-      <IconButton size="medium" icon={IconComponent} ref={ref}/>
-    </ThemeProvider>
-    <ThemeProvider colorMode="night">
-      <IconButton size="medium" icon={IconComponent} />
-    </ThemeProvider>
-    <button type="button" onClick={downloadPng}>Save png</button>
-    <button type="button" onClick={downloadJpg}>Save jpeg</button>
 {/*
     <Pdf targetRef={ref} filename={`${name}.pdf`} x={10} y={10} scale={0.4}>
       {({ toPdf }) => (
@@ -87,7 +88,6 @@ const IconLine = (props: {name: string}) => {
       )}
     </Pdf>
 */}
-      <hr/>
   </div>
   return icon;
 }
@@ -119,6 +119,8 @@ const IconsDemo = () => {
   return (
     <BaseStyles>
       <ThemeProvider dayScheme="light" nightScheme="dark_dimmed">
+        <Heading sx={{fontSize: 5, mb: 2}}>Datalayer Icons Gallery</Heading>
+        <Text mb={3}>Click on a button to download a PNG</Text>
         <IconsGallery/>
       </ThemeProvider>
     </BaseStyles>

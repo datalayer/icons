@@ -1,3 +1,7 @@
 * {
   font-family: Arial, Helvetica, sans-serif;
 }
+
+html {
+  margin: 20px;
+}

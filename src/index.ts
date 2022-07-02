@@ -1,5 +1,6 @@
 import Icon from "./Icon";
 import AcademicCapIcon from "./icons/AcademicCapIcon";
+import CollaborateIcon from "./icons/CollaborateIcon";
 import DatalayerLogoIcon from "./icons/DatalayerLogoIcon";
 import DatalayerWhiteLogoIcon from "./icons/DatalayerWhiteLogoIcon";
 import { OrganizationIcon as OrganisationIcon } from "@primer/octicons-react";
@@ -10,6 +11,7 @@ import WebRtcIcon from "./icons/WebRtcIcon";
 
 export {
   AcademicCapIcon,
+  CollaborateIcon,
   DatalayerLogoIcon,
   DatalayerWhiteLogoIcon,
   OrganisationIcon,
@@ -21,6 +23,7 @@ export {
 
 export default Object.assign(Icon, {
   AcademicCap: AcademicCapIcon,
+  Collaborate: CollaborateIcon,
   DatalayerLogo: DatalayerLogoIcon,
   DatalayerWhiteLogo: DatalayerWhiteLogoIcon,
   Organisation: OrganisationIcon,
