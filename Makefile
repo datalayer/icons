@@ -36,6 +36,6 @@ publish: build ## publish
 		--profile datalayer && \
 	  aws cloudfront create-invalidation \
 		--distribution-id E3FYSDH2PV7AQ5 \
-		--paths /* \
+		--paths / \
 		--profile datalayer && \
 	echo open ✨  https://icons.datalayer.design )
