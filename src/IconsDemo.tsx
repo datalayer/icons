@@ -1,7 +1,6 @@
 import React, { useRef, useCallback } from "react";
+import { ThemeProvider, BaseStyles, IconButton, Heading, Text, Box } from "@primer/react";
 import { toPng } from 'html-to-image'
-// import Pdf from 'react-to-pdf';
-import { ThemeProvider, BaseStyles, IconButton, Heading, Text } from "@primer/react";
 import styled from "styled-components";
 import Icons from "./index";
 
@@ -81,13 +80,6 @@ const IconLine = (props: {name: string}) => {
         <IconComponent size={64} />
       </span>
     </SvgStyle>
-{/*
-    <Pdf targetRef={ref} filename={`${name}.pdf`} x={10} y={10} scale={0.4}>
-      {({ toPdf }) => (
-        <button type="button" onClick={toPdf}>Generate pdf</button>
-      )}
-    </Pdf>
-*/}
   </div>
   return icon;
 }
@@ -120,7 +112,12 @@ const IconsDemo = () => {
     <BaseStyles>
       <ThemeProvider dayScheme="light" nightScheme="dark_dimmed">
         <Heading sx={{fontSize: 5, mb: 2}}>Datalayer Icons Gallery</Heading>
-        <Text mb={3}>Click on a button to download a PNG</Text>
+        <Box>
+          <Text>Sources available under MIT license in the <a href="https://github.com/datalayer/icons" target="_blank">icons repository</a>.</Text>
+        </Box>
+        <Box mb={3}>
+          <Text>Click on a button to download a PNG.</Text>
+        </Box>
         <IconsGallery/>
       </ThemeProvider>
     </BaseStyles>
