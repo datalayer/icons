@@ -27,3 +27,5 @@ lib
 *.njsproj
 *.sln
 *.sw?
+
+*.lock
