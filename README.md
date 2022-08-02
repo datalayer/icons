@@ -18,7 +18,7 @@ Please open an [issue](https://github.com/datalayer/icons/issues) or a [pull req
 
 - [ ] Ship stencils to be integrated in drawing tools like [draw.io](https://draw.io).
 
-## License
+## ⚖️ License
 
 Copyright (c) 2022 Datalayer, Inc.
 
