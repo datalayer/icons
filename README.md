@@ -1,6 +1,6 @@
 [![Datalayer](https://assets.datalayer.design/datalayer-25.svg)](https://datalayer.io)
 
-# Icons for Datalayer
+# 💡 🎉 Icons for Datalayer
 
 > A collection of React.js SVG icons to document your data architectures https://icons.datalayer.design
 
@@ -13,6 +13,8 @@ Looking around, significant technical systems usually have their own set of icon
 The icons are shipped as React.js components.
 
 Please open an [issue](https://github.com/datalayer/icons/issues) or a [pull request](https://github.com/datalayer/icons/pulls) to update, add... your icons or for any suggestion, question or claim about this repository content.
+
+You can see more content around design on the [Datalayer Design](https://datalayer.design) website.
 
 ## TODO
 
