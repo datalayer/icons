@@ -18,7 +18,7 @@
     "@types/react": "18.0.9",
     "@types/react-dom": "18.0.5",
     "@vitejs/plugin-react": "2.0.0-beta.0",
-    "@primer/react": "35.7.1-rc.ebe39a33",
+    "@primer/react": "35.8.0",
     "@primer/octicons-react": "17.4.1",
     "html-to-image": "1.9.0",
     "typescript": "4.8.1-rc",
