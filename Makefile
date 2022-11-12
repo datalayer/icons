@@ -19,6 +19,10 @@ all: clean install build
 help: ## display this help
 	@awk 'BEGIN {FS = ":.*##"; printf "\nUsage:\n  make \033[36m<target>\033[0m\n"} /^[a-zA-Z_-]+:.*?##/ { printf "  \033[36m%-15s\033[0m %s\n", $$1, $$2 } /^##@/ { printf "\n\033[1m%s\033[0m\n", substr($$0, 5) } ' $(MAKEFILE_LIST)
 
+clean: ## clean
+	($(CONDA_ACTIVATE) ${ENV_NAME}; \
+		yarn clean )
+
 build: ## build all modules
 	($(CONDA_ACTIVATE) ${ENV_NAME}; \
 		yarn build )
@@ -27,7 +31,7 @@ dev: ## start
 	($(CONDA_ACTIVATE) ${ENV_NAME}; \
 		yarn dev )
 
-publish: build ## publish
+publish-web: build ## publish
 	($(CONDA_ACTIVATE) ${ENV_NAME}; \
 	  aws s3 cp \
 		./dist \
@@ -39,3 +43,8 @@ publish: build ## publish
 		--paths / \
 		--profile datalayer && \
 	echo open ✨  https://icons.datalayer.design )
+
+publish-npm: clean build ## publish
+	($(CONDA_ACTIVATE) ${ENV_NAME}; \
+		npm publish --access public )
+	echo open https://www.npmjs.com/package/@datalayer/icons
