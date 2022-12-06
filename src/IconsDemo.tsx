@@ -6,11 +6,13 @@ import Icons from "./index";
 
 import "./IconsDemo.css";
 
-const SvgStyle = styled.span`
+const SpanStyle = styled.span`
   span {
-    border-color: black;
     margin-right: 25px;
   },
+`;
+
+const BorderStyle = styled.span`
   svg {
     border-color: black;
     border: 1px dashed;
@@ -63,23 +65,33 @@ const IconLine = (props: {name: string}) => {
     <ThemeProvider colorMode="night">
       <IconButton size="medium" sx={{marginRight: "15px"}} icon={IconComponent} ref={refNight} onClick={(e: React.MouseEvent<HTMLElement>) => downloadPng(e, refNight, "night")}/>
     </ThemeProvider>
-    <SvgStyle>
+    <SpanStyle>
       <span>
         {name}
       </span>
-      <span>
-        <IconComponent />
-      </span>
-      <span style={{backgroundColor: "lightgrey"}}>
-        <IconComponent light />
-      </span>
-      <span>
-        <IconComponent black />
-      </span>
+    </SpanStyle>
+    <BorderStyle>
+      <SpanStyle>
+        <span>
+          <IconComponent />
+        </span>
+      </SpanStyle>
+      <SpanStyle>
+        <span style={{backgroundColor: "lightgrey"}}>
+          <IconComponent light />
+        </span>
+      </SpanStyle>
+      <SpanStyle>
+        <span>
+          <IconComponent black />
+        </span>
+      </SpanStyle>
+    </BorderStyle>
+    <BorderStyle>
       <span>
         <IconComponent size={64} />
       </span>
-    </SvgStyle>
+    </BorderStyle>
   </div>
   return icon;
 }

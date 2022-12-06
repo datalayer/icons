@@ -28,7 +28,9 @@ const Icon = ({
 }: React.PropsWithChildren<IconProps>): React.ReactElement<React.ComponentProps<any>, any> => {
   const size = rest.size ? rest.size + "px" : `${DEFAULT_SIZE}px`;
   let fill = "currentColor";
-  if (rest.color) fill = rest.color;
+  if (rest.color) {
+    fill = rest.color;
+  }
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -40,11 +42,11 @@ const Icon = ({
       onClick={onClick}
       {...rest.outerProps}
       style={{
-//        fill: "currentColor",
         display: "inline-block",
         userSelect: "none",
         verticalAlign: "text-bottom",
         overflow: "visible"
+//        fill: "currentColor",
 //        ...rest.outerProps?.style
       }}
     >
