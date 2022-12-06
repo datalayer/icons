@@ -7,6 +7,7 @@ import { OrganizationIcon as OrganisationIcon } from "@primer/octicons-react";
 import ReactJsIcon from "./icons/ReactJsIcon";
 import SchoolIcon from "./icons/SchoolIcon";
 import StudentIcon from "./icons/StudentIcon";
+import TwitterIcon from "./icons/TwitterIcon";
 import WebRtcIcon from "./icons/WebRtcIcon";
 
 export {
@@ -18,6 +19,7 @@ export {
   ReactJsIcon,
   SchoolIcon,
   StudentIcon,
+  TwitterIcon,
   WebRtcIcon,
 }
 
@@ -30,5 +32,6 @@ export default Object.assign(Icon, {
   ReactJs: ReactJsIcon,
   School: SchoolIcon,
   Student: StudentIcon,
+  TwitterIcon: TwitterIcon,
   WebRtc: WebRtcIcon,
 });
