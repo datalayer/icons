@@ -128,7 +128,7 @@ const IconsDemo = () => {
           <Text>Sources available under MIT license in the <a href="https://github.com/datalayer/icons" target="_blank">icons repository</a>.</Text>
         </Box>
         <Box mb={3}>
-          <Text>Click on a button to download a PNG.</Text>
+          <Text>Click on a button to download a PNG ({Object.keys(Icons).length} icons available).</Text>
         </Box>
         <IconsGallery/>
       </ThemeProvider>

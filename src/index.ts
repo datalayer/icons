@@ -1,13 +1,15 @@
-import { OrganizationIcon as OrganisationIcon } from "@primer/octicons-react";
 import Icon from "./Icon";
 import AcademicCapIcon from "./icons/AcademicCapIcon";
 import CollaborateIcon from "./icons/CollaborateIcon";
 import DaskLogoIcon from "./icons/DaskLogoIcon";
 import DatalayerLogoIcon from "./icons/DatalayerLogoIcon";
 import DatalayerWhiteLogoIcon from "./icons/DatalayerWhiteLogoIcon";
-import ReactJsIcon from "./icons/ReactJsIcon";
+import { OrganizationIcon as OrganisationIcon } from "@primer/octicons-react";
+import PyTorchLogoIcon from "./icons/PyTorchLogoIcon";
+import ReactJsLogoIcon from "./icons/ReactJsLogoIcon";
 import SchoolIcon from "./icons/SchoolIcon";
 import StudentIcon from "./icons/StudentIcon";
+import TensorFlowLogoIcon from "./icons/TensorFlowLogoIcon";
 import TwitterIcon from "./icons/TwitterIcon";
 import WebRtcIcon from "./icons/WebRtcIcon";
 
@@ -18,9 +20,11 @@ export {
   DatalayerLogoIcon,
   DatalayerWhiteLogoIcon,
   OrganisationIcon,
-  ReactJsIcon,
+  PyTorchLogoIcon,
+  ReactJsLogoIcon,
   SchoolIcon,
   StudentIcon,
+  TensorFlowLogoIcon,
   TwitterIcon,
   WebRtcIcon,
 }
@@ -32,9 +36,11 @@ export default Object.assign(Icon, {
   DatalayerLogo: DatalayerLogoIcon,
   DatalayerWhiteLogo: DatalayerWhiteLogoIcon,
   Organisation: OrganisationIcon,
-  ReactJs: ReactJsIcon,
+  PyTorchLogo: PyTorchLogoIcon,
+  ReactJs: ReactJsLogoIcon,
   School: SchoolIcon,
   Student: StudentIcon,
+  TensorFlowLogo: TensorFlowLogoIcon,
   Twitter: TwitterIcon,
   WebRtc: WebRtcIcon,
 });

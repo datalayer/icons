@@ -1,7 +1,7 @@
 import React from "react";
 import Icon, { IconProps } from "../Icon";
 
-const ReactJsIcon = (
+const ReactJsLogoIcon = (
   props: IconProps
 ): React.ReactElement<React.ComponentProps<any>, any> => {
   return (
@@ -12,4 +12,4 @@ const ReactJsIcon = (
   );
 }
 
-export default ReactJsIcon;
+export default ReactJsLogoIcon;
