@@ -3,7 +3,9 @@ import AcademicCapIcon from "./icons/AcademicCapIcon";
 import CollaborateIcon from "./icons/CollaborateIcon";
 import DaskLogoIcon from "./icons/DaskLogoIcon";
 import DatalayerLogoIcon from "./icons/DatalayerLogoIcon";
-import DatalayerWhiteLogoIcon from "./icons/DatalayerWhiteLogoIcon";
+import DatalayerLogoBlackIcon from "./icons/DatalayerLogoBlackIcon";
+import DatalayerLogoGreenIcon from "./icons/DatalayerLogoGreenIcon";
+import DatalayerLogoWhiteIcon from "./icons/DatalayerLogoWhiteIcon";
 import { OrganizationIcon as OrganisationIcon } from "@primer/octicons-react";
 import PyTorchLogoIcon from "./icons/PyTorchLogoIcon";
 import ReactJsLogoIcon from "./icons/ReactJsLogoIcon";
@@ -11,14 +13,16 @@ import SchoolIcon from "./icons/SchoolIcon";
 import StudentIcon from "./icons/StudentIcon";
 import TensorFlowLogoIcon from "./icons/TensorFlowLogoIcon";
 import TwitterIcon from "./icons/TwitterIcon";
-import WebRtcIcon from "./icons/WebRtcIcon";
+import WebRTCIcon from "./icons/WebRTCIcon";
 
 export {
   AcademicCapIcon,
   CollaborateIcon,
   DaskLogoIcon,
   DatalayerLogoIcon,
-  DatalayerWhiteLogoIcon,
+  DatalayerLogoBlackIcon,
+  DatalayerLogoGreenIcon,
+  DatalayerLogoWhiteIcon,
   OrganisationIcon,
   PyTorchLogoIcon,
   ReactJsLogoIcon,
@@ -26,15 +30,17 @@ export {
   StudentIcon,
   TensorFlowLogoIcon,
   TwitterIcon,
-  WebRtcIcon,
+  WebRTCIcon,
 }
 
-export default Object.assign(Icon, {
+const icons = Object.assign(Icon, {
   AcademicCap: AcademicCapIcon,
   Collaborate: CollaborateIcon,
   DaskLogo: DaskLogoIcon,
   DatalayerLogo: DatalayerLogoIcon,
-  DatalayerWhiteLogo: DatalayerWhiteLogoIcon,
+  DatalayerLogoBlack: DatalayerLogoBlackIcon,
+  DatalayerLogoGreen: DatalayerLogoGreenIcon,
+  DatalayerLogoWhite: DatalayerLogoWhiteIcon,
   Organisation: OrganisationIcon,
   PyTorchLogo: PyTorchLogoIcon,
   ReactJs: ReactJsLogoIcon,
@@ -42,5 +48,7 @@ export default Object.assign(Icon, {
   Student: StudentIcon,
   TensorFlowLogo: TensorFlowLogoIcon,
   Twitter: TwitterIcon,
-  WebRtc: WebRtcIcon,
+  WebRTC: WebRTCIcon,
 });
+
+export default icons;

@@ -1,10 +1,11 @@
 import React, { useRef, useCallback } from "react";
+import ReactDOMServer from 'react-dom/server';
 import { ThemeProvider, BaseStyles, IconButton, Heading, Text, Box } from "@primer/react";
 import { toPng } from 'html-to-image'
 import styled from "styled-components";
 import Icons from "./index";
 
-import "./IconsDemo.css";
+import "./IconsGallery.css";
 
 const SpanStyle = styled.span`
   span {
@@ -19,11 +20,12 @@ const BorderStyle = styled.span`
   }
 `;
 
-const IconLine = (props: {name: string}) => {
+const IconLine = (props: { name: string }) => {
   const { name } = props;
-  const refDay = useRef<any>(null);
-  const refNight = useRef<any>(null);
-  const downloadPng = useCallback((e: React.MouseEvent<HTMLElement>, ref: React.MutableRefObject<any>, type: string) => {
+  const refSvg = useRef<any>(null);
+  const refPngDay = useRef<any>(null);
+  const refPngNight = useRef<any>(null);
+  const downloadPNG = useCallback((e: React.MouseEvent<HTMLElement>, ref: React.MutableRefObject<any>, type: string) => {
     e.preventDefault();
     if (ref.current === null) {
       return
@@ -38,9 +40,17 @@ const IconLine = (props: {name: string}) => {
       .catch((err: Error) => {
         console.log(err)
       })
-  }, [refDay, refNight]);
+  }, [refPngDay, refPngNight]);
+  const downloadSVG = useCallback((e: React.MouseEvent<HTMLElement>, ref: React.MutableRefObject<any>) => {
+    e.preventDefault();
+    const link = document.createElement('a')
+    link.download = `${name}.svg`
+    const svg = ref.current.children[0].children[0];
+    link.href = `data:image/svg+xml;utf8,${ReactDOMServer.renderToStaticMarkup(svg)}`;
+    link.click()
+  }, [refSvg]);
 /*
-  const downloadJpg = useCallback(() => {
+  const downloadJPG = useCallback(() => {
     if (ref.current === null) {
       return
     }
@@ -58,18 +68,23 @@ const IconLine = (props: {name: string}) => {
 */
   // @ts-expect-error ts-migrate(7053)
   const IconComponent = Icons[name];
-  const icon = <div>
+  const icon = <Box alignItems="center" justifyContent="space-between">
+    <BorderStyle>
+      <SpanStyle>
+        <span>
+          <IconComponent size={64} />
+        </span>
+      </SpanStyle>
+    </BorderStyle>
     <ThemeProvider colorMode="day">
-      <IconButton size="medium" sx={{marginRight: "15px"}} icon={IconComponent} ref={refDay} onClick={(e: React.MouseEvent<HTMLElement>) => downloadPng(e, refDay, "day")}/>
+      <IconButton size="medium" sx={{marginRight: "15px"}} icon={IconComponent} ref={refPngDay} onClick={(e: React.MouseEvent<HTMLElement>) => downloadPNG(e, refPngDay, "day")}/>
     </ThemeProvider>
     <ThemeProvider colorMode="night">
-      <IconButton size="medium" sx={{marginRight: "15px"}} icon={IconComponent} ref={refNight} onClick={(e: React.MouseEvent<HTMLElement>) => downloadPng(e, refNight, "night")}/>
+      <IconButton size="medium" sx={{marginRight: "15px"}} icon={IconComponent} ref={refPngNight} onClick={(e: React.MouseEvent<HTMLElement>) => downloadPNG(e, refPngNight, "night")}/>
     </ThemeProvider>
-    <SpanStyle>
-      <span>
-        {name}
-      </span>
-    </SpanStyle>
+    <ThemeProvider colorMode="day">
+      <IconButton size="medium" sx={{marginRight: "15px"}} icon={IconComponent} ref={refSvg} onClick={(e: React.MouseEvent<HTMLElement>) => downloadSVG(e, refSvg)}/>
+    </ThemeProvider>
     <BorderStyle>
       <SpanStyle>
         <span>
@@ -87,12 +102,13 @@ const IconLine = (props: {name: string}) => {
         </span>
       </SpanStyle>
     </BorderStyle>
-    <BorderStyle>
+    <SpanStyle>
       <span>
-        <IconComponent size={64} />
+        {name}
       </span>
-    </BorderStyle>
-  </div>
+    </SpanStyle>
+    <Box m={3}></Box>
+  </Box>
   return icon;
 }
 
@@ -124,11 +140,11 @@ const IconsDemo = () => {
     <BaseStyles>
       <ThemeProvider dayScheme="light" nightScheme="dark_dimmed">
         <Heading sx={{fontSize: 5, mb: 2}}>Datalayer Icons Gallery</Heading>
-        <Box>
+        <Box mb={3}>
           <Text>Sources available under MIT license in the <a href="https://github.com/datalayer/icons" target="_blank">icons repository</a>.</Text>
         </Box>
         <Box mb={3}>
-          <Text>Click on a button to download a PNG ({Object.keys(Icons).length} icons available).</Text>
+          <Text>Click on a button to download an icon in SVG or PNG format ({Object.keys(Icons).length} icons available).</Text>
         </Box>
         <IconsGallery/>
       </ThemeProvider>

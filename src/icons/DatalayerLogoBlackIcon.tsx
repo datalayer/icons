@@ -1,7 +1,7 @@
 import React from "react";
 import Icon, { IconProps } from "../Icon";
 
-const DatalayerWhiteLogoIcon = (
+const DatalayerLogoBlackIcon = (
   props: IconProps
 ): React.ReactElement<React.ComponentProps<any>, any> => {
   return (
@@ -11,24 +11,21 @@ const DatalayerWhiteLogoIcon = (
         height="3.2"
         x="0"
         y="0"
-        style={{ fill: "#ffffff" }}
         />
       <rect
         width="16"
         height="3.2"
         x="0"
         y="6.4"
-        style={{ fill: "#ffffff" }}
         />
       <rect
         width="16"
         height="3.2"
         x="0"
         y="12.8"
-        style={{ fill: "#ffffff" }}
         />
     </Icon>
   );
 }
 
-export default DatalayerWhiteLogoIcon;
+export default DatalayerLogoBlackIcon;

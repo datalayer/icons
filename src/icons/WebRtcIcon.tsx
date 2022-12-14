@@ -1,7 +1,7 @@
 import React from "react";
 import Icon, { IconProps } from "../Icon";
 
-const WebRtcIcon = (
+const WebRTCIcon = (
   props: IconProps
 ): React.ReactElement<React.ComponentProps<any>, any> => {
   return (
@@ -11,4 +11,4 @@ const WebRtcIcon = (
   );
 }
 
-export default WebRtcIcon;
+export default WebRTCIcon;
