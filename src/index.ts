@@ -4,6 +4,7 @@ import CollaborateIcon from "./icons/CollaborateIcon";
 import DaskLogoIcon from "./icons/DaskLogoIcon";
 import DatalayerLogoIcon from "./icons/DatalayerLogoIcon";
 import DatalayerLogoBlackIcon from "./icons/DatalayerLogoBlackIcon";
+import DatalayerLogoColorIcon from "./icons/DatalayerLogoColorIcon";
 import DatalayerLogoGreenIcon from "./icons/DatalayerLogoGreenIcon";
 import DatalayerLogoWhiteIcon from "./icons/DatalayerLogoWhiteIcon";
 import { OrganizationIcon as OrganisationIcon } from "@primer/octicons-react";
@@ -21,6 +22,7 @@ export {
   DaskLogoIcon,
   DatalayerLogoIcon,
   DatalayerLogoBlackIcon,
+  DatalayerLogoColorIcon,
   DatalayerLogoGreenIcon,
   DatalayerLogoWhiteIcon,
   OrganisationIcon,
@@ -39,6 +41,7 @@ const icons = Object.assign(Icon, {
   DaskLogo: DaskLogoIcon,
   DatalayerLogo: DatalayerLogoIcon,
   DatalayerLogoBlack: DatalayerLogoBlackIcon,
+  DatalayerLogoColor: DatalayerLogoColorIcon,
   DatalayerLogoGreen: DatalayerLogoGreenIcon,
   DatalayerLogoWhite: DatalayerLogoWhiteIcon,
   Organisation: OrganisationIcon,
