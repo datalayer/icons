@@ -77,13 +77,13 @@ const IconLine = (props: { name: string }) => {
       </SpanStyle>
     </BorderStyle>
     <ThemeProvider colorMode="day">
-      <IconButton size="medium" sx={{marginRight: "15px"}} icon={IconComponent} ref={refPngDay} onClick={(e: React.MouseEvent<HTMLElement>) => downloadPNG(e, refPngDay, "day")}/>
+      <IconButton aria-labelledby="" size="medium" sx={{marginRight: "15px"}} icon={IconComponent} ref={refPngDay} onClick={(e: React.MouseEvent<HTMLElement>) => downloadPNG(e, refPngDay, "day")}/>
     </ThemeProvider>
     <ThemeProvider colorMode="night">
-      <IconButton size="medium" sx={{marginRight: "15px"}} icon={IconComponent} ref={refPngNight} onClick={(e: React.MouseEvent<HTMLElement>) => downloadPNG(e, refPngNight, "night")}/>
+      <IconButton aria-labelledby="" size="medium" sx={{marginRight: "15px"}} icon={IconComponent} ref={refPngNight} onClick={(e: React.MouseEvent<HTMLElement>) => downloadPNG(e, refPngNight, "night")}/>
     </ThemeProvider>
     <ThemeProvider colorMode="day">
-      <IconButton size="medium" sx={{marginRight: "15px"}} icon={IconComponent} ref={refSvg} onClick={(e: React.MouseEvent<HTMLElement>) => downloadSVG(e, refSvg)}/>
+      <IconButton aria-labelledby="" size="medium" sx={{marginRight: "15px"}} icon={IconComponent} ref={refSvg} onClick={(e: React.MouseEvent<HTMLElement>) => downloadSVG(e, refSvg)}/>
     </ThemeProvider>
     <BorderStyle>
       <SpanStyle>

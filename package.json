@@ -17,14 +17,14 @@
     "start": "vite"
   },
   "dependencies": {
-    "react": "18.1.0",
-    "react-dom": "18.1.0"
+    "react": "18.2.0",
+    "react-dom": "18.2.0"
   },
   "devDependencies": {
-    "@types/react": "18.0.9",
-    "@types/react-dom": "18.0.5",
+    "@types/react": "18.0.27",
+    "@types/react-dom": "18.0.10",
     "@vitejs/plugin-react": "2.0.0-beta.0",
-    "@primer/react": "35.16.0",
+    "@primer/react": "35.18.0",
     "@primer/octicons-react": "17.10.0",
     "html-to-image": "1.9.0",
     "rimraf": "~3.0.0",
