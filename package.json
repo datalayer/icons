@@ -8,7 +8,7 @@
     "style"
   ],
   "scripts": {
-    "io": "tsc --watch",
+    "studio": "tsc --watch",
     "build": "tsc && vite build",
     "clean": "rimraf lib build dist tsconfig.tsbuildinfo",
     "dev": "vite",
