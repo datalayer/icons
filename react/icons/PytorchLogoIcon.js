@@ -1,12 +1,12 @@
 const React = require("react");
-function PytorchLogoIcon({
+function PyTorchLogoIcon({
   title,
   titleId,
   ...props
 }, svgRef) {
   return /*#__PURE__*/React.createElement("svg", Object.assign({
     xmlns: "http://www.w3.org/2000/svg",
-    fill: "currentColor",
+    fill: "none",
     viewBox: "0 0 20 20",
     "aria-hidden": "true",
     ref: svgRef,
@@ -21,5 +21,5 @@ function PytorchLogoIcon({
     d: "M12.977 5.462a1.106 1.106 0 100-2.212 1.106 1.106 0 000 2.212z"
   }));
 }
-const ForwardRef = React.forwardRef(PytorchLogoIcon);
+const ForwardRef = React.forwardRef(PyTorchLogoIcon);
 module.exports = ForwardRef;

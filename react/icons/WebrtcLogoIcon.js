@@ -1,12 +1,12 @@
 const React = require("react");
-function WebrtcLogoIcon({
+function WebRtcLogoIcon({
   title,
   titleId,
   ...props
 }, svgRef) {
   return /*#__PURE__*/React.createElement("svg", Object.assign({
     xmlns: "http://www.w3.org/2000/svg",
-    fill: "currentColor",
+    fill: "none",
     "aria-hidden": "true",
     viewBox: "0 0 20 20",
     ref: svgRef,
@@ -48,5 +48,5 @@ function WebrtcLogoIcon({
     d: "M5.94 14.537h-.704c-.621 0-1.127-.492-1.127-1.097V7.218c0-.606.506-1.098 1.127-1.098h8.826c.621 0 1.126.492 1.126 1.098v6.222c0 .605-.505 1.097-1.126 1.097h-3.007l-6.032 2.888.917-2.888z"
   }));
 }
-const ForwardRef = React.forwardRef(WebrtcLogoIcon);
+const ForwardRef = React.forwardRef(WebRtcLogoIcon);
 module.exports = ForwardRef;

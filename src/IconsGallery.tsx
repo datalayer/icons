@@ -68,37 +68,38 @@ const IconLine = (props: { name: string }) => {
 */
   // @ts-expect-error ts-migrate(7053)
   const IconComponent = Icons[name];
+  const StyledIcon = () => <IconComponent className="w-4 h-4 inline-block select-none align-text-bottom overflow-visible" />;
   const icon = <Box alignItems="center" justifyContent="space-between">
     <BorderStyle>
       <SpanStyle>
         <span>
-          <IconComponent size={64} />
+          <IconComponent className="w-16 inline-block select-none align-text-bottom overflow-visible" />
         </span>
       </SpanStyle>
     </BorderStyle>
     <ThemeProvider colorMode="day">
-      <IconButton aria-labelledby="" size="medium" sx={{marginRight: "15px"}} icon={IconComponent} ref={refPngDay} onClick={(e: React.MouseEvent<HTMLElement>) => downloadPNG(e, refPngDay, "day")}/>
+      <IconButton aria-labelledby="" size="medium" sx={{marginRight: "15px"}} icon={StyledIcon} ref={refPngDay} onClick={(e: React.MouseEvent<HTMLElement>) => downloadPNG(e, refPngDay, "day")}/>
     </ThemeProvider>
     <ThemeProvider colorMode="night">
-      <IconButton aria-labelledby="" size="medium" sx={{marginRight: "15px"}} icon={IconComponent} ref={refPngNight} onClick={(e: React.MouseEvent<HTMLElement>) => downloadPNG(e, refPngNight, "night")}/>
+      <IconButton aria-labelledby="" size="medium" sx={{marginRight: "15px"}} icon={StyledIcon} ref={refPngNight} onClick={(e: React.MouseEvent<HTMLElement>) => downloadPNG(e, refPngNight, "night")}/>
     </ThemeProvider>
     <ThemeProvider colorMode="day">
-      <IconButton aria-labelledby="" size="medium" sx={{marginRight: "15px"}} icon={IconComponent} ref={refSvg} onClick={(e: React.MouseEvent<HTMLElement>) => downloadSVG(e, refSvg)}/>
+      <IconButton aria-labelledby="" size="medium" sx={{marginRight: "15px"}} icon={StyledIcon} ref={refSvg} onClick={(e: React.MouseEvent<HTMLElement>) => downloadSVG(e, refSvg)}/>
     </ThemeProvider>
     <BorderStyle>
       <SpanStyle>
         <span>
-          <IconComponent />
+          {StyledIcon()}
         </span>
       </SpanStyle>
       <SpanStyle>
         <span style={{backgroundColor: "lightgrey"}}>
-          <IconComponent light />
+          {StyledIcon()}
         </span>
       </SpanStyle>
       <SpanStyle>
         <span>
-          <IconComponent black />
+          {StyledIcon()}
         </span>
       </SpanStyle>
     </BorderStyle>

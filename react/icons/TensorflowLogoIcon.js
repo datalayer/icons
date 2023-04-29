@@ -1,5 +1,5 @@
 const React = require("react");
-function TensorflowLogoIcon({
+function TensorFlowLogoIcon({
   title,
   titleId,
   ...props
@@ -24,5 +24,5 @@ function TensorflowLogoIcon({
     d: "M11.332 0L.674 6.154l2.664 1.538 7.994-4.615 5.33 3.077 2.665-1.539L11.331 0zm0 9.23l-2.665 1.54 2.665 1.538 2.665-1.539-2.665-1.538z"
   }));
 }
-const ForwardRef = React.forwardRef(TensorflowLogoIcon);
+const ForwardRef = React.forwardRef(TensorFlowLogoIcon);
 module.exports = ForwardRef;

@@ -1,20 +1,5 @@
 import Icon from "./Icon";
-import AcademicCapIcon from "./icons/AcademicCapIcon";
-import CollaborateIcon from "./icons/CollaborateIcon";
-import DaskLogoIcon from "./icons/DaskLogoIcon";
-import DatalayerLogoIcon from "./icons/DatalayerLogoIcon";
-import DatalayerLogoBlackIcon from "./icons/DatalayerLogoBlackIcon";
-import DatalayerLogoColorIcon from "./icons/DatalayerLogoColorIcon";
-import DatalayerLogoGreenIcon from "./icons/DatalayerLogoGreenIcon";
-import DatalayerLogoWhiteIcon from "./icons/DatalayerLogoWhiteIcon";
-import { OrganizationIcon as OrganisationIcon } from "@primer/octicons-react";
-import PyTorchLogoIcon from "./icons/PyTorchLogoIcon";
-import ReactJsLogoIcon from "./icons/ReactJsLogoIcon";
-import SchoolIcon from "./icons/SchoolIcon";
-import StudentIcon from "./icons/StudentIcon";
-import TensorFlowLogoIcon from "./icons/TensorFlowLogoIcon";
-import TwitterIcon from "./icons/TwitterIcon";
-import WebRTCIcon from "./icons/WebRTCIcon";
+import { AcademicCapIcon, CollaborateIcon, DaskLogoIcon, DatalayerLogoIcon, DatalayerLogoBlackIcon, DatalayerLogoColorIcon, DatalayerLogoGreenIcon, DatalayerLogoWhiteIcon, OrganisationIcon, PyTorchLogoIcon, ReactLogoIcon, SchoolIcon, StudentIcon, TensorFlowLogoIcon, TwitterLogoIcon, WebRtcLogoIcon } from "../react/icons";
 
 export {
   AcademicCapIcon,
@@ -27,12 +12,12 @@ export {
   DatalayerLogoWhiteIcon,
   OrganisationIcon,
   PyTorchLogoIcon,
-  ReactJsLogoIcon,
+  ReactLogoIcon,
   SchoolIcon,
   StudentIcon,
   TensorFlowLogoIcon,
-  TwitterIcon,
-  WebRTCIcon,
+  TwitterLogoIcon,
+  WebRtcLogoIcon,
 }
 
 const icons = Object.assign(Icon, {
@@ -46,12 +31,12 @@ const icons = Object.assign(Icon, {
   DatalayerLogoWhite: DatalayerLogoWhiteIcon,
   Organisation: OrganisationIcon,
   PyTorchLogo: PyTorchLogoIcon,
-  ReactJs: ReactJsLogoIcon,
+  ReactLogo: ReactLogoIcon,
   School: SchoolIcon,
   Student: StudentIcon,
   TensorFlowLogo: TensorFlowLogoIcon,
-  Twitter: TwitterIcon,
-  WebRTC: WebRTCIcon,
+  TwitterLogo: TwitterLogoIcon,
+  WebRTCLogo: WebRtcLogoIcon,
 });
 
 export default icons;
