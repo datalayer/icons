@@ -1,0 +1,44 @@
+{
+  "name": "@heroicons/vue",
+  "license": "MIT",
+  "version": "2.0.17",
+  "description": "",
+  "keywords": [],
+  "homepage": "https://github.com/tailwindlabs/heroicons#readme",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/tailwindlabs/heroicons.git"
+  },
+  "files": [
+    "icons",
+    "index.esm.js",
+    "index.js"
+  ],
+  "sideEffects": false,
+  "exports": {
+    ".": {
+      "types": "./index.d.ts",
+      "import": "./esm/index.js",
+      "require": "./index.js"
+    },
+    "./package.json": {
+      "default": "./package.json"
+    },
+    "./*": {
+      "types": "./*.d.ts",
+      "import": "./esm/*.js",
+      "require": "./*.js"
+    },
+    "./*.js": {
+      "types": "./*.d.ts",
+      "import": "./esm/*.js",
+      "require": "./*.js"
+    }
+  },
+  "publishConfig": {
+    "access": "public"
+  },
+  "peerDependencies": {
+    "vue": ">= 3"
+  }
+}
