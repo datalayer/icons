@@ -1,26 +1,6 @@
-import Icon from "./Icon";
 import { AcademicCapIcon, CollaborateIcon, DaskLogoIcon, DatalayerLogoIcon, DatalayerLogoBlackIcon, DatalayerLogoColorIcon, DatalayerLogoGreenIcon, DatalayerLogoWhiteIcon, OrganisationIcon, PyTorchLogoIcon, ReactLogoIcon, SchoolIcon, StudentIcon, TensorFlowLogoIcon, TwitterLogoIcon, WebRtcLogoIcon } from "../react/icons";
 
-export {
-  AcademicCapIcon,
-  CollaborateIcon,
-  DaskLogoIcon,
-  DatalayerLogoIcon,
-  DatalayerLogoBlackIcon,
-  DatalayerLogoColorIcon,
-  DatalayerLogoGreenIcon,
-  DatalayerLogoWhiteIcon,
-  OrganisationIcon,
-  PyTorchLogoIcon,
-  ReactLogoIcon,
-  SchoolIcon,
-  StudentIcon,
-  TensorFlowLogoIcon,
-  TwitterLogoIcon,
-  WebRtcLogoIcon,
-}
-
-const icons = Object.assign(Icon, {
+const icons = {
   AcademicCap: AcademicCapIcon,
   Collaborate: CollaborateIcon,
   DaskLogo: DaskLogoIcon,
@@ -37,6 +17,6 @@ const icons = Object.assign(Icon, {
   TensorFlowLogo: TensorFlowLogoIcon,
   TwitterLogo: TwitterLogoIcon,
   WebRTCLogo: WebRtcLogoIcon,
-});
+};
 
 export default icons;
