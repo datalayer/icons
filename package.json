@@ -14,7 +14,7 @@
     "dev": "vite",
     "preview": "vite preview",
     "start": "vite",
-    "build-icons": "npm run build-optimized && npm run build-react && npm run build-vue",
+    "build-icons": "yarn run build-optimized && yarn run build-react && yarn run build-vue",
     "build-react": "node ./scripts/build.js react",
     "build-vue": "node ./scripts/build.js vue",
     "build-optimized": "rimraf ./optimized && svgo --config=svgo.yaml -f ./svg -o ./optimized --pretty --indent=2"
