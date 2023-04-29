@@ -1,16 +1,21 @@
 [![Datalayer](https://assets.datalayer.design/datalayer-25.svg)](https://datalayer.io)
 
+[![Become a Sponsor](https://img.shields.io/static/v1?label=Become%20a%20Sponsor&message=%E2%9D%A4&logo=GitHub&style=flat&color=1ABC9C)](https://github.com/sponsors/datalayer)
+
 # 💡 🎉 Icons for Datalayer
 
-> A collection of React.js SVG icons to document your data architectures https://icons.datalayer.design
+> A collection of React.js icons to document your data architectures https://icons.datalayer.design
 
-This is a collection of React.js SVG icons to document your data architectures, covering the [Jupyter](https://jupyter.org) ecosystem. When desigining your data projects, we felt the need to represent the building blocks in standard and recognizable way but did not find any source for that, except a few diagrams like [this one](https://github.com/jupyter/jupyter_client/blob/30823666344c9d03daa7330a81caedd04a6a53a6/docs/figs/frontend-kernel.png). Looking around, significant technical systems usually have their own set of icons (e.g. [AWS](https://aws.amazon.com/architecture/icons), [Hadoop](https://github.com/hortonworks/hadoop-icons), [Azure](https://docs.microsoft.com/en-us/azure/architecture/icons)...).
-
-**So we have created this repository to fill a gap... and hope it will be useful 💡 🎉**
-
-The icons are shipped as React.js components.
+This is a collection of React.js icons to document your data architectures, focused on the [Jupyter](https://jupyter.org) and [Kubernetes](https://kubernetes.io) ecosystems.
 
 Please open an [issue](https://github.com/datalayer/icons/issues) or a [pull request](https://github.com/datalayer/icons/pulls) to update, add... your icons or for any suggestion, question or claim about this repository content.
+
+To preview the icons, run the following commands.
+
+```bash
+yarn
+yarn preview
+```
 
 You can see more content around design on the [Datalayer Design](https://datalayer.design) website.
 
