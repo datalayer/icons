@@ -1,4 +1,5 @@
-import { AcademicCapIcon, CollaborateIcon, DaskLogoIcon, DatalayerLogoIcon, DatalayerLogoBlackIcon, DatalayerLogoColorIcon, DatalayerLogoGreenIcon, DatalayerLogoWhiteIcon, KubernetesLogoIcon, KubernetesNodeIcon, KubernetesPodIcon, OrganisationIcon, PyTorchLogoIcon, ReactLogoIcon, SchoolIcon, StudentIcon, TensorFlowLogoIcon, TwitterLogoIcon, WebRtcLogoIcon } from "../react/icons";
+import { CollaborateIcon, OrganisationIcon, SchoolIcon, StudentIcon } from "../react/outline";
+import { AcademicCapIcon, DaskLogoIcon, DatalayerLogoIcon, DatalayerLogoBlackIcon, DatalayerLogoColorIcon, DatalayerLogoGreenIcon, DatalayerLogoWhiteIcon, KubernetesLogoIcon, KubernetesNodeIcon, KubernetesPodIcon, PyTorchLogoIcon, ReactLogoIcon, TensorFlowLogoIcon, TwitterLogoIcon, WebRtcLogoIcon } from "../react/solid";
 
 const icons = {
   AcademicCap: AcademicCapIcon,
