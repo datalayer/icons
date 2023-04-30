@@ -1,5 +1,3 @@
 *
-!*.js
 !.gitignore
 !package.json
-!icons
