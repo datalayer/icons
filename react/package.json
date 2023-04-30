@@ -17,22 +17,57 @@
   "sideEffects": false,
   "exports": {
     ".": {
-      "types": "./index.d.ts",
-      "import": "./esm/index.js",
+      "import": "./index.esm.js",
       "require": "./index.js"
     },
     "./package.json": {
       "default": "./package.json"
     },
-    "./*": {
-      "types": "./*.d.ts",
-      "import": "./esm/*.js",
-      "require": "./*.js"
+    "./solid": {
+      "types": "./solid/index.d.ts",
+      "import": "./solid/esm/index.js",
+      "require": "./solid/index.js"
     },
-    "./*.js": {
-      "types": "./*.d.ts",
-      "import": "./esm/*.js",
-      "require": "./*.js"
+    "./solid/*": {
+      "types": "./solid/*.d.ts",
+      "import": "./solid/esm/*.js",
+      "require": "./solid/*.js"
+    },
+    "./solid/*.js": {
+      "types": "./solid/*.d.ts",
+      "import": "./solid/esm/*.js",
+      "require": "./solid/*.js"
+    },
+    "./solid/esm/*": {
+      "types": "./solid/*.d.ts",
+      "import": "./solid/esm/*.js"
+    },
+    "./solid/esm/*.js": {
+      "types": "./solid/*.d.ts",
+      "import": "./solid/esm/*.js"
+    },
+    "./outline": {
+      "types": "./outline/index.d.ts",
+      "import": "./outline/esm/index.js",
+      "require": "./outline/index.js"
+    },
+    "./outline/*": {
+      "types": "./outline/*.d.ts",
+      "import": "./outline/esm/*.js",
+      "require": "./outline/*.js"
+    },
+    "./outline/*.js": {
+      "types": "./outline/*.d.ts",
+      "import": "./outline/esm/*.js",
+      "require": "./outline/*.js"
+    },
+    "./outline/esm/*": {
+      "types": "./outline/*.d.ts",
+      "import": "./outline/esm/*.js"
+    },
+    "./outline/esm/*.js": {
+      "types": "./outline/*.d.ts",
+      "import": "./outline/esm/*.js"
     }
   },
   "publishConfig": {

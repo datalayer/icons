@@ -17,7 +17,9 @@
     "build-icons": "yarn run build-optimized && yarn run build-react && yarn run build-vue",
     "build-react": "node ./scripts/build.js react",
     "build-vue": "node ./scripts/build.js vue",
-    "build-optimized": "rimraf ./optimized && svgo --config=svgo.yaml -f ./svg -o ./optimized --pretty --indent=2"
+    "build-optimized": "yarn run build-outline && yarn run build-solid",
+    "build-outline": "rimraf ./optimized/outline && svgo --config=svgo.yaml -f ./svg/outline -o ./optimized/outline --pretty --indent=2",
+    "build-solid": "rimraf ./optimized/solid && svgo --config=svgo.yaml -f ./svg/solid -o ./optimized/solid --pretty --indent=2"
   },
   "dependencies": {
     "react": "18.2.0",

@@ -47,11 +47,11 @@ let transform = {
   },
 }
 
-async function getIcons() {
-  let files = await fs.readdir(`./optimized`)
+async function getIcons(style) {
+  let files = await fs.readdir(`./optimized/${style}`)
   return Promise.all(
     files.map(async (file) => ({
-      svg: await fs.readFile(`./optimized/${file}`, 'utf8'),
+      svg: await fs.readFile(`./optimized/${style}/${file}`, 'utf8'),
       componentName: `${camelcase(file.replace(/\.svg$/, ''), {
         pascalCase: true,
       })}Icon`,
@@ -80,13 +80,13 @@ async function ensureWriteJson(file, json) {
   await ensureWrite(file, JSON.stringify(json, null, 2) + '\n')
 }
 
-async function buildIcons(package, format) {
-  let outDir = `./${package}/icons`
+async function buildIcons(package, style, format) {
+  let outDir = `./${package}/${style}`
   if (format === 'esm') {
     outDir += '/esm'
   }
 
-  let icons = await getIcons()
+  let icons = await getIcons(style)
 
   await Promise.all(
     icons.flatMap(async ({ componentName, svg }) => {
@@ -111,7 +111,7 @@ async function buildIcons(package, format) {
 /**
  * @param {string[]} styles
  */
-async function buildExports() {
+async function buildExports(styles) {
   let pkg = {}
 
   // To appease Vite's optimizeDeps feature which requires a root-level import
@@ -124,20 +124,33 @@ async function buildExports() {
   pkg[`./package.json`] = { default: './package.json' }
 
   // Explicit exports for each style:
-  pkg[`.`] = {
-    types: `./index.d.ts`,
-    import: `./esm/index.js`,
-    require: `./index.js`,
-  }
-  pkg[`./*`] = {
-    types: `./*.d.ts`,
-    import: `./esm/*.js`,
-    require: `./*.js`,
-  }
-  pkg[`./*.js`] = {
-    types: `./*.d.ts`,
-    import: `./esm/*.js`,
-    require: `./*.js`,
+  for (let style of styles) {
+    pkg[`./${style}`] = {
+      types: `./${style}/index.d.ts`,
+      import: `./${style}/esm/index.js`,
+      require: `./${style}/index.js`,
+    }
+    pkg[`./${style}/*`] = {
+      types: `./${style}/*.d.ts`,
+      import: `./${style}/esm/*.js`,
+      require: `./${style}/*.js`,
+    }
+    pkg[`./${style}/*.js`] = {
+      types: `./${style}/*.d.ts`,
+      import: `./${style}/esm/*.js`,
+      require: `./${style}/*.js`,
+    }
+
+    // This dir is basically an implementation detail, but it's needed for
+    // backwards compatibility in case people were importing from it directly.
+    pkg[`./${style}/esm/*`] = {
+      types: `./${style}/*.d.ts`,
+      import: `./${style}/esm/*.js`,
+    }
+    pkg[`./${style}/esm/*.js`] = {
+      types: `./${style}/*.d.ts`,
+      import: `./${style}/esm/*.js`,
+    }
   }
 
   return pkg
@@ -149,18 +162,25 @@ async function main(package) {
 
   console.log(`Building ${package} package...`)
 
-  await rimraf(`./${package}/icons/*`)
+  await Promise.all([
+    rimraf(`./${package}/solid/*`),
+    rimraf(`./${package}/outline/*`),
+  ])
 
   await Promise.all([
-    buildIcons(package, 'cjs'),
-    buildIcons(package, 'esm'),
-    ensureWriteJson(`./${package}/icons/esm/package.json`, esmPackageJson),
-    ensureWriteJson(`./${package}/icons/package.json`, cjsPackageJson),
+    buildIcons(package, 'solid', 'cjs'),
+    buildIcons(package, 'solid', 'esm'),
+    buildIcons(package, 'outline', 'cjs'),
+    buildIcons(package, 'outline', 'esm'),
+    ensureWriteJson(`./${package}/solid/esm/package.json`, esmPackageJson),
+    ensureWriteJson(`./${package}/solid/package.json`, cjsPackageJson),
+    ensureWriteJson(`./${package}/outline/esm/package.json`, esmPackageJson),
+    ensureWriteJson(`./${package}/outline/package.json`, cjsPackageJson),
   ])
 
   let packageJson = JSON.parse(await fs.readFile(`./${package}/package.json`, 'utf8'))
 
-  packageJson.exports = await buildExports()
+  packageJson.exports = await buildExports(['solid', 'outline'])
 
   await ensureWriteJson(`./${package}/package.json`, packageJson)
 
