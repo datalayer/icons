@@ -68,12 +68,12 @@ const IconLine = (props: { name: string }) => {
 */
   // @ts-expect-error ts-migrate(7053)
   const IconComponent = Icons[name];
-  const StyledIcon = () => <IconComponent className="w-4 h-4 inline-block select-none align-text-bottom overflow-visible" />;
+  const StyledIcon = () => <IconComponent size="small" className="inline-block select-none align-text-bottom overflow-visible" />;
   const icon = <Box alignItems="center" justifyContent="space-between">
     <BorderStyle>
       <SpanStyle>
         <span>
-          <IconComponent className="w-16 inline-block select-none align-text-bottom overflow-visible" />
+          <IconComponent size="large" className="inline-block select-none align-text-bottom overflow-visible" />
         </span>
       </SpanStyle>
     </BorderStyle>

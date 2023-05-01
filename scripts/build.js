@@ -14,6 +14,19 @@ let transform = {
       plugins: [[require('@babel/plugin-transform-react-jsx'), { useBuiltIns: true }]],
     })
 
+    const SIZE_MAP = {
+      small: 16,
+      medium: 32,
+      large: 64,
+    };
+
+    let lines = code.split('\n');
+    lines.splice(1, 0, `\nconst sizeMap = ${JSON.stringify(SIZE_MAP, null, 2)};\n`);
+    lines.splice(5, 0, '  size,');
+    lines.splice(14, 0, '    width: size ? typeof size === "string" ? sizeMap[size] : size : "32px",');
+    lines.splice(15, 0, '    height: size ? typeof size === "string" ? sizeMap[size] : size : "32px",');
+    code = lines.join('\n');
+
     if (format === 'esm') {
       return code
     }
@@ -93,7 +106,7 @@ async function buildIcons(package, style, format) {
       let content = await transform[package](svg, componentName, format)
       let types =
         package === 'react'
-          ? `import * as React from 'react';\ndeclare const ${componentName}: React.ForwardRefExoticComponent<React.PropsWithoutRef<React.SVGProps<SVGSVGElement>> & { title?: string, titleId?: string } & React.RefAttributes<SVGSVGElement>>;\nexport default ${componentName};\n`
+          ? `import * as React from 'react';\ndeclare const ${componentName}: React.ForwardRefExoticComponent<React.PropsWithoutRef<React.SVGProps<SVGSVGElement>> & { title?: string, titleId?: string, size?: "small" | "medium" | "large" | number } & React.RefAttributes<SVGSVGElement>>;\nexport default ${componentName};\n`
           : `import type { FunctionalComponent, HTMLAttributes, VNodeProps } from 'vue';\ndeclare const ${componentName}: FunctionalComponent<HTMLAttributes & VNodeProps>;\nexport default ${componentName};\n`
 
       return [
