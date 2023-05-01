@@ -1,6 +1,6 @@
 {
-  "name": "@datalayer/icons",
-  "version": "0.0.10",
+  "name": "@datalayer-icons/all",
+  "version": "0.0.1",
   "main": "./lib/index.js",
   "types": "./lib/index.d.ts",
   "files": [
@@ -9,7 +9,8 @@
   ],
   "scripts": {
     "landing:studio": "tsc --watch",
-    "build": "tsc && vite build",
+    "build": "yarn run build-icons && yarn build-app",
+    "build-app": "tsc && vite build",
     "clean": "rimraf lib build dist tsconfig.tsbuildinfo",
     "dev": "vite",
     "preview": "vite preview",
