@@ -1,0 +1,79 @@
+{
+  "name": "@datalayer-icons/react",
+  "license": "MIT",
+  "version": "2.0.17",
+  "description": "",
+  "keywords": [],
+  "homepage": "https://github.com/datalayer/icons",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/datalayer/icons.git"
+  },
+  "files": [
+    "icons",
+    "index.esm.js",
+    "index.js"
+  ],
+  "sideEffects": false,
+  "exports": {
+    ".": {
+      "import": "./index.esm.js",
+      "require": "./index.js"
+    },
+    "./package.json": {
+      "default": "./package.json"
+    },
+    "./solid": {
+      "types": "./solid/index.d.ts",
+      "import": "./solid/esm/index.js",
+      "require": "./solid/index.js"
+    },
+    "./solid/*": {
+      "types": "./solid/*.d.ts",
+      "import": "./solid/esm/*.js",
+      "require": "./solid/*.js"
+    },
+    "./solid/*.js": {
+      "types": "./solid/*.d.ts",
+      "import": "./solid/esm/*.js",
+      "require": "./solid/*.js"
+    },
+    "./solid/esm/*": {
+      "types": "./solid/*.d.ts",
+      "import": "./solid/esm/*.js"
+    },
+    "./solid/esm/*.js": {
+      "types": "./solid/*.d.ts",
+      "import": "./solid/esm/*.js"
+    },
+    "./outline": {
+      "types": "./outline/index.d.ts",
+      "import": "./outline/esm/index.js",
+      "require": "./outline/index.js"
+    },
+    "./outline/*": {
+      "types": "./outline/*.d.ts",
+      "import": "./outline/esm/*.js",
+      "require": "./outline/*.js"
+    },
+    "./outline/*.js": {
+      "types": "./outline/*.d.ts",
+      "import": "./outline/esm/*.js",
+      "require": "./outline/*.js"
+    },
+    "./outline/esm/*": {
+      "types": "./outline/*.d.ts",
+      "import": "./outline/esm/*.js"
+    },
+    "./outline/esm/*.js": {
+      "types": "./outline/*.d.ts",
+      "import": "./outline/esm/*.js"
+    }
+  },
+  "publishConfig": {
+    "access": "public"
+  },
+  "peerDependencies": {
+    "react": ">= 16"
+  }
+}

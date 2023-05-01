@@ -1,57 +1,26 @@
-import Icon from "./Icon";
-import AcademicCapIcon from "./icons/AcademicCapIcon";
-import CollaborateIcon from "./icons/CollaborateIcon";
-import DaskLogoIcon from "./icons/DaskLogoIcon";
-import DatalayerLogoIcon from "./icons/DatalayerLogoIcon";
-import DatalayerLogoBlackIcon from "./icons/DatalayerLogoBlackIcon";
-import DatalayerLogoColorIcon from "./icons/DatalayerLogoColorIcon";
-import DatalayerLogoGreenIcon from "./icons/DatalayerLogoGreenIcon";
-import DatalayerLogoWhiteIcon from "./icons/DatalayerLogoWhiteIcon";
-import { OrganizationIcon as OrganisationIcon } from "@primer/octicons-react";
-import PyTorchLogoIcon from "./icons/PyTorchLogoIcon";
-import ReactJsLogoIcon from "./icons/ReactJsLogoIcon";
-import SchoolIcon from "./icons/SchoolIcon";
-import StudentIcon from "./icons/StudentIcon";
-import TensorFlowLogoIcon from "./icons/TensorFlowLogoIcon";
-import TwitterIcon from "./icons/TwitterIcon";
-import WebRTCIcon from "./icons/WebRTCIcon";
+import { CollaborateIcon, OrganisationIcon, SchoolIcon, StudentIcon } from "../react/outline";
+import { AcademicCapIcon, DaskLogoIcon, DatalayerLogoIcon, DatalayerLogoBlackIcon, DatalayerLogoColorIcon, DatalayerLogoGreenIcon, DatalayerLogoWhiteIcon, KubernetesLogoIcon, KubernetesNodeIcon, KubernetesPodIcon, PyTorchLogoIcon, ReactLogoIcon, TensorFlowLogoIcon, TwitterLogoIcon, WebRtcLogoIcon } from "../react/solid";
 
-export {
-  AcademicCapIcon,
-  CollaborateIcon,
-  DaskLogoIcon,
-  DatalayerLogoIcon,
-  DatalayerLogoBlackIcon,
-  DatalayerLogoColorIcon,
-  DatalayerLogoGreenIcon,
-  DatalayerLogoWhiteIcon,
-  OrganisationIcon,
-  PyTorchLogoIcon,
-  ReactJsLogoIcon,
-  SchoolIcon,
-  StudentIcon,
-  TensorFlowLogoIcon,
-  TwitterIcon,
-  WebRTCIcon,
-}
-
-const icons = Object.assign(Icon, {
+const icons = {
   AcademicCap: AcademicCapIcon,
   Collaborate: CollaborateIcon,
-  DaskLogo: DaskLogoIcon,
+  Dask: DaskLogoIcon,
   DatalayerLogo: DatalayerLogoIcon,
   DatalayerLogoBlack: DatalayerLogoBlackIcon,
   DatalayerLogoColor: DatalayerLogoColorIcon,
   DatalayerLogoGreen: DatalayerLogoGreenIcon,
   DatalayerLogoWhite: DatalayerLogoWhiteIcon,
+  KubernetesLogo: KubernetesLogoIcon,
+  KubernetesNode: KubernetesNodeIcon,
+  KubernetesPod: KubernetesPodIcon,
   Organisation: OrganisationIcon,
-  PyTorchLogo: PyTorchLogoIcon,
-  ReactJs: ReactJsLogoIcon,
+  PyTorch: PyTorchLogoIcon,
+  React: ReactLogoIcon,
   School: SchoolIcon,
   Student: StudentIcon,
-  TensorFlowLogo: TensorFlowLogoIcon,
-  Twitter: TwitterIcon,
-  WebRTC: WebRTCIcon,
-});
+  TensorFlow: TensorFlowLogoIcon,
+  Twitter: TwitterLogoIcon,
+  WebRTC: WebRtcLogoIcon,
+};
 
 export default icons;

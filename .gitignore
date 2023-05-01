@@ -29,3 +29,5 @@ lib
 *.sw?
 
 *.lock
+
+optimized
