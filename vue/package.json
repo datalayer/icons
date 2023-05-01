@@ -10,7 +10,8 @@
     "url": "https://github.com/datalayer/icons.git"
   },
   "files": [
-    "icons",
+    "outline",
+    "solid",
     "index.esm.js",
     "index.js"
   ],
