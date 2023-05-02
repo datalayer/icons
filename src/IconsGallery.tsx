@@ -86,18 +86,28 @@ const IconLine = (props: { name: string }) => {
       </SpanStyle>
     </BorderStyle>
     <ThemeProvider colorMode="day">
-      <IconButton aria-labelledby="" size="medium" sx={{marginRight: "15px"}} icon={StyledIcon} ref={refPngDay} onClick={(e: React.MouseEvent<HTMLElement>) => downloadPNG(e, refPngDay, "day")}/>
-    </ThemeProvider>
-    <ThemeProvider colorMode="night">
-      <IconButton aria-labelledby="" size="medium" sx={{marginRight: "15px"}} icon={StyledIcon} ref={refPngNight} onClick={(e: React.MouseEvent<HTMLElement>) => downloadPNG(e, refPngNight, "night")}/>
-    </ThemeProvider>
-    <ThemeProvider colorMode="day">
       <IconButton aria-labelledby="" size="medium" sx={{marginRight: "15px"}} icon={ColoredStyledIcon} ref={refPngDay} onClick={(e: React.MouseEvent<HTMLElement>) => downloadSVG(e, refSvg)}/>
     </ThemeProvider>
     <ThemeProvider colorMode="night">
       <IconButton aria-labelledby="" size="medium" sx={{marginRight: "15px"}} icon={ColoredStyledIcon} ref={refPngNight} onClick={(e: React.MouseEvent<HTMLElement>) => downloadPNG(e, refPngNight, "night")}/>
     </ThemeProvider>
+    <ThemeProvider colorMode="day">
+      <IconButton aria-labelledby="" size="medium" sx={{marginRight: "15px"}} icon={StyledIcon} ref={refPngDay} onClick={(e: React.MouseEvent<HTMLElement>) => downloadPNG(e, refPngDay, "day")}/>
+    </ThemeProvider>
+    <ThemeProvider colorMode="night">
+      <IconButton aria-labelledby="" size="medium" sx={{marginRight: "15px"}} icon={StyledIcon} ref={refPngNight} onClick={(e: React.MouseEvent<HTMLElement>) => downloadPNG(e, refPngNight, "night")}/>
+    </ThemeProvider>
     <BorderStyle>
+      <SpanStyle>
+        <span>
+          {ColoredStyledIcon()}
+        </span>
+      </SpanStyle>
+      <SpanStyle>
+        <span style={{backgroundColor: "lightgrey"}}>
+          {ColoredStyledIcon()}
+        </span>
+      </SpanStyle>
       <SpanStyle>
         <span>
           {StyledIcon()}
@@ -106,11 +116,6 @@ const IconLine = (props: { name: string }) => {
       <SpanStyle>
         <span style={{backgroundColor: "lightgrey"}}>
           {StyledIcon()}
-        </span>
-      </SpanStyle>
-      <SpanStyle>
-        <span>
-          {ColoredStyledIcon()}
         </span>
       </SpanStyle>
     </BorderStyle>
