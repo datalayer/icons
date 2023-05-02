@@ -73,6 +73,13 @@ const IconLine = (props: { name: string }) => {
     <BorderStyle>
       <SpanStyle>
         <span>
+          <IconComponent colored size="large" className="inline-block select-none align-text-bottom overflow-visible" />
+        </span>
+      </SpanStyle>
+    </BorderStyle>
+    <BorderStyle>
+      <SpanStyle>
+        <span>
           <IconComponent size="large" className="inline-block select-none align-text-bottom overflow-visible" />
         </span>
       </SpanStyle>
