@@ -9,7 +9,7 @@ const { compile: compileVue } = require('@vue/compiler-dom')
 const { dirname } = require('path')
 
 let transform = {
-  react: async (svg, componentName, format) => {
+  react: async (svg, componentName, format, style) => {
     let component = await svgr(svg, { ref: true, titleProp: true }, { componentName })
     let { code } = await babel.transformAsync(component, {
       plugins: [[require('@babel/plugin-transform-react-jsx'), { useBuiltIns: true }]],
@@ -30,11 +30,11 @@ let transform = {
     let lines = code.split('\n');
     lines.splice(1, 0, `\nconst sizeMap = ${JSON.stringify(SIZE_MAP, null, 2)};\n`);
     lines.splice(5, 0, `  size,`);
-    lines.splice(6, 0, `  colored,`);
+    if (style === "solid") lines.splice(6, 0, `  colored,`);
     lines.splice(14, 0, `    ${width >= height ? 'width' : 'height'}: size ? typeof size === "string" ? sizeMap[size] : size : "16px",`);
     code = lines.join('\n');
 
-    code = code.replaceAll(/fill: "([#a-zA-Z0-9]+)",/g, `fill: colored ? '$1' : 'currentColor',`);
+    if (style === "solid") code = code.replaceAll(/fill: "([#a-zA-Z0-9]+)",/g, `fill: colored ? '$1' : 'currentColor',`);
 
     if (format === 'esm') {
       return code
@@ -112,7 +112,7 @@ async function buildIcons(package, style, format) {
 
   await Promise.all(
     icons.flatMap(async ({ componentName, svg }) => {
-      let content = await transform[package](svg, componentName, format)
+      let content = await transform[package](svg, componentName, format, style)
       let types =
         package === 'react'
           ? `import * as React from 'react';\ndeclare const ${componentName}: React.ForwardRefExoticComponent<React.PropsWithoutRef<React.SVGProps<SVGSVGElement>> & { title?: string, titleId?: string, size?: "small" | "medium" | "large" | number, colored?: boolean } & React.RefAttributes<SVGSVGElement>>;\nexport default ${componentName};\n`
