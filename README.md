@@ -6,6 +6,10 @@
 
 > A collection of React.js icons to document your data architectures https://icons.datalayer.design
 
+<div align="center" style="text-align: center">
+  <img alt="Datalayer Icons" src="https://datalayer-jupyter-examples.s3.amazonaws.com/datalayer-icons.png" />
+</div>
+
 This is a collection of React.js icons to document your data architectures, focused on the [Jupyter](https://jupyter.org) and [Kubernetes](https://kubernetes.io) ecosystems.
 
 Please open an [issue](https://github.com/datalayer/icons/issues) or a [pull request](https://github.com/datalayer/icons/pulls) to update, add... your icons or for any suggestion, question or claim about this repository content.
@@ -34,17 +38,17 @@ yarn
 yarn run build-icons
 ```
 
-- You should see your icon in the `optimized` folder and also as a component in both `react` and `vue` folders
+You should see your icon in the `optimized` folder and also as a component in both `react` and `vue` folders
 
 ## Use the Icons
 
 Add `@datalayer-icons/react` as dependency, import an icon and display it.
 
 ```typescript
-import { DatalayerLogoIcon } from "@datalayer-icons/react/solid";
+import { DatalayerIcon } from "@datalayer-icons/react/solid";
 // ...
 render(
-  <DatalayerLogoIcon/>
+  <DatalayerIcon/>
 )
 ```
 

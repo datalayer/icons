@@ -1,15 +1,13 @@
 import { CollaborateIcon, OrganisationIcon, SchoolIcon, StudentIcon } from "../react/outline";
-import { AcademicCapIcon, DaskIcon, DatalayerIcon, DatalayerBlackIcon, DatalayerColorIcon, DatalayerGreenIcon, DatalayerWhiteIcon, JupyterHubServiceIcon, JupyterHubIcon, JupyterLabIcon, JupyterKernelGatewayIcon, JupyterKernelIcon, JupyterKernelProvisionerIcon, JupyterIcon, JupyterMystIcon, JupyterServerIcon, JupyterTraitletIcon, KubernetesIcon, KubernetesNodeIcon, KubernetesPodIcon, KubernetesServiceIcon, PyTorchIcon, ReactIcon, TensorFlowIcon, TwitterIcon, WebRtcIcon } from "../react/solid";
+import { AcademicCapIcon, DaskIcon, DatalayerIcon, DatalayerVariantIcon, DatalayerGreenIcon, JupyterHubServiceIcon, JupyterHubIcon, JupyterLabIcon, JupyterKernelGatewayIcon, JupyterKernelIcon, JupyterKernelProvisionerIcon, JupyterIcon, JupyterMystIcon, JupyterServerIcon, JupyterTraitletIcon, KubernetesIcon, KubernetesNodeIcon, KubernetesPodIcon, KubernetesServiceIcon, PyTorchIcon, ReactIcon, TensorFlowIcon, TwitterIcon, WebRtcIcon } from "../react/solid";
 
 const icons = {
   AcademicCap: AcademicCapIcon,
   Collaborate: CollaborateIcon,
   Dask: DaskIcon,
   Datalayer: DatalayerIcon,
-  DatalayerBlack: DatalayerBlackIcon,
-  DatalayerColor: DatalayerColorIcon,
+  DatalayerVariant: DatalayerVariantIcon,
   DatalayerGreen: DatalayerGreenIcon,
-  DatalayerWhite: DatalayerWhiteIcon,
   Jupyter: JupyterIcon,
   JupyterLab: JupyterLabIcon,
   JupyterHub: JupyterHubIcon,
