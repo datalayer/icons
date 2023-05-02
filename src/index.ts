@@ -1,5 +1,5 @@
 import { CollaborateIcon, OrganisationIcon, SchoolIcon, StudentIcon } from "../react/outline";
-import { AcademicCapIcon, DaskLogoIcon, DatalayerLogoIcon, DatalayerLogoBlackIcon, DatalayerLogoColorIcon, DatalayerLogoGreenIcon, DatalayerLogoWhiteIcon,JupyterHubIcon, JupyterHubServiceLogoIcon, JupyterKernelGatewayLogoIcon, JupyterKernelLogoIcon, JupyterKernelProvisionerLogoIcon, JupyterLabLogoIcon, JupyterLogoIcon, JupyterMystLogoIcon, JupyterServerLogoIcon, KubernetesLogoIcon, KubernetesNodeIcon, KubernetesPodIcon, PyTorchLogoIcon, ReactLogoIcon, TensorFlowLogoIcon, TwitterLogoIcon, WebRtcLogoIcon } from "../react/solid";
+import { AcademicCapIcon, DaskLogoIcon, DatalayerLogoIcon, DatalayerLogoBlackIcon, DatalayerLogoColorIcon, DatalayerLogoGreenIcon, DatalayerLogoWhiteIcon, JupyterhubServiceIcon, JupyterhubLogoIcon, JupyterlabLogoIcon, JupyterKernelGatewayLogoIcon, JupyterKernelLogoIcon, JupyterKernelProvisionerLogoIcon, JupyterLogoIcon, JupyterMystLogoIcon, JupyterServerLogoIcon, KubernetesLogoIcon, KubernetesNodeIcon, KubernetesPodIcon, KubernetesServiceIcon, PyTorchLogoIcon, ReactLogoIcon, TensorFlowLogoIcon, TraitletsIcon, TwitterLogoIcon, WebRtcLogoIcon } from "../react/solid";
 
 const icons = {
   AcademicCap: AcademicCapIcon,
@@ -12,9 +12,9 @@ const icons = {
   DatalayerWhite: DatalayerLogoWhiteIcon,
   Jupyter: JupyterLogoIcon,
   JupyterServer: JupyterServerLogoIcon,
-  JupyterLab: JupyterLabLogoIcon,
-  JupyterHub: JupyterHubIcon,
-  JupyterHubService: JupyterHubServiceLogoIcon,
+  Jupyterlab: JupyterlabLogoIcon,
+  Jupyterhub: JupyterhubLogoIcon,
+  JupyterhubService: JupyterhubServiceIcon,
   JupyterKernel: JupyterKernelLogoIcon,
   JupyterKernelGateway: JupyterKernelGatewayLogoIcon,
   JupyterKernelProvisioner: JupyterKernelProvisionerLogoIcon,
@@ -22,12 +22,14 @@ const icons = {
   Kubernetes: KubernetesLogoIcon,
   KubernetesNode: KubernetesNodeIcon,
   KubernetesPod: KubernetesPodIcon,
+  KubernetesService: KubernetesServiceIcon,
   Organisation: OrganisationIcon,
   PyTorch: PyTorchLogoIcon,
   React: ReactLogoIcon,
   School: SchoolIcon,
   Student: StudentIcon,
   TensorFlow: TensorFlowLogoIcon,
+  Traitlets: TraitletsIcon,
   Twitter: TwitterLogoIcon,
   WebRTC: WebRtcLogoIcon,
 };
