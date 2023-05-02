@@ -1,5 +1,6 @@
 const fs = require('fs').promises
 const camelcase = require('camelcase')
+const cheerio = require('cheerio')
 const { promisify } = require('util')
 const rimraf = promisify(require('rimraf'))
 const svgr = require('@svgr/core').default
@@ -20,11 +21,16 @@ let transform = {
       large: 64,
     };
 
+    const svgElement = cheerio.load(svg)('svg')
+    const svgViewBox = svgElement.attr('viewBox').split(" ")
+
+    const width = Number(svgViewBox[2]);
+    const height = Number(svgViewBox[3]);
+
     let lines = code.split('\n');
     lines.splice(1, 0, `\nconst sizeMap = ${JSON.stringify(SIZE_MAP, null, 2)};\n`);
-    lines.splice(5, 0, '  size,');
-    lines.splice(14, 0, '    width: size ? typeof size === "string" ? sizeMap[size] : size : "32px",');
-    lines.splice(15, 0, '    height: size ? typeof size === "string" ? sizeMap[size] : size : "32px",');
+    lines.splice(5, 0, `  size,`);
+    lines.splice(14, 0, `    ${width >= height ? 'width' : 'height'}: size ? typeof size === "string" ? sizeMap[size] : size : "32px",`);
     code = lines.join('\n');
 
     if (format === 'esm') {
