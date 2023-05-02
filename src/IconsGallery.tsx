@@ -68,8 +68,16 @@ const IconLine = (props: { name: string }) => {
 */
   // @ts-expect-error ts-migrate(7053)
   const IconComponent = Icons[name];
-  const StyledIcon = () => <IconComponent size="small" className="inline-block select-none align-text-bottom overflow-visible" />;
+  const StyledIcon = () => <IconComponent className="inline-block select-none align-text-bottom overflow-visible" />;
+  const ColoredStyledIcon = () => <IconComponent colored className="inline-block select-none align-text-bottom overflow-visible" />;
   const icon = <Box alignItems="center" justifyContent="space-between">
+    <BorderStyle>
+      <SpanStyle>
+        <span>
+          <IconComponent colored size="large" className="inline-block select-none align-text-bottom overflow-visible" />
+        </span>
+      </SpanStyle>
+    </BorderStyle>
     <BorderStyle>
       <SpanStyle>
         <span>
@@ -78,15 +86,28 @@ const IconLine = (props: { name: string }) => {
       </SpanStyle>
     </BorderStyle>
     <ThemeProvider colorMode="day">
+      <IconButton aria-labelledby="" size="medium" sx={{marginRight: "15px"}} icon={ColoredStyledIcon} ref={refPngDay} onClick={(e: React.MouseEvent<HTMLElement>) => downloadSVG(e, refSvg)}/>
+    </ThemeProvider>
+    <ThemeProvider colorMode="night">
+      <IconButton aria-labelledby="" size="medium" sx={{marginRight: "15px"}} icon={ColoredStyledIcon} ref={refPngNight} onClick={(e: React.MouseEvent<HTMLElement>) => downloadPNG(e, refPngNight, "night")}/>
+    </ThemeProvider>
+    <ThemeProvider colorMode="day">
       <IconButton aria-labelledby="" size="medium" sx={{marginRight: "15px"}} icon={StyledIcon} ref={refPngDay} onClick={(e: React.MouseEvent<HTMLElement>) => downloadPNG(e, refPngDay, "day")}/>
     </ThemeProvider>
     <ThemeProvider colorMode="night">
       <IconButton aria-labelledby="" size="medium" sx={{marginRight: "15px"}} icon={StyledIcon} ref={refPngNight} onClick={(e: React.MouseEvent<HTMLElement>) => downloadPNG(e, refPngNight, "night")}/>
     </ThemeProvider>
-    <ThemeProvider colorMode="day">
-      <IconButton aria-labelledby="" size="medium" sx={{marginRight: "15px"}} icon={StyledIcon} ref={refSvg} onClick={(e: React.MouseEvent<HTMLElement>) => downloadSVG(e, refSvg)}/>
-    </ThemeProvider>
     <BorderStyle>
+      <SpanStyle>
+        <span>
+          {ColoredStyledIcon()}
+        </span>
+      </SpanStyle>
+      <SpanStyle>
+        <span style={{backgroundColor: "lightgrey"}}>
+          {ColoredStyledIcon()}
+        </span>
+      </SpanStyle>
       <SpanStyle>
         <span>
           {StyledIcon()}
@@ -94,11 +115,6 @@ const IconLine = (props: { name: string }) => {
       </SpanStyle>
       <SpanStyle>
         <span style={{backgroundColor: "lightgrey"}}>
-          {StyledIcon()}
-        </span>
-      </SpanStyle>
-      <SpanStyle>
-        <span>
           {StyledIcon()}
         </span>
       </SpanStyle>
