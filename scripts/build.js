@@ -30,7 +30,7 @@ let transform = {
     let lines = code.split('\n');
     lines.splice(1, 0, `\nconst sizeMap = ${JSON.stringify(SIZE_MAP, null, 2)};\n`);
     lines.splice(5, 0, `  size,`);
-    lines.splice(14, 0, `    ${width >= height ? 'width' : 'height'}: size ? typeof size === "string" ? sizeMap[size] : size : "32px",`);
+    lines.splice(14, 0, `    ${width >= height ? 'width' : 'height'}: size ? typeof size === "string" ? sizeMap[size] : size : "16px",`);
     code = lines.join('\n');
 
     if (format === 'esm') {

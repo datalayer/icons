@@ -44,7 +44,7 @@ Add `@datalayer-icons/react` as dependency, import an icon and display it.
 import { DatalayerLogoIcon } from "@datalayer-icons/react/solid";
 // ...
 render(
-  <DatalayerLogoIcon size="small"/>
+  <DatalayerLogoIcon/>
 )
 ```
 
