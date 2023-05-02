@@ -10,30 +10,42 @@ This is a collection of React.js icons to document your data architectures, focu
 
 Please open an [issue](https://github.com/datalayer/icons/issues) or a [pull request](https://github.com/datalayer/icons/pulls) to update, add... your icons or for any suggestion, question or claim about this repository content.
 
+## Preview the Icons
+
 To preview the icons, run the following commands.
 
 ```bash
 yarn
+yarn build
 yarn vite
 ```
 
 You can see more content around design on the [Datalayer Design](https://datalayer.design) website.
 
-## Adding an Icon
+## Add an Icon
 
 To add an icon to this repository:
 
 - Add the SVG (preferably of viewBox `0 0 20 20`) of the icon in `svg/outline` or `svg/solid`
 - To build the IconComponent, run:
-```
+
+```bash
 yarn
 yarn run build-icons
 ```
+
 - You should see your icon in the `optimized` folder and also as a component in both `react` and `vue` folders
-- Import the IconComponent in `src/index.ts`
-- Build the vite application by running:
-```
-yarn vite
+
+## Use the Icons
+
+Add `@datalayer-icons/react` as dependency, import an icon and display it.
+
+```typescript
+import { DatalayerLogoIcon } from "@datalayer-icons/react/solid";
+// ...
+render(
+  <DatalayerLogoIcon size="small"/>
+)
 ```
 
 ## ⚖️ License
