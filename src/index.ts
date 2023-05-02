@@ -1,5 +1,5 @@
 import { CollaborateIcon, OrganisationIcon, SchoolIcon, StudentIcon } from "../react/outline";
-import { AcademicCapIcon, DaskLogoIcon, DatalayerLogoIcon, DatalayerLogoBlackIcon, DatalayerLogoColorIcon, DatalayerLogoGreenIcon, DatalayerLogoWhiteIcon, JupyterhubServiceIcon, JupyterhubLogoIcon, JupyterlabLogoIcon, JupyterKernelGatewayLogoIcon, JupyterKernelLogoIcon, JupyterKernelProvisionerLogoIcon, JupyterLogoIcon, JupyterMystLogoIcon, JupyterServerLogoIcon, KubernetesLogoIcon, KubernetesNodeIcon, KubernetesPodIcon, KubernetesServiceIcon, PyTorchLogoIcon, ReactLogoIcon, TensorFlowLogoIcon, TraitletsIcon, TwitterLogoIcon, WebRtcLogoIcon } from "../react/solid";
+import { AcademicCapIcon, DaskLogoIcon, DatalayerLogoIcon, DatalayerLogoBlackIcon, DatalayerLogoColorIcon, DatalayerLogoGreenIcon, DatalayerLogoWhiteIcon, JupyterHubServiceIcon, JupyterHubLogoIcon, JupyterLabLogoIcon, JupyterKernelGatewayLogoIcon, JupyterKernelLogoIcon, JupyterKernelProvisionerLogoIcon, JupyterLogoIcon, JupyterMystLogoIcon, JupyterServerLogoIcon, KubernetesLogoIcon, KubernetesNodeIcon, KubernetesPodIcon, KubernetesServiceIcon, PyTorchLogoIcon, ReactLogoIcon, TensorFlowLogoIcon, TraitletsIcon, TwitterLogoIcon, WebRtcLogoIcon } from "../react/solid";
 
 const icons = {
   AcademicCap: AcademicCapIcon,
@@ -12,9 +12,9 @@ const icons = {
   DatalayerWhite: DatalayerLogoWhiteIcon,
   Jupyter: JupyterLogoIcon,
   JupyterServer: JupyterServerLogoIcon,
-  Jupyterlab: JupyterlabLogoIcon,
-  Jupyterhub: JupyterhubLogoIcon,
-  JupyterhubService: JupyterhubServiceIcon,
+  JupyterLab: JupyterLabLogoIcon,
+  JupyterHub: JupyterHubLogoIcon,
+  JupyterHubService: JupyterHubServiceIcon,
   JupyterKernel: JupyterKernelLogoIcon,
   JupyterKernelGateway: JupyterKernelGatewayLogoIcon,
   JupyterKernelProvisioner: JupyterKernelProvisionerLogoIcon,
