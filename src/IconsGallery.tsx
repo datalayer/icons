@@ -68,7 +68,8 @@ const IconLine = (props: { name: string }) => {
 */
   // @ts-expect-error ts-migrate(7053)
   const IconComponent = Icons[name];
-  const StyledIcon = () => <IconComponent size="small" className="inline-block select-none align-text-bottom overflow-visible" />;
+  const StyledIcon = () => <IconComponent className="inline-block select-none align-text-bottom overflow-visible" />;
+  const ColoredStyledIcon = () => <IconComponent colored className="inline-block select-none align-text-bottom overflow-visible" />;
   const icon = <Box alignItems="center" justifyContent="space-between">
     <BorderStyle>
       <SpanStyle>
@@ -91,7 +92,10 @@ const IconLine = (props: { name: string }) => {
       <IconButton aria-labelledby="" size="medium" sx={{marginRight: "15px"}} icon={StyledIcon} ref={refPngNight} onClick={(e: React.MouseEvent<HTMLElement>) => downloadPNG(e, refPngNight, "night")}/>
     </ThemeProvider>
     <ThemeProvider colorMode="day">
-      <IconButton aria-labelledby="" size="medium" sx={{marginRight: "15px"}} icon={StyledIcon} ref={refSvg} onClick={(e: React.MouseEvent<HTMLElement>) => downloadSVG(e, refSvg)}/>
+      <IconButton aria-labelledby="" size="medium" sx={{marginRight: "15px"}} icon={ColoredStyledIcon} ref={refPngDay} onClick={(e: React.MouseEvent<HTMLElement>) => downloadSVG(e, refSvg)}/>
+    </ThemeProvider>
+    <ThemeProvider colorMode="night">
+      <IconButton aria-labelledby="" size="medium" sx={{marginRight: "15px"}} icon={ColoredStyledIcon} ref={refPngNight} onClick={(e: React.MouseEvent<HTMLElement>) => downloadPNG(e, refPngNight, "night")}/>
     </ThemeProvider>
     <BorderStyle>
       <SpanStyle>
@@ -106,7 +110,7 @@ const IconLine = (props: { name: string }) => {
       </SpanStyle>
       <SpanStyle>
         <span>
-          {StyledIcon()}
+          {ColoredStyledIcon()}
         </span>
       </SpanStyle>
     </BorderStyle>
