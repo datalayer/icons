@@ -34,7 +34,7 @@ let transform = {
     lines.splice(14, 0, `    ${width >= height ? 'width' : 'height'}: size ? typeof size === "string" ? sizeMap[size] : size : "16px",`);
     code = lines.join('\n');
 
-    if (style === "solid") code = code.replaceAll(/fill: "([#a-zA-Z0-9]+)",/g, `fill: colored ? '$1' : 'currentColor',`);
+    if (style === "solid") code = code.replaceAll(/fill: "([#a-zA-Z0-9]+)",/g, `fill: colored ? '$1' : (['#fff', '#fffff', 'white', '#FFF', '#FFFFFF'].includes('$1') ? 'white' : 'currentColor'),`);
 
     if (format === 'esm') {
       return code
