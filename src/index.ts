@@ -1,4 +1,4 @@
-import { CollaborateIcon, FastForwardIcon, FastRewindIcon, OrganisationIcon, SchoolIcon, StudentIcon } from "../react/outline";
+import { CollaborateIcon, DoubleDownIcon, DoubleUpIcon, FastForwardIcon, FastRewindIcon, OrganisationIcon, SchoolIcon, StudentIcon } from "../react/outline";
 import { AcademicCapIcon, DaskIcon, DatalayerIcon, DatalayerDaskIcon, DatalayerGreenIcon, JupyterHubServiceIcon, JupyterHubIcon, JupyterLabIcon, JupyterKernelGatewayIcon, JupyterKernelIcon, JupyterKernelProvisionerIcon, JupyterIcon, JupyterMystIcon, JupyterServerIcon, JupyterTraitletIcon, KubernetesIcon, KubernetesNodeIcon, KubernetesPodIcon, KubernetesServiceIcon, PyTorchIcon, ReactIcon, TensorFlowIcon, TwitterIcon, WebRtcIcon } from "../react/solid";
 
 const icons = {
@@ -8,6 +8,8 @@ const icons = {
   Datalayer: DatalayerIcon,
   DatalayerDask: DatalayerDaskIcon,
   DatalayerGreen: DatalayerGreenIcon,
+  DoubleDown: DoubleDownIcon,
+  DoubleUp: DoubleUpIcon,
   FastForward: FastForwardIcon,
   FastRewind: FastRewindIcon,
   Jupyter: JupyterIcon,
