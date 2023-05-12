@@ -1,4 +1,4 @@
-import { CellIcon, CollaborateIcon, ConsoleIcon, DoubleDownIcon, DoubleUpIcon, FastForwardIcon, FastRewindIcon, IPyWidgetIcon, NotebookIcon, OrganisationIcon, OutputIcon, SchoolIcon, StudentIcon } from "../react/outline";
+import { CellIcon, CollaborateIcon, ConsoleIcon, DoubleDownIcon, DoubleUpIcon, FastForwardIcon, FastRewindIcon, IPyWidgetsIcon, NotebookIcon, OrganisationIcon, OutputIcon, SchoolIcon, StudentIcon } from "../react/outline";
 import { AcademicCapIcon, DaskIcon, DatalayerIcon, DatalayerDaskIcon, DatalayerGreenIcon, JupyterHubServiceIcon, JupyterHubIcon, JupyterLabIcon, JupyterKernelGatewayIcon, JupyterKernelIcon, JupyterKernelProvisionerIcon, JupyterIcon, JupyterMystIcon, JupyterServerIcon, JupyterTraitletIcon, KubernetesIcon, KubernetesNodeIcon, KubernetesPodIcon, KubernetesServiceIcon, PyTorchIcon, ReactIcon, TensorFlowIcon, TwitterIcon, WebRtcIcon } from "../react/solid";
 
 const icons = {
@@ -14,7 +14,7 @@ const icons = {
   DoubleUp: DoubleUpIcon,
   FastForward: FastForwardIcon,
   FastRewind: FastRewindIcon,
-  IPyWidget: IPyWidgetIcon,
+  IPyWidgets: IPyWidgetsIcon,
   Jupyter: JupyterIcon,
   JupyterLab: JupyterLabIcon,
   JupyterHub: JupyterHubIcon,
