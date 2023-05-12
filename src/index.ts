@@ -1,4 +1,4 @@
-import { CellIcon, CollaborateIcon, ConsoleIcon, DoubleDownIcon, DoubleUpIcon, FastForwardIcon, FastRewindIcon, IPyWidgetsIcon, NotebookIcon, OrganisationIcon, OutputIcon, SchoolIcon, StudentIcon } from "../react/outline";
+import { CellIcon, CollaborateIcon, CommandsIcon, ConsoleIcon, DialogIcon, DoubleDownIcon, DoubleUpIcon, FastForwardIcon, FastRewindIcon, FileBrowserIcon, IPyWidgetsIcon, LuminoIcon, NotebookIcon, OrganisationIcon, OutputIcon, SchoolIcon, SettingsIcon, StudentIcon, TerminalIcon } from "../react/outline";
 import { AcademicCapIcon, DaskIcon, DatalayerIcon, DatalayerDaskIcon, DatalayerGreenIcon, JupyterHubServiceIcon, JupyterHubIcon, JupyterLabIcon, JupyterKernelGatewayIcon, JupyterKernelIcon, JupyterKernelProvisionerIcon, JupyterIcon, JupyterMystIcon, JupyterServerIcon, JupyterTraitletIcon, KubernetesIcon, KubernetesNodeIcon, KubernetesPodIcon, KubernetesServiceIcon, PyTorchIcon, ReactIcon, TensorFlowIcon, TwitterIcon, WebRtcIcon } from "../react/solid";
 
 const icons = {
@@ -6,14 +6,17 @@ const icons = {
   Collaborate: CollaborateIcon,
   Cell: CellIcon,
   Console: ConsoleIcon,
+  Commands: CommandsIcon,
   Dask: DaskIcon,
   Datalayer: DatalayerIcon,
   DatalayerDask: DatalayerDaskIcon,
   DatalayerGreen: DatalayerGreenIcon,
+  Dialog: DialogIcon,
   DoubleDown: DoubleDownIcon,
   DoubleUp: DoubleUpIcon,
   FastForward: FastForwardIcon,
   FastRewind: FastRewindIcon,
+  FileBrowser: FileBrowserIcon,
   IPyWidgets: IPyWidgetsIcon,
   Jupyter: JupyterIcon,
   JupyterLab: JupyterLabIcon,
@@ -29,14 +32,17 @@ const icons = {
   KubernetesNode: KubernetesNodeIcon,
   KubernetesPod: KubernetesPodIcon,
   KubernetesService: KubernetesServiceIcon,
+  Lumino: LuminoIcon,
   Notebook: NotebookIcon,
   Organisation: OrganisationIcon,
   Output: OutputIcon,
   PyTorch: PyTorchIcon,
   React: ReactIcon,
   School: SchoolIcon,
+  Settings: SettingsIcon,
   Student: StudentIcon,
   TensorFlow: TensorFlowIcon,
+  TerminalIcon: TerminalIcon,
   Twitter: TwitterIcon,
   WebRTC: WebRtcIcon,
 };
