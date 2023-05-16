@@ -1,10 +1,12 @@
 [![Datalayer](https://assets.datalayer.design/datalayer-25.svg)](https://datalayer.io)
 
 [![Become a Sponsor](https://img.shields.io/static/v1?label=Become%20a%20Sponsor&message=%E2%9D%A4&logo=GitHub&style=flat&color=1ABC9C)](https://github.com/sponsors/datalayer)
-
+ 
 # Ξ 🎉 Datalayer Icons
 
 > React.js icons for Datalayer under [MIT License](LICENSE)
+
+This repository contains a collection of React.js icons useful at [Datalayer](https://datalayer.tech), covering [Jupyter](https://jupyter.org), [Kubernetes](https://kubernetes.io) and other ecosystems.
 
 Preview the icons on https://icons.datalayer.design.
 
@@ -12,13 +14,11 @@ Preview the icons on https://icons.datalayer.design.
   <img alt="Datalayer Icons" src="https://datalayer-jupyter-examples.s3.amazonaws.com/datalayer-icons.png" />
 </div>
 
-This repository contains a collection of React.js icons useful at [Datalayer](https://datalayer.tech), covering [Jupyter](https://jupyter.org), [Kubernetes](https://kubernetes.io) and other ecosystems.
-
 Please open an [issue](https://github.com/datalayer/icons/issues) or a [pull request](https://github.com/datalayer/icons/pulls) to update, add... your icons or for any suggestion, question about this repository content.
 
-## Preview the Icons
+## Gallery of Icons
 
-To preview the icons, run the following commands.
+To view an gallery of available icons, run the following commands.
 
 ```bash
 yarn
@@ -52,7 +52,12 @@ render(
 Options
 
 - `colored` - Display a colored version of the Icon (if available).
-- `size`: `"small"` | `"medium"` | `"large"` | `number` - Specify the size of your icon (`"small"` by default).
+- `size`: `"small"` | `"medium"` | `"large"` | `number` - Specify the size of your icon - `"small"` by default.
+
+```typescript
+// For example
+<DatalayerIcon colored size="large"/>
+```
 
 ## ⚖️ License
 
@@ -61,5 +66,3 @@ Copyright (c) 2022 Datalayer, Inc.
 The icons are released under the terms of the MIT license (see [LICENSE](./LICENSE)).
 
 The 3rd party icons are redistributed for convenience under their respective license.
-
-This repository contains source code taken from https://github.com/tailwindlabs/heroicons under MIT license.
