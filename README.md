@@ -39,10 +39,10 @@ You should see your icon in the `optimized` folder and also as a component in bo
 
 ## Use the Icons
 
-Add `@datalayer-icons/react` as dependency, import an icon and display it.
+Add `@datalayer/icons-react` as dependency, import an icon and display it.
 
 ```typescript
-import { DatalayerIcon } from "@datalayer-icons/react/solid";
+import { DatalayerIcon } from "@datalayer/icons-react/solid";
 // ...
 render(
   <DatalayerIcon/>

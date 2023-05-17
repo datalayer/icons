@@ -9,7 +9,7 @@ module.exports = new Proxy(
       }
 
       throw new Error(
-        `Importing from \`@datalayer-icons/react\` directly is not supported. Please import from either \`@datalayer-icons/react/solid\` or \`@datalayer-icons/react/outline\` instead.`
+        `Importing from \`@datalayer/icons-react\` directly is not supported. Please import from either \`@datalayer/icons-react/solid\` or \`@datalayer/icons-react/outline\` instead.`
       )
     },
   }

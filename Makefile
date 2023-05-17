@@ -48,4 +48,4 @@ publish-npm: clean build ## publish to npm
 	($(CONDA_ACTIVATE) ${ENV_NAME}; \
 	  cd react && \
 		npm publish --access public )
-	echo open https://www.npmjs.com/package/@datalayer-icons/react
+	echo open https://www.npmjs.com/package/@datalayer/icons-react

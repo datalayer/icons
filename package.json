@@ -1,5 +1,5 @@
 {
-  "name": "@datalayer-icons/all",
+  "name": "@datalayer/icons-all",
   "version": "0.0.0",
   "main": "./lib/index.js",
   "types": "./lib/index.d.ts",
