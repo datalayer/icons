@@ -1,6 +1,6 @@
 import React, { useRef, useCallback } from "react";
 import ReactDOMServer from 'react-dom/server';
-import { ThemeProvider, BaseStyles, IconButton, Heading, Text, Box } from "@primer/react";
+import { ThemeProvider, BaseStyles, IconButton, Heading, Text, Box, Link } from "@primer/react";
 import { toPng } from 'html-to-image'
 import styled from "styled-components";
 import Icons from "./index";
@@ -23,8 +23,10 @@ const BorderStyle = styled.span`
 const IconLine = (props: { name: string }) => {
   const { name } = props;
   const refSvg = useRef<any>(null);
-  const refPngDay = useRef<any>(null);
-  const refPngNight = useRef<any>(null);
+  const refPngDayColoredStyled = useRef<any>(null);
+  const refPngNightColredStyled = useRef<any>(null);
+  const refPngDayStyled = useRef<any>(null);
+  const refPngNightStyled = useRef<any>(null);
   const downloadPNG = useCallback((e: React.MouseEvent<HTMLElement>, ref: React.MutableRefObject<any>, type: string) => {
     e.preventDefault();
     if (ref.current === null) {
@@ -40,7 +42,7 @@ const IconLine = (props: { name: string }) => {
       .catch((err: Error) => {
         console.log(err)
       })
-  }, [refPngDay, refPngNight]);
+  }, [refPngDayColoredStyled, refPngNightColredStyled]);
   const downloadSVG = useCallback((e: React.MouseEvent<HTMLElement>, ref: React.MutableRefObject<any>) => {
     e.preventDefault();
     const link = document.createElement('a')
@@ -74,7 +76,7 @@ const IconLine = (props: { name: string }) => {
     <BorderStyle>
       <SpanStyle>
         <span>
-          <IconComponent colored size="large" className="inline-block select-none align-text-bottom overflow-visible" />
+          <IconComponent colored size="large" className="inline-block select-none align-text-bottom overflow-visible" ref={refSvg} onClick={(e: React.MouseEvent<HTMLElement>) => downloadSVG(e, refSvg)}/>
         </span>
       </SpanStyle>
     </BorderStyle>
@@ -86,16 +88,16 @@ const IconLine = (props: { name: string }) => {
       </SpanStyle>
     </BorderStyle>
     <ThemeProvider colorMode="day">
-      <IconButton aria-labelledby="" size="medium" sx={{marginRight: "15px"}} icon={ColoredStyledIcon} ref={refPngDay} onClick={(e: React.MouseEvent<HTMLElement>) => downloadSVG(e, refSvg)}/>
+      <IconButton aria-labelledby="" size="medium" sx={{marginRight: "15px"}} icon={ColoredStyledIcon} ref={refPngDayColoredStyled} onClick={(e: React.MouseEvent<HTMLElement>) => downloadPNG(e, refPngDayColoredStyled, "day_colored")}/>
     </ThemeProvider>
     <ThemeProvider colorMode="night">
-      <IconButton aria-labelledby="" size="medium" sx={{marginRight: "15px"}} icon={ColoredStyledIcon} ref={refPngNight} onClick={(e: React.MouseEvent<HTMLElement>) => downloadPNG(e, refPngNight, "night")}/>
+      <IconButton aria-labelledby="" size="medium" sx={{marginRight: "15px"}} icon={ColoredStyledIcon} ref={refPngNightColredStyled} onClick={(e: React.MouseEvent<HTMLElement>) => downloadPNG(e, refPngNightColredStyled, "night_colored")}/>
     </ThemeProvider>
     <ThemeProvider colorMode="day">
-      <IconButton aria-labelledby="" size="medium" sx={{marginRight: "15px"}} icon={StyledIcon} ref={refPngDay} onClick={(e: React.MouseEvent<HTMLElement>) => downloadPNG(e, refPngDay, "day")}/>
+      <IconButton aria-labelledby="" size="medium" sx={{marginRight: "15px"}} icon={StyledIcon} ref={refPngDayStyled} onClick={(e: React.MouseEvent<HTMLElement>) => downloadPNG(e, refPngDayStyled, "day")}/>
     </ThemeProvider>
     <ThemeProvider colorMode="night">
-      <IconButton aria-labelledby="" size="medium" sx={{marginRight: "15px"}} icon={StyledIcon} ref={refPngNight} onClick={(e: React.MouseEvent<HTMLElement>) => downloadPNG(e, refPngNight, "night")}/>
+      <IconButton aria-labelledby="" size="medium" sx={{marginRight: "15px"}} icon={StyledIcon} ref={refPngNightStyled} onClick={(e: React.MouseEvent<HTMLElement>) => downloadPNG(e, refPngNightStyled, "night")}/>
     </ThemeProvider>
     <BorderStyle>
       <SpanStyle>
@@ -156,9 +158,9 @@ const IconsDemo = () => {
   return (
     <BaseStyles>
       <ThemeProvider dayScheme="light" nightScheme="dark_dimmed">
-        <Heading sx={{fontSize: 5, mb: 2}}>Datalayer Icons Gallery</Heading>
+        <Heading sx={{fontSize: 5, mb: 2}}>Ξ 🎉 Datalayer Icons Gallery</Heading>
         <Box mb={3}>
-          <Text>Sources available under MIT license in the <a href="https://github.com/datalayer/icons" target="_blank">icons repository</a>.</Text>
+          <Text>Sources available under MIT license in the <Link href="https://github.com/datalayer/icons" target="_blank">GitHub datalayer/icons repository</Link>.</Text>
         </Box>
         <Box mb={3}>
           <Text>Click on a button to download an icon in SVG or PNG format ({Object.keys(Icons).length} icons available).</Text>
