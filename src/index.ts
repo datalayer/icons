@@ -1,5 +1,5 @@
 import { CellIcon, CollaborateIcon, CommandsIcon, ConsoleIcon, DashboardIcon, DialogIcon, DoubleDownIcon, DoubleUpIcon, FastForwardIcon, FastRewindIcon, FileBrowserIcon, IPyWidgetsIcon, LuminoIcon, NotebookIcon, OrganisationIcon, OutputIcon, SchoolIcon, SettingsIcon, StudentIcon, TerminalIcon } from "../react/outline";
-import { AcademicCapIcon, DaskIcon, DatalayerIcon, DatalayerDaskIcon, DatalayerGreenIcon, JupyterHubServiceIcon, JupyterHubIcon, JupyterLabIcon, JupyterKernelGatewayIcon, JupyterKernelIcon, JupyterKernelProvisionerIcon, JupyterIcon, JupyterMystIcon, JupyterServerIcon, JupyterTraitletIcon, KubernetesIcon, KubernetesNodeIcon, KubernetesPodIcon, KubernetesServiceIcon, PyTorchIcon, ReactIcon, TensorFlowIcon, TwitterIcon, WebRtcIcon } from "../react/solid";
+import { AcademicCapIcon, DaskIcon, DatalayerIcon, DatalayerDaskIcon, DatalayerGreenIcon, JupyterHubServiceIcon, JupyterHubIcon, JupyterLabIcon, JupyterKernelGatewayIcon, JupyterKernelIcon, JupyterKernelProvisionerIcon, JupyterIcon, JupyterMystIcon, JupyterNotebookIcon, JupyterServerIcon, JupyterTraitletIcon, KubernetesIcon, KubernetesNodeIcon, KubernetesPodIcon, KubernetesServiceIcon, PyTorchIcon, ReactIcon, TensorFlowIcon, TwitterIcon, WebRtcIcon } from "../react/solid";
 
 const icons = {
   AcademicCap: AcademicCapIcon,
@@ -27,6 +27,7 @@ const icons = {
   JupyterKernelGateway: JupyterKernelGatewayIcon,
   JupyterKernelProvisioner: JupyterKernelProvisionerIcon,
   JupyterMyst: JupyterMystIcon,
+  JupyterNotebook: JupyterNotebookIcon,
   JupyterServer: JupyterServerIcon,
   JupyterTraitlet: JupyterTraitletIcon,
   Kubernetes: KubernetesIcon,
