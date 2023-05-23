@@ -1,4 +1,4 @@
-import { CellIcon, CollaborateIcon, CommandsIcon, ConsoleIcon, DashboardIcon, DialogIcon, DoubleDownIcon, DoubleUpIcon, FastForwardIcon, FastRewindIcon, FileBrowserIcon, IPyWidgetsIcon, LuminoIcon, NotebookIcon, OrganisationIcon, OutputIcon, SchoolIcon, SettingsIcon, StudentIcon, TerminalIcon } from "../react/outline";
+import { CellIcon, CollaborateIcon, CommandsIcon, ConsoleIcon, DashboardIcon, DialogIcon, DoubleDownIcon, DoubleUpIcon, FastForwardIcon, FastRewindIcon, FileBrowserIcon, IpyWidgetsIcon, LuminoIcon, NotebookIcon, OrganisationIcon, OutputIcon, SchoolIcon, SettingsIcon, StudentIcon, TerminalIcon } from "../react/outline";
 import { AcademicCapIcon, DaskIcon, DatalayerIcon, DatalayerDaskIcon, DatalayerGreenIcon, JupyterHubServiceIcon, JupyterHubIcon, JupyterLabIcon, JupyterKernelGatewayIcon, JupyterKernelIcon, JupyterKernelProvisionerIcon, JupyterIcon, JupyterMystIcon, JupyterNotebookIcon, JupyterServerIcon, JupyterTraitletIcon, KubernetesIcon, KubernetesNodeIcon, KubernetesPodIcon, KubernetesServiceIcon, PyTorchIcon, ReactIcon, TensorFlowIcon, TwitterIcon, WebRtcIcon } from "../react/solid";
 
 const icons = {
@@ -18,7 +18,7 @@ const icons = {
   FastForward: FastForwardIcon,
   FastRewind: FastRewindIcon,
   FileBrowser: FileBrowserIcon,
-  IPyWidgets: IPyWidgetsIcon,
+  IpyWidgets: IpyWidgetsIcon,
   Jupyter: JupyterIcon,
   JupyterLab: JupyterLabIcon,
   JupyterHub: JupyterHubIcon,
