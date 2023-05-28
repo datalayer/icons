@@ -59,6 +59,24 @@ Options
 <DatalayerIcon colored size="large"/>
 ```
 
+## SVG Sources
+
+These are useful sources for SVG.
+
+- Bootstrap Icons https://github.com/twbs/icons https://icons.getbootstrap.com
+- Feather Icons https://github.com/feathericons/feather https://feathericons.com
+- Free Icon https://seekicon.com/free-icon
+- HeroIcons https://github.com/tailwindlabs/heroicons https://heroicons.com
+- Iconify https://github.com/iconify/iconify https://icon-sets.iconify.design
+- Icons.js https://github.com/antfu/icones https://icones.js.org
+- Lucide https://github.com/lucide-icons/lucide https://lucide.dev
+- OpenMoji https://github.com/hfg-gmuend/openmoji https://openmoji.org
+- Radix UI Icons https://github.com/radix-ui/icons https://icons.radix-ui.com
+- React Icons https://github.com/react-icons/react-icons https://react-icons.github.io/react-icons
+- Science Icons https://github.com/curvenote/scienceicons
+- Simple Icons https://github.com/simple-icons/simple-icons https://simpleicons.org
+- Styled Icons https://github.com/styled-icons/styled-icons https://styled-icons.dev
+
 ## ⚖️ License
 
 Copyright (c) 2022 Datalayer, Inc.
