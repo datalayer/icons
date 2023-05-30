@@ -11,17 +11,17 @@
   "scripts": {
     "build": "yarn run build-icons && yarn build-app",
     "build-app": "tsc && vite build",
-    "clean": "rimraf lib build dist tsconfig.tsbuildinfo",
-    "dev": "vite",
-    "preview": "vite preview",
-    "start": "vite",
     "build-icons": "yarn run build-optimized && yarn run build-react && yarn run build-vue",
-    "build-react": "node ./scripts/build.js react",
-    "build-vue": "node ./scripts/build.js vue",
     "build-optimized": "yarn run build-outline && yarn run build-solid",
     "build-outline": "rimraf ./optimized/outline && svgo --config=svgo.yaml -f ./svg/outline -o ./optimized/outline --pretty --indent=2",
+    "build-react": "node ./scripts/build.js react",
     "build-solid": "rimraf ./optimized/solid && svgo --config=svgo.yaml -f ./svg/solid -o ./optimized/solid --pretty --indent=2",
-    "landing:app": "tsc --watch"
+    "build-vue": "node ./scripts/build.js vue",
+    "clean": "rimraf lib build dist tsconfig.tsbuildinfo",
+    "dev": "vite",
+    "landing:app": "tsc --watch",
+    "preview": "vite preview",
+    "start": "vite"
   },
   "dependencies": {
     "react": "18.2.0",
