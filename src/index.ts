@@ -1,14 +1,22 @@
-import { CellIcon, CollaborateIcon, CommandsIcon, ConsoleIcon, DashboardIcon, DialogIcon, DoubleDownIcon, DoubleUpIcon, FastForwardIcon, FastRewindIcon, FileBrowserIcon, IpyWidgetsIcon, LuminoIcon, NotebookIcon, OrganisationIcon, OutputIcon, SchoolIcon, SettingsIcon, StudentIcon, TerminalIcon } from "../react/outline";
-import { AcademicCapIcon, DaskIcon, DatalayerIcon, DatalayerGreenIcon, JupyterHubServiceIcon, JupyterHubIcon, JupyterLabIcon, JupyterKernelGatewayIcon, JupyterKernelIcon, JupyterKernelProvisionerIcon, JupyterIcon, JupyterNameIcon, JupyterContentIcon, JupyterMystIcon, JupyterNotebookIcon, JupyterServerIcon, JupyterTraitletIcon, KubernetesIcon, KubernetesNodeIcon, KubernetesPodIcon, KubernetesServiceIcon, PyTorchIcon, ReactIcon, TensorFlowIcon, TwitterIcon, WebRtcIcon } from "../react/solid";
+import {
+  CellIcon, CollaborateIcon, CommandsIcon, ConsoleIcon, DashboardIcon, DialogIcon, DoubleDownIcon, DoubleUpIcon, FastForwardIcon, FastRewindIcon, FileBrowserIcon, IpyWidgetsIcon, LuminoIcon, NotebookIcon, OrganisationIcon, OutputIcon, SchoolIcon, SettingsIcon, StudentIcon, TerminalIcon,
+} from "../react/outline";
+
+import {
+  AcademicCapIcon, DaskIcon, DatalayerIcon, DatalayerGreenIcon, JupyterHubServiceIcon, JupyterHubIcon, JupyterLabIcon, JupyterKernelGatewayIcon, JupyterKernelIcon, JupyterKernelProvisionerIcon, JupyterIcon, JupyterNamedIcon, JupyterContentIcon, JupyterMystIcon, JupyterNotebookIcon, JupyterServerIcon, JupyterTraitletIcon, KubernetesIcon, KubernetesNodeIcon, KubernetesPodIcon, KubernetesServiceIcon, PyTorchIcon, ReactIcon, TensorFlowIcon, TwitterIcon, WebRtcIcon, VsCodeIcon, AnacondaIcon, CloudUploadIcon, CloudIcon, JupyterMoonsIcon, LaptopIcon, MicrosoftIcon, MicrosoftAzureIcon, OpenStackIcon, OvhCloudIcon, QuansightIcon,
+} from "../react/solid";
 
 const icons = {
   AcademicCap: AcademicCapIcon,
-  Collaborate: CollaborateIcon,
+  Anaconda: AnacondaIcon,
   Cell: CellIcon,
-  Console: ConsoleIcon,
+  Cloud: CloudIcon,
+  CloudUpload: CloudUploadIcon,
+  Collaborate: CollaborateIcon,
   Commands: CommandsIcon,
-  Dask: DaskIcon,
+  Console: ConsoleIcon,
   Dashboard: DashboardIcon,
+  Dask: DaskIcon,
   Datalayer: DatalayerIcon,
   DatalayerGreen: DatalayerGreenIcon,
   Dialog: DialogIcon,
@@ -20,14 +28,15 @@ const icons = {
   IpyWidgets: IpyWidgetsIcon,
   Jupyter: JupyterIcon,
   JupyterContent: JupyterContentIcon,
-  JupyterName: JupyterNameIcon,
-  JupyterLab: JupyterLabIcon,
   JupyterHub: JupyterHubIcon,
   JupyterHubService: JupyterHubServiceIcon,
   JupyterKernel: JupyterKernelIcon,
   JupyterKernelGateway: JupyterKernelGatewayIcon,
   JupyterKernelProvisioner: JupyterKernelProvisionerIcon,
+  JupyterLab: JupyterLabIcon,
+  JupyterMoons: JupyterMoonsIcon,
   JupyterMyst: JupyterMystIcon,
+  JupyterNamed: JupyterNamedIcon,
   JupyterNotebook: JupyterNotebookIcon,
   JupyterServer: JupyterServerIcon,
   JupyterTraitlet: JupyterTraitletIcon,
@@ -35,18 +44,25 @@ const icons = {
   KubernetesNode: KubernetesNodeIcon,
   KubernetesPod: KubernetesPodIcon,
   KubernetesService: KubernetesServiceIcon,
+  Laptop: LaptopIcon,
   Lumino: LuminoIcon,
+  Microsoft: MicrosoftIcon,
+  MicrosoftAzure: MicrosoftAzureIcon,
   Notebook: NotebookIcon,
+  OpenStack: OpenStackIcon,
   Organisation: OrganisationIcon,
   Output: OutputIcon,
+  OvhCloud: OvhCloudIcon,
   PyTorch: PyTorchIcon,
+  Quansight: QuansightIcon,
   React: ReactIcon,
   School: SchoolIcon,
   Settings: SettingsIcon,
   Student: StudentIcon,
   TensorFlow: TensorFlowIcon,
-  TerminalIcon: TerminalIcon,
+  Terminal: TerminalIcon,
   Twitter: TwitterIcon,
+  VsCode: VsCodeIcon,
   WebRTC: WebRtcIcon,
 };
 
