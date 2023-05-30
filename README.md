@@ -28,7 +28,7 @@ yarn vite
 
 ## Add an Icon
 
-To add an icon to this repository, add the SVG (preferably of viewBox `0 0 20 20`) of the icon in `svg/outline` or `svg/solid`. Then run the following commands:
+To add an icon to this repository, add the SVG (preferably of viewBox `0 0 20 20`) of the icon in `svg/default` folder. Then run the following commands:
 
 ```bash
 yarn
@@ -42,7 +42,7 @@ You should see your icon in the `optimized` folder and also as a component in bo
 Add `@datalayer/icons-react` as dependency, import an icon and display it.
 
 ```typescript
-import { DatalayerIcon } from "@datalayer/icons-react/solid";
+import { DatalayerIcon } from "@datalayer/icons-react";
 // ...
 render(
   <DatalayerIcon/>

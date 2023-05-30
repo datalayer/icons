@@ -30,11 +30,13 @@ let transform = {
     let lines = code.split('\n');
     lines.splice(1, 0, `\nconst sizeMap = ${JSON.stringify(SIZE_MAP, null, 2)};\n`);
     lines.splice(5, 0, `  size,`);
-    if (style === "solid") lines.splice(6, 0, `  colored,`);
+//    if (style === "solid") lines.splice(6, 0, `  colored,`);
+    lines.splice(6, 0, `  colored,`);
     lines.splice(14, 0, `    ${width >= height ? 'width' : 'height'}: size ? typeof size === "string" ? sizeMap[size] : size : "16px",`);
     code = lines.join('\n');
 
-    if (style === "solid") code = code.replaceAll(/fill: "([#a-zA-Z0-9]+)",/g, `fill: colored ? '$1' : (['#fff', '#fffff', 'white', '#FFF', '#FFFFFF'].includes('$1') ? 'white' : 'currentColor'),`);
+//    if (style === "solid") code = code.replaceAll(/fill: "([#a-zA-Z0-9]+)",/g, `fill: colored ? '$1' : (['#fff', '#fffff', 'white', '#FFF', '#FFFFFF'].includes('$1') ? 'white' : 'currentColor'),`);
+    code = code.replaceAll(/fill: "([#a-zA-Z0-9]+)",/g, `fill: colored ? '$1' : (['#fff', '#fffff', 'white', '#FFF', '#FFFFFF'].includes('$1') ? 'white' : 'currentColor'),`);
 
     if (format === 'esm') {
       return code
@@ -191,24 +193,19 @@ async function main(package) {
   console.log(`Building ${package} package...`)
 
   await Promise.all([
-    rimraf(`./${package}/solid/*`),
-    rimraf(`./${package}/outline/*`),
+    rimraf(`./${package}/default/*`),
   ])
 
   await Promise.all([
-    buildIcons(package, 'solid', 'cjs'),
-    buildIcons(package, 'solid', 'esm'),
-    buildIcons(package, 'outline', 'cjs'),
-    buildIcons(package, 'outline', 'esm'),
-    ensureWriteJson(`./${package}/solid/esm/package.json`, esmPackageJson),
-    ensureWriteJson(`./${package}/solid/package.json`, cjsPackageJson),
-    ensureWriteJson(`./${package}/outline/esm/package.json`, esmPackageJson),
-    ensureWriteJson(`./${package}/outline/package.json`, cjsPackageJson),
+    buildIcons(package, 'default', 'cjs'),
+    buildIcons(package, 'default', 'esm'),
+    ensureWriteJson(`./${package}/default/esm/package.json`, esmPackageJson),
+    ensureWriteJson(`./${package}/default/package.json`, cjsPackageJson),
   ])
 
   let packageJson = JSON.parse(await fs.readFile(`./${package}/package.json`, 'utf8'))
 
-  packageJson.exports = await buildExports(['solid', 'outline'])
+  packageJson.exports = await buildExports(['default'])
 
   await ensureWriteJson(`./${package}/package.json`, packageJson)
 

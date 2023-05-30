@@ -1,7 +1,7 @@
 {
   "name": "@datalayer/icons-react",
   "license": "MIT",
-  "version": "0.0.9",
+  "version": "0.0.10",
   "description": "",
   "keywords": [],
   "homepage": "https://github.com/datalayer/icons",
@@ -24,51 +24,28 @@
     "./package.json": {
       "default": "./package.json"
     },
-    "./solid": {
-      "types": "./solid/index.d.ts",
-      "import": "./solid/esm/index.js",
-      "require": "./solid/index.js"
+    "./default": {
+      "types": "./default/index.d.ts",
+      "import": "./default/esm/index.js",
+      "require": "./default/index.js"
     },
-    "./solid/*": {
-      "types": "./solid/*.d.ts",
-      "import": "./solid/esm/*.js",
-      "require": "./solid/*.js"
+    "./default/*": {
+      "types": "./default/*.d.ts",
+      "import": "./default/esm/*.js",
+      "require": "./default/*.js"
     },
-    "./solid/*.js": {
-      "types": "./solid/*.d.ts",
-      "import": "./solid/esm/*.js",
-      "require": "./solid/*.js"
+    "./default/*.js": {
+      "types": "./default/*.d.ts",
+      "import": "./default/esm/*.js",
+      "require": "./default/*.js"
     },
-    "./solid/esm/*": {
-      "types": "./solid/*.d.ts",
-      "import": "./solid/esm/*.js"
+    "./default/esm/*": {
+      "types": "./default/*.d.ts",
+      "import": "./default/esm/*.js"
     },
-    "./solid/esm/*.js": {
-      "types": "./solid/*.d.ts",
-      "import": "./solid/esm/*.js"
-    },
-    "./outline": {
-      "types": "./outline/index.d.ts",
-      "import": "./outline/esm/index.js",
-      "require": "./outline/index.js"
-    },
-    "./outline/*": {
-      "types": "./outline/*.d.ts",
-      "import": "./outline/esm/*.js",
-      "require": "./outline/*.js"
-    },
-    "./outline/*.js": {
-      "types": "./outline/*.d.ts",
-      "import": "./outline/esm/*.js",
-      "require": "./outline/*.js"
-    },
-    "./outline/esm/*": {
-      "types": "./outline/*.d.ts",
-      "import": "./outline/esm/*.js"
-    },
-    "./outline/esm/*.js": {
-      "types": "./outline/*.d.ts",
-      "import": "./outline/esm/*.js"
+    "./default/esm/*.js": {
+      "types": "./default/*.d.ts",
+      "import": "./default/esm/*.js"
     }
   },
   "publishConfig": {
