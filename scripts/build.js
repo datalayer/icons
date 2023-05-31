@@ -30,13 +30,11 @@ let transform = {
     let lines = code.split('\n');
     lines.splice(1, 0, `\nconst sizeMap = ${JSON.stringify(SIZE_MAP, null, 2)};\n`);
     lines.splice(5, 0, `  size,`);
-//    if (style === "solid") lines.splice(6, 0, `  colored,`);
-    lines.splice(6, 0, `  colored,`);
+    if (!componentName.endsWith('OutlineIcon')) lines.splice(6, 0, `  colored,`);
     lines.splice(14, 0, `    ${width >= height ? 'width' : 'height'}: size ? typeof size === "string" ? sizeMap[size] : size : "16px",`);
     code = lines.join('\n');
 
-//    if (style === "solid") code = code.replaceAll(/fill: "([#a-zA-Z0-9]+)",/g, `fill: colored ? '$1' : (['#fff', '#fffff', 'white', '#FFF', '#FFFFFF'].includes('$1') ? 'white' : 'currentColor'),`);
-    code = code.replaceAll(/fill: "([#a-zA-Z0-9]+)",/g, `fill: colored ? '$1' : (['#fff', '#fffff', 'white', '#FFF', '#FFFFFF'].includes('$1') ? 'white' : 'currentColor'),`);
+    if (!componentName.endsWith('OutlineIcon')) code = code.replaceAll(/fill: "([#a-zA-Z0-9]+)",/g, `fill: colored ? '$1' : (['#fff', '#fffff', 'white', '#FFF', '#FFFFFF'].includes('$1') ? 'white' : 'currentColor'),`);
 
     if (format === 'esm') {
       return code
