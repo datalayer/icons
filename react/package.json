@@ -1,7 +1,7 @@
 {
   "name": "@datalayer/icons-react",
   "license": "MIT",
-  "version": "0.0.11",
+  "version": "0.0.12",
   "description": "",
   "keywords": [],
   "homepage": "https://github.com/datalayer/icons",
@@ -11,6 +11,7 @@
   },
   "files": [
     "default",
+    "index.d.ts",
     "index.esm.js",
     "index.js"
   ],

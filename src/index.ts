@@ -39,6 +39,8 @@ import {
   KubernetesPodIcon,
   KubernetesServiceIcon,
   LaptopIcon,
+  LogInOutlineIcon,
+  LogOutOutlineIcon,
   LuminoIcon,
   MicrosoftAzureIcon,
   MicrosoftIcon,
@@ -49,6 +51,7 @@ import {
   OvhCloudIcon,
   PyTorchIcon,
   QuansightIcon,
+  RadioOutlineIcon,
   ReactIcon,
   SchoolOutlineIcon,
   SettingsIcon,
@@ -58,6 +61,7 @@ import {
   TwitterIcon,
   VsCodeIcon,
   WebRtcIcon,
+  WifiOutlineIcon,
 } from "../react";
 
 const icons = {
@@ -101,6 +105,8 @@ const icons = {
   KubernetesPod: KubernetesPodIcon,
   KubernetesService: KubernetesServiceIcon,
   Laptop: LaptopIcon,
+  LogInOutline: LogInOutlineIcon,
+  LogOutOutline: LogOutOutlineIcon,
   Lumino: LuminoIcon,
   Microsoft: MicrosoftIcon,
   MicrosoftAzure: MicrosoftAzureIcon,
@@ -111,6 +117,7 @@ const icons = {
   OvhCloud: OvhCloudIcon,
   PyTorch: PyTorchIcon,
   Quansight: QuansightIcon,
+  Radio: RadioOutlineIcon,
   React: ReactIcon,
   SchoolOutline: SchoolOutlineIcon,
   Settings: SettingsIcon,
@@ -120,6 +127,7 @@ const icons = {
   Twitter: TwitterIcon,
   VsCode: VsCodeIcon,
   WebRTC: WebRtcIcon,
+  Wifi: WifiOutlineIcon,
 };
 
 export default icons;

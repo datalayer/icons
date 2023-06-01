@@ -42,7 +42,7 @@ You should see your icon in the `optimized` folder and also as a component in bo
 Add `@datalayer/icons-react` as dependency, import an icon and render it.
 
 ```typescript
-import { DatalayerGreenIcon } from "@datalayer/icons-react/default";
+import { DatalayerGreenIcon } from "@datalayer/icons-react";
 
 render(
   <DatalayerGreenIcon/>
