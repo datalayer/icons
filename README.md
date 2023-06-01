@@ -39,13 +39,13 @@ You should see your icon in the `optimized` folder and also as a component in bo
 
 ## Use the Icons
 
-Add `@datalayer/icons-react` as dependency, import an icon and display it.
+Add `@datalayer/icons-react` as dependency, import an icon and render it.
 
 ```typescript
-import { DatalayerIcon } from "@datalayer/icons-react/default";
-// ...
+import { DatalayerGreenIcon } from "@datalayer/icons-react/default";
+
 render(
-  <DatalayerIcon/>
+  <DatalayerGreenIcon/>
 )
 ```
 
@@ -65,7 +65,6 @@ These are useful sources for SVG.
 
 - Bootstrap Icons https://github.com/twbs/icons https://icons.getbootstrap.com
 - Feather Icons https://github.com/feathericons/feather https://feathericons.com
-- Free Icon https://seekicon.com/free-icon
 - HeroIcons https://github.com/tailwindlabs/heroicons https://heroicons.com
 - Iconify https://github.com/iconify/iconify https://icon-sets.iconify.design
 - Icons.js https://github.com/antfu/icones https://icones.js.org
