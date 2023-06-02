@@ -4,7 +4,7 @@
  
 # Ξ 🎉 Datalayer Icons
 
-> Icons for Datalayer (React.js and Vue.js).
+> React.js Icons for Datalayer.
 
 This repository contains a collection of React.js icons useful at [Datalayer](https://datalayer.tech), covering [Jupyter](https://jupyter.org), [Kubernetes](https://kubernetes.io) and other ecosystems.
 
