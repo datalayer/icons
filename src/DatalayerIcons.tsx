@@ -1,12 +1,16 @@
 import React, { useState, useEffect, useRef, useCallback } from "react";
 import ReactDOMServer from 'react-dom/server';
 import { useDebounce } from "react-use";
-import { ThemeProvider, BaseStyles, IconButton, Pagehead, Heading, Text, Box, Link, TextInput, Tooltip } from "@primer/react";
+import { CTABanner, Button } from "@primer/react-brand";
+import { ThemeProvider, BaseStyles, IconButton, Text, Box, Link, TextInput, Tooltip } from "@primer/react";
 import { CloseableFlash } from "@datalayer/primer-addons";
 import { SearchIcon, AlertIcon } from "@primer/octicons-react";
 import { toPng } from 'html-to-image';
 import styled from "styled-components";
+import { MinimalFooter } from "./footer/MinimalFooter";
 import allIcons from "./index";
+
+import '@primer/react-brand/lib/css/main.css'
 
 const SpanStyle = styled.span`
   span {
@@ -172,34 +176,41 @@ const DatalayerIcons = () => {
     <ThemeProvider dayScheme="light" nightScheme="dark_dimmed">
       <BaseStyles>
         <CloseableFlash leadingIcon={AlertIcon} variant="warning">
-          Some of our icons may not be 100% compatible with existing design guidelnes.
+          Some of our icons may not be 100% compatible with existing design guidelines.
           Please open an issue on <Link href="https://github.com/datalayer/icons/issues">https://github.com/datalayer/icons/issues</Link> to help with that.
         </CloseableFlash>
-        <Box pl={3} pr={3}>
-          <Pagehead>
-            <Heading>
-              Ξ 🎉 Datalayer Icons
-            </Heading>
-          </Pagehead>
-          <Box mt={3} mb={3}>
-            <Text>{Object.keys(allIcons).length} icons available. Click on a button to download an icon in SVG or PNG format. Sources available in the <Link href="https://github.com/datalayer/icons" target="_blank">datalayer/icons GitHub repository</Link>.</Text>
+        <Box pl={3} pr={3} pt={5}>
+          <CTABanner>
+            <CTABanner.Heading>React.js Icons for Datalayer</CTABanner.Heading>
+            <CTABanner.Description>
+            Ξ 🎉 {Object.keys(allIcons).length} icons to help your data product design.
+            </CTABanner.Description>
+            <CTABanner.ButtonGroup>
+              <Button href="https://github.com/datlayer/icons">Check the source</Button>
+            </CTABanner.ButtonGroup>
+          </CTABanner>
+          <Box style={{maxWidth: 1200, margin: 'auto'}}>
+            <Box mt={3} mb={3}>
+              <Text>Click on a button to download an icon in SVG or PNG format. Sources available in the <Link href="https://github.com/datalayer/icons" target="_blank">datalayer/icons GitHub repository</Link>.</Text>
+            </Box>
+            <Box mb={3}>
+              <TextInput
+                block
+                value={filter}
+                leadingVisual={SearchIcon}
+                placeholder="Search icons"
+                autoFocus={true}
+                onChange={handleFilterChange}
+              />
+            </Box>
+            {(debouncedFilter === '') ?
+              <DetailledIcons names={names}/>
+            :
+              <SummaryIcons names={names}/>
+            }
           </Box>
-          <Box mb={3}>
-            <TextInput
-              block
-              value={filter}
-              leadingVisual={SearchIcon}
-              placeholder="Search icons"
-              autoFocus={true}
-              onChange={handleFilterChange}
-            />
-          </Box>
-          {(debouncedFilter === '') ?
-            <DetailledIcons names={names}/>
-          :
-            <SummaryIcons names={names}/>
-          }
         </Box>
+        <MinimalFooter/>
       </BaseStyles>
     </ThemeProvider>
   )
