@@ -285,7 +285,7 @@ const Link = <C extends React.ElementType = 'a'>({as, children, ...rest}: PropsW
     <Component
       className={styles['Footer__link']}
       data-analytics-event={
-        rest['href'] ? `{"category":"Footer","action":"go to ${rest['href']}","label":"text:${children}"}` : undefined
+        (rest as any)['href'] ? `{"category":"Footer","action":"go to ${(rest as any)['href']}","label":"text:${children}"}` : undefined
       }
       {...rest}
     >
