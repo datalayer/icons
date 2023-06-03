@@ -1,9 +1,9 @@
 import React from 'react';
 import { createRoot } from 'react-dom/client';
-import IconsGallery from './IconsGallery';
+import DatalayerIcons from './DatalayerIcons';
 
 createRoot(document.getElementById('root')!).render(
   <React.StrictMode>
-    <IconsGallery />
+    <DatalayerIcons />
   </React.StrictMode>
 )
