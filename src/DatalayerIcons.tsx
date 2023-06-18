@@ -58,21 +58,31 @@ const IconLine = (props: { name: string }) => {
   }, [refSvg]);
   // @ts-expect-error ts-migrate(7053)
   const IconComponent = allIcons[name];
-  const StyledIcon = () => <IconComponent className="inline-block select-none align-text-bottom overflow-visible" />;
-  const ColoredStyledIcon = () => <IconComponent colored className="inline-block select-none align-text-bottom overflow-visible" />;
+  const StyledIcon = () => <IconComponent />;
+  const ColoredStyledIcon = () => <IconComponent colored />;
   const iconLine = (
     <Box alignItems="center" justifyContent="space-between">
       <BorderStyle>
         <SpanStyle>
           <span>
-            <IconComponent colored size="large" className="inline-block select-none align-text-bottom overflow-visible" ref={refSvg} onClick={(e: React.MouseEvent<HTMLElement>) => downloadSVG(e, refSvg)}/>
+            <IconComponent colored size="large" ref={refSvg} onClick={(e: React.MouseEvent<HTMLElement>) => downloadSVG(e, refSvg)}/>
           </span>
         </SpanStyle>
       </BorderStyle>
       <BorderStyle>
         <SpanStyle>
           <span>
-            <IconComponent size="large" className="inline-block select-none align-text-bottom overflow-visible" />
+            <IconComponent size="large" />
+          </span>
+        </SpanStyle>
+      </BorderStyle>
+      <BorderStyle>
+        <SpanStyle>
+          <span>
+            <ThemeProvider colorMode="night">
+              {/* TODO use the color from the theme */}
+              <IconComponent color="rgb(173, 186, 199)" size="large" />
+            </ThemeProvider>
           </span>
         </SpanStyle>
       </BorderStyle>
