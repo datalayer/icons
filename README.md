@@ -46,7 +46,7 @@ import { DatalayerGreenIcon } from "@datalayer/icons-react";
 
 render(
   <DatalayerGreenIcon/>
-  <DatalayerGreenIcon colored size="large"/>
+  <DatalayerGreenIco size="large" colored/>
 )
 ```
 
