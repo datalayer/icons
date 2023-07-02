@@ -1,14 +1,14 @@
-[![Datalayer](https://assets.datalayer.design/datalayer-25.svg)](https://datalayer.io)
+[![Datalayer](https://assets.datalayer.tech/datalayer-25.svg)](https://datalayer.io)
 
 [![Become a Sponsor](https://img.shields.io/static/v1?label=Become%20a%20Sponsor&message=%E2%9D%A4&logo=GitHub&style=flat&color=1ABC9C)](https://github.com/sponsors/datalayer)
  
 # Ξ 🎉 Datalayer Icons
 
-> React.js Icons for Datalayer.
+> React.js icons for Datalayer.
 
 This repository contains a collection of React.js icons useful at [Datalayer](https://datalayer.tech), covering [Jupyter](https://jupyter.org), [Kubernetes](https://kubernetes.io) and other ecosystems.
 
-Preview the icons on https://icons.datalayer.design.
+Preview the icons on https://icons.datalayer.tech.
 
 <div align="center" style="text-align: center">
   <img alt="Datalayer Icons" src="https://datalayer-examples.s3.amazonaws.com/datalayer-icons.png" />
@@ -67,7 +67,7 @@ These are useful sources for SVG.
 - Bootstrap Icons https://github.com/twbs/icons https://icons.getbootstrap.com
 - Feather Icons https://github.com/feathericons/feather https://feathericons.com
 - HeroIcons https://github.com/tailwindlabs/heroicons https://heroicons.com
-- Iconify https://github.com/iconify/iconify https://icon-sets.iconify.design
+- Iconify https://github.com/iconify/iconify https://icon-sets.iconify.tech
 - Icons.js https://github.com/antfu/icones https://icones.js.org
 - Lucide https://github.com/lucide-icons/lucide https://lucide.dev
 - OpenMoji https://github.com/hfg-gmuend/openmoji https://openmoji.org

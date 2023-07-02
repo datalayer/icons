@@ -42,7 +42,7 @@ publish-web: build ## publish to web
 		--distribution-id E3FYSDH2PV7AQ5 \
 		--paths "/*" \
 		--profile datalayer && \
-	echo open ✨  https://icons.datalayer.design )
+	echo open ✨  https://icons.datalayer.tech )
 
 publish-npm: clean build ## publish to npm
 	($(CONDA_ACTIVATE) ${ENV_NAME}; \

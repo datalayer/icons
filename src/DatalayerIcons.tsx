@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useRef, useCallback } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import ReactDOMServer from 'react-dom/server';
 import { useDebounce } from "react-use";
 import { CTABanner, Button } from "@primer/react-brand";
@@ -32,43 +32,41 @@ const IconLine = (props: { name: string }) => {
   const refPngNightColredStyled = useRef<any>(null);
   const refPngDayStyled = useRef<any>(null);
   const refPngNightStyled = useRef<any>(null);
-  const downloadPNG = useCallback((e: React.MouseEvent<HTMLElement>, ref: React.MutableRefObject<any>, type: string) => {
+  const downloadPNG = (e: React.MouseEvent<HTMLElement>, ref: React.MutableRefObject<any>, type: string) => {
     e.preventDefault();
     if (ref.current === null) {
       return
     }
     toPng(ref.current, { cacheBust: true, })
       .then((dataUrl: string) => {
-        const link = document.createElement('a')
-        link.download = `${name}_${type}.png`
-        link.href = dataUrl
-        link.click()
+        const link = document.createElement('a');
+        link.download = `${name}_${type}.png`;
+        link.href = dataUrl;
+        link.click();
       })
       .catch((err: Error) => {
         console.log(err)
       })
-  }, [refPngDayColoredStyled, refPngNightColredStyled]);
-  const downloadSVG = useCallback((e: React.MouseEvent<HTMLElement>, ref: React.MutableRefObject<any>) => {
+  };
+  const downloadSVG = (e: React.MouseEvent<HTMLElement>, ref: React.MutableRefObject<any>) => {
     e.preventDefault();
     const link = document.createElement('a')
-    link.download = `${name}.svg`
+    link.download = `${name}.svg`;
     const svg = ref.current.children[0].children[0];
     link.href = `data:image/svg+xml;utf8,${ReactDOMServer.renderToStaticMarkup(svg)}`;
-    link.click()
-  }, [refSvg]);
+    link.click();
+  };
   // @ts-expect-error ts-migrate(7053)
   const IconComponent = allIcons[name];
   const StyledIcon = () => <IconComponent />;
   const ColoredStyledIcon = () => <IconComponent colored />;
   const iconLine = (
     <Box alignItems="center" justifyContent="space-between">
-      <BorderStyle>
-        <SpanStyle>
-          <span>
-            <IconComponent colored size="large" ref={refSvg} onClick={(e: React.MouseEvent<HTMLElement>) => downloadSVG(e, refSvg)}/>
-          </span>
-        </SpanStyle>
-      </BorderStyle>
+      <SpanStyle>
+        <span>
+          <IconComponent colored size="large" ref={refSvg} onClick={(e: React.MouseEvent<HTMLElement>) => downloadPNG(e, refSvg, "plain")}/>
+        </span>
+      </SpanStyle>
       <BorderStyle>
         <SpanStyle>
           <span>
