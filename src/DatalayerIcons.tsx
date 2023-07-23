@@ -189,7 +189,7 @@ const DatalayerIcons = () => {
         </CloseableFlash>
         <Box pl={3} pr={3} pt={5}>
           <CTABanner>
-            <CTABanner.Heading>React.js Icons for Datalayer</CTABanner.Heading>
+            <CTABanner.Heading>React.js icons for Datalayer</CTABanner.Heading>
             <CTABanner.Description>
             Ξ 🎉 {Object.keys(allIcons).length} curated icons for data product design.
             </CTABanner.Description>
