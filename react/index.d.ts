@@ -1,1 +1,2 @@
-export * from "./default";
+export * from "./data";
+export * from "./fun";

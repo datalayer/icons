@@ -30,11 +30,11 @@ let transform = {
     let lines = code.split('\n');
     lines.splice(1, 0, `\nconst sizeMap = ${JSON.stringify(SIZE_MAP, null, 2)};\n`);
     lines.splice(5, 0, `  size,`);
-    if (!componentName.endsWith('OutlineIcon')) lines.splice(6, 0, `  colored,`);
+    if (!componentName.endsWith('NoopIcon')) lines.splice(6, 0, `  colored,`);
     lines.splice(14, 0, `    ${width >= height ? 'width' : 'height'}: size ? typeof size === "string" ? sizeMap[size] : size : "16px",`);
     code = lines.join('\n');
 
-    if (!componentName.endsWith('OutlineIcon')) code = code.replaceAll(/fill: "([#a-zA-Z0-9]+)",/g, `fill: colored ? '$1' : (['#fff', '#fffff', 'white', '#FFF', '#FFFFFF'].includes('$1') ? 'white' : 'currentColor'),`);
+    if (!componentName.endsWith('NoopIcon')) code = code.replaceAll(/fill: "([#a-zA-Z0-9]+)",/g, `fill: colored ? '$1' : (['#fff', '#fffff', 'white', '#FFF', '#FFFFFF'].includes('$1') ? 'white' : 'currentColor'),`);
 
     if (format === 'esm') {
       return code
@@ -191,19 +191,28 @@ async function main(package) {
   console.log(`Building ${package} package...`)
 
   await Promise.all([
-    rimraf(`./${package}/default/*`),
+    rimraf(`./${package}/data/*`),
+    rimraf(`./${package}/fun/*`),
   ])
 
   await Promise.all([
-    buildIcons(package, 'default', 'cjs'),
-    buildIcons(package, 'default', 'esm'),
-    ensureWriteJson(`./${package}/default/esm/package.json`, esmPackageJson),
-    ensureWriteJson(`./${package}/default/package.json`, cjsPackageJson),
+    buildIcons(package, 'data', 'cjs'),
+    buildIcons(package, 'data', 'esm'),
+    ensureWriteJson(`./${package}/data/esm/package.json`, esmPackageJson),
+    ensureWriteJson(`./${package}/data/package.json`, cjsPackageJson),
+    //
+    buildIcons(package, 'fun', 'cjs'),
+    buildIcons(package, 'fun', 'esm'),
+    ensureWriteJson(`./${package}/fun/esm/package.json`, esmPackageJson),
+    ensureWriteJson(`./${package}/fun/package.json`, cjsPackageJson),
   ])
 
   let packageJson = JSON.parse(await fs.readFile(`./${package}/package.json`, 'utf8'))
 
-  packageJson.exports = await buildExports(['default'])
+  packageJson.exports = await buildExports([
+    'data',
+    'fun',
+  ])
 
   await ensureWriteJson(`./${package}/package.json`, packageJson)
 

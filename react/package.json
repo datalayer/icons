@@ -24,28 +24,51 @@
     "./package.json": {
       "default": "./package.json"
     },
-    "./default": {
-      "types": "./default/index.d.ts",
-      "import": "./default/esm/index.js",
-      "require": "./default/index.js"
+    "./data": {
+      "types": "./data/index.d.ts",
+      "import": "./data/esm/index.js",
+      "require": "./data/index.js"
     },
-    "./default/*": {
-      "types": "./default/*.d.ts",
-      "import": "./default/esm/*.js",
-      "require": "./default/*.js"
+    "./data/*": {
+      "types": "./data/*.d.ts",
+      "import": "./data/esm/*.js",
+      "require": "./data/*.js"
     },
-    "./default/*.js": {
-      "types": "./default/*.d.ts",
-      "import": "./default/esm/*.js",
-      "require": "./default/*.js"
+    "./data/*.js": {
+      "types": "./data/*.d.ts",
+      "import": "./data/esm/*.js",
+      "require": "./data/*.js"
     },
-    "./default/esm/*": {
-      "types": "./default/*.d.ts",
-      "import": "./default/esm/*.js"
+    "./data/esm/*": {
+      "types": "./data/*.d.ts",
+      "import": "./data/esm/*.js"
     },
-    "./default/esm/*.js": {
-      "types": "./default/*.d.ts",
-      "import": "./default/esm/*.js"
+    "./data/esm/*.js": {
+      "types": "./data/*.d.ts",
+      "import": "./data/esm/*.js"
+    },
+    "./fun": {
+      "types": "./fun/index.d.ts",
+      "import": "./fun/esm/index.js",
+      "require": "./fun/index.js"
+    },
+    "./fun/*": {
+      "types": "./fun/*.d.ts",
+      "import": "./fun/esm/*.js",
+      "require": "./fun/*.js"
+    },
+    "./fun/*.js": {
+      "types": "./fun/*.d.ts",
+      "import": "./fun/esm/*.js",
+      "require": "./fun/*.js"
+    },
+    "./fun/esm/*": {
+      "types": "./fun/*.d.ts",
+      "import": "./fun/esm/*.js"
+    },
+    "./fun/esm/*.js": {
+      "types": "./fun/*.d.ts",
+      "import": "./fun/esm/*.js"
     }
   },
   "publishConfig": {

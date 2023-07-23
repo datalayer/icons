@@ -28,7 +28,7 @@ yarn vite
 
 ## Add an Icon
 
-To add an icon to this repository, add the SVG (preferably of viewBox `0 0 20 20`) of the icon in `svg/default` folder. Then run the following commands:
+To add an icon to this repository, add the SVG (preferably of viewBox `0 0 20 20`) of the icon in `svg/data` folder. Then run the following commands:
 
 ```bash
 yarn
