@@ -178,7 +178,7 @@ const DatalayerIcons = () => {
   const [_, __] = useDebounce(
     () => {
       const f = filter.toLocaleLowerCase();
-      const filteredNames = names.filter((name => name.toLowerCase().includes(f)));
+      const filteredNames = Object.keys(icons).filter((name => name.toLowerCase().includes(f)));
       setNames(filteredNames);
       setDebouncedFilter(filter);
     },
