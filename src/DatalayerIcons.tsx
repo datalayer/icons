@@ -8,7 +8,8 @@ import { SearchIcon, AlertIcon } from "@primer/octicons-react";
 import { toPng } from 'html-to-image';
 import styled from "styled-components";
 import { MinimalFooter } from "./footer/MinimalFooter";
-import allIcons from "./index";
+import * as dataIcons from "../react/data";
+import * as eggsIcons from "../react/eggs";
 
 import '@primer/react-brand/lib/css/main.css'
 
@@ -25,8 +26,8 @@ const BorderStyle = styled.span`
   }
 `;
 
-const IconLine = (props: { name: string }) => {
-  const { name } = props;
+const IconLine = (props: { name: string, icon: any}) => {
+  const { name, icon } = props;
   const refSvg = useRef<any>(null);
   const refPngDayColoredStyled = useRef<any>(null);
   const refPngNightColredStyled = useRef<any>(null);
@@ -56,8 +57,7 @@ const IconLine = (props: { name: string }) => {
     link.href = `data:image/svg+xml;utf8,${ReactDOMServer.renderToStaticMarkup(svg)}`;
     link.click();
   };
-  // @ts-expect-error ts-migrate(7053)
-  const IconComponent = allIcons[name];
+  const IconComponent = icon;
   const StyledIcon = () => <IconComponent />;
   const ColoredStyledIcon = () => <IconComponent colored />;
   const iconLine = (
@@ -119,11 +119,10 @@ const IconLine = (props: { name: string }) => {
   return iconLine;
 }
 
-const IconSummary = (props: { name: string }) => {
-  const { name } = props;
+const IconSummary = (props: { name: string, icon: any }) => {
+  const { name, icon } = props;
   const refSvg = useRef<any>(null);
-  // @ts-expect-error ts-migrate(7053)
-  const IconComponent = allIcons[name];
+  const IconComponent = icon;
   return (
     <Box mr={1}>
       <Tooltip aria-label={name}>
@@ -133,25 +132,25 @@ const IconSummary = (props: { name: string }) => {
   )
 }
 
-const SummaryIcons = (props: {names: string[]}) => {
-  const { names } = props;
+const SummaryIcons = (props: {names: string[], icons: any}) => {
+  const { names, icons } = props;
   return (
     <>
       <Box sx={{display: 'flex'}}>
         {names.map((name) => {
-          return <IconSummary name={name} key={name}/>
+          return <IconSummary name={name} icon={icons[name]} key={name}/>
         })}
       </Box>
     </>
   )
 }
 
-const DetailledIcons = (props: {names: string[]}) => {
-  const { names } = props;
+const DetailledIcons = (props: {names: string[], icons: any}) => {
+  const { names, icons } = props;
   return (
     <>
       {names.map((name) => {
-        return <IconLine name={name} key={name}/>
+        return <IconLine name={name} icon={icons[name]} key={name}/>
       })}
     </>
   )
@@ -160,12 +159,18 @@ const DetailledIcons = (props: {names: string[]}) => {
 const DatalayerIcons = () => {
   const [filter, setFilter] = useState('');
   const [debouncedFilter, setDebouncedFilter] = useState('');
-  const [names, setNames] = useState(Object.keys(allIcons));
+  const [icons, setIcons] = useState<any>(dataIcons);
+  const [names, setNames] = useState(Object.keys(dataIcons));
   useEffect(() => {
     const queryParams = new URLSearchParams(window.location.search);
     const q = queryParams.get("q");
     q ? setFilter(q) : setFilter('');
     q ? setDebouncedFilter(q) : setDebouncedFilter('');
+    const eggs = queryParams.get("eggs");
+    if (eggs !== null) {
+      setIcons(eggsIcons);
+      setNames(Object.keys(eggsIcons));
+    }  
   }, []);
   const handleFilterChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     setFilter(event.target.value);
@@ -173,8 +178,8 @@ const DatalayerIcons = () => {
   const [_, __] = useDebounce(
     () => {
       const f = filter.toLocaleLowerCase();
-      const names = Object.keys(allIcons).filter((name => name.toLowerCase().includes(f)));
-      setNames(names);
+      const filteredNames = names.filter((name => name.toLowerCase().includes(f)));
+      setNames(filteredNames);
       setDebouncedFilter(filter);
     },
     1000,
@@ -191,7 +196,7 @@ const DatalayerIcons = () => {
           <CTABanner>
             <CTABanner.Heading>React.js icons for Datalayer</CTABanner.Heading>
             <CTABanner.Description>
-            Ξ 🎉 {Object.keys(allIcons).length} curated icons for data product design.
+            Ξ 🎉 {names.length} curated icons for data product design.
             </CTABanner.Description>
             <CTABanner.ButtonGroup>
               <Button as="a" href="https://github.com/datalayer/icons">Check the source</Button>
@@ -212,9 +217,9 @@ const DatalayerIcons = () => {
               />
             </Box>
             {(debouncedFilter === '') ?
-              <DetailledIcons names={names}/>
+              <DetailledIcons names={names} icons={icons} />
             :
-              <SummaryIcons names={names}/>
+              <SummaryIcons names={names} icons={icons} />
             }
           </Box>
         </Box>

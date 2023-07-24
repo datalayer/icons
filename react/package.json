@@ -14,7 +14,7 @@
     "index.esm.js",
     "index.js",
     "data",
-    "fun"
+    "eggs"
   ],
   "sideEffects": false,
   "exports": {
@@ -48,28 +48,28 @@
       "types": "./data/*.d.ts",
       "import": "./data/esm/*.js"
     },
-    "./fun": {
-      "types": "./fun/index.d.ts",
-      "import": "./fun/esm/index.js",
-      "require": "./fun/index.js"
+    "./eggs": {
+      "types": "./eggs/index.d.ts",
+      "import": "./eggs/esm/index.js",
+      "require": "./eggs/index.js"
     },
-    "./fun/*": {
-      "types": "./fun/*.d.ts",
-      "import": "./fun/esm/*.js",
-      "require": "./fun/*.js"
+    "./eggs/*": {
+      "types": "./eggs/*.d.ts",
+      "import": "./eggs/esm/*.js",
+      "require": "./eggs/*.js"
     },
-    "./fun/*.js": {
-      "types": "./fun/*.d.ts",
-      "import": "./fun/esm/*.js",
-      "require": "./fun/*.js"
+    "./eggs/*.js": {
+      "types": "./eggs/*.d.ts",
+      "import": "./eggs/esm/*.js",
+      "require": "./eggs/*.js"
     },
-    "./fun/esm/*": {
-      "types": "./fun/*.d.ts",
-      "import": "./fun/esm/*.js"
+    "./eggs/esm/*": {
+      "types": "./eggs/*.d.ts",
+      "import": "./eggs/esm/*.js"
     },
-    "./fun/esm/*.js": {
-      "types": "./fun/*.d.ts",
-      "import": "./fun/esm/*.js"
+    "./eggs/esm/*.js": {
+      "types": "./eggs/*.d.ts",
+      "import": "./eggs/esm/*.js"
     }
   },
   "publishConfig": {
