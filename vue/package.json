@@ -25,27 +25,27 @@
       "default": "./package.json"
     },
     "./data": {
-      "types": "./data/index.d.ts",
-      "import": "./data/esm/index.js",
-      "require": "./data/index.js"
+      "types": "./data1/index.d.ts",
+      "import": "./data1/esm/index.js",
+      "require": "./data1/index.js"
     },
-    "./data/*": {
-      "types": "./data/*.d.ts",
-      "import": "./data/esm/*.js",
-      "require": "./data/*.js"
+    "./data1/*": {
+      "types": "./data1/*.d.ts",
+      "import": "./data1/esm/*.js",
+      "require": "./data1/*.js"
     },
-    "./data/*.js": {
-      "types": "./data/*.d.ts",
-      "import": "./data/esm/*.js",
-      "require": "./data/*.js"
+    "./data1/*.js": {
+      "types": "./data1/*.d.ts",
+      "import": "./data1/esm/*.js",
+      "require": "./data1/*.js"
     },
-    "./data/esm/*": {
-      "types": "./data/*.d.ts",
-      "import": "./data/esm/*.js"
+    "./data1/esm/*": {
+      "types": "./data1/*.d.ts",
+      "import": "./data1/esm/*.js"
     },
-    "./data/esm/*.js": {
-      "types": "./data/*.d.ts",
-      "import": "./data/esm/*.js"
+    "./data1/esm/*.js": {
+      "types": "./data1/*.d.ts",
+      "import": "./data1/esm/*.js"
     }
   },
   "publishConfig": {

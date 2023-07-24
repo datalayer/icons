@@ -8,7 +8,7 @@ import { SearchIcon, AlertIcon } from "@primer/octicons-react";
 import { toPng } from 'html-to-image';
 import styled from "styled-components";
 import { MinimalFooter } from "./footer/MinimalFooter";
-import * as dataIcons from "../react/data";
+import * as dataIcons from "../react";
 import * as eggsIcons from "../react/eggs";
 
 import '@primer/react-brand/lib/css/main.css'

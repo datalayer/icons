@@ -1,2 +1,3 @@
-export * from "./data";
+export * from "./data1";
+export * from "./data1";
 // export * from "./eggs";

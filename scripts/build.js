@@ -8,7 +8,8 @@ const babel = require('@babel/core')
 const { compile: compileVue } = require('@vue/compiler-dom')
 const { dirname } = require('path')
 
-let transform = {
+let transforms = {
+
   react: async (svg, componentName, format, style) => {
     let component = await svgr(svg, { ref: true, titleProp: true }, { componentName })
     let { code } = await babel.transformAsync(component, {
@@ -28,13 +29,24 @@ let transform = {
     const height = Number(svgViewBox[3]);
 
     let lines = code.split('\n');
+
     lines.splice(1, 0, `\nconst sizeMap = ${JSON.stringify(SIZE_MAP, null, 2)};\n`);
     lines.splice(5, 0, `  size,`);
-    if (!componentName.endsWith('NoopIcon')) lines.splice(6, 0, `  colored,`);
+
+    if (!componentName.endsWith('NoopIcon')) {
+      if (style !== 'data2') {
+        lines.splice(6, 0, `  colored,`);
+      }
+    }
+
     lines.splice(14, 0, `    ${width >= height ? 'width' : 'height'}: size ? typeof size === "string" ? sizeMap[size] : size : "16px",`);
     code = lines.join('\n');
 
-    if (!componentName.endsWith('NoopIcon')) code = code.replaceAll(/fill: "([#a-zA-Z0-9]+)",/g, `fill: colored ? '$1' : (['#fff', '#fffff', 'white', '#FFF', '#FFFFFF'].includes('$1') ? 'white' : 'currentColor'),`);
+    if (!componentName.endsWith('NoopIcon')) {
+      if (style !== 'data2') {
+        code = code.replaceAll(/fill: "([#a-zA-Z0-9]+)",/g, `fill: colored ? '$1' : (['#fff', '#fffff', 'white', '#FFF', '#FFFFFF'].includes('$1') ? 'white' : 'currentColor'),`);
+      }
+    }
 
     if (format === 'esm') {
       return code
@@ -44,6 +56,7 @@ let transform = {
       .replace('import * as React from "react"', 'const React = require("react")')
       .replace('export default', 'module.exports =')
   },
+
   vue: (svg, componentName, format) => {
     let { code } = compileVue(svg, {
       mode: 'module',
@@ -67,6 +80,7 @@ let transform = {
       )
       .replace('export function render', 'module.exports = function render')
   },
+
 }
 
 async function getIcons(style) {
@@ -112,7 +126,7 @@ async function buildIcons(package, style, format) {
 
   await Promise.all(
     icons.flatMap(async ({ componentName, svg }) => {
-      let content = await transform[package](svg, componentName, format, style)
+      let content = await transforms[package](svg, componentName, format, style)
       let types =
         package === 'react'
           ? `import * as React from 'react';
@@ -191,15 +205,21 @@ async function main(package) {
   console.log(`Building ${package} package...`)
 
   await Promise.all([
-    rimraf(`./${package}/data/*`),
+    rimraf(`./${package}/data1/*`),
+    rimraf(`./${package}/data2/*`),
     rimraf(`./${package}/eggs/*`),
   ])
 
   await Promise.all([
-    buildIcons(package, 'data', 'cjs'),
-    buildIcons(package, 'data', 'esm'),
-    ensureWriteJson(`./${package}/data/esm/package.json`, esmPackageJson),
-    ensureWriteJson(`./${package}/data/package.json`, cjsPackageJson),
+    buildIcons(package, 'data1', 'cjs'),
+    buildIcons(package, 'data1', 'esm'),
+    ensureWriteJson(`./${package}/data1/esm/package.json`, esmPackageJson),
+    ensureWriteJson(`./${package}/data1/package.json`, cjsPackageJson),
+    //
+    buildIcons(package, 'data2', 'cjs'),
+    buildIcons(package, 'data2', 'esm'),
+    ensureWriteJson(`./${package}/data2/esm/package.json`, esmPackageJson),
+    ensureWriteJson(`./${package}/data2/package.json`, cjsPackageJson),
     //
     buildIcons(package, 'eggs', 'cjs'),
     buildIcons(package, 'eggs', 'esm'),
@@ -210,7 +230,8 @@ async function main(package) {
   let packageJson = JSON.parse(await fs.readFile(`./${package}/package.json`, 'utf8'))
 
   packageJson.exports = await buildExports([
-    'data',
+    'data1',
+    'data2',
     'eggs',
   ])
 
