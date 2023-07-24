@@ -11,7 +11,7 @@ This repository contains a collection of React.js icons useful at [Datalayer](ht
 Preview the icons on https://icons.datalayer.tech.
 
 <div align="center" style="text-align: center">
-  <img alt="Datalayer Icons" src="https://assets.datalayer.tech/datalayer-icons.gif" />
+  <img alt="Datalayer Icons" src="https://assets.datalayer.tech/datalayer-icons-react.gif" />
 </div>
 
 Please open an [issue](https://github.com/datalayer/icons/issues) or a [pull request](https://github.com/datalayer/icons/pulls) to update, add... your icons or for any suggestion, question about this repository content.
