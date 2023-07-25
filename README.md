@@ -8,7 +8,7 @@
 
 This repository contains a collection of React.js icons useful at [Datalayer](https://datalayer.tech), covering [Jupyter](https://jupyter.org), [Kubernetes](https://kubernetes.io) and other ecosystems.
 
-Preview the icons on https://icons.datalayer.tech.
+You are welcome to use those icons in your own data product. Preview the icons on https://icons.datalayer.tech and give us [a star](https://github.com/datalayer/icons/stargazers).
 
 <div align="center" style="text-align: center">
   <img alt="Datalayer Icons" src="https://assets.datalayer.tech/datalayer-icons-react.gif" />
