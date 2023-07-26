@@ -23,7 +23,7 @@
     "build-eggs": "rimraf ./optimized/eggs && svgo --config=svgo.yaml -f ./svg/eggs -o ./optimized/eggs --pretty --indent=2",
     "build-react": "node ./scripts/build.js react",
     "build-vue": "node ./scripts/build.js vue",
-    "clean": "rimraf lib build dist tsconfig.tsbuildinfo",
+    "clean": "rimraf lib build dist tsconfig.tsbuildinfo optimized/data1 optimized/data2 optimized/eggs react/data1 react/data2 react/eggs",
     "dev": "vite",
     "landing:app": "tsc --watch",
     "preview": "vite preview",

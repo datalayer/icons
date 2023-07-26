@@ -196,7 +196,7 @@ const DatalayerIcons = () => {
           <CTABanner>
             <CTABanner.Heading>React.js icons for data products</CTABanner.Heading>
             <CTABanner.Description>
-            Ξ 🎉 {names.length} curated icons for data product design.
+            Ξ 🎉 {Object.keys(icons).length} curated icons for data product design.
             </CTABanner.Description>
             <CTABanner.ButtonGroup>
               <Button as="a" href="https://github.com/datalayer/icons">Check the source</Button>

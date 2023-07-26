@@ -60,14 +60,14 @@ Options
 <DatalayerIcon colored size="large"/>
 ```
 
-## SVG Sources
+## SVG Open Sources
 
-These are useful sources for SVG.
+These are useful places for open-source SVGs.
 
 - Bootstrap Icons https://github.com/twbs/icons https://icons.getbootstrap.com
 - Feather Icons https://github.com/feathericons/feather https://feathericons.com
 - HeroIcons https://github.com/tailwindlabs/heroicons https://heroicons.com
-- Iconify https://github.com/iconify/iconify https://icon-sets.iconify.tech
+- Iconify https://github.com/iconify/iconify https://icon-sets.iconify.design
 - Icons.js https://github.com/antfu/icones https://icones.js.org
 - Lucide https://github.com/lucide-icons/lucide https://lucide.dev
 - OpenMoji https://github.com/hfg-gmuend/openmoji https://openmoji.org
@@ -76,6 +76,7 @@ These are useful sources for SVG.
 - Science Icons https://github.com/curvenote/scienceicons
 - Simple Icons https://github.com/simple-icons/simple-icons https://simpleicons.org
 - Styled Icons https://github.com/styled-icons/styled-icons https://styled-icons.dev
+- SVG Repo https://www.svgrepo.com
 
 ## ⚖️ License
 
