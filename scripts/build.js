@@ -83,11 +83,11 @@ let transforms = {
 
 }
 
-async function getIcons(style) {
-  let files = await fs.readdir(`./optimized/${style}`)
+async function getIcons(flavor) {
+  let files = await fs.readdir(`./optimized/${flavor}`)
   return Promise.all(
     files.map(async (file) => ({
-      svg: await fs.readFile(`./optimized/${style}/${file}`, 'utf8'),
+      svg: await fs.readFile(`./optimized/${flavor}/${file}`, 'utf8'),
       componentName: `${camelcase(file.replace(/\.svg$/, ''), {
         pascalCase: true,
       })}Icon`,
@@ -96,6 +96,7 @@ async function getIcons(style) {
 }
 
 function exportAll(icons, format, includeExtension = true) {
+
   return icons
     .map(({ componentName }) => {
       let extension = includeExtension ? '.js' : ''
@@ -105,7 +106,8 @@ function exportAll(icons, format, includeExtension = true) {
       return `module.exports.${componentName} = require("./${componentName}${extension}")`
     })
     .join('\n')
-}
+
+  }
 
 async function ensureWrite(file, text) {
   await fs.mkdir(dirname(file), { recursive: true })
@@ -116,17 +118,18 @@ async function ensureWriteJson(file, json) {
   await ensureWrite(file, JSON.stringify(json, null, 2) + '\n')
 }
 
-async function buildIcons(package, style, format) {
-  let outDir = `./${package}/${style}`
+async function buildIcons(package, flavor, format) {
+
+  let outDir = `./${package}/${flavor}`
   if (format === 'esm') {
     outDir += '/esm'
-  }
+  };
 
-  let icons = await getIcons(style)
+  let icons = await getIcons(flavor);
 
   await Promise.all(
     icons.flatMap(async ({ componentName, svg }) => {
-      let content = await transforms[package](svg, componentName, format, style)
+      let content = await transforms[package](svg, componentName, format, flavor)
       let types =
         package === 'react'
           ? `import * as React from 'react';
@@ -137,80 +140,87 @@ export default ${componentName};
 declare const ${componentName}: FunctionalComponent<HTMLAttributes & VNodeProps>;
 export default ${componentName};
 `
+      ensureWrite(`${outDir}/${componentName}.svg`, svg);
 
       return [
         ensureWrite(`${outDir}/${componentName}.js`, content),
         ...(types ? [ensureWrite(`${outDir}/${componentName}.d.ts`, types)] : []),
-      ]
+      ];
+
     })
-  )
+  );
 
   await ensureWrite(`${outDir}/index.js`, exportAll(icons, format))
 
   await ensureWrite(`${outDir}/index.d.ts`, exportAll(icons, 'esm', false))
+
 }
 
 /**
- * @param {string[]} styles
+ * @param {string[]} flavors
  */
-async function buildExports(styles) {
-  let pkg = {}
+async function buildExports(flavors) {
+
+  let pkg = {};
 
   // To appease Vite's optimizeDeps feature which requires a root-level import
   pkg[`.`] = {
     import: `./index.esm.js`,
     require: `./index.js`,
-  }
+  };
 
   // For those that want to read the version from package.json
-  pkg[`./package.json`] = { default: './package.json' }
+  pkg[`./package.json`] = { default: './package.json' };
 
-  // Explicit exports for each style:
-  for (let style of styles) {
-    pkg[`./${style}`] = {
-      types: `./${style}/index.d.ts`,
-      import: `./${style}/esm/index.js`,
-      require: `./${style}/index.js`,
-    }
-    pkg[`./${style}/*`] = {
-      types: `./${style}/*.d.ts`,
-      import: `./${style}/esm/*.js`,
-      require: `./${style}/*.js`,
-    }
-    pkg[`./${style}/*.js`] = {
-      types: `./${style}/*.d.ts`,
-      import: `./${style}/esm/*.js`,
-      require: `./${style}/*.js`,
-    }
+  // Explicit exports for each flavor:
+  for (let flavor of flavors) {
+    pkg[`./${flavor}`] = {
+      types: `./${flavor}/index.d.ts`,
+      import: `./${flavor}/esm/index.js`,
+      require: `./${flavor}/index.js`,
+    };
+    pkg[`./${flavor}/*`] = {
+      types: `./${flavor}/*.d.ts`,
+      import: `./${flavor}/esm/*.js`,
+      require: `./${flavor}/*.js`,
+    };
+    pkg[`./${flavor}/*.js`] = {
+      types: `./${flavor}/*.d.ts`,
+      import: `./${flavor}/esm/*.js`,
+      require: `./${flavor}/*.js`,
+    };
 
     // This dir is basically an implementation detail, but it's needed for
     // backwards compatibility in case people were importing from it directly.
-    pkg[`./${style}/esm/*`] = {
-      types: `./${style}/*.d.ts`,
-      import: `./${style}/esm/*.js`,
-    }
-    pkg[`./${style}/esm/*.js`] = {
-      types: `./${style}/*.d.ts`,
-      import: `./${style}/esm/*.js`,
-    }
-  }
+    pkg[`./${flavor}/esm/*`] = {
+      types: `./${flavor}/*.d.ts`,
+      import: `./${flavor}/esm/*.js`,
+    };
+    pkg[`./${flavor}/esm/*.js`] = {
+      types: `./${flavor}/*.d.ts`,
+      import: `./${flavor}/esm/*.js`,
+    };
+  };
 
-  return pkg
+  return pkg;
+
 }
 
 async function main(package) {
-  const cjsPackageJson = { module: './esm/index.js', sideEffects: false }
-  const esmPackageJson = { type: 'module', sideEffects: false }
 
-  console.log(`Building ${package} package...`)
+  const cjsPackageJson = { module: './esm/index.js', sideEffects: false };
+  const esmPackageJson = { type: 'module', sideEffects: false };
+
+  console.log(`Building ${package} package...`);
 
   await Promise.all([
     rimraf(`./${package}/data1/*`),
     rimraf(`./${package}/data2/*`),
     rimraf(`./${package}/eggs/*`),
-  ])
+  ]);
 
   await Promise.all([
+    //
     buildIcons(package, 'data1', 'cjs'),
     buildIcons(package, 'data1', 'esm'),
     ensureWriteJson(`./${package}/data1/esm/package.json`, esmPackageJson),
@@ -225,25 +235,27 @@ async function main(package) {
     buildIcons(package, 'eggs', 'esm'),
     ensureWriteJson(`./${package}/eggs/esm/package.json`, esmPackageJson),
     ensureWriteJson(`./${package}/eggs/package.json`, cjsPackageJson),
-  ])
 
-  let packageJson = JSON.parse(await fs.readFile(`./${package}/package.json`, 'utf8'))
+  ]);
+
+  let packageJson = JSON.parse(await fs.readFile(`./${package}/package.json`, 'utf8'));
 
   packageJson.exports = await buildExports([
     'data1',
     'data2',
     'eggs',
-  ])
+  ]);
 
-  await ensureWriteJson(`./${package}/package.json`, packageJson)
+  await ensureWriteJson(`./${package}/package.json`, packageJson);
 
-  return console.log(`Finished building ${package} package.`)
+  return console.log(`Finished building ${package} package.`);
+
 }
 
-let [package] = process.argv.slice(2)
+let [package] = process.argv.slice(2);
 
 if (!package) {
   throw new Error('Please specify a package')
 }
 
-main(package)
+main(package);

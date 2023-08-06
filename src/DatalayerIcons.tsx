@@ -1,15 +1,15 @@
 import React, { useState, useEffect, useRef } from "react";
-import ReactDOMServer from 'react-dom/server';
 import { useDebounce } from "react-use";
 import { CTABanner, Button } from "@primer/react-brand";
 import { ThemeProvider, BaseStyles, IconButton, Text, Box, Link, TextInput, Tooltip } from "@primer/react";
 import { CloseableFlash } from "@datalayer/primer-addons";
 import { SearchIcon, AlertIcon } from "@primer/octicons-react";
-import { toPng } from 'html-to-image';
+import { toPng, toSvg } from 'html-to-image';
 import styled from "styled-components";
 import { MinimalFooter } from "./footer/MinimalFooter";
 import * as dataIcons from "../react";
 import * as eggsIcons from "../react/eggs";
+// import { ReactComponent as AcademicCapIcon } from "@datalayer/icons-react/data1/AcademicCapIcon.svg";
 
 import '@primer/react-brand/lib/css/main.css'
 
@@ -51,11 +51,19 @@ const IconLine = (props: { name: string, icon: any}) => {
   };
   const downloadSVG = (e: React.MouseEvent<HTMLElement>, ref: React.MutableRefObject<any>) => {
     e.preventDefault();
-    const link = document.createElement('a')
-    link.download = `${name}.svg`;
-    const svg = ref.current.children[0].children[0];
-    link.href = `data:image/svg+xml;utf8,${ReactDOMServer.renderToStaticMarkup(svg)}`;
-    link.click();
+    if (ref.current === null) {
+      return
+    }
+    toSvg(ref.current, { cacheBust: true, })
+    .then((dataUrl: string) => {
+      const link = document.createElement('a');
+      link.download = `${name}.svg`;
+      link.href = dataUrl;
+      link.click();
+    })
+    .catch((err: Error) => {
+      console.log(err)
+    })
   };
   const IconComponent = icon;
   const StyledIcon = () => <IconComponent />;
@@ -70,7 +78,7 @@ const IconLine = (props: { name: string, icon: any}) => {
       <BorderStyle>
         <SpanStyle>
           <span>
-            <IconComponent size="large" />
+            <IconComponent size="large" ref={refSvg} onClick={(e: React.MouseEvent<HTMLElement>) => downloadSVG(e, refSvg)}/>
           </span>
         </SpanStyle>
       </BorderStyle>
