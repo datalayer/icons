@@ -41,6 +41,11 @@
       "import": "./data1/esm/*.js",
       "require": "./data1/*.js"
     },
+    "./data1/*.svg": {
+      "types": "./data1/*.d.ts",
+      "import": "./data1/esm/*.svg",
+      "require": "./data1/*.svg"
+    },
     "./data1/esm/*": {
       "types": "./data1/*.d.ts",
       "import": "./data1/esm/*.js"
@@ -48,6 +53,10 @@
     "./data1/esm/*.js": {
       "types": "./data1/*.d.ts",
       "import": "./data1/esm/*.js"
+    },
+    "./data1/esm/*.svg": {
+      "types": "./data1/*.d.ts",
+      "import": "./data1/esm/*.svg"
     },
     "./data2": {
       "types": "./data2/index.d.ts",
@@ -64,6 +73,11 @@
       "import": "./data2/esm/*.js",
       "require": "./data2/*.js"
     },
+    "./data2/*.svg": {
+      "types": "./data2/*.d.ts",
+      "import": "./data2/esm/*.svg",
+      "require": "./data2/*.svg"
+    },
     "./data2/esm/*": {
       "types": "./data2/*.d.ts",
       "import": "./data2/esm/*.js"
@@ -71,6 +85,10 @@
     "./data2/esm/*.js": {
       "types": "./data2/*.d.ts",
       "import": "./data2/esm/*.js"
+    },
+    "./data2/esm/*.svg": {
+      "types": "./data2/*.d.ts",
+      "import": "./data2/esm/*.svg"
     },
     "./eggs": {
       "types": "./eggs/index.d.ts",
@@ -87,6 +105,11 @@
       "import": "./eggs/esm/*.js",
       "require": "./eggs/*.js"
     },
+    "./eggs/*.svg": {
+      "types": "./eggs/*.d.ts",
+      "import": "./eggs/esm/*.svg",
+      "require": "./eggs/*.svg"
+    },
     "./eggs/esm/*": {
       "types": "./eggs/*.d.ts",
       "import": "./eggs/esm/*.js"
@@ -94,6 +117,10 @@
     "./eggs/esm/*.js": {
       "types": "./eggs/*.d.ts",
       "import": "./eggs/esm/*.js"
+    },
+    "./eggs/esm/*.svg": {
+      "types": "./eggs/*.d.ts",
+      "import": "./eggs/esm/*.svg"
     }
   },
   "publishConfig": {

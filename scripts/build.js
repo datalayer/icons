@@ -174,6 +174,7 @@ async function buildExports(flavors) {
 
   // Explicit exports for each flavor:
   for (let flavor of flavors) {
+
     pkg[`./${flavor}`] = {
       types: `./${flavor}/index.d.ts`,
       import: `./${flavor}/esm/index.js`,
@@ -189,6 +190,11 @@ async function buildExports(flavors) {
       import: `./${flavor}/esm/*.js`,
       require: `./${flavor}/*.js`,
     };
+    pkg[`./${flavor}/*.svg`] = {
+      types: `./${flavor}/*.d.ts`,
+      import: `./${flavor}/esm/*.svg`,
+      require: `./${flavor}/*.svg`,
+    };
 
     // This dir is basically an implementation detail, but it's needed for
     // backwards compatibility in case people were importing from it directly.
@@ -200,6 +206,11 @@ async function buildExports(flavors) {
       types: `./${flavor}/*.d.ts`,
       import: `./${flavor}/esm/*.js`,
     };
+    pkg[`./${flavor}/esm/*.svg`] = {
+      types: `./${flavor}/*.d.ts`,
+      import: `./${flavor}/esm/*.svg`,
+    };
+
   };
 
   return pkg;
