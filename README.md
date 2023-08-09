@@ -10,6 +10,8 @@ This repository contains a collection of React.js icons useful at [Datalayer](ht
 
 You are welcome to use those icons in your own data product. A preview is available on https://icons.datalayer.tech, give us [a star](https://github.com/datalayer/icons/stargazers) ⭐ if you like it.
 
+The package is published on [NPM.js @datalayer/icons-react](https://www.npmjs.com/package/@datalayer/icons-react) and can be added as dependency on any JavaScript or TypeScript project.
+
 <div align="center" style="text-align: center">
   <img alt="Datalayer Icons" src="https://assets.datalayer.tech/datalayer-icons-react.gif" />
 </div>
@@ -33,13 +35,15 @@ render(
 
 ## For JupyterLab developers
 
-[JupyterLab](https://github.com/jupyterlab/jupyterlab) icons need to be created with the [LabIcon](https://github.com/jupyterlab/jupyterlab/blob/main/packages/ui-components/README.md#labicon---set-up-and-render-icons) class. For ease of use, we expose all the icons as `LabIcon` you can import and directly use.
+[JupyterLab](https://github.com/jupyterlab/jupyterlab) icons need to be created with the [LabIcon](https://github.com/jupyterlab/jupyterlab/blob/main/packages/ui-components/README.md#labicon---set-up-and-render-icons) class. JupyterLab machinary are some restrictions as not being able to create a `LabIcon` from a React.js component (though being able to export a React.js component from a LabIcon), or not being able to load a SVG from a remote location (like a HTTP or S3 server).
+
+For ease of use, we expose all the icons as `LabIcon` you can import and directly use.
 
 ```ts
 import { scientistIconLabIcon } from '@datalayer/icons-react/data2/ScientistIconLabIcon';
 ```
 
-If you need to create you own React component from a SVG, just import the optimized SVG artifcat and reuse it in your application.
+If you need to create you own React component from a SVG, just import the optimized SVG artifact and reuse it in your application.
 
 ```ts
 import satelliteIconSvg from '@datalayer/icons-react/data2/SatelliteIcon.svg';
@@ -71,6 +75,8 @@ You should see your icon in the `optimized` folder and also as a component in th
 TODO: Describe the difference between `data1` and `data2`.
 
 We will work to [create stencils for drawing tools](https://github.com/datalayer/icons/issues/2).
+
+We aim to support [Primer React Theming](https://primer.style/react/theming) as [JupyterLab Theming](https://github.com/jupyterlab/jupyterlab/blob/main/packages/ui-components/README.md#labicon---set-up-and-render-icons).
 
 ## For users
 
