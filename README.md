@@ -8,7 +8,7 @@
 
 This repository contains a collection of React.js icons useful at [Datalayer](https://datalayer.tech), covering [Jupyter](https://jupyter.org), [Kubernetes](https://kubernetes.io) and other ecosystems.
 
-You are welcome to use those icons in your own data product. Preview the icons on https://icons.datalayer.tech and give us [a star](https://github.com/datalayer/icons/stargazers).
+You are welcome to use those icons in your own data product. A preview is available on https://icons.datalayer.tech, give us [a star](https://github.com/datalayer/icons/stargazers) ⭐ if you like it.
 
 <div align="center" style="text-align: center">
   <img alt="Datalayer Icons" src="https://assets.datalayer.tech/datalayer-icons-react.gif" />
@@ -16,7 +16,67 @@ You are welcome to use those icons in your own data product. Preview the icons o
 
 Please open an [issue](https://github.com/datalayer/icons/issues) or a [pull request](https://github.com/datalayer/icons/pulls) to update, add... your icons or for any suggestion, question about this repository content.
 
-## Gallery of Icons
+We are looking to connect with existing data developers community, like the [Jupyter community](https://github.com/datalayer/icons/issues/31).
+
+## For React.js developers
+
+Add `@datalayer/icons-react` as dependency, import an icon and render it.
+
+```typescript
+import { DatalayerGreenIcon } from "@datalayer/icons-react";
+
+render(
+  <DatalayerGreenIcon/>
+  <DatalayerGreenIcon size="large" colored/>
+)
+```
+
+## For JupyterLab developers
+
+[JupyterLab](https://github.com/jupyterlab/jupyterlab) icons need to be created with the [LabIcon](https://github.com/jupyterlab/jupyterlab/blob/main/packages/ui-components/README.md#labicon---set-up-and-render-icons) class. For ease of use, we expose all the icons as `LabIcon` you can import and directly use.
+
+```ts
+import { scientistIconLabIcon } from '@datalayer/icons-react/data2/ScientistIconLabIcon';
+```
+
+If you need to create you own React component from a SVG, just import the optimized SVG artifcat and reuse it in your application.
+
+```ts
+import satelliteIconSvg from '@datalayer/icons-react/data2/SatelliteIcon.svg';
+```
+
+To load SVG from TypeScript, you will need to create a type declaration file.
+
+```ts
+// svg.d.ts
+declare module "*.svg" {
+  const value: any;
+  export default value;
+}
+```
+
+## For Data Products designers
+
+Designers will create a SVG and add it in one of the `svg` subfolder of this repository.
+
+To add an icon to this repository, add the SVG (preferably of viewBox `0 0 20 20`) of the icon one of the `svg` sub-folder. Then run the following commands:
+
+```bash
+yarn
+yarn run build-icons
+```
+
+You should see your icon in the `optimized` folder and also as a component in the `react` folder.
+
+TODO: Describe the difference between `data1` and `data2`.
+
+We will work to [create stencils for drawing tools](https://github.com/datalayer/icons/issues/2).
+
+## For users
+
+You can download a `PNG` or `SVG` version of the icon from https://icons.datalayer.tech.
+
+## Icons Gallery
 
 To view an gallery of available icons, run the following commands.
 
@@ -26,37 +86,13 @@ yarn build
 yarn vite
 ```
 
-## Add an Icon
-
-To add an icon to this repository, add the SVG (preferably of viewBox `0 0 20 20`) of the icon in `svg/data` folder. Then run the following commands:
-
-```bash
-yarn
-yarn run build-icons
-```
-
-You should see your icon in the `optimized` folder and also as a component in both `react` and `vue` folders
-
-## Use the Icons
-
-Add `@datalayer/icons-react` as dependency, import an icon and render it.
-
-```typescript
-import { DatalayerGreenIcon } from "@datalayer/icons-react";
-
-render(
-  <DatalayerGreenIcon/>
-  <DatalayerGreenIco size="large" colored/>
-)
-```
-
-Options
+## Icon Properties
 
 - `colored` - Display a colored version of the Icon (if available).
 - `size`: `"small"` | `"medium"` | `"large"` | `number` - Specify the size of your icon - `"small"` by default.
 
 ```typescript
-// For example
+// For example.
 <DatalayerIcon colored size="large"/>
 ```
 

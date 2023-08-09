@@ -11,6 +11,7 @@ const { dirname } = require('path')
 let transforms = {
 
   react: async (svg, componentName, format, style) => {
+
     let component = await svgr(svg, { ref: true, titleProp: true }, { componentName })
     let { code } = await babel.transformAsync(component, {
       plugins: [[require('@babel/plugin-transform-react-jsx'), { useBuiltIns: true }]],
@@ -61,11 +62,9 @@ let transforms = {
     let { code } = compileVue(svg, {
       mode: 'module',
     })
-
     if (format === 'esm') {
       return code.replace('export function', 'export default function')
     }
-
     return code
       .replace(
         /import\s+\{\s*([^}]+)\s*\}\s+from\s+(['"])(.*?)\2/,
@@ -88,6 +87,10 @@ async function getIcons(flavor) {
   return Promise.all(
     files.map(async (file) => ({
       svg: await fs.readFile(`./optimized/${flavor}/${file}`, 'utf8'),
+      svgName: file.replace(/\.svg$/, ''),
+      componentInstance: `${camelcase(file.replace(/\.svg$/, ''), {
+        pascalCase: false,
+      })}Icon`,
       componentName: `${camelcase(file.replace(/\.svg$/, ''), {
         pascalCase: true,
       })}Icon`,
@@ -98,15 +101,16 @@ async function getIcons(flavor) {
 function exportAll(icons, format, includeExtension = true) {
 
   return icons
-    .map(({ componentName }) => {
+    .map(({ componentInstance, componentName }) => {
       let extension = includeExtension ? '.js' : ''
       if (format === 'esm') {
-        return `export { default as ${componentName} } from './${componentName}${extension}'`
+        return `export { default as ${componentName} } from './${componentName}${extension}'
+// export { default as ${componentInstance}LabIcon } from './${componentName}LabIcon${extension}'`
       }
-      return `module.exports.${componentName} = require("./${componentName}${extension}")`
+      return `module.exports.${componentName} = require("./${componentName}${extension}")
+// module.exports.${componentInstance}LabIcon = require("./${componentName}LabIcon${extension}")`
     })
     .join('\n')
-
   }
 
 async function ensureWrite(file, text) {
@@ -128,26 +132,40 @@ async function buildIcons(package, flavor, format) {
   let icons = await getIcons(flavor);
 
   await Promise.all(
-    icons.flatMap(async ({ componentName, svg }) => {
+
+    icons.flatMap(async ({ componentName, componentInstance, svgName, svg }) => {
+
       let content = await transforms[package](svg, componentName, format, flavor)
-      let types =
-        package === 'react'
+
+      let types = package === 'react'
           ? `import * as React from 'react';
 declare const ${componentName}: React.ForwardRefExoticComponent<React.PropsWithoutRef<React.SVGProps<SVGSVGElement>> & { title?: string, titleId?: string, size?: "small" | "medium" | "large" | number, colored?: boolean } & React.RefAttributes<SVGSVGElement>>;
-export default ${componentName};
-`
+export default ${componentName};`
           : `import type { FunctionalComponent, HTMLAttributes, VNodeProps } from 'vue';
 declare const ${componentName}: FunctionalComponent<HTMLAttributes & VNodeProps>;
-export default ${componentName};
-`
+export default ${componentName};`
       ensureWrite(`${outDir}/${componentName}.svg`, svg);
 
-      return [
-        ensureWrite(`${outDir}/${componentName}.js`, content),
-        ...(types ? [ensureWrite(`${outDir}/${componentName}.d.ts`, types)] : []),
-      ];
+      const labIconType = `import { LabIcon } from "@jupyterlab/ui-components/lib/icon/labicon";
+export declare const ${componentInstance}LabIcon: LabIcon;`
+      ensureWrite(`${outDir}/${componentName}LabIcon.d.ts`, labIconType);
 
-    })
+      const labIcon = `import { LabIcon } from '@jupyterlab/ui-components/lib/icon/labicon';
+import ${componentInstance}svgStr from './${componentName}.svg';
+const ${componentInstance}LabIcon = new LabIcon({
+    name: '@datalayer/icons:${svgName}',
+    svgstr: ${componentInstance}svgStr,
+});
+export default ${componentInstance}LabIcon;`
+      ensureWrite(`${outDir}/${componentName}LabIcon.js`, labIcon);
+
+      return [
+          ensureWrite(`${outDir}/${componentName}.js`, content),
+          ...(types ? [ensureWrite(`${outDir}/${componentName}.d.ts`, types)] : []),
+        ];
+
+      }
+    )
   );
 
   await ensureWrite(`${outDir}/index.js`, exportAll(icons, format))

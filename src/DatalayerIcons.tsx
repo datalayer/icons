@@ -1,5 +1,5 @@
 import React, { useState, useEffect, useRef } from "react";
-import { useDebounce } from "react-use";
+// import { useDebounce } from "react-use";
 import { CTABanner, Button } from "@primer/react-brand";
 import { ThemeProvider, BaseStyles, IconButton, Text, Box, Link, TextInput, Tooltip } from "@primer/react";
 import { CloseableFlash } from "@datalayer/primer-addons";
@@ -9,7 +9,6 @@ import styled from "styled-components";
 import { MinimalFooter } from "./footer/MinimalFooter";
 import * as dataIcons from "../react";
 import * as eggsIcons from "../react/eggs";
-// import { ReactComponent as AcademicCapIcon } from "@datalayer/icons-react/data1/AcademicCapIcon.svg";
 
 import '@primer/react-brand/lib/css/main.css'
 
@@ -182,33 +181,43 @@ const DetailledIcons = (props: {names: string[], icons: any}) => {
 
 const DatalayerIcons = () => {
   const [filter, setFilter] = useState('');
-  const [debouncedFilter, setDebouncedFilter] = useState('');
+//  const [debouncedFilter, setDebouncedFilter] = useState('');
   const [icons, setIcons] = useState<any>(dataIcons);
   const [names, setNames] = useState(Object.keys(dataIcons));
   useEffect(() => {
     const queryParams = new URLSearchParams(window.location.search);
     const q = queryParams.get("q");
     q ? setFilter(q) : setFilter('');
-    q ? setDebouncedFilter(q) : setDebouncedFilter('');
+//    q ? setDebouncedFilter(q) : setDebouncedFilter('');
     const eggs = queryParams.get("eggs");
     if (eggs !== null) {
       setIcons(eggsIcons);
       setNames(Object.keys(eggsIcons));
     }  
   }, []);
-  const handleFilterChange = (event: React.ChangeEvent<HTMLInputElement>) => {
-    setFilter(event.target.value);
-  };
-  const [_, __] = useDebounce(
-    () => {
+  const filterIcons = (filter: string) => {
+    if (filter === '') {
+      setNames(Object.keys(icons));
+    } else {
       const f = filter.toLocaleLowerCase();
       const filteredNames = Object.keys(icons).filter((name => name.toLowerCase().includes(f)));
       setNames(filteredNames);
+    }
+  }
+  const handleFilterChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+    setFilter(event.target.value);
+    filterIcons(event.target.value);
+  };
+  /*
+  const [_, __] = useDebounce(
+    () => {
       setDebouncedFilter(filter);
+      filterIcons();
     },
-    1000,
+    0,
     [filter]
   );
+  */
   return (
     <ThemeProvider dayScheme="light" nightScheme="dark_dimmed">
       <BaseStyles>
@@ -228,7 +237,7 @@ const DatalayerIcons = () => {
           </CTABanner>
           <Box style={{maxWidth: 1200, margin: 'auto'}}>
             <Box mt={3} mb={3}>
-              <Text>Click on "PNG" or "SVG" to download an icon. Sources available in the <Link href="https://github.com/datalayer/icons" target="_blank">datalayer/icons GitHub repository</Link>.</Text>
+              <Text>Click on "PNG" or "SVG" to download an icon. Some icons are not rendered as they should in the list, type its name in the filter box to select individually and visualize it correctly. The sources are available in the <Link href="https://github.com/datalayer/icons" target="_blank">datalayer/icons GitHub repository</Link>.</Text>
             </Box>
             <Box mb={3}>
               <TextInput
@@ -240,7 +249,7 @@ const DatalayerIcons = () => {
                 onChange={handleFilterChange}
               />
             </Box>
-            {(debouncedFilter === '') ?
+            {(filter === '') ?
               <DetailledIcons names={names} icons={icons} />
             :
               <SummaryIcons names={names} icons={icons} />
