@@ -147,7 +147,8 @@ export default ${componentName};`
       ensureWrite(`${outDir}/${componentName}.svg`, svg);
 
       const labIconType = `import { LabIcon } from "@jupyterlab/ui-components/lib/icon/labicon";
-export declare const ${componentInstance}LabIcon: LabIcon;`
+declare const ${componentInstance}LabIcon: LabIcon;
+export default ${componentInstance}LabIcon;`
       ensureWrite(`${outDir}/${componentName}LabIcon.d.ts`, labIconType);
 
       const labIcon = `import { LabIcon } from '@jupyterlab/ui-components/lib/icon/labicon';
