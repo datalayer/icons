@@ -78,7 +78,9 @@ TODO: Describe the difference between `data1` and `data2`.
 
 We will work to [create stencils for drawing tools](https://github.com/datalayer/icons/issues/2).
 
-We aim to support [Primer React Theming](https://primer.style/react/theming) as [JupyterLab Theming](https://github.com/jupyterlab/jupyterlab/blob/main/packages/ui-components/README.md#labicon---set-up-and-render-icons).
+## Theming
+
+We aim to support [Primer React](https://primer.style/react/theming), [JupyterLab](https://github.com/jupyterlab/jupyterlab/blob/main/packages/ui-components/README.md#labicon---set-up-and-render-icons) as [Docusaurus](https://docusaurus.io) themings.
 
 ## For users
 
