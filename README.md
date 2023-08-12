@@ -4,9 +4,11 @@
  
 # Ξ 🎉 Datalayer Icons
 
-> React.js icons for data products.
+> React.js and JupyterLab icons for data products.
 
-This repository contains a collection of React.js icons useful at [Datalayer](https://datalayer.tech), covering [Jupyter](https://jupyter.org), [Kubernetes](https://kubernetes.io) and other ecosystems.
+This repository contains a collection of [React.js](https://react.dev) icons useful at [Datalayer](https://datalayer.tech), covering [Jupyter](https://jupyter.org), [Kubernetes](https://kubernetes.io) and other ecosystems.
+
+The icons are also shipped as [LabIcon](https://github.com/jupyterlab/jupyterlab/blob/main/packages/ui-components/README.md#labicon---set-up-and-render-icons) objects, ready-to use icons in [JupyterLab](https://github.com/jupyterlab/jupyterlab).
 
 You are welcome to use those icons in your own data product. A preview is available on https://icons.datalayer.tech, give us [a star](https://github.com/datalayer/icons/stargazers) ⭐ if you like it.
 
@@ -119,6 +121,10 @@ These are useful places for open-source SVGs.
 - Simple Icons https://github.com/simple-icons/simple-icons https://simpleicons.org
 - Styled Icons https://github.com/styled-icons/styled-icons https://styled-icons.dev
 - SVG Repo https://www.svgrepo.com
+
+## Releases
+
+Datalayer Icons is released in [Npm.js](https://www.npmjs.com/package/@datalayer/icons-react).
 
 ## ⚖️ License
 
