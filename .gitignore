@@ -2,6 +2,8 @@
 
 !**/.*ignore
 
+optimized
+
 # Logs
 logs
 *.log
