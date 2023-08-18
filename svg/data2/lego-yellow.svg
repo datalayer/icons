@@ -7,8 +7,8 @@
    xmlns="http://www.w3.org/2000/svg"
    xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
    xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
-   width="899.9079"
-   height="800.9079"
+   width="800"
+   height="800"
    version="1.1"
    id="svg1031"
    sodipodi:docname="lego-yellow.svg"
@@ -33,8 +33,8 @@
      fit-margin-right="0"
      fit-margin-bottom="0"
      inkscape:zoom="0.26201555"
-     inkscape:cx="-905.26846"
-     inkscape:cy="1042.0765"
+     inkscape:cx="-781.23002"
+     inkscape:cy="851.24813"
      inkscape:window-x="0"
      inkscape:window-y="25"
      inkscape:window-maximized="0"
@@ -47,13 +47,13 @@
     <dc:format>image/svg+xml</dc:format>
     <dc:type
        rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
-    <dc:title />
+    <dc:title></dc:title>
   </cc:Work>
 </rdf:RDF>
 </metadata>
   <g
      id="g809"
-     transform="matrix(1.7886878,0,0,1.7886878,-327.50632,-396.56309)">
+     transform="matrix(1.5978716,0,0,1.5978716,-295.74654,-312.39029)">
     <g
        fill="#f5fa40"
        transform="matrix(5.7244485,0,0,5.7244485,-513.56967,-2359.0718)"
