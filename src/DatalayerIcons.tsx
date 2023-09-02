@@ -219,46 +219,48 @@ const DatalayerIcons = () => {
   );
   */
   return (
-    <ThemeProvider dayScheme="light" nightScheme="dark_dimmed">
-      <BaseStyles>
-        <CloseableFlash leadingIcon={AlertIcon} variant="warning">
-          Some of our icons may not be 100% compatible with existing design guidelines.
-          Please open an issue on <Link href="https://github.com/datalayer/icons/issues">https://github.com/datalayer/icons/issues</Link> to help with that.
-        </CloseableFlash>
-        <Box pl={3} pr={3} pt={5}>
-          <CTABanner>
-            <CTABanner.Heading>React.js icons for data products</CTABanner.Heading>
-            <CTABanner.Description>
-            Ξ 🎉 {Object.keys(icons).length} curated icons for data product design.
-            </CTABanner.Description>
-            <CTABanner.ButtonGroup>
-              <Button as="a" href="https://github.com/datalayer/icons">Check the source</Button>
-            </CTABanner.ButtonGroup>
-          </CTABanner>
-          <Box style={{maxWidth: 1200, margin: 'auto'}}>
-            <Box mt={3} mb={3}>
-              <Text>Click on "PNG" or "SVG" to download an icon. Some icons are not rendered as they should in the list, type its name in the filter box to select individually and visualize it correctly. The sources are available in the <Link href="https://github.com/datalayer/icons" target="_blank">datalayer/icons GitHub repository</Link>.</Text>
+    <>
+      <ThemeProvider dayScheme="light" nightScheme="dark_dimmed">
+        <BaseStyles>
+          <CloseableFlash leadingIcon={AlertIcon} variant="warning">
+            Some of our icons may not be 100% compatible with existing design guidelines.
+            Please open an issue on <Link href="https://github.com/datalayer/icons/issues">https://github.com/datalayer/icons/issues</Link> to help with that.
+          </CloseableFlash>
+          <Box mt={3}>
+            <CTABanner>
+              <CTABanner.Heading style={{margin: 0}}>React.js icons for data products</CTABanner.Heading>
+              <CTABanner.Description>
+                Ξ 🎉 {Object.keys(icons).length} curated icons for data product design.
+              </CTABanner.Description>
+              <CTABanner.ButtonGroup>
+                <Button as="a" href="https://github.com/datalayer/icons">Check the source</Button>
+              </CTABanner.ButtonGroup>
+            </CTABanner>
+            <Box style={{maxWidth: 1200, margin: 'auto'}}>
+              <Box mt={3} mb={3}>
+                <Text>Click on "PNG" or "SVG" to download an icon. Some icons are not rendered as they should in the list, type its name in the filter box to select individually and visualize it correctly. The sources are available in the <Link href="https://github.com/datalayer/icons" target="_blank">datalayer/icons GitHub repository</Link>.</Text>
+              </Box>
+              <Box mb={3}>
+                <TextInput
+                  block
+                  value={filter}
+                  leadingVisual={SearchIcon}
+                  placeholder="Search icons"
+                  autoFocus={true}
+                  onChange={handleFilterChange}
+                />
+              </Box>
+              {(filter === '') ?
+                <DetailledIcons names={names} icons={icons} />
+              :
+                <SummaryIcons names={names} icons={icons} />
+              }
             </Box>
-            <Box mb={3}>
-              <TextInput
-                block
-                value={filter}
-                leadingVisual={SearchIcon}
-                placeholder="Search icons"
-                autoFocus={true}
-                onChange={handleFilterChange}
-              />
-            </Box>
-            {(filter === '') ?
-              <DetailledIcons names={names} icons={icons} />
-            :
-              <SummaryIcons names={names} icons={icons} />
-            }
           </Box>
-        </Box>
-        <MinimalFooter/>
-      </BaseStyles>
-    </ThemeProvider>
+          <MinimalFooter/>
+        </BaseStyles>
+      </ThemeProvider>
+    </>
   )
 }
 
