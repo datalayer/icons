@@ -208,6 +208,9 @@ const DatalayerIcons = () => {
     setFilter(event.target.value);
     filterIcons(event.target.value);
   };
+  useEffect(() => {
+    if (filter) filterIcons(filter);
+  }, [filter]);
   /*
   const [_, __] = useDebounce(
     () => {
