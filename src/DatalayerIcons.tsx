@@ -69,10 +69,15 @@ const IconLine = (props: { name: string, icon: any}) => {
   const ColoredStyledIcon = () => <IconComponent colored />;
   const iconLine = (
     <Box alignItems="center" justifyContent="space-between">
+      <SpanStyle>
+        <span>
+          <IconComponent colored size="large" ref={refColored}/>
+        </span>
+      </SpanStyle>
       <BorderStyle>
         <SpanStyle>
           <span>
-            <IconComponent colored size="large" ref={refColored}/>
+            <IconComponent colored size="large"/>
           </span>
         </SpanStyle>
       </BorderStyle>
