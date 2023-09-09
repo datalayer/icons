@@ -195,13 +195,22 @@ const DatalayerIcons = () => {
       setNames(Object.keys(eggsIcons));
     }  
   }, []);
+  const changeUrl = (title: string, url: string) => {
+    const obj = {
+      Title: title,
+      Url: url,
+    };
+    history.pushState(obj, obj.Title, obj.Url);
+  }
   const filterIcons = (filter: string) => {
     if (filter === '') {
       setNames(Object.keys(icons));
+      changeUrl(document.title, window.location.protocol + "//" + window.location.host);
     } else {
       const f = filter.toLocaleLowerCase();
       const filteredNames = Object.keys(icons).filter((name => name.toLowerCase().includes(f)));
       setNames(filteredNames);
+      changeUrl(document.title, window.location.protocol + "//" + window.location.host + "?q=" + f);
     }
   }
   const handleFilterChange = (event: React.ChangeEvent<HTMLInputElement>) => {
