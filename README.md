@@ -114,15 +114,16 @@ These are useful places for open-source SVGs.
 - Feather Icons https://github.com/feathericons/feather https://feathericons.com
 - HeroIcons https://github.com/tailwindlabs/heroicons https://heroicons.com
 - Iconify https://github.com/iconify/iconify https://icon-sets.iconify.design
+- Iconmonstr https://iconmonstr.com
 - Icons.js https://github.com/antfu/icones https://icones.js.org
 - Lucide https://github.com/lucide-icons/lucide https://lucide.dev
 - OpenMoji https://github.com/hfg-gmuend/openmoji https://openmoji.org
 - Radix UI Icons https://github.com/radix-ui/icons https://icons.radix-ui.com
 - React Icons https://github.com/react-icons/react-icons https://react-icons.github.io/react-icons
+- SVG Repo https://www.svgrepo.com
 - Science Icons https://github.com/curvenote/scienceicons
 - Simple Icons https://github.com/simple-icons/simple-icons https://simpleicons.org
 - Styled Icons https://github.com/styled-icons/styled-icons https://styled-icons.dev
-- SVG Repo https://www.svgrepo.com
 
 ## Releases
 
