@@ -4,7 +4,7 @@
 SHELL=/bin/bash
 
 CONDA=source $$(conda info --base)/etc/profile.d/conda.sh
-CONDA_ACTIVATE=source $$(conda info --base)/etc/profile.d/conda.sh ; conda activate ; conda activate
+CONDA_ACTIVATE=source $$(conda info --base)/etc/profile.d/conda.sh ; conda activate
 CONDA_DEACTIVATE=source $$(conda info --base)/etc/profile.d/conda.sh ; conda deactivate
 CONDA_REMOVE=source $$(conda info --base)/etc/profile.d/conda.sh ; conda remove -y --all -n
 
@@ -20,10 +20,12 @@ help: ## display this help
 	@awk 'BEGIN {FS = ":.*##"; printf "\nUsage:\n  make \033[36m<target>\033[0m\n"} /^[a-zA-Z_-]+:.*?##/ { printf "  \033[36m%-15s\033[0m %s\n", $$1, $$2 } /^##@/ { printf "\n\033[1m%s\033[0m\n", substr($$0, 5) } ' $(MAKEFILE_LIST)
 
 clean: ## clean
+	@exec echo CLEAN
 	($(CONDA_ACTIVATE) ${ENV_NAME}; \
 		yarn clean )
 
 build: ## build all modules
+	@exec echo BUILD
 	($(CONDA_ACTIVATE) ${ENV_NAME}; \
 		yarn build )
 
@@ -32,6 +34,7 @@ dev: ## start
 		yarn dev )
 
 publish-web: build ## publish to web
+	@exec echo PUBLISH WEB
 	($(CONDA_ACTIVATE) ${ENV_NAME}; \
 	  aws s3 cp \
 		./dist \
@@ -45,6 +48,7 @@ publish-web: build ## publish to web
 	echo open ✨  https://icons.datalayer.tech )
 
 publish-npm: clean build ## publish to npm
+	@exec echo PUBLISH NPM
 	($(CONDA_ACTIVATE) ${ENV_NAME}; \
 	  cd react && \
 		npm publish --access public )
