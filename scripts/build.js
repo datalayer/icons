@@ -146,19 +146,20 @@ declare const ${componentName}: FunctionalComponent<HTMLAttributes & VNodeProps>
 export default ${componentName};`
       ensureWrite(`${outDir}/${componentName}.svg`, svg);
 
+      labComponentName = componentName.replace('Icon', 'IconJupyterLab');
+      labComponentInstance = componentInstance.replace('Icon', 'IconJupyterLab');
       const labIconType = `import { LabIcon } from "@jupyterlab/ui-components/lib/icon/labicon";
-declare const ${componentInstance}LabIcon: LabIcon;
-export default ${componentInstance}LabIcon;`
-      ensureWrite(`${outDir}/${componentName}LabIcon.d.ts`, labIconType);
-
+declare const ${labComponentInstance}: LabIcon;
+export default ${labComponentInstance};`
+      ensureWrite(`${outDir}/${labComponentName}.d.ts`, labIconType);
       const labIcon = `import { LabIcon } from '@jupyterlab/ui-components/lib/icon/labicon';
-import ${componentInstance}svgStr from './${componentName}.svg';
-const ${componentInstance}LabIcon = new LabIcon({
+import ${componentName}SvgStr from './${componentName}.svg';
+const ${labComponentInstance} = new LabIcon({
     name: '@datalayer/icons:${svgName}',
-    svgstr: ${componentInstance}svgStr,
+    svgstr: ${componentName}SvgStr,
 });
-export default ${componentInstance}LabIcon;`
-      ensureWrite(`${outDir}/${componentName}LabIcon.js`, labIcon);
+export default ${labComponentInstance};`
+      ensureWrite(`${outDir}/${labComponentName}.js`, labIcon);
 
       return [
           ensureWrite(`${outDir}/${componentName}.js`, content),
