@@ -1,9 +1,13 @@
-import React from 'react';
+import { StrictMode } from 'react';
 import { createRoot } from 'react-dom/client';
 import DatalayerIcons from './DatalayerIcons';
 
-createRoot(document.getElementById('root')!).render(
-  <React.StrictMode>
+const div = document.createElement('div');
+document.body.appendChild(div);
+const root = createRoot(div);
+
+root.render(
+  <StrictMode>
     <DatalayerIcons />
-  </React.StrictMode>
-)
+  </StrictMode>
+);

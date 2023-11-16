@@ -31,3 +31,16 @@ lib
 *.sw?
 
 *.lock
+
+# Include
+!**/.*ignore
+!**/.*cfg
+!**/.*rc
+!**/.*rc.js
+!**/.*rc.json
+!**/.*rc.yml
+!**/.*config
+!**/.datalayer
+!**/.github
+!**/.storybook
+!**/.vscode
