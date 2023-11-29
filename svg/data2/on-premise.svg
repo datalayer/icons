@@ -10,9 +10,9 @@
    xmlns="http://www.w3.org/2000/svg"
    xmlns:svg="http://www.w3.org/2000/svg">
   <defs
-     id="defs2" />
+     id="defs3" />
   <sodipodi:namedview
-     id="namedview2"
+     id="namedview3"
      pagecolor="#ffffff"
      bordercolor="#666666"
      borderopacity="1.0"
@@ -20,33 +20,34 @@
      inkscape:pageopacity="0.0"
      inkscape:pagecheckerboard="0"
      inkscape:deskcolor="#d1d1d1"
-     inkscape:zoom="3.2777778"
-     inkscape:cx="35.847458"
-     inkscape:cy="35.847458"
-     inkscape:window-width="728"
-     inkscape:window-height="480"
-     inkscape:window-x="749"
-     inkscape:window-y="376"
+     inkscape:zoom="4.6354778"
+     inkscape:cx="48.215094"
+     inkscape:cy="40.01745"
+     inkscape:window-width="1296"
+     inkscape:window-height="826"
+     inkscape:window-x="0"
+     inkscape:window-y="25"
      inkscape:window-maximized="0"
      inkscape:current-layer="emoji" />
-  <g
-     id="color"
-     transform="translate(0,4)">
-    <path
-       fill="#d0cfce"
-       stroke="none"
-       d="M 15.9345,30.2552 C 15.8973,30.6794 15.5536,31.0227 15.128,31.0683 9.9685,31.621 6,36.7013 6,42.8852 c 0,6.553 4.5445,11.8652 10.1505,11.8652 H 54.8482 C 61.0072,54.7504 66,49.1365 66,42.2114 66,35.5748 61.4145,30.1424 55.6117,29.7013 55.1678,29.6676 54.8077,29.3568 54.723,28.922 53.4267,22.2653 47.4467,17.263 40.3766,17.263 c -4.5948,0 -8.6879,2.0802 -11.3459,5.3894 -0.2597,0.3234 -0.6956,0.4715 -1.079,0.3107 -1.0228,-0.4289 -2.103,-0.6365 -3.3117,-0.6365 -4.5673,0 -8.3163,3.4856 -8.7055,7.9286 z"
-       id="path1" />
-  </g>
   <g
      id="hair" />
   <g
      id="skin" />
   <g
      id="skin-shadow" />
+  <polyline
+     fill="none"
+     stroke="#000000"
+     stroke-linecap="round"
+     stroke-linejoin="round"
+     stroke-miterlimit="10"
+     stroke-width="2"
+     points="8.4925,35.5947 36.0155,7.9766 63.5958,35.3474"
+     id="polyline2"
+     transform="translate(0,-2)" />
   <g
      id="line"
-     transform="translate(0,4)">
+     transform="matrix(0.95810212,0,0,1.0100563,1.6976369,7.7253339)">
     <path
        fill="none"
        stroke="#000000"
@@ -57,14 +58,4 @@
        d="m 15.9345,30.2552 c -0.0372,0.4242 -0.3794,0.7675 -0.8028,0.8127 C 9.9704,31.6186 6,36.6998 6,42.8852 c 0,6.553 4.5445,11.8652 10.1505,11.8652 H 54.8482 C 61.0072,54.7504 66,49.1365 66,42.2114 66,35.5735 61.4128,30.1403 55.6084,29.7011 55.1663,29.6676 54.8076,29.3567 54.7229,28.9215 53.4265,22.2651 47.4466,17.263 40.3767,17.263 c -4.5964,0 -8.6908,2.0817 -11.3486,5.3929 -0.2582,0.3217 -0.6903,0.4696 -1.0705,0.3097 -1.0245,-0.4306 -2.1065,-0.639 -3.3175,-0.639 -4.5674,0 -8.3164,3.4856 -8.7056,7.9286 z"
        id="path2" />
   </g>
-  <polyline
-     fill="none"
-     stroke="#000000"
-     stroke-linecap="round"
-     stroke-linejoin="round"
-     stroke-miterlimit="10"
-     stroke-width="2"
-     points="8.4925,35.5947 36.0155,7.9766 63.5958,35.3474"
-     id="polyline2"
-     transform="translate(-0.4925,-3.976641)" />
 </svg>
