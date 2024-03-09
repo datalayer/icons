@@ -38,7 +38,10 @@
   "devDependencies": {
     "@babel/core": "^7.12.10",
     "@babel/plugin-transform-react-jsx": "^7.12.12",
-    "@datalayer/primer-addons": "0.2.2",
+    "@primer/brand-primitives": "0.29.1",
+    "@primer/octicons-react": "19.6.0",
+    "@primer/react": "36.6.0",
+    "@primer/react-brand": "0.29.1",
     "@svgr/core": "^5.5.0",
     "@types/react": "18.2.12",
     "@types/react-dom": "18.2.5",
