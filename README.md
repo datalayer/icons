@@ -10,7 +10,7 @@ This repository contains a collection of [React.js](https://react.dev) icons use
 
 The icons are also shipped as [LabIcon](https://github.com/jupyterlab/jupyterlab/blob/main/packages/ui-components/README.md#labicon---set-up-and-render-icons) objects, ready-to use icons in [JupyterLab](https://github.com/jupyterlab/jupyterlab).
 
-You are welcome to use those icons in your own data product. A preview is available on https://icons.datalayer.tech, give us [a star](https://github.com/datalayer/icons/stargazers) ⭐ if you like it.
+You are welcome to use those icons in your own data product. A preview is available on https://datalayer.design, give us [a star](https://github.com/datalayer/icons/stargazers) ⭐ if you like it.
 
 The package is published on [NPM.js @datalayer/icons-react](https://www.npmjs.com/package/@datalayer/icons-react) and can be added as dependency on any JavaScript or TypeScript project.
 
@@ -84,7 +84,7 @@ We aim to support [Primer React](https://primer.style/react/theming), [JupyterLa
 
 ## For users
 
-You can download a `PNG` or `SVG` version of the icon from https://icons.datalayer.tech.
+You can download a `PNG` or `SVG` version of the icon from https://datalayer.design.
 
 ## Icons Gallery
 

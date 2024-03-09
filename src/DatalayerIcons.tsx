@@ -1,8 +1,7 @@
 import React, { useState, useEffect, useRef } from "react";
 // import { useDebounce } from "react-use";
 import { CTABanner, Button } from "@primer/react-brand";
-import { ThemeProvider, BaseStyles, IconButton, Text, Box, Link, TextInput, Tooltip } from "@primer/react";
-import { CloseableFlash } from "@datalayer/primer-addons";
+import { ThemeProvider, BaseStyles, IconButton, Text, Box, Link, TextInput, Tooltip, Flash } from "@primer/react";
 import { SearchIcon, AlertIcon } from "@primer/octicons-react";
 import { toPng, toSvg } from 'html-to-image';
 import styled from "styled-components";
@@ -239,10 +238,10 @@ const DatalayerIcons = () => {
     <>
       <ThemeProvider dayScheme="light" nightScheme="dark_dimmed">
         <BaseStyles>
-          <CloseableFlash leadingIcon={AlertIcon} variant="warning">
+          <Flash variant="warning">
             Some of our icons may not be 100% compatible with existing design guidelines.
             Please open an issue on <Link href="https://github.com/datalayer/icons/issues">https://github.com/datalayer/icons/issues</Link> to help with that.
-          </CloseableFlash>
+          </Flash>
           <Box mt={3}>
             <CTABanner>
               <CTABanner.Heading style={{margin: 0}}>React.js icons for data products</CTABanner.Heading>

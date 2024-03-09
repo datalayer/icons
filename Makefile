@@ -33,21 +33,7 @@ dev: ## start
 	($(CONDA_ACTIVATE) ${ENV_NAME}; \
 		yarn dev )
 
-publish-web: build ## publish to web
-	@exec echo PUBLISH WEB
-	($(CONDA_ACTIVATE) ${ENV_NAME}; \
-	  aws s3 cp \
-		./dist \
-		s3://datalayer-icons/ \
-		--recursive \
-		--profile datalayer && \
-	  aws cloudfront create-invalidation \
-		--distribution-id E3FYSDH2PV7AQ5 \
-		--paths "/*" \
-		--profile datalayer && \
-	echo open ✨  https://icons.datalayer.tech )
-
-publish-npm: clean build ## publish to npm
+publish: clean build ## publish to npm
 	@exec echo PUBLISH NPM
 	($(CONDA_ACTIVATE) ${ENV_NAME}; \
 	  cd react && \

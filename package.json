@@ -12,7 +12,7 @@
     "type": "git",
     "url": "https://github.com/datalayer/icons.git"
   },
-  "homepage": "https://icons.datalayer.tech",
+  "homepage": "https://datalayer.design",
   "scripts": {
     "build": "yarn run build-icons && yarn build-app",
     "build-app": "tsc && vite build",
