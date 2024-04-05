@@ -1,6 +1,6 @@
 import React, {PropsWithChildren} from 'react';
 import clsx from 'clsx';
-import {DatalayerGreenIcon} from '@datalayer/icons-react';
+import {DatalayerGreenIcon} from '../../react';
 import {Stack, Text, useTheme} from '@primer/react-brand';
 import {BaseProps} from './component-helpers';
 
