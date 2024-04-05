@@ -37,8 +37,6 @@ jobs:
         run: |
             corepack enable
             yarn set version 3.5.0
-            # Don't use `corepack use` as it execute yarn install prior to auth set up
-            # corepack use yarn@3.5.0
 
       - name: Get yarn cache directory path
         id: yarn-cache-dir-path
