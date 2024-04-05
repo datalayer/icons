@@ -51,12 +51,6 @@ jobs:
           key: ${{ runner.os }}-yarn-${{ hashFiles('**/package.json') }}
           restore-keys: |
             ${{ runner.os }}-yarn-
-
-      - name: Setup .yarnrc.yml
-        run: |
-          yarn config set npmScopes.datalayer.npmRegistryServer "https://npm.pkg.github.com"
-          yarn config set npmScopes.datalayer.npmAlwaysAuth true
-          yarn config set npmScopes.datalayer.npmAuthToken $NODE_AUTH_TOKEN
       -
         run: |
             yarn install
@@ -70,13 +64,12 @@ jobs:
 
             git config --global user.name "github-actions[bot]"
             git config --global user.email "github-actions[bot]@users.noreply.github.com"
-            git commit -a -m "Bump dev version"
+            git add package.json
+            git commit -m "Bump dev version"
       -
         working-directory: react
         run: |
           npm publish --access public --tag next
-        env:
-          NODE_AUTH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
       -
         if: github.event_name == 'push'
