@@ -3,3 +3,4 @@
 !*.d.ts
 !.gitignore
 !package.json
+!README.md
