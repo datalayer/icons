@@ -33,7 +33,7 @@ dev: ## start
 	($(CONDA_ACTIVATE) ${ENV_NAME}; \
 		yarn dev )
 
-publish: clean build ## publish to npm
+publish-npm: clean build ## publish to npm
 	@exec echo PUBLISH NPM
 	($(CONDA_ACTIVATE) ${ENV_NAME}; \
 	  cd react && \
