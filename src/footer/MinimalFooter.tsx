@@ -159,7 +159,7 @@ function SocialLogomarks({socialLinks, logoHref}: SocialLogomarksProps) {
     {
       name: 'twitter',
       fullName: 'Twitter',
-      url: 'https://twitter.com/datalayerio',
+      url: 'https://x.com/datalayerio',
       icon: 'https://github.githubassets.com/images/modules/site/icons/footer/twitter.svg',
       iconWidth: 22,
       iconHeight: 18
