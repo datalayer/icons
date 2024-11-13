@@ -1,6 +1,6 @@
 import React, {PropsWithChildren} from 'react';
 import clsx from 'clsx';
-import {DatalayerGreenIcon} from '../../react';
+import {DatalayerGreenIcon} from '@datalayer/icons-react';
 import {Stack, Text, useTheme} from '@primer/react-brand';
 import {BaseProps} from './component-helpers';
 
@@ -157,10 +157,10 @@ function SocialLogomarks({socialLinks, logoHref}: SocialLogomarksProps) {
 
   const socialLinkData = [
     {
-      name: 'twitter',
-      fullName: 'Twitter',
+      name: 'x',
+      fullName: 'X',
       url: 'https://x.com/datalayerio',
-      icon: 'https://github.githubassets.com/images/modules/site/icons/footer/twitter.svg',
+      icon: 'https://github.githubassets.com/images/modules/site/icons/footer/x.svg',
       iconWidth: 22,
       iconHeight: 18
     },
@@ -180,15 +180,15 @@ function SocialLogomarks({socialLinks, logoHref}: SocialLogomarksProps) {
       iconWidth: 19,
       iconHeight: 18
     },
-    /*
     {
       name: 'youtube',
       fullName: 'YouTube',
-      url: 'https://www.youtube.com/datalayer',
+      url: 'https://www.youtube.com/@datalayer',
       icon: 'https://github.githubassets.com/images/modules/site/icons/footer/youtube.svg',
       iconWidth: 23,
       iconHeight: 16
     },
+    /*
     {
       name: 'facebook',
       fullName: 'Facebook',

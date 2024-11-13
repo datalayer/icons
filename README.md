@@ -61,20 +61,35 @@ declare module "*.svg" {
 }
 ```
 
-## For Data Products designers
+## For Data Products Designers
+
+Data Product Designers may add or update the existing icons.
+
+For that, the initial steps is to clone this repository and install the dependencies.
+
+```bash
+git clone https://github.com/datalayer/icons
+cd icons
+yarn
+```
 
 Designers will create a SVG and add it in one of the `svg` subfolder of this repository.
 
-To add an icon to this repository, add the SVG (preferably of viewBox `0 0 20 20`) of the icon one of the `svg` sub-folder. Then run the following commands:
-
-```bash
-yarn
-yarn run build-icons
-```
-
-You should see your icon in the `optimized` folder and also as a component in the `react` folder.
+To add an icon to this repository, add the SVG (preferably of viewBox `0 0 20 20`) of the icon one of the `svg` sub-folder. Then run the following commands.
 
 TODO: Describe the difference between `data1` and `data2`.
+
+```bash
+yarn build-icons
+```
+
+You can preview the icons running the following command (sometimes the colors do not correspond due to many icons being shown).
+
+```bash
+yarn start
+```
+
+## Stencils
 
 We will work to [create stencils for drawing tools](https://github.com/datalayer/icons/issues/2).
 
