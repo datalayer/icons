@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useRef } from "react";
+import { useState, useEffect, useRef } from "react";
 import { CTABanner, Button } from "@primer/react-brand";
 import { ThemeProvider, BaseStyles, IconButton, Text, Box, Link, TextInput, Tooltip, Flash } from "@primer/react";
 import { SearchIcon } from "@primer/octicons-react";
@@ -7,8 +7,8 @@ import styled from "styled-components";
 
 import { MinimalFooter } from "./footer/MinimalFooter";
 
-import * as dataIcons from "../react";
-import * as eggsIcons from "../react/eggs";
+import * as dataIcons from "../icons-react";
+import * as eggsIcons from "../icons-react/eggs";
 
 import '@primer/react-brand/lib/css/main.css'
 

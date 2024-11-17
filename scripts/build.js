@@ -1,16 +1,22 @@
-const fs = require('fs').promises
-const camelcase = require('camelcase')
-const cheerio = require('cheerio')
-const { promisify } = require('util')
-const rimraf = promisify(require('rimraf'))
-const svgr = require('@svgr/core').default
-const babel = require('@babel/core')
+const fs = require('fs').promises;
+
+const camelcase = require('camelcase');
+const cheerio = require('cheerio');
+const { promisify } = require('util');
+
+const rimraf = promisify(require('rimraf'));
+
+const svgr = require('@svgr/core').default;
+
+const babel = require('@babel/core');
+
 const { compile: compileVue } = require('@vue/compiler-dom')
+
 const { dirname } = require('path')
 
 let transforms = {
 
-  react: async (svg, componentName, format, style) => {
+  'icons-react': async (svg, componentName, format, style) => {
 
     let component = await svgr(svg, { ref: true, titleProp: true }, { componentName })
     let { code } = await babel.transformAsync(component, {
@@ -58,7 +64,7 @@ let transforms = {
       .replace('export default', 'module.exports =')
   },
 
-  vue: (svg, componentName, format) => {
+  'icons-vue': (svg, componentName, format) => {
     let { code } = compileVue(svg, {
       mode: 'module',
     })
