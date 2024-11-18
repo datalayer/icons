@@ -1,14 +1,12 @@
 const fs = require('fs').promises;
 
-const camelcase = require('camelcase');
-const cheerio = require('cheerio');
 const { promisify } = require('util');
-
 const rimraf = promisify(require('rimraf'));
 
-const svgr = require('@svgr/core').default;
-
 const babel = require('@babel/core');
+const camelcase = require('camelcase');
+const cheerio = require('cheerio');
+const svgr = require('@svgr/core').default;
 
 const { compile: compileVue } = require('@vue/compiler-dom')
 
@@ -143,7 +141,7 @@ async function buildIcons(package, flavor, format) {
 
       let content = await transforms[package](svg, componentName, format, flavor)
 
-      let types = package === 'react'
+      let types = package === 'icons-react'
           ? `import * as React from 'react';
 declare const ${componentName}: React.ForwardRefExoticComponent<React.PropsWithoutRef<React.SVGProps<SVGSVGElement>> & { title?: string, titleId?: string, size?: "small" | "medium" | "large" | number, colored?: boolean } & React.RefAttributes<SVGSVGElement>>;
 export default ${componentName};`
