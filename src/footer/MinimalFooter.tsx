@@ -1,8 +1,8 @@
-import React, {PropsWithChildren} from 'react';
+import { isValidElement, cloneElement, Children, PropsWithChildren } from 'react';
 import clsx from 'clsx';
-import {DatalayerGreenIcon} from '../../react';
-import {Stack, Text, useTheme} from '@primer/react-brand';
-import {BaseProps} from './component-helpers';
+import { Stack, Text, useTheme } from '@primer/react-brand';
+import { DatalayerGreenIcon } from '../../icons-react';
+import { BaseProps } from './component-helpers';
 
 /**
  * Design tokens
@@ -52,8 +52,8 @@ function Root({
 }: PropsWithChildren<MinimalFooterProps>) {
   // find Footer.Footnotes children
   const footerFootnoteChild = () => {
-    const footnotes = React.Children.toArray(children).find(child => {
-      if (!React.isValidElement(child)) {
+    const footnotes = Children.toArray(children).find(child => {
+      if (!isValidElement(child)) {
         return false
       }
 
@@ -68,10 +68,10 @@ function Root({
    * Renders a maximum of 5 links.
    * If more than 5 links are required, we should encourage usage of Footer instead.
    */
-  const LinkChildren = React.Children.toArray(children)
+  const LinkChildren = Children.toArray(children)
     .filter(child => {
       // if not valid element
-      if (React.isValidElement(child)) {
+      if (isValidElement(child)) {
         if (child.type === Link) {
           return child
         }
@@ -123,14 +123,14 @@ function Root({
 type FootnoteProps = BaseProps<HTMLElement>
 
 function Footnotes({children, className}: PropsWithChildren<FootnoteProps>) {
-  const styledChildren = React.Children.map(children, child => {
+  const styledChildren = Children.map(children, child => {
     // if not valid element
-    if (!React.isValidElement(child)) {
+    if (!isValidElement(child)) {
       return child
     }
 
     if (child.type && child.type === Text) {
-      return React.cloneElement(child as React.ReactElement, {
+      return cloneElement(child as React.ReactElement, {
         as: 'p',
         variant: 'muted',
         size: 200,
@@ -157,10 +157,10 @@ function SocialLogomarks({socialLinks, logoHref}: SocialLogomarksProps) {
 
   const socialLinkData = [
     {
-      name: 'twitter',
-      fullName: 'Twitter',
+      name: 'x',
+      fullName: 'X',
       url: 'https://x.com/datalayerio',
-      icon: 'https://github.githubassets.com/images/modules/site/icons/footer/twitter.svg',
+      icon: 'https://github.githubassets.com/images/modules/site/icons/footer/x.svg',
       iconWidth: 22,
       iconHeight: 18
     },
@@ -180,15 +180,15 @@ function SocialLogomarks({socialLinks, logoHref}: SocialLogomarksProps) {
       iconWidth: 19,
       iconHeight: 18
     },
-    /*
     {
       name: 'youtube',
       fullName: 'YouTube',
-      url: 'https://www.youtube.com/datalayer',
+      url: 'https://www.youtube.com/@datalayer',
       icon: 'https://github.githubassets.com/images/modules/site/icons/footer/youtube.svg',
       iconWidth: 23,
       iconHeight: 16
     },
+    /*
     {
       name: 'facebook',
       fullName: 'Facebook',

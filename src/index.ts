@@ -1,3 +1,3 @@
-import * as icons from "../react";
+import * as icons from "../icons-react";
 
 export default icons;

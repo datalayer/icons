@@ -21,7 +21,7 @@
     "build-data1": "rimraf ./optimized/data && svgo --config=svgo.yaml -f ./svg/data1 -o ./optimized/data1 --pretty --indent=2",
     "build-data2": "rimraf ./optimized/data && svgo --config=svgo.yaml -f ./svg/data2 -o ./optimized/data2 --pretty --indent=2",
     "build-eggs": "rimraf ./optimized/eggs && svgo --config=svgo.yaml -f ./svg/eggs -o ./optimized/eggs --pretty --indent=2",
-    "build-react": "node ./scripts/build.js react",
+    "build-react": "node ./scripts/build.js icons-react",
     "build-vue": "node ./scripts/build.js vue",
     "clean": "rimraf lib build dist tsconfig.tsbuildinfo optimized/data1 optimized/data2 optimized/eggs react/data1 react/data2 react/eggs",
     "dev": "vite",
@@ -31,9 +31,9 @@
   },
   "dependencies": {
     "@jupyterlab/ui-components": "^4.0.0",
-    "react": "^18.2.0",
-    "react-dom": "^18.2.0",
-    "styled-components": "^5.3.10"
+    "react": "18.2.0",
+    "react-dom": "18.2.0",
+    "styled-components": "5.3.10"
   },
   "devDependencies": {
     "@babel/core": "^7.12.10",
@@ -43,22 +43,22 @@
     "@primer/react": "^36.25.0",
     "@primer/react-brand": "0.37.0-rc.ab1bfc11",
     "@svgr/core": "^5.5.0",
-    "@types/react": "^18.2.12",
-    "@types/react-dom": "^18.2.5",
+    "@types/react": "18.2.12",
+    "@types/react-dom": "18.2.5",
     "@types/styled-components": "^5.1.26",
-    "@vitejs/plugin-react": "^2.0.0",
+    "@vitejs/plugin-react": "4.3.3",
     "@vue/compiler-dom": "^3.0.5",
     "autoprefixer": "^10.4.14",
     "camelcase": "^6.0.0",
     "cheerio": "^1.0.0-rc.12",
-    "html-to-image": "^1.9.0",
+    "html-to-image": "1.9.0",
     "postcss": "^8.4.23",
     "prettier": "^2.8.7",
     "rimraf": "^3.0.2",
     "svgo": "^1.3.2",
-    "typescript": "~5.0.3",
-    "vite": "^5.2.7",
-    "vite-plugin-svgr": "^3.2.0"
+    "typescript": "5.0.3",
+    "vite": "5.4.11",
+    "vite-plugin-svgr": "4.3.0"
   },
   "resolutions": {
     "react": "18.2.0",

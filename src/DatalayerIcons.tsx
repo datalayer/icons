@@ -1,13 +1,14 @@
-import React, { useState, useEffect, useRef } from "react";
-// import { useDebounce } from "react-use";
+import { useState, useEffect, useRef } from "react";
 import { CTABanner, Button } from "@primer/react-brand";
 import { ThemeProvider, BaseStyles, IconButton, Text, Box, Link, TextInput, Tooltip, Flash } from "@primer/react";
-import { SearchIcon, AlertIcon } from "@primer/octicons-react";
+import { SearchIcon } from "@primer/octicons-react";
 import { toPng, toSvg } from 'html-to-image';
 import styled from "styled-components";
+
 import { MinimalFooter } from "./footer/MinimalFooter";
-import * as dataIcons from "../react";
-import * as eggsIcons from "../react/eggs";
+
+import * as dataIcons from "../icons-react";
+import * as eggsIcons from "../icons-react/eggs";
 
 import '@primer/react-brand/lib/css/main.css'
 
@@ -36,7 +37,7 @@ const IconLine = (props: { name: string, icon: any}) => {
     if (ref.current === null) {
       return
     }
-    toPng(ref.current, { cacheBust: true, })
+    toPng(ref.current, { cacheBust: true, width: 1000, height: 1000 })
       .then((dataUrl: string) => {
         const link = document.createElement('a');
         link.download = `${name}_${type}.png`;
@@ -277,14 +278,17 @@ const DatalayerIcons = () => {
             <MinimalFooter.Link href="https://datalayer.io" target="_blank">
               Datalayer
             </MinimalFooter.Link>
-            <MinimalFooter.Link href="https://datalayer.run" target="_blank">
-              Run
-            </MinimalFooter.Link>
-            <MinimalFooter.Link href="https://datalayer.io" target="_blank">
-              App
+            <MinimalFooter.Link href="https://docs.datalayer.io" target="_blank">
+              Docs
             </MinimalFooter.Link>
             <MinimalFooter.Link href="https://datalayer.tech" target="_blank">
               Tech
+            </MinimalFooter.Link>
+            <MinimalFooter.Link href="https://datalayer.guide" target="_blank">
+              Guide
+            </MinimalFooter.Link>
+            <MinimalFooter.Link href="https://datalayer.blog" target="_blank">
+              Blog
             </MinimalFooter.Link>
           </MinimalFooter>
         </BaseStyles>
