@@ -133,6 +133,7 @@ These are useful places for open-source SVGs.
 - Icons.js https://github.com/antfu/icones https://icones.js.org
 - Lucide https://github.com/lucide-icons/lucide https://lucide.dev
 - OpenMoji https://github.com/hfg-gmuend/openmoji https://openmoji.org
+- Primer Octicons https://github.com/primer/octicons https://primer.style/foundations/icons
 - Radix UI Icons https://github.com/radix-ui/icons https://icons.radix-ui.com
 - React Icons https://github.com/react-icons/react-icons https://react-icons.github.io/react-icons
 - SVG Repo https://www.svgrepo.com
