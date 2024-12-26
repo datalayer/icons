@@ -157,12 +157,12 @@ function SocialLogomarks({socialLinks, logoHref}: SocialLogomarksProps) {
 
   const socialLinkData = [
     {
-      name: 'x',
-      fullName: 'X',
-      url: 'https://assets.datalayer.tech/logos-social-grey/youtube.svg',
-      icon: 'https://github.githubassets.com/images/modules/site/icons/footer/x.svg',
-      iconWidth: 22,
-      iconHeight: 18
+      name: 'bluesky',
+      fullName: 'Bluesky',
+      url: 'https://bsky.app/profile/datalayer.io',
+      icon: 'https://assets.datalayer.tech/logos-social-grey/bluesky.svg',
+      iconWidth: 24,
+      iconHeight: 24
     },
     {
       name: 'github',
