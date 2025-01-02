@@ -157,18 +157,18 @@ function SocialLogomarks({socialLinks, logoHref}: SocialLogomarksProps) {
 
   const socialLinkData = [
     {
-      name: 'x',
-      fullName: 'X',
-      url: 'https://x.com/datalayerio',
-      icon: 'https://github.githubassets.com/images/modules/site/icons/footer/x.svg',
-      iconWidth: 22,
-      iconHeight: 18
+      name: 'bluesky',
+      fullName: 'Bluesky',
+      url: 'https://bsky.app/profile/datalayer.io',
+      icon: 'https://assets.datalayer.tech/logos-social-grey/bluesky.svg',
+      iconWidth: 24,
+      iconHeight: 24
     },
     {
       name: 'github',
       fullName: 'GitHub',
       url: 'https://github.com/datalayer',
-      icon: 'https://github.githubassets.com/images/modules/site/icons/footer/github-mark.svg',
+      icon: 'https://assets.datalayer.tech/logos-social-grey/github.svg',
       iconWidth: 20,
       iconHeight: 20
     },
@@ -176,7 +176,7 @@ function SocialLogomarks({socialLinks, logoHref}: SocialLogomarksProps) {
       name: 'linkedin',
       fullName: 'LinkedIn',
       url: 'https://www.linkedin.com/company/datalayer',
-      icon: 'https://github.githubassets.com/images/modules/site/icons/footer/linkedin.svg',
+      icon: 'https://assets.datalayer.tech/logos-social-grey/linkedin.svg',
       iconWidth: 19,
       iconHeight: 18
     },
@@ -184,7 +184,7 @@ function SocialLogomarks({socialLinks, logoHref}: SocialLogomarksProps) {
       name: 'youtube',
       fullName: 'YouTube',
       url: 'https://www.youtube.com/@datalayer',
-      icon: 'https://github.githubassets.com/images/modules/site/icons/footer/youtube.svg',
+      icon: 'https://assets.datalayer.tech/logos-social-grey/youtube.svg',
       iconWidth: 23,
       iconHeight: 16
     },
