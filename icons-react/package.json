@@ -1,7 +1,7 @@
 {
   "name": "@datalayer/icons-react",
   "license": "MIT",
-  "version": "0.3.8",
+  "version": "1.0.0",
   "description": "React.js and JupyterLab icons for data products.",
   "keywords": [
     "icons",
