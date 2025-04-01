@@ -80,13 +80,13 @@ To add an icon to this repository, add the SVG (preferably of viewBox `0 0 20 20
 TODO: Describe the difference between `data1` and `data2`.
 
 ```bash
-yarn build-icons
+npm run build-icons
 ```
 
 You can preview the icons running the following command (sometimes the colors do not correspond due to many icons being shown).
 
 ```bash
-yarn start
+npm start
 ```
 
 ## Stencils
@@ -107,8 +107,8 @@ To view an gallery of available icons, run the following commands.
 
 ```bash
 yarn
-yarn build
-yarn vite
+npm run build
+npm vite
 ```
 
 ## Icon Properties
