@@ -22,20 +22,20 @@ help: ## display this help
 clean: ## clean
 	@exec echo CLEAN
 	($(CONDA_ACTIVATE) ${ENV_NAME}; \
-		yarn clean )
+		npm clean )
 
 build: ## build all modules
 	@exec echo BUILD
 	($(CONDA_ACTIVATE) ${ENV_NAME}; \
-		yarn build )
+		npm run build )
 
 dev: ## start
 	($(CONDA_ACTIVATE) ${ENV_NAME}; \
-		yarn dev )
+		npm dev )
 
 start: ## start
 	($(CONDA_ACTIVATE) ${ENV_NAME}; \
-		yarn start )
+		npm start )
 
 publish-npm: clean build ## publish to npm
 	@exec echo PUBLISH NPM
