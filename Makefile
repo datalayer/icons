@@ -27,7 +27,7 @@ clean: ## clean
 build: ## build all modules
 	@exec echo BUILD
 	($(CONDA_ACTIVATE) ${ENV_NAME}; \
-		npm run run build )
+		npm run build )
 
 dev: ## start
 	($(CONDA_ACTIVATE) ${ENV_NAME}; \
@@ -41,5 +41,5 @@ publish-npm: clean build ## publish to npm
 	@exec echo PUBLISH NPM
 	($(CONDA_ACTIVATE) ${ENV_NAME}; \
 	  cd icons-react && \
-		npm run publish --access public )
+		npm publish --access public )
 	echo open https://www.npmjs.com/package/@datalayer/icons-react
