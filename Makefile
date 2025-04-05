@@ -22,24 +22,24 @@ help: ## display this help
 clean: ## clean
 	@exec echo CLEAN
 	($(CONDA_ACTIVATE) ${ENV_NAME}; \
-		npm clean )
+		npm run clean )
 
 build: ## build all modules
 	@exec echo BUILD
 	($(CONDA_ACTIVATE) ${ENV_NAME}; \
-		npm run build )
+		npm run run build )
 
 dev: ## start
 	($(CONDA_ACTIVATE) ${ENV_NAME}; \
-		npm dev )
+		npm run dev )
 
 start: ## start
 	($(CONDA_ACTIVATE) ${ENV_NAME}; \
-		npm start )
+		npm run start )
 
 publish-npm: clean build ## publish to npm
 	@exec echo PUBLISH NPM
 	($(CONDA_ACTIVATE) ${ENV_NAME}; \
 	  cd icons-react && \
-		npm publish --access public )
+		npm run publish --access public )
 	echo open https://www.npmjs.com/package/@datalayer/icons-react
