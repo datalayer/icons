@@ -1,7 +1,6 @@
 const fs = require('fs').promises;
 
-const { promisify } = require('util');
-const rimraf = promisify(require('rimraf'));
+const { rimraf } = require('rimraf');
 
 const babel = require('@babel/core');
 const camelcase = require('camelcase');
@@ -189,6 +188,7 @@ async function buildExports(flavors) {
 
   // To appease Vite's optimizeDeps feature which requires a root-level import
   pkg[`.`] = {
+    types: `./index.d.ts`,
     import: `./index.esm.js`,
     require: `./index.js`,
   };
