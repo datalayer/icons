@@ -31,40 +31,34 @@
   },
   "dependencies": {
     "@jupyterlab/ui-components": "^4.0.0",
-    "react": "18.2.0",
-    "react-dom": "18.2.0",
-    "styled-components": "5.3.10"
+    "react": "18.3.1",
+    "react-dom": "18.3.1",
+    "styled-components": "^5.3.10"
   },
   "devDependencies": {
     "@babel/core": "^7.12.10",
     "@babel/plugin-transform-react-jsx": "^7.12.12",
-    "@primer/brand-primitives": "^0.49.0",
-    "@primer/octicons-react": "^19.6.0",
-    "@primer/react": "^36.27.0",
-    "@primer/react-brand": "^0.49.0",
+    "@primer/brand-primitives": "^0.51.0",
+    "@primer/octicons-react": "^19.15.1",
+    "@primer/react": "^37.19.0",
+    "@primer/react-brand": "^0.51.0",
     "@svgr/core": "^5.5.0",
-    "@types/prettier": "3.0.0",
-    "@types/react": "18.2.12",
-    "@types/react-dom": "18.2.5",
+    "@types/prettier": "^3.0.0",
+    "@types/react": "18.3.20",
+    "@types/react-dom": "18.3.6",
     "@types/styled-components": "^5.1.26",
-    "@vitejs/plugin-react": "4.3.3",
+    "@vitejs/plugin-react": "^4.3.3",
     "@vue/compiler-dom": "^3.0.5",
     "autoprefixer": "^10.4.14",
     "camelcase": "^6.0.0",
     "cheerio": "^1.0.0-rc.12",
-    "html-to-image": "1.9.0",
+    "html-to-image": "^1.9.0",
     "postcss": "^8.4.23",
-    "prettier": "3.3.2",
-    "rimraf": "^3.0.2",
+    "prettier": "^3.3.2",
+    "rimraf": "^6.0.1",
     "svgo": "^1.3.2",
-    "typescript": "5.0.3",
-    "vite": "5.4.16",
-    "vite-plugin-svgr": "4.3.0"
-  },
-  "resolutions": {
-    "react": "18.2.0",
-    "react-dom": "18.2.0",
-    "@types/react": "18.2.12",
-    "@types/react-dom": "18.2.5"
+    "typescript": "^5.8.3",
+    "vite": "^6.2.6",
+    "vite-plugin-svgr": "^4.3.0"
   }
 }

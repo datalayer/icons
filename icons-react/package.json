@@ -28,6 +28,7 @@
   "sideEffects": false,
   "exports": {
     ".": {
+      "types": "./index.d.ts",
       "import": "./index.esm.js",
       "require": "./index.js"
     },
