@@ -1,7 +1,7 @@
 {
   "name": "@datalayer/icons-react",
   "license": "MIT",
-  "version": "0.3.8",
+  "version": "1.0.4",
   "description": "React.js and JupyterLab icons for data products.",
   "keywords": [
     "icons",
@@ -28,6 +28,7 @@
   "sideEffects": false,
   "exports": {
     ".": {
+      "types": "./index.d.ts",
       "import": "./index.esm.js",
       "require": "./index.js"
     },
@@ -135,6 +136,6 @@
     "access": "public"
   },
   "peerDependencies": {
-    "react": ">= 16"
+    "react": "18.3.1"
   }
 }

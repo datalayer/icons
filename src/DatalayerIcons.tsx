@@ -153,7 +153,7 @@ const IconSummary = (props: { name: string, icon: any }) => {
   const IconComponent = icon;
   return (
     <Box mr={1}>
-      <Tooltip aria-label={name}>
+      <Tooltip aria-label={name} text={name}>
         <IconComponent colored size="large" ref={refSvg} />
       </Tooltip>
     </Box>
@@ -278,7 +278,7 @@ const DatalayerIcons = () => {
             <MinimalFooter.Link href="https://datalayer.io" target="_blank">
               Datalayer
             </MinimalFooter.Link>
-            <MinimalFooter.Link href="https://docs.datalayer.io" target="_blank">
+            <MinimalFooter.Link href="https://docs.datalayer.app" target="_blank">
               Docs
             </MinimalFooter.Link>
             <MinimalFooter.Link href="https://datalayer.tech" target="_blank">
