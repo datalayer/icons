@@ -35,7 +35,7 @@ dev: ## start
 
 start: ## start
 	($(CONDA_ACTIVATE) ${ENV_NAME}; \
-		npm run start )
+		npm start )
 
 publish-npm: clean build ## publish to npm
 	@exec echo PUBLISH NPM
