@@ -159,7 +159,7 @@ function SocialLogomarks({socialLinks, logoHref}: SocialLogomarksProps) {
     {
       name: 'bluesky',
       fullName: 'Bluesky',
-      url: 'https://bsky.app/profile/datalayer.io',
+      url: 'https://bsky.app/profile/datalayer.ai',
       icon: 'https://assets.datalayer.tech/logos-social-grey/bluesky.svg',
       iconWidth: 24,
       iconHeight: 24

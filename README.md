@@ -131,6 +131,7 @@ These are useful places for open-source SVGs.
 - Iconify https://github.com/iconify/iconify https://icon-sets.iconify.design
 - Iconmonstr https://iconmonstr.com
 - Icons.js https://github.com/antfu/icones https://icones.js.org
+- Lobe Icons https://github.com/lobehub/lobe-icons https://icons.lobehub.com
 - Lucide https://github.com/lucide-icons/lucide https://lucide.dev
 - OpenMoji https://github.com/hfg-gmuend/openmoji https://openmoji.org
 - Primer Octicons https://github.com/primer/octicons https://primer.style/foundations/icons
