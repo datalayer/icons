@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <svg
  xmlns="http://www.w3.org/2000/svg"
-   fill="none"
+ fill="none"
    viewBox="0 0 50 50"
    aria-hidden="true"
    version="1.1"
@@ -11,16 +11,16 @@
   <path
  fill="#e26d6d"
  d="M 0,0 H 50 V 9.9999998 H 0 Z m 0,0"
-     id="path847"
+ id="path847"
      style="stroke-width:2.50001"/>
   <path
  fill="#f9cb07"
  d="M 0,20 H 50 V 30 H 0 Z m 0,0"
-     id="path849"
+ id="path849"
      style="stroke-width:2.50001"/>
   <path
  fill="#49b3d9"
  d="M 0,39.999999 H 50 V 50 H 0 Z m 0,0"
-     id="path851"
+ id="path851"
      style="stroke-width:2.50001"/>
 </svg>

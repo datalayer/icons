@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <svg
  xmlns="http://www.w3.org/2000/svg"
-   fill="none"
+ fill="none"
    viewBox="0 0 50 50"
    aria-hidden="true"
    version="1.1"
@@ -17,15 +17,15 @@
       <path
  fill="#2ecc71"
  d="M 0,0 H 20 V 4 H 0 Z m 0,0"
-         id="path2883"/>
+ id="path2883"/>
       <path
  fill="#1abc9c"
  d="m 0,8 h 20 v 4 H 0 Z m 0,0"
-         id="path2885"/>
+ id="path2885"/>
       <path
  fill="#16a085"
  d="m 0,16 h 20 v 4 H 0 Z m 0,0"
-         id="path2887"/>
+ id="path2887"/>
     </g>
   </g>
   <g
@@ -33,23 +33,23 @@
  transform="translate(12.080563,6.9148834)">
     <text
  style="font-style:normal;font-weight:normal;font-size:15.0426px;line-height:1.25;font-family:sans-serif;fill:#666666;fill-opacity:1;stroke:none;stroke-width:0.376067"
-       x="-12.575609"
+ x="-12.575609"
        y="43.815643"
        id="text1102"
        transform="scale(1.0090056,0.99107478)"><tspan
  id="tspan1100"
  x="-12.575609"
-         y="43.815643"
+ y="43.815643"
          style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-family:BebasNeue;-inkscape-font-specification:BebasNeue;fill:#666666;fill-opacity:1;stroke-width:0.376067">Data</tspan></text>
     <text
  style="font-style:normal;font-weight:normal;font-size:15.0426px;line-height:1.25;font-family:sans-serif;fill:#9ea1af;fill-opacity:1;stroke:none;stroke-width:0.376067"
-       x="9.8572435"
+ x="9.8572435"
        y="43.815643"
        id="text1110"
        transform="scale(1.0090056,0.99107478)"><tspan
  id="tspan1108"
  x="9.8572435"
-         y="43.815643"
+ y="43.815643"
          style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-family:BebasNeue;-inkscape-font-specification:BebasNeue;fill:#9ea1af;fill-opacity:1;stroke-width:0.376067">layer</tspan></text>
   </g>
 </svg>

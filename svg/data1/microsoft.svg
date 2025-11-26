@@ -1,27 +1,27 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <svg
  xmlns="http://www.w3.org/2000/svg"
-   viewBox="0 0 50 50"
+ viewBox="0 0 50 50"
    version="1.1"
    id="svg2375">
   <path
  fill="#f25022"
  d="M 0,0 H 23.799749 V 23.799749 H 0 Z"
-     id="path2367"
+ id="path2367"
      style="stroke-width:1.39645"/>
   <path
  fill="#7fba00"
  d="M 26.200251,0 H 50 V 23.799749 H 26.200251 Z"
-     id="path2369"
+ id="path2369"
      style="stroke-width:1.39645"/>
   <path
  fill="#00a4ef"
  d="M 0,26.200251 H 23.799749 V 50 H 0 Z"
-     id="path2371"
+ id="path2371"
      style="stroke-width:1.39645"/>
   <path
  fill="#ffb900"
  d="M 26.200251,26.200251 H 50 V 50 H 26.200251 Z"
-     id="path2373"
+ id="path2373"
      style="stroke-width:1.39645"/>
 </svg>

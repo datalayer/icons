@@ -4,7 +4,7 @@
 <svg
  width="100"
  height="100"
-   viewBox="0 0 93.75 93.75"
+ viewBox="0 0 93.75 93.75"
    id="svg2"
    version="1.1"
    xmlns:xlink="http://www.w3.org/1999/xlink"
@@ -14,19 +14,19 @@
     <marker
  orient="auto"
  refY="0"
-       refX="0"
+ refX="0"
        id="Arrow1Lend"
        style="overflow:visible">
       <path
  id="path5982"
  d="M 0,0 5,-5 -12.5,0 5,5 Z"
-         style="fill:#000000;fill-opacity:1;fill-rule:evenodd;stroke:#000000;stroke-width:1pt;stroke-opacity:1"
+ style="fill:#000000;fill-opacity:1;fill-rule:evenodd;stroke:#000000;stroke-width:1pt;stroke-opacity:1"
          transform="matrix(-0.8,0,0,-0.8,-10,0)"/>
     </marker>
     <linearGradient
  gradientTransform="translate(5162.5201,263.82886)"
  y2="55.274899"
-       x2="-5635.2715"
+ x2="-5635.2715"
        y1="55.274899"
        x1="-5652.2808"
        gradientUnits="userSpaceOnUse"
@@ -34,16 +34,16 @@
       <stop
  id="stop68"
  style="stop-color:#03594A"
-         offset="0"/>
+ offset="0"/>
       <stop
  id="stop70"
  style="stop-color:#128570"
-         offset="1"/>
+ offset="1"/>
     </linearGradient>
     <linearGradient
  gradientTransform="translate(5162.5201,263.82886)"
  y2="55.274899"
-       x2="-5652.2808"
+ x2="-5652.2808"
        y1="55.274899"
        x1="-5691.9653"
        gradientUnits="userSpaceOnUse"
@@ -51,16 +51,16 @@
       <stop
  id="stop61"
  style="stop-color:#28B899"
-         offset="0"/>
+ offset="0"/>
       <stop
  id="stop63"
  style="stop-color:#1B937B"
-         offset="1"/>
+ offset="1"/>
     </linearGradient>
     <linearGradient
  gradientTransform="translate(5162.5201,263.82886)"
  y2="34.014198"
-       x2="-5635.2725"
+ x2="-5635.2725"
        y1="34.014198"
        x1="-5663.6196"
        gradientUnits="userSpaceOnUse"
@@ -68,16 +68,16 @@
       <stop
  id="stop54"
  style="stop-color:#03594A"
-         offset="0"/>
+ offset="0"/>
       <stop
  id="stop56"
  style="stop-color:#128570"
-         offset="1"/>
+ offset="1"/>
     </linearGradient>
     <linearGradient
  gradientTransform="translate(5162.5201,263.82886)"
  y2="34.015099"
-       x2="-5663.6196"
+ x2="-5663.6196"
        y1="34.015099"
        x1="-5691.9653"
        gradientUnits="userSpaceOnUse"
@@ -85,16 +85,16 @@
       <stop
  id="stop47"
  style="stop-color:#28B899"
-         offset="0"/>
+ offset="0"/>
       <stop
  id="stop49"
  style="stop-color:#1B937B"
-         offset="1"/>
+ offset="1"/>
     </linearGradient>
     <linearGradient
  gradientTransform="translate(5162.5201,263.82886)"
  y2="12.7559"
-       x2="-5635.2725"
+ x2="-5635.2725"
        y1="12.7559"
        x1="-5674.9575"
        gradientUnits="userSpaceOnUse"
@@ -102,16 +102,16 @@
       <stop
  id="stop40"
  style="stop-color:#03594A"
-         offset="0"/>
+ offset="0"/>
       <stop
  id="stop42"
  style="stop-color:#128570"
-         offset="1"/>
+ offset="1"/>
     </linearGradient>
     <linearGradient
  gradientTransform="translate(5162.5201,263.82886)"
  y2="12.7559"
-       x2="-5674.9575"
+ x2="-5674.9575"
        y1="12.7559"
        x1="-5691.9653"
        gradientUnits="userSpaceOnUse"
@@ -119,36 +119,31 @@
       <stop
  id="stop33"
  style="stop-color:#28B899"
-         offset="0"/>
+ offset="0"/>
       <stop
  id="stop35"
  style="stop-color:#1B937B"
-         offset="1"/>
+ offset="1"/>
     </linearGradient>
     <marker
  style="overflow:visible"
  id="marker26280"
-       refX="0"
+ refX="0"
        refY="0"
        orient="auto">
       <path
  transform="matrix(0.8,0,0,0.8,10,0)"
  style="fill:#221f1d;fill-opacity:1;fill-rule:evenodd;stroke:#221f1d;stroke-width:1pt;stroke-opacity:1"
-         d="M 0,0 5,-5 -12.5,0 5,5 Z"
+ d="M 0,0 5,-5 -12.5,0 5,5 Z"
          id="path26282"/>
     </marker>
-    <inkscape:path-effect
- effect="spiro"
- id="path-effect6213"
-       is_visible="true"
-       lpeversion="0"/>
     <clipPath
  id="clipPath5328"
  clipPathUnits="userSpaceOnUse">
       <ellipse
  ry="209.83301"
  rx="209.93985"
-         cy="272.59781"
+ cy="272.59781"
          cx="363.60458"
          id="ellipse5330"
          style="opacity:1;fill:#ddecef;fill-opacity:1;fill-rule:nonzero;stroke:none;stroke-width:3.339;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1"/>
@@ -159,7 +154,7 @@
       <rect
  ry="0.82600802"
  y="155.50073"
-         x="379.13062"
+ x="379.13062"
          height="133.62801"
          width="150.40919"
          id="rect5127"
@@ -168,25 +163,25 @@
     <marker
  style="overflow:visible"
  id="marker26280-3"
-       refX="0"
+ refX="0"
        refY="0"
        orient="auto">
       <path
  transform="matrix(0.8,0,0,0.8,10,0)"
  style="fill:#221f1d;fill-opacity:1;fill-rule:evenodd;stroke:#221f1d;stroke-width:1pt;stroke-opacity:1"
-         d="M 0,0 5,-5 -12.5,0 5,5 Z"
+ d="M 0,0 5,-5 -12.5,0 5,5 Z"
          id="path26282-9"/>
     </marker>
     <marker
  style="overflow:visible"
  id="Arrow1Send"
-       refX="0"
+ refX="0"
        refY="0"
        orient="auto">
       <path
  transform="matrix(-0.2,0,0,-0.2,-1.2,0)"
  style="fill:#ffffff;fill-opacity:1;fill-rule:evenodd;stroke:#ffffff;stroke-width:1pt;stroke-opacity:1"
-         d="M 0,0 5,-5 -12.5,0 5,5 Z"
+ d="M 0,0 5,-5 -12.5,0 5,5 Z"
          id="path6174"/>
     </marker>
     <clipPath
@@ -195,7 +190,7 @@
       <ellipse
  ry="209.83301"
  rx="209.93985"
-         cy="272.59781"
+ cy="272.59781"
          cx="363.60458"
          id="ellipse5330-6"
          style="opacity:1;fill:#ddecef;fill-opacity:1;fill-rule:nonzero;stroke:none;stroke-width:3.339;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1"/>
@@ -206,7 +201,7 @@
       <rect
  ry="0.82600802"
  y="155.50073"
-         x="379.13062"
+ x="379.13062"
          height="133.62801"
          width="150.40919"
          id="rect5127-5"
@@ -215,51 +210,46 @@
     <marker
  style="overflow:visible"
  id="marker26280-3-3"
-       refX="0"
+ refX="0"
        refY="0"
        orient="auto">
       <path
  transform="matrix(0.8,0,0,0.8,10,0)"
  style="fill:#221f1d;fill-opacity:1;fill-rule:evenodd;stroke:#221f1d;stroke-width:1pt;stroke-opacity:1"
-         d="M 0,0 5,-5 -12.5,0 5,5 Z"
+ d="M 0,0 5,-5 -12.5,0 5,5 Z"
          id="path26282-9-5"/>
     </marker>
     <marker
  style="overflow:visible"
  id="marker4371"
-       refX="0"
+ refX="0"
        refY="0"
        orient="auto">
       <path
  transform="matrix(0.8,0,0,0.8,10,0)"
  style="fill:#221f1d;fill-opacity:1;fill-rule:evenodd;stroke:#221f1d;stroke-width:1pt;stroke-opacity:1"
-         d="M 0,0 5,-5 -12.5,0 5,5 Z"
+ d="M 0,0 5,-5 -12.5,0 5,5 Z"
          id="path4373"/>
     </marker>
     <marker
  style="overflow:visible"
  id="marker26280-2"
-       refX="0"
+ refX="0"
        refY="0"
        orient="auto">
       <path
  transform="matrix(0.8,0,0,0.8,10,0)"
  style="fill:#221f1d;fill-opacity:1;fill-rule:evenodd;stroke:#221f1d;stroke-width:1pt;stroke-opacity:1"
-         d="M 0,0 5,-5 -12.5,0 5,5 Z"
+ d="M 0,0 5,-5 -12.5,0 5,5 Z"
          id="path26282-91"/>
     </marker>
-    <inkscape:path-effect
- effect="spiro"
- id="path-effect6213-2"
-       is_visible="true"
-       lpeversion="0"/>
     <clipPath
  id="clipPath5328-7"
  clipPathUnits="userSpaceOnUse">
       <ellipse
  ry="209.83301"
  rx="209.93985"
-         cy="272.59781"
+ cy="272.59781"
          cx="363.60458"
          id="ellipse5330-0"
          style="opacity:1;fill:#ddecef;fill-opacity:1;fill-rule:nonzero;stroke:none;stroke-width:3.339;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1"/>
@@ -270,7 +260,7 @@
       <rect
  ry="0.82600802"
  y="155.50073"
-         x="379.13062"
+ x="379.13062"
          height="133.62801"
          width="150.40919"
          id="rect5127-3"
@@ -279,25 +269,25 @@
     <marker
  style="overflow:visible"
  id="marker26280-3-6"
-       refX="0"
+ refX="0"
        refY="0"
        orient="auto">
       <path
  transform="matrix(0.8,0,0,0.8,10,0)"
  style="fill:#221f1d;fill-opacity:1;fill-rule:evenodd;stroke:#221f1d;stroke-width:1pt;stroke-opacity:1"
-         d="M 0,0 5,-5 -12.5,0 5,5 Z"
+ d="M 0,0 5,-5 -12.5,0 5,5 Z"
          id="path26282-9-0"/>
     </marker>
     <marker
  style="overflow:visible"
  id="Arrow1Send-6"
-       refX="0"
+ refX="0"
        refY="0"
        orient="auto">
       <path
  transform="matrix(-0.2,0,0,-0.2,-1.2,0)"
  style="fill:#ffffff;fill-opacity:1;fill-rule:evenodd;stroke:#ffffff;stroke-width:1pt;stroke-opacity:1"
-         d="M 0,0 5,-5 -12.5,0 5,5 Z"
+ d="M 0,0 5,-5 -12.5,0 5,5 Z"
          id="path6174-2"/>
     </marker>
     <clipPath
@@ -306,7 +296,7 @@
       <ellipse
  ry="209.83301"
  rx="209.93985"
-         cy="272.59781"
+ cy="272.59781"
          cx="363.60458"
          id="ellipse5330-6-1"
          style="opacity:1;fill:#ddecef;fill-opacity:1;fill-rule:nonzero;stroke:none;stroke-width:3.339;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1"/>
@@ -317,7 +307,7 @@
       <rect
  ry="0.82600802"
  y="155.50073"
-         x="379.13062"
+ x="379.13062"
          height="133.62801"
          width="150.40919"
          id="rect5127-5-7"
@@ -326,51 +316,46 @@
     <marker
  style="overflow:visible"
  id="marker26280-3-3-9"
-       refX="0"
+ refX="0"
        refY="0"
        orient="auto">
       <path
  transform="matrix(0.8,0,0,0.8,10,0)"
  style="fill:#221f1d;fill-opacity:1;fill-rule:evenodd;stroke:#221f1d;stroke-width:1pt;stroke-opacity:1"
-         d="M 0,0 5,-5 -12.5,0 5,5 Z"
+ d="M 0,0 5,-5 -12.5,0 5,5 Z"
          id="path26282-9-5-2"/>
     </marker>
     <marker
  style="overflow:visible"
  id="marker4371-0"
-       refX="0"
+ refX="0"
        refY="0"
        orient="auto">
       <path
  transform="matrix(0.8,0,0,0.8,10,0)"
  style="fill:#221f1d;fill-opacity:1;fill-rule:evenodd;stroke:#221f1d;stroke-width:1pt;stroke-opacity:1"
-         d="M 0,0 5,-5 -12.5,0 5,5 Z"
+ d="M 0,0 5,-5 -12.5,0 5,5 Z"
          id="path4373-2"/>
     </marker>
     <marker
  style="overflow:visible"
  id="marker26280-6"
-       refX="0"
+ refX="0"
        refY="0"
        orient="auto">
       <path
  transform="matrix(0.8,0,0,0.8,10,0)"
  style="fill:#221f1d;fill-opacity:1;fill-rule:evenodd;stroke:#221f1d;stroke-width:1pt;stroke-opacity:1"
-         d="M 0,0 5,-5 -12.5,0 5,5 Z"
+ d="M 0,0 5,-5 -12.5,0 5,5 Z"
          id="path26282-1"/>
     </marker>
-    <inkscape:path-effect
- effect="spiro"
- id="path-effect6213-29"
-       is_visible="true"
-       lpeversion="0"/>
     <clipPath
  id="clipPath5328-31"
  clipPathUnits="userSpaceOnUse">
       <ellipse
  ry="209.83301"
  rx="209.93985"
-         cy="272.59781"
+ cy="272.59781"
          cx="363.60458"
          id="ellipse5330-9"
          style="opacity:1;fill:#ddecef;fill-opacity:1;fill-rule:nonzero;stroke:none;stroke-width:3.339;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1"/>
@@ -381,7 +366,7 @@
       <rect
  ry="0.82600802"
  y="155.50073"
-         x="379.13062"
+ x="379.13062"
          height="133.62801"
          width="150.40919"
          id="rect5127-7"
@@ -390,25 +375,25 @@
     <marker
  style="overflow:visible"
  id="marker26280-3-8"
-       refX="0"
+ refX="0"
        refY="0"
        orient="auto">
       <path
  transform="matrix(0.8,0,0,0.8,10,0)"
  style="fill:#221f1d;fill-opacity:1;fill-rule:evenodd;stroke:#221f1d;stroke-width:1pt;stroke-opacity:1"
-         d="M 0,0 5,-5 -12.5,0 5,5 Z"
+ d="M 0,0 5,-5 -12.5,0 5,5 Z"
          id="path26282-9-4"/>
     </marker>
     <marker
  style="overflow:visible"
  id="Arrow1Send-5"
-       refX="0"
+ refX="0"
        refY="0"
        orient="auto">
       <path
  transform="matrix(-0.2,0,0,-0.2,-1.2,0)"
  style="fill:#ffffff;fill-opacity:1;fill-rule:evenodd;stroke:#ffffff;stroke-width:1pt;stroke-opacity:1"
-         d="M 0,0 5,-5 -12.5,0 5,5 Z"
+ d="M 0,0 5,-5 -12.5,0 5,5 Z"
          id="path6174-0"/>
     </marker>
     <clipPath
@@ -417,7 +402,7 @@
       <ellipse
  ry="209.83301"
  rx="209.93985"
-         cy="272.59781"
+ cy="272.59781"
          cx="363.60458"
          id="ellipse5330-6-6"
          style="opacity:1;fill:#ddecef;fill-opacity:1;fill-rule:nonzero;stroke:none;stroke-width:3.339;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1"/>
@@ -428,7 +413,7 @@
       <rect
  ry="0.82600802"
  y="155.50073"
-         x="379.13062"
+ x="379.13062"
          height="133.62801"
          width="150.40919"
          id="rect5127-5-0"
@@ -437,55 +422,55 @@
     <marker
  style="overflow:visible"
  id="marker26280-3-3-6"
-       refX="0"
+ refX="0"
        refY="0"
        orient="auto">
       <path
  transform="matrix(0.8,0,0,0.8,10,0)"
  style="fill:#221f1d;fill-opacity:1;fill-rule:evenodd;stroke:#221f1d;stroke-width:1pt;stroke-opacity:1"
-         d="M 0,0 5,-5 -12.5,0 5,5 Z"
+ d="M 0,0 5,-5 -12.5,0 5,5 Z"
          id="path26282-9-5-3"/>
     </marker>
     <marker
  style="overflow:visible"
  id="marker4371-2"
-       refX="0"
+ refX="0"
        refY="0"
        orient="auto">
       <path
  transform="matrix(0.8,0,0,0.8,10,0)"
  style="fill:#221f1d;fill-opacity:1;fill-rule:evenodd;stroke:#221f1d;stroke-width:1pt;stroke-opacity:1"
-         d="M 0,0 5,-5 -12.5,0 5,5 Z"
+ d="M 0,0 5,-5 -12.5,0 5,5 Z"
          id="path4373-0"/>
     </marker>
     <marker
  style="overflow:visible"
  id="marker26280-3-3-3"
-       refX="0"
+ refX="0"
        refY="0"
        orient="auto">
       <path
  transform="matrix(0.8,0,0,0.8,10,0)"
  style="fill:#221f1d;fill-opacity:1;fill-rule:evenodd;stroke:#221f1d;stroke-width:1pt;stroke-opacity:1"
-         d="M 0,0 5,-5 -12.5,0 5,5 Z"
+ d="M 0,0 5,-5 -12.5,0 5,5 Z"
          id="path26282-9-5-6"/>
     </marker>
     <marker
  style="overflow:visible"
  id="marker4437"
-       refX="0"
+ refX="0"
        refY="0"
        orient="auto">
       <path
  transform="matrix(0.8,0,0,0.8,10,0)"
  style="fill:#221f1d;fill-opacity:1;fill-rule:evenodd;stroke:#221f1d;stroke-width:1pt;stroke-opacity:1"
-         d="M 0,0 5,-5 -12.5,0 5,5 Z"
+ d="M 0,0 5,-5 -12.5,0 5,5 Z"
          id="path4439"/>
     </marker>
     <linearGradient
  id="SVGID_3_-2"
  gradientUnits="userSpaceOnUse"
-       x1="390.51749"
+ x1="390.51749"
        y1="77.334801"
        x2="517.71112"
        y2="179.9297"
@@ -493,16 +478,16 @@
       <stop
  offset="0"
  style="stop-color:#326DE6"
-         id="stop52"/>
+ id="stop52"/>
       <stop
  offset="1"
  style="stop-color:#10FFC6"
-         id="stop54-5"/>
+ id="stop54-5"/>
     </linearGradient>
     <linearGradient
  id="SVGID_3_-4"
  gradientUnits="userSpaceOnUse"
-       x1="390.51749"
+ x1="390.51749"
        y1="77.334801"
        x2="517.71112"
        y2="179.9297"
@@ -510,16 +495,16 @@
       <stop
  offset="0"
  style="stop-color:#326DE6"
-         id="stop52-7"/>
+ id="stop52-7"/>
       <stop
  offset="1"
  style="stop-color:#10FFC6"
-         id="stop54-4"/>
+ id="stop54-4"/>
     </linearGradient>
     <linearGradient
  id="SVGID_2_-4"
  gradientUnits="userSpaceOnUse"
-       x1="238.2856"
+ x1="238.2856"
        y1="127.5093"
        x2="347.5509"
        y2="127.5093"
@@ -527,16 +512,16 @@
       <stop
  offset="0"
  style="stop-color:#326DE6"
-         id="stop45"/>
+ id="stop45"/>
       <stop
  offset="1"
  style="stop-color:#10FFC6"
-         id="stop47-3"/>
+ id="stop47-3"/>
     </linearGradient>
     <linearGradient
  id="SVGID_1_-0"
  gradientUnits="userSpaceOnUse"
-       x1="122.1878"
+ x1="122.1878"
        y1="127.5093"
        x2="204.1367"
        y2="127.5093"
@@ -544,70 +529,40 @@
       <stop
  offset="0"
  style="stop-color:#326DE6"
-         id="stop38"/>
+ id="stop38"/>
       <stop
  offset="1"
  style="stop-color:#10FFC6"
-         id="stop40-7"/>
+ id="stop40-7"/>
     </linearGradient>
-    <inkscape:path-effect
- is_visible="true"
- id="path-effect4276"
-       effect="spiro"
-       lpeversion="0"/>
     <marker
  style="overflow:visible"
  id="marker6271"
-       refX="0"
+ refX="0"
        refY="0"
        orient="auto">
       <path
  transform="matrix(0.8,0,0,0.8,10,0)"
  style="fill:#000000;fill-opacity:1;fill-rule:evenodd;stroke:#000000;stroke-width:1pt;stroke-opacity:1"
-         d="M 0,0 5,-5 -12.5,0 5,5 Z"
+ d="M 0,0 5,-5 -12.5,0 5,5 Z"
          id="path6273"/>
     </marker>
     <marker
  style="overflow:visible"
  id="Arrow1Lstart"
-       refX="0"
+ refX="0"
        refY="0"
        orient="auto">
       <path
  transform="matrix(0.8,0,0,0.8,10,0)"
  style="fill:#000000;fill-opacity:1;fill-rule:evenodd;stroke:#000000;stroke-width:1pt;stroke-opacity:1"
-         d="M 0,0 5,-5 -12.5,0 5,5 Z"
+ d="M 0,0 5,-5 -12.5,0 5,5 Z"
          id="path4240"/>
     </marker>
-    <inkscape:path-effect
- is_visible="true"
- id="path-effect6213-3"
-       effect="spiro"
-       lpeversion="0"/>
-    <inkscape:path-effect
- is_visible="true"
- id="path-effect5891"
-       effect="spiro"
-       lpeversion="0"/>
-    <inkscape:path-effect
- effect="spiro"
- id="path-effect5819"
-       is_visible="true"
-       lpeversion="0"/>
-    <inkscape:path-effect
- is_visible="true"
- id="path-effect5755"
-       effect="spiro"
-       lpeversion="0"/>
-    <inkscape:path-effect
- is_visible="true"
- id="path-effect5751"
-       effect="spiro"
-       lpeversion="0"/>
     <linearGradient
  xlink:href="#SVGID_2_-4"
  id="linearGradient6886"
-       gradientUnits="userSpaceOnUse"
+ gradientUnits="userSpaceOnUse"
        gradientTransform="translate(-195.60619,-31.557301)"
        x1="238.2856"
        y1="127.5093"
@@ -616,7 +571,7 @@
     <linearGradient
  xlink:href="#SVGID_2_-4"
  id="linearGradient6888"
-       gradientUnits="userSpaceOnUse"
+ gradientUnits="userSpaceOnUse"
        gradientTransform="translate(-195.60619,-31.557301)"
        x1="238.2856"
        y1="127.5093"
@@ -625,7 +580,7 @@
     <linearGradient
  xlink:href="#SVGID_2_-4"
  id="linearGradient6890"
-       gradientUnits="userSpaceOnUse"
+ gradientUnits="userSpaceOnUse"
        gradientTransform="translate(-195.60619,-31.557301)"
        x1="238.2856"
        y1="127.5093"
@@ -634,85 +589,85 @@
     <marker
  orient="auto"
  refY="0"
-       refX="0"
+ refX="0"
        id="Arrow1Lend-6"
        style="overflow:visible">
       <path
  id="path5982-0"
  d="M 0,0 5,-5 -12.5,0 5,5 Z"
-         style="fill:#000000;fill-opacity:1;fill-rule:evenodd;stroke:#000000;stroke-width:1pt;stroke-opacity:1"
+ style="fill:#000000;fill-opacity:1;fill-rule:evenodd;stroke:#000000;stroke-width:1pt;stroke-opacity:1"
          transform="matrix(-0.8,0,0,-0.8,-10,0)"/>
     </marker>
     <marker
  orient="auto"
  refY="0"
-       refX="0"
+ refX="0"
        id="Arrow1Lend-6-2"
        style="overflow:visible">
       <path
  id="path5982-0-6"
  d="M 0,0 5,-5 -12.5,0 5,5 Z"
-         style="fill:#000000;fill-opacity:1;fill-rule:evenodd;stroke:#000000;stroke-width:1pt;stroke-opacity:1"
+ style="fill:#000000;fill-opacity:1;fill-rule:evenodd;stroke:#000000;stroke-width:1pt;stroke-opacity:1"
          transform="matrix(-0.8,0,0,-0.8,-10,0)"/>
     </marker>
     <marker
  orient="auto"
  refY="0"
-       refX="0"
+ refX="0"
        id="Arrow1Lend-6-8"
        style="overflow:visible">
       <path
  id="path5982-0-7"
  d="M 0,0 5,-5 -12.5,0 5,5 Z"
-         style="fill:#000000;fill-opacity:1;fill-rule:evenodd;stroke:#000000;stroke-width:1pt;stroke-opacity:1"
+ style="fill:#000000;fill-opacity:1;fill-rule:evenodd;stroke:#000000;stroke-width:1pt;stroke-opacity:1"
          transform="matrix(-0.8,0,0,-0.8,-10,0)"/>
     </marker>
     <marker
  orient="auto"
  refY="0"
-       refX="0"
+ refX="0"
        id="Arrow1Lend-6-8-0"
        style="overflow:visible">
       <path
  id="path5982-0-7-2"
  d="M 0,0 5,-5 -12.5,0 5,5 Z"
-         style="fill:#000000;fill-opacity:1;fill-rule:evenodd;stroke:#000000;stroke-width:1pt;stroke-opacity:1"
+ style="fill:#000000;fill-opacity:1;fill-rule:evenodd;stroke:#000000;stroke-width:1pt;stroke-opacity:1"
          transform="matrix(-0.8,0,0,-0.8,-10,0)"/>
     </marker>
     <marker
  orient="auto"
  refY="0"
-       refX="0"
+ refX="0"
        id="Arrow1Lend-6-2-7"
        style="overflow:visible">
       <path
  id="path5982-0-6-5"
  d="M 0,0 5,-5 -12.5,0 5,5 Z"
-         style="fill:#000000;fill-opacity:1;fill-rule:evenodd;stroke:#000000;stroke-width:1pt;stroke-opacity:1"
+ style="fill:#000000;fill-opacity:1;fill-rule:evenodd;stroke:#000000;stroke-width:1pt;stroke-opacity:1"
          transform="matrix(-0.8,0,0,-0.8,-10,0)"/>
     </marker>
     <marker
  orient="auto"
  refY="0"
-       refX="0"
+ refX="0"
        id="Arrow1Lend-6-2-2"
        style="overflow:visible">
       <path
  id="path5982-0-6-2"
  d="M 0,0 5,-5 -12.5,0 5,5 Z"
-         style="fill:#000000;fill-opacity:1;fill-rule:evenodd;stroke:#000000;stroke-width:1pt;stroke-opacity:1"
+ style="fill:#000000;fill-opacity:1;fill-rule:evenodd;stroke:#000000;stroke-width:1pt;stroke-opacity:1"
          transform="matrix(-0.8,0,0,-0.8,-10,0)"/>
     </marker>
     <marker
  style="overflow:visible"
  id="Arrow1Mend"
-       refX="0"
+ refX="0"
        refY="0"
        orient="auto">
       <path
  transform="matrix(-0.4,0,0,-0.4,-4,0)"
  style="fill-rule:evenodd;stroke:#000000;stroke-width:1pt"
-         d="M 0,0 5,-5 -12.5,0 5,5 Z"
+ d="M 0,0 5,-5 -12.5,0 5,5 Z"
          id="path3877"/>
     </marker>
     <linearGradient
@@ -720,20 +675,20 @@
       <stop
  id="stop12513"
  offset="0.0000000"
-         style="stop-color:#ffffff;stop-opacity:1.0000000;"/>
+ style="stop-color:#ffffff;stop-opacity:1.0000000;"/>
       <stop
  id="stop12517"
  offset="0.50000000"
-         style="stop-color:#fff520;stop-opacity:0.89108908;"/>
+ style="stop-color:#fff520;stop-opacity:0.89108908;"/>
       <stop
  id="stop12514"
  offset="1.0000000"
-         style="stop-color:#fff300;stop-opacity:0.0000000;"/>
+ style="stop-color:#fff300;stop-opacity:0.0000000;"/>
     </linearGradient>
     <radialGradient
  r="14.375"
  fy="125"
-       fx="55"
+ fx="55"
        cy="125"
        cx="55"
        gradientUnits="userSpaceOnUse"
@@ -744,142 +699,134 @@
       <stop
  id="stop2096"
  offset="0.0000000"
-         style="stop-color:#d6e3f0;stop-opacity:1.0000000;"/>
+ style="stop-color:#d6e3f0;stop-opacity:1.0000000;"/>
       <stop
  id="stop2098"
  offset="1.0000000"
-         style="stop-color:#95b1cf;stop-opacity:1.0000000;"/>
+ style="stop-color:#95b1cf;stop-opacity:1.0000000;"/>
     </linearGradient>
     <linearGradient
  id="linearGradient2803">
       <stop
  style="stop-color:#ffffff;stop-opacity:1;"
  offset="0"
-         id="stop2805"/>
+ id="stop2805"/>
       <stop
  style="stop-color:#cbcbcb;stop-opacity:1.0000000;"
  offset="1.0000000"
-         id="stop2807"/>
+ id="stop2807"/>
     </linearGradient>
     <linearGradient
  id="linearGradient2795">
       <stop
  style="stop-color:#000000;stop-opacity:0.068627454;"
  offset="0.0000000"
-         id="stop2797"/>
+ id="stop2797"/>
       <stop
  style="stop-color:#ffffff;stop-opacity:1.0000000;"
  offset="1.0000000"
-         id="stop2799"/>
+ id="stop2799"/>
     </linearGradient>
-    <inkscape:perspective
- id="perspective10"/>
-    <inkscape:perspective
- id="perspective2620"/>
-    <inkscape:perspective
- id="perspective2447"/>
-    <inkscape:perspective
- id="perspective2507"/>
     <linearGradient
  id="SVGID_1_-6"
  gradientUnits="userSpaceOnUse"
-       x1="-5691.9653"
+ x1="-5691.9653"
        y1="12.7559"
        x2="-5674.9575"
        y2="12.7559">
       <stop
  offset="0"
  style="stop-color:#28B899"
-         id="stop33-75"/>
+ id="stop33-75"/>
       <stop
  offset="1"
  style="stop-color:#1B937B"
-         id="stop35-3"/>
+ id="stop35-3"/>
     </linearGradient>
     <linearGradient
  id="SVGID_2_-5"
  gradientUnits="userSpaceOnUse"
-       x1="-5674.9575"
+ x1="-5674.9575"
        y1="12.7559"
        x2="-5635.2725"
        y2="12.7559">
       <stop
  offset="0"
  style="stop-color:#03594A"
-         id="stop40-6"/>
+ id="stop40-6"/>
       <stop
  offset="1"
  style="stop-color:#128570"
-         id="stop42-2"/>
+ id="stop42-2"/>
     </linearGradient>
     <linearGradient
  id="SVGID_3_-9"
  gradientUnits="userSpaceOnUse"
-       x1="-5691.9653"
+ x1="-5691.9653"
        y1="34.015099"
        x2="-5663.6196"
        y2="34.015099">
       <stop
  offset="0"
  style="stop-color:#28B899"
-         id="stop47-1"/>
+ id="stop47-1"/>
       <stop
  offset="1"
  style="stop-color:#1B937B"
-         id="stop49-2"/>
+ id="stop49-2"/>
     </linearGradient>
     <linearGradient
  id="SVGID_4_-7"
  gradientUnits="userSpaceOnUse"
-       x1="-5663.6196"
+ x1="-5663.6196"
        y1="34.014198"
        x2="-5635.2725"
        y2="34.014198">
       <stop
  offset="0"
  style="stop-color:#03594A"
-         id="stop54-0"/>
+ id="stop54-0"/>
       <stop
  offset="1"
  style="stop-color:#128570"
-         id="stop56-9"/>
+ id="stop56-9"/>
     </linearGradient>
     <linearGradient
  id="SVGID_5_-3"
  gradientUnits="userSpaceOnUse"
-       x1="-5691.9653"
+ x1="-5691.9653"
        y1="55.274899"
        x2="-5652.2808"
        y2="55.274899">
       <stop
  offset="0"
  style="stop-color:#28B899"
-         id="stop61-6"/>
+ id="stop61-6"/>
       <stop
  offset="1"
  style="stop-color:#1B937B"
-         id="stop63-0"/>
+ id="stop63-0"/>
     </linearGradient>
     <linearGradient
  id="SVGID_6_-6"
  gradientUnits="userSpaceOnUse"
-       x1="-5652.2808"
+ x1="-5652.2808"
        y1="55.274899"
        x2="-5635.2715"
        y2="55.274899">
       <stop
  offset="0"
  style="stop-color:#03594A"
-         id="stop68-2"/>
+ id="stop68-2"/>
       <stop
  offset="1"
  style="stop-color:#128570"
-         id="stop70-6"/>
+ id="stop70-6"/>
     </linearGradient>
     <linearGradient
  id="SVGID_6_-5"
  gradientUnits="userSpaceOnUse"
-       x1="-5652.2808"
+ x1="-5652.2808"
        y1="55.274899"
        x2="-5635.2715"
        y2="55.274899"
@@ -887,16 +834,16 @@
       <stop
  offset="0"
  style="stop-color:#03594A"
-         id="stop68-1"/>
+ id="stop68-1"/>
       <stop
  offset="1"
  style="stop-color:#128570"
-         id="stop70-0"/>
+ id="stop70-0"/>
     </linearGradient>
     <linearGradient
  id="SVGID_5_-7"
  gradientUnits="userSpaceOnUse"
-       x1="-5691.9653"
+ x1="-5691.9653"
        y1="55.274899"
        x2="-5652.2808"
        y2="55.274899"
@@ -904,16 +851,16 @@
       <stop
  offset="0"
  style="stop-color:#28B899"
-         id="stop61-8"/>
+ id="stop61-8"/>
       <stop
  offset="1"
  style="stop-color:#1B937B"
-         id="stop63-8"/>
+ id="stop63-8"/>
     </linearGradient>
     <linearGradient
  id="SVGID_4_-6"
  gradientUnits="userSpaceOnUse"
-       x1="-5663.6196"
+ x1="-5663.6196"
        y1="34.014198"
        x2="-5635.2725"
        y2="34.014198"
@@ -921,16 +868,16 @@
       <stop
  offset="0"
  style="stop-color:#03594A"
-         id="stop54-3"/>
+ id="stop54-3"/>
       <stop
  offset="1"
  style="stop-color:#128570"
-         id="stop56-5"/>
+ id="stop56-5"/>
     </linearGradient>
     <linearGradient
  id="SVGID_3_-7"
  gradientUnits="userSpaceOnUse"
-       x1="-5691.9653"
+ x1="-5691.9653"
        y1="34.015099"
        x2="-5663.6196"
        y2="34.015099"
@@ -938,16 +885,16 @@
       <stop
  offset="0"
  style="stop-color:#28B899"
-         id="stop47-3-1"/>
+ id="stop47-3-1"/>
       <stop
  offset="1"
  style="stop-color:#1B937B"
-         id="stop49-0"/>
+ id="stop49-0"/>
     </linearGradient>
     <linearGradient
  id="SVGID_2_-3"
  gradientUnits="userSpaceOnUse"
-       x1="-5674.9575"
+ x1="-5674.9575"
        y1="12.7559"
        x2="-5635.2725"
        y2="12.7559"
@@ -955,16 +902,16 @@
       <stop
  offset="0"
  style="stop-color:#03594A"
-         id="stop40-2"/>
+ id="stop40-2"/>
       <stop
  offset="1"
  style="stop-color:#128570"
-         id="stop42-3"/>
+ id="stop42-3"/>
     </linearGradient>
     <linearGradient
  id="SVGID_1_-3"
  gradientUnits="userSpaceOnUse"
-       x1="-5691.9653"
+ x1="-5691.9653"
        y1="12.7559"
        x2="-5674.9575"
        y2="12.7559"
@@ -972,106 +919,106 @@
       <stop
  offset="0"
  style="stop-color:#28B899"
-         id="stop33-7"/>
+ id="stop33-7"/>
       <stop
  offset="1"
  style="stop-color:#1B937B"
-         id="stop35-6"/>
+ id="stop35-6"/>
     </linearGradient>
     <marker
  style="overflow:visible"
  id="marker1333"
-       refX="0"
+ refX="0"
        refY="0"
        orient="auto">
       <path
  transform="matrix(0.8,0,0,0.8,10,0)"
  style="fill:#ffffff;fill-opacity:1;fill-rule:evenodd;stroke:#2ecc71;stroke-width:1pt;stroke-opacity:1"
-         d="M 0,0 5,-5 -12.5,0 5,5 Z"
+ d="M 0,0 5,-5 -12.5,0 5,5 Z"
          id="path1331"/>
     </marker>
     <marker
  style="overflow:visible"
  id="marker1281"
-       refX="0"
+ refX="0"
        refY="0"
        orient="auto">
       <path
  transform="matrix(0.8,0,0,0.8,10,0)"
  style="fill:#ffffff;fill-opacity:1;fill-rule:evenodd;stroke:#2ecc71;stroke-width:1pt;stroke-opacity:1"
-         d="M 0,0 5,-5 -12.5,0 5,5 Z"
+ d="M 0,0 5,-5 -12.5,0 5,5 Z"
          id="path1279"/>
     </marker>
     <marker
  style="overflow:visible"
  id="marker1235"
-       refX="0"
+ refX="0"
        refY="0"
        orient="auto">
       <path
  transform="matrix(0.8,0,0,0.8,10,0)"
  style="fill:#ffffff;fill-opacity:1;fill-rule:evenodd;stroke:#2ecc71;stroke-width:1pt;stroke-opacity:1"
-         d="M 0,0 5,-5 -12.5,0 5,5 Z"
+ d="M 0,0 5,-5 -12.5,0 5,5 Z"
          id="path1233"/>
     </marker>
     <marker
  style="overflow:visible"
  id="marker1195"
-       refX="0"
+ refX="0"
        refY="0"
        orient="auto">
       <path
  transform="matrix(0.8,0,0,0.8,10,0)"
  style="fill:#ffffff;fill-opacity:1;fill-rule:evenodd;stroke:#2ecc71;stroke-width:1pt;stroke-opacity:1"
-         d="M 0,0 5,-5 -12.5,0 5,5 Z"
+ d="M 0,0 5,-5 -12.5,0 5,5 Z"
          id="path1193"/>
     </marker>
     <marker
  style="overflow:visible"
  id="marker1161"
-       refX="0"
+ refX="0"
        refY="0"
        orient="auto">
       <path
  transform="matrix(0.8,0,0,0.8,10,0)"
  style="fill:#ffffff;fill-opacity:1;fill-rule:evenodd;stroke:#2ecc71;stroke-width:1pt;stroke-opacity:1"
-         d="M 0,0 5,-5 -12.5,0 5,5 Z"
+ d="M 0,0 5,-5 -12.5,0 5,5 Z"
          id="path1159"/>
     </marker>
     <marker
  style="overflow:visible"
  id="marker1133"
-       refX="0"
+ refX="0"
        refY="0"
        orient="auto">
       <path
  transform="matrix(0.8,0,0,0.8,10,0)"
  style="fill:#ffffff;fill-opacity:1;fill-rule:evenodd;stroke:#2ecc71;stroke-width:1pt;stroke-opacity:1"
-         d="M 0,0 5,-5 -12.5,0 5,5 Z"
+ d="M 0,0 5,-5 -12.5,0 5,5 Z"
          id="path1131"/>
     </marker>
     <marker
  style="overflow:visible"
  id="marker1111"
-       refX="0"
+ refX="0"
        refY="0"
        orient="auto">
       <path
  transform="matrix(0.8,0,0,0.8,10,0)"
  style="fill:#ffffff;fill-opacity:1;fill-rule:evenodd;stroke:#2ecc71;stroke-width:1pt;stroke-opacity:1"
-         d="M 0,0 5,-5 -12.5,0 5,5 Z"
+ d="M 0,0 5,-5 -12.5,0 5,5 Z"
          id="path1109"/>
     </marker>
     <marker
  style="overflow:visible"
  id="Arrow1Lstart-9"
-       refX="0"
+ refX="0"
        refY="0"
        orient="auto">
       <path
  transform="matrix(0.8,0,0,0.8,10,0)"
  style="fill:#ffffff;fill-opacity:1;fill-rule:evenodd;stroke:#16a085;stroke-width:1pt;stroke-opacity:0"
-         d="M 0,0 5,-5 -12.5,0 5,5 Z"
+ d="M 0,0 5,-5 -12.5,0 5,5 Z"
          id="path833"/>
     </marker>
   </defs>
@@ -1084,7 +1031,7 @@
       <rect
  ry="0"
  y="672.61713"
-         x="126.62108"
+ x="126.62108"
          height="25.116611"
          width="50.233223"
          id="rect3263"
@@ -1092,7 +1039,7 @@
       <rect
  ry="0"
  y="672.54535"
-         x="76.172592"
+ x="76.172592"
          height="25.116611"
          width="50.233223"
          id="rect3263-2"
@@ -1100,7 +1047,7 @@
       <rect
  ry="0"
  y="698.12842"
-         x="126.72868"
+ x="126.72868"
          height="25.116611"
          width="50.233223"
          id="rect3263-7"
@@ -1108,7 +1055,7 @@
       <rect
  ry="0"
  y="698.05676"
-         x="76.280197"
+ x="76.280197"
          height="25.116611"
          width="50.233223"
          id="rect3263-2-1"
@@ -1116,7 +1063,7 @@
       <rect
  ry="0"
  y="723.24506"
-         x="126.72868"
+ x="126.72868"
          height="25.116611"
          width="50.233223"
          id="rect3263-20"
@@ -1124,7 +1071,7 @@
       <rect
  ry="0"
  y="723.17334"
-         x="76.280197"
+ x="76.280197"
          height="25.116611"
          width="50.233223"
          id="rect3263-2-6"
@@ -1132,7 +1079,7 @@
       <rect
  ry="0"
  y="747.42877"
-         x="126.94395"
+ x="126.94395"
          height="25.116611"
          width="50.233223"
          id="rect3263-6"
@@ -1140,7 +1087,7 @@
       <rect
  ry="0"
  y="747.35699"
-         x="76.495468"
+ x="76.495468"
          height="25.116611"
          width="50.233223"
          id="rect3263-2-8"

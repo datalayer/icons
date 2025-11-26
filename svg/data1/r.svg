@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <svg
  xmlns="http://www.w3.org/2000/svg"
-   preserveAspectRatio="xMidYMid"
+ preserveAspectRatio="xMidYMid"
    width="724"
    height="724"
    viewBox="0 0 724 724"
@@ -12,7 +12,7 @@
     <linearGradient
  id="gradientFill-1"
  x1="0.74144253"
-       x2="590.86259"
+ x2="590.86259"
        y1="3.6658269"
        y2="593.78698"
        gradientUnits="userSpaceOnUse"
@@ -21,18 +21,18 @@
       <stop
  offset="0"
  stop-color="rgb(203,206,208)"
-         stop-opacity="1"
+ stop-opacity="1"
          id="stop10"/>
       <stop
  offset="1"
  stop-color="rgb(132,131,139)"
-         stop-opacity="1"
+ stop-opacity="1"
          id="stop12"/>
     </linearGradient>
     <linearGradient
  id="gradientFill-2"
  x1="301.02603"
-       x2="703.06751"
+ x2="703.06751"
        y1="151.40061"
        y2="553.44209"
        gradientUnits="userSpaceOnUse"
@@ -41,25 +41,25 @@
       <stop
  offset="0"
  stop-color="rgb(39,109,195)"
-         stop-opacity="1"
+ stop-opacity="1"
          id="stop15"/>
       <stop
  offset="1"
  stop-color="rgb(22,92,170)"
-         stop-opacity="1"
+ stop-opacity="1"
          id="stop17"/>
     </linearGradient>
   </defs>
   <path
  d="m 359.67713,565.64419 c -199.124,0 -360.54699991,-108.109 -360.54699991,-241.468 0,-133.36 161.42299991,-241.469003 360.54699991,-241.469003 199.125,0 360.547,108.109003 360.547,241.469003 0,133.359 -161.422,241.468 -360.547,241.468 z m 55.188,-388.531 c -151.352,0 -274.047,73.908 -274.047,165.078 0,91.17 122.695,165.078 274.047,165.078 151.351,0 263.046,-50.529 263.046,-165.078 0,-114.513 -111.695,-165.078 -263.046,-165.078 z"
  fill="url(#gradientFill-1)"
-     fill-rule="evenodd"
+ fill-rule="evenodd"
      id="path22"
      style="fill:url(#gradientFill-1)"/>
   <path
  d="m 548.22413,456.70719 c 0,0 21.822,6.585 34.5,13 4.399,2.226 12.01,6.668 17.5,12.5 5.378,5.712 8,11.5 8,11.5 l 86,145 -139,0.062 -65,-122.062 c 0,0 -13.31,-22.869 -21.5,-29.5 -6.832,-5.531 -9.745,-7.5 -16.5,-7.5 -4.702,0 -33.026,0 -33.026,0 l 0.026,158.974 -123,0.052 v -406.088 h 247 c 0,0 112.5,2.029 112.5,109.062 0,107.033 -107.5,115 -107.5,115 z m -53.5,-135.976 -74.463,-0.048 -0.037,69.05 74.5,-0.024 c 0,0 34.5,-0.107 34.5,-35.125 0,-35.722 -34.5,-33.853 -34.5,-33.853 z"
  fill="url(#gradientFill-2)"
-     fill-rule="evenodd"
+ fill-rule="evenodd"
      id="path24"
      style="fill:url(#gradientFill-2)"/>
 </svg>

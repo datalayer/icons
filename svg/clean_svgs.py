@@ -55,6 +55,9 @@ ELEMENTS_TO_REMOVE = [
     'metadata',
     'sodipodi:namedview',
     'rdf:RDF',
+    'inkscape:path-effect',
+    'inkscape:perspective',
+    'inkscape:grid',
 ]
 
 

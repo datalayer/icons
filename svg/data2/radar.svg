@@ -19,8 +19,7 @@
     <filter id="filter15696" x="-0.033344861" width="1.0666897" y="-0.43439755" height="1.8687952">
       <feGaussianBlur stdDeviation="6.7280306" id="feGaussianBlur15698"/>
     </filter>
-    <inkscape:perspective id="perspective6633"/>
-  </defs>
+    </defs>
   <g id="layer1" transform="translate(-320.93912,-433.79074)">
     <g id="g2426">
       <rect ry="6.9642859" rx="6.9642859" y="433.79074" x="321.42859" height="140" width="140" id="rect6661" style="opacity:1;fill:#000000;fill-opacity:1;fill-rule:nonzero;stroke:none;stroke-width:0.32499999;stroke-linecap:butt;stroke-linejoin:miter;marker:none;marker-start:none;marker-mid:none;marker-end:none;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1;visibility:visible;display:inline;overflow:visible;enable-background:accumulate"/>
