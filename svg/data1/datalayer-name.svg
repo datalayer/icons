@@ -1,100 +1,53 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <svg
-   xmlns:dc="http://purl.org/dc/elements/1.1/"
-   xmlns:cc="http://creativecommons.org/ns#"
-   xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
-   xmlns:svg="http://www.w3.org/2000/svg"
-   xmlns="http://www.w3.org/2000/svg"
-   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
-   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+ xmlns="http://www.w3.org/2000/svg"
    fill="none"
    viewBox="0 0 50 50"
    aria-hidden="true"
    version="1.1"
    id="svg853"
-   sodipodi:docname="datalayer-name.svg"
    width="50"
-   height="50"
-   inkscape:version="1.0.1 (c497b03c, 2020-09-10)">
-  <metadata
-     id="metadata859">
-    <rdf:RDF>
-      <cc:Work
-         rdf:about="">
-        <dc:format>image/svg+xml</dc:format>
-        <dc:type
-           rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
-        <dc:title />
-      </cc:Work>
-    </rdf:RDF>
-  </metadata>
-  <defs
-     id="defs857" />
-  <sodipodi:namedview
-     pagecolor="#ffffff"
-     bordercolor="#666666"
-     borderopacity="1"
-     objecttolerance="10"
-     gridtolerance="10"
-     guidetolerance="10"
-     inkscape:pageopacity="0"
-     inkscape:pageshadow="2"
-     inkscape:window-width="1541"
-     inkscape:window-height="1000"
-     id="namedview855"
-     showgrid="false"
-     inkscape:zoom="3.4606986"
-     inkscape:cx="-26.582702"
-     inkscape:cy="104.0252"
-     inkscape:window-x="61"
-     inkscape:window-y="41"
-     inkscape:window-maximized="0"
-     inkscape:current-layer="svg853"
-     inkscape:document-rotation="0" />
+   height="50">
   <g
-     id="g848"
-     transform="matrix(1.0211543,0,0,1.0211543,-0.16632631,0)">
+ id="g848"
+ transform="matrix(1.0211543,0,0,1.0211543,-0.16632631,0)">
     <path
-       fill="#e26d6d"
-       d="M 7.8625211,0 H 42.137458 V 6.8549873 H 7.8625211 Z m 0,0"
+ fill="#e26d6d"
+ d="M 7.8625211,0 H 42.137458 V 6.8549873 H 7.8625211 Z m 0,0"
        id="path847"
-       style="stroke-width:1.71375" />
+       style="stroke-width:1.71375"/>
     <path
-       fill="#f9cb07"
-       d="M 7.8625211,13.709975 H 42.137458 v 6.854987 H 7.8625211 Z m 0,0"
+ fill="#f9cb07"
+ d="M 7.8625211,13.709975 H 42.137458 v 6.854987 H 7.8625211 Z m 0,0"
        id="path849"
-       style="stroke-width:1.71375" />
+       style="stroke-width:1.71375"/>
     <path
-       fill="#49b3d9"
-       d="M 7.8625211,27.419949 H 42.137458 v 6.854988 H 7.8625211 Z m 0,0"
+ fill="#49b3d9"
+ d="M 7.8625211,27.419949 H 42.137458 v 6.854988 H 7.8625211 Z m 0,0"
        id="path851"
-       style="stroke-width:1.71375" />
+       style="stroke-width:1.71375"/>
   </g>
   <g
-     id="g2153"
-     transform="translate(12.081737,6.8393372)">
+ id="g2153"
+ transform="translate(12.081737,6.8393372)">
     <text
-       xml:space="preserve"
-       style="font-style:normal;font-weight:normal;font-size:15.0426px;line-height:1.25;font-family:sans-serif;fill:#666666;fill-opacity:1;stroke:none;stroke-width:0.376067"
+ style="font-style:normal;font-weight:normal;font-size:15.0426px;line-height:1.25;font-family:sans-serif;fill:#666666;fill-opacity:1;stroke:none;stroke-width:0.376067"
        x="-12.575609"
        y="43.815643"
        id="text1102"
        transform="scale(1.0090056,0.99107478)"><tspan
-         sodipodi:role="line"
-         id="tspan1100"
-         x="-12.575609"
+ id="tspan1100"
+ x="-12.575609"
          y="43.815643"
          style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-family:BebasNeue;-inkscape-font-specification:BebasNeue;fill:#666666;fill-opacity:1;stroke-width:0.376067">Data</tspan></text>
     <text
-       xml:space="preserve"
-       style="font-style:normal;font-weight:normal;font-size:15.0426px;line-height:1.25;font-family:sans-serif;fill:#9ea1af;fill-opacity:1;stroke:none;stroke-width:0.376067"
+ style="font-style:normal;font-weight:normal;font-size:15.0426px;line-height:1.25;font-family:sans-serif;fill:#9ea1af;fill-opacity:1;stroke:none;stroke-width:0.376067"
        x="9.8572435"
        y="43.815643"
        id="text1110"
        transform="scale(1.0090056,0.99107478)"><tspan
-         sodipodi:role="line"
-         id="tspan1108"
-         x="9.8572435"
+ id="tspan1108"
+ x="9.8572435"
          y="43.815643"
          style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-family:BebasNeue;-inkscape-font-specification:BebasNeue;fill:#9ea1af;fill-opacity:1;stroke-width:0.376067">layer</tspan></text>
   </g>

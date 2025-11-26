@@ -1,137 +1,95 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <svg
-   xmlns:dc="http://purl.org/dc/elements/1.1/"
-   xmlns:cc="http://creativecommons.org/ns#"
-   xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
-   xmlns:svg="http://www.w3.org/2000/svg"
-   xmlns="http://www.w3.org/2000/svg"
+ xmlns="http://www.w3.org/2000/svg"
    xmlns:xlink="http://www.w3.org/1999/xlink"
-   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
-   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
    viewBox="-147 -70 345 345"
    version="1.1"
    id="svg35"
-   sodipodi:docname="android.svg"
    width="345"
-   height="345"
-   inkscape:version="1.0.1 (c497b03c, 2020-09-10)">
-  <metadata
-     id="metadata41">
-    <rdf:RDF>
-      <cc:Work
-         rdf:about="">
-        <dc:format>image/svg+xml</dc:format>
-        <dc:type
-           rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
-        <dc:title></dc:title>
-      </cc:Work>
-    </rdf:RDF>
-  </metadata>
-  <defs
-     id="defs39" />
-  <sodipodi:namedview
-     pagecolor="#ffffff"
-     bordercolor="#666666"
-     borderopacity="1"
-     objecttolerance="10"
-     gridtolerance="10"
-     guidetolerance="10"
-     inkscape:pageopacity="0"
-     inkscape:pageshadow="2"
-     inkscape:window-width="1093"
-     inkscape:window-height="734"
-     id="namedview37"
-     showgrid="false"
-     inkscape:zoom="0.80779275"
-     inkscape:cx="-58.94272"
-     inkscape:cy="98.77019"
-     inkscape:window-x="0"
-     inkscape:window-y="25"
-     inkscape:window-maximized="0"
-     inkscape:current-layer="svg35" />
+   height="345">
   <g
-     fill="#a4c639"
-     id="g25"
+ fill="#a4c639"
+ id="g25"
      transform="translate(28)">
     <use
-       stroke-width="14.4"
-       xlink:href="#b"
+ stroke-width="14.4"
+ xlink:href="#b"
        stroke="#ffffff"
        id="use10"
        x="0"
        y="0"
        width="100%"
-       height="100%" />
+       height="100%"/>
     <use
-       xlink:href="#a"
-       transform="scale(-1,1)"
+ xlink:href="#a"
+ transform="scale(-1,1)"
        id="use12"
        x="0"
        y="0"
        width="100%"
-       height="100%" />
+       height="100%"/>
     <g
-       id="a"
-       stroke="#ffffff"
+ id="a"
+ stroke="#ffffff"
        stroke-width="7.2">
       <rect
-         rx="6.5"
-         transform="rotate(29)"
+ rx="6.5"
+ transform="rotate(29)"
          height="86"
          width="13"
          y="-86"
          x="14"
-         id="rect14" />
+         id="rect14"/>
       <rect
-         id="c"
-         rx="24"
+ id="c"
+ rx="24"
          height="133"
          width="48"
          y="41"
-         x="-143" />
+         x="-143"/>
       <use
-         y="97"
-         x="85"
+ y="97"
+ x="85"
          xlink:href="#c"
          id="use17"
          width="100%"
-         height="100%" />
+         height="100%"/>
     </g>
     <g
-       id="b">
+ id="b">
       <ellipse
-         cy="41"
-         rx="91"
+ cy="41"
+ rx="91"
          ry="84"
          id="ellipse20"
-         cx="0" />
+         cx="0"/>
       <rect
-         rx="22"
-         height="182"
+ rx="22"
+ height="182"
          width="182"
          y="20"
          x="-91"
-         id="rect22" />
+         id="rect22"/>
     </g>
   </g>
   <g
-     stroke="#ffffff"
-     stroke-width="7.2"
+ stroke="#ffffff"
+ stroke-width="7.2"
      fill="#ffffff"
      id="g33"
      transform="translate(28)">
     <path
-       d="M -95,44.5 H 95"
-       id="path27" />
+ d="M -95,44.5 H 95"
+ id="path27"/>
     <circle
-       cx="-42"
-       r="4"
+ cx="-42"
+ r="4"
        id="circle29"
-       cy="0" />
+       cy="0"/>
     <circle
-       cx="42"
-       r="4"
+ cx="42"
+ r="4"
        id="circle31"
-       cy="0" />
+       cy="0"/>
   </g>
 </svg>

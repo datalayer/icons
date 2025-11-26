@@ -1,79 +1,38 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <svg
-   xmlns:dc="http://purl.org/dc/elements/1.1/"
-   xmlns:cc="http://creativecommons.org/ns#"
-   xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
-   xmlns:svg="http://www.w3.org/2000/svg"
-   xmlns="http://www.w3.org/2000/svg"
-   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
-   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+ xmlns="http://www.w3.org/2000/svg"
    id="emoji"
    viewBox="0 0 72 72"
-   version="1.1"
-   sodipodi:docname="wheel-of-dharma-grey.svg"
-   inkscape:version="1.0.1 (c497b03c, 2020-09-10)">
-  <metadata
-     id="metadata1457">
-    <rdf:RDF>
-      <cc:Work
-         rdf:about="">
-        <dc:format>image/svg+xml</dc:format>
-        <dc:type
-           rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
-      </cc:Work>
-    </rdf:RDF>
-  </metadata>
-  <defs
-     id="defs1455" />
-  <sodipodi:namedview
-     pagecolor="#ffffff"
-     bordercolor="#666666"
-     borderopacity="1"
-     objecttolerance="10"
-     gridtolerance="10"
-     guidetolerance="10"
-     inkscape:pageopacity="0"
-     inkscape:pageshadow="2"
-     inkscape:window-width="1419"
-     inkscape:window-height="914"
-     id="namedview1453"
-     showgrid="false"
-     inkscape:zoom="10.458333"
-     inkscape:cx="36"
-     inkscape:cy="36"
-     inkscape:window-x="0"
-     inkscape:window-y="25"
-     inkscape:window-maximized="0"
-     inkscape:current-layer="emoji" />
+   version="1.1">
   <rect
-     x="12"
-     y="12"
+ x="12"
+ y="12"
      width="48"
      height="47.830002"
      fill="#b399c8"
      id="rect1426"
-     style="fill:#d0cfce;fill-opacity:1" />
+     style="fill:#d0cfce;fill-opacity:1"/>
   <g
-     id="line">
+ id="line">
     <path
-       fill="none"
-       stroke="#000"
+ fill="none"
+ stroke="#000"
        stroke-linecap="round"
        stroke-linejoin="round"
        stroke-width="3"
        d="m51.01 35.99a15 15 0 1 1-15-15 15 15 0 0 1 15 15z"
-       id="path1429" />
+       id="path1429"/>
     <path
-       fill="none"
-       stroke="#000"
+ fill="none"
+ stroke="#000"
        stroke-linecap="round"
        stroke-linejoin="round"
        stroke-width="3"
        d="m41 36a5 5 0 1 1-5-5.001 5.001 5.001 0 0 1 5 5.001z"
-       id="path1431" />
+       id="path1431"/>
     <line
-       x1="36"
-       x2="36"
+ x1="36"
+ x2="36"
        y1="31"
        y2="19"
        fill="none"
@@ -81,10 +40,10 @@
        stroke-linecap="round"
        stroke-linejoin="round"
        stroke-width="3"
-       id="line1433" />
+       id="line1433"/>
     <line
-       x1="36"
-       x2="36"
+ x1="36"
+ x2="36"
        y1="53"
        y2="41"
        fill="none"
@@ -92,10 +51,10 @@
        stroke-linecap="round"
        stroke-linejoin="round"
        stroke-width="3"
-       id="line1435" />
+       id="line1435"/>
     <rect
-       x="12"
-       y="12"
+ x="12"
+ y="12"
        width="48"
        height="48"
        fill="none"
@@ -103,10 +62,10 @@
        stroke-linecap="round"
        stroke-linejoin="round"
        stroke-width="2"
-       id="rect1437" />
+       id="rect1437"/>
     <line
-       x1="41"
-       x2="53"
+ x1="41"
+ x2="53"
        y1="36"
        y2="36"
        fill="none"
@@ -114,10 +73,10 @@
        stroke-linecap="round"
        stroke-linejoin="round"
        stroke-width="3"
-       id="line1439" />
+       id="line1439"/>
     <line
-       x1="19"
-       x2="31"
+ x1="19"
+ x2="31"
        y1="36"
        y2="36"
        fill="none"
@@ -125,10 +84,10 @@
        stroke-linecap="round"
        stroke-linejoin="round"
        stroke-width="3"
-       id="line1441" />
+       id="line1441"/>
     <line
-       x1="39.54"
-       x2="48.02"
+ x1="39.54"
+ x2="48.02"
        y1="32.46"
        y2="23.98"
        fill="none"
@@ -136,10 +95,10 @@
        stroke-linecap="round"
        stroke-linejoin="round"
        stroke-width="3"
-       id="line1443" />
+       id="line1443"/>
     <line
-       x1="23.98"
-       x2="32.46"
+ x1="23.98"
+ x2="32.46"
        y1="48.02"
        y2="39.54"
        fill="none"
@@ -147,10 +106,10 @@
        stroke-linecap="round"
        stroke-linejoin="round"
        stroke-width="3"
-       id="line1445" />
+       id="line1445"/>
     <line
-       x1="32.46"
-       x2="23.98"
+ x1="32.46"
+ x2="23.98"
        y1="32.46"
        y2="23.98"
        fill="none"
@@ -158,10 +117,10 @@
        stroke-linecap="round"
        stroke-linejoin="round"
        stroke-width="3"
-       id="line1447" />
+       id="line1447"/>
     <line
-       x1="48.02"
-       x2="39.54"
+ x1="48.02"
+ x2="39.54"
        y1="48.02"
        y2="39.54"
        fill="none"
@@ -169,6 +128,6 @@
        stroke-linecap="round"
        stroke-linejoin="round"
        stroke-width="3"
-       id="line1449" />
+       id="line1449"/>
   </g>
 </svg>

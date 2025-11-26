@@ -1,67 +1,22 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <svg
-   xmlns:dc="http://purl.org/dc/elements/1.1/"
-   xmlns:cc="http://creativecommons.org/ns#"
-   xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
-   xmlns:svg="http://www.w3.org/2000/svg"
-   xmlns="http://www.w3.org/2000/svg"
-   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
-   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+ xmlns="http://www.w3.org/2000/svg"
    id="Layer_1"
    viewBox="0 0 350 349.99999"
    version="1.1"
-   sodipodi:docname="ovh-cloud (1).svg"
    width="350"
-   height="350"
-   inkscape:version="1.0.1 (c497b03c, 2020-09-10)">
-  <metadata
-     id="metadata860">
-    <rdf:RDF>
-      <cc:Work
-         rdf:about="">
-        <dc:format>image/svg+xml</dc:format>
-        <dc:type
-           rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
-        <dc:title>OVHcloud_master_logo_fullcolor_RGB</dc:title>
-      </cc:Work>
-    </rdf:RDF>
-  </metadata>
-  <sodipodi:namedview
-     pagecolor="#ffffff"
-     bordercolor="#666666"
-     borderopacity="1"
-     objecttolerance="10"
-     gridtolerance="10"
-     guidetolerance="10"
-     inkscape:pageopacity="0"
-     inkscape:pageshadow="2"
-     inkscape:window-width="1642"
-     inkscape:window-height="775"
-     id="namedview858"
-     showgrid="false"
-     fit-margin-top="0"
-     fit-margin-left="0"
-     fit-margin-right="0"
-     fit-margin-bottom="0"
-     inkscape:zoom="0.75388387"
-     inkscape:cx="-215.07434"
-     inkscape:cy="82.868571"
-     inkscape:window-x="0"
-     inkscape:window-y="25"
-     inkscape:window-maximized="0"
-     inkscape:current-layer="Layer_1"
-     inkscape:document-rotation="0" />
+   height="350">
   <defs
-     id="defs835">
+ id="defs835">
     <style
-       type="text/css"
-       id="style833">.cls-1,.cls-2{fill:#000e9c;}.cls-1{fill-rule:evenodd;}</style>
+ type="text/css"
+ id="style833">.cls-1,.cls-2{fill:#000e9c;}.cls-1{fill-rule:evenodd;}</style>
   </defs>
   <title
-     id="title837">OVHcloud_master_logo_fullcolor_RGB</title>
+ id="title837">OVHcloud_master_logo_fullcolor_RGB</title>
   <path
-     class="cls-1"
-     d="M 327.45678,76.043162 A 179.52819,179.52819 0 0 1 310.71276,275.22543 H 214.72562 L 244.2739,222.9787 h -39.08431 l 46.06845,-81.16823 H 290.5662 L 327.45678,76.132703 Z M 137.90009,275.22543 H 40.032611 A 177.2449,177.2449 0 0 1 23.064736,75.595461 L 86.548766,185.86427 156.52447,64 H 259.49574 L 137.94486,275.13589 v 0 0 z"
+ class="cls-1"
+ d="M 327.45678,76.043162 A 179.52819,179.52819 0 0 1 310.71276,275.22543 H 214.72562 L 244.2739,222.9787 h -39.08431 l 46.06845,-81.16823 H 290.5662 L 327.45678,76.132703 Z M 137.90009,275.22543 H 40.032611 A 177.2449,177.2449 0 0 1 23.064736,75.595461 L 86.548766,185.86427 156.52447,64 H 259.49574 L 137.94486,275.13589 v 0 0 z"
      id="path839"
-     style="stroke-width:4.47701" />
+     style="stroke-width:4.47701"/>
 </svg>

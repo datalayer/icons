@@ -1,71 +1,25 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <svg
-   xmlns:dc="http://purl.org/dc/elements/1.1/"
-   xmlns:cc="http://creativecommons.org/ns#"
-   xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
-   xmlns:svg="http://www.w3.org/2000/svg"
-   xmlns="http://www.w3.org/2000/svg"
-   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
-   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+ xmlns="http://www.w3.org/2000/svg"
    version="1.1"
    viewBox="0 0 64 64"
    id="svg847"
-   sodipodi:docname="opensearch.svg"
    width="64"
-   height="64"
-   inkscape:version="1.0.1 (c497b03c, 2020-09-10)">
-  <metadata
-     id="metadata853">
-    <rdf:RDF>
-      <cc:Work
-         rdf:about="">
-        <dc:format>image/svg+xml</dc:format>
-        <dc:type
-           rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
-        <dc:title>OpenSearch logo</dc:title>
-      </cc:Work>
-    </rdf:RDF>
-  </metadata>
-  <defs
-     id="defs851" />
-  <sodipodi:namedview
-     pagecolor="#ffffff"
-     bordercolor="#666666"
-     borderopacity="1"
-     objecttolerance="10"
-     gridtolerance="10"
-     guidetolerance="10"
-     inkscape:pageopacity="0"
-     inkscape:pageshadow="2"
-     inkscape:window-width="1584"
-     inkscape:window-height="954"
-     id="namedview849"
-     showgrid="false"
-     fit-margin-top="0"
-     fit-margin-left="0"
-     fit-margin-right="0"
-     fit-margin-bottom="0"
-     inkscape:zoom="1.9139785"
-     inkscape:cx="186"
-     inkscape:cy="33.000002"
-     inkscape:window-x="0"
-     inkscape:window-y="25"
-     inkscape:window-maximized="0"
-     inkscape:current-layer="svg847" />
+   height="64">
   <title
-     id="title833">OpenSearch logo</title>
+ id="title833">OpenSearch logo</title>
   <desc
-     id="desc835">Search engine software fork of Elasticsearch</desc>
+ id="desc835">Search engine software fork of Elasticsearch</desc>
   <path
-     d="m 61.7374,23.500002 c -1.2496,0 -2.2626,1.013 -2.2626,2.2626 0,18.6188 -15.0934,33.7122 -33.7122,33.7122 -1.2496,0 -2.2626,1.013 -2.2626,2.2626 0,1.2496 1.013,2.2626 2.2626,2.2626 21.1179,0 38.2374,-17.1195 38.2374,-38.2374 0,-1.2496 -1.013,-2.2626 -2.2626,-2.2626 z"
-     fill="#00a3e0"
-     id="path837" />
+ d="m 61.7374,23.500002 c -1.2496,0 -2.2626,1.013 -2.2626,2.2626 0,18.6188 -15.0934,33.7122 -33.7122,33.7122 -1.2496,0 -2.2626,1.013 -2.2626,2.2626 0,1.2496 1.013,2.2626 2.2626,2.2626 21.1179,0 38.2374,-17.1195 38.2374,-38.2374 0,-1.2496 -1.013,-2.2626 -2.2626,-2.2626 z"
+ fill="#00a3e0"
+     id="path837"/>
   <path
-     d="m 48.0814,38.000002 c 2.1758,-3.5495 4.2801,-8.2822 3.8661,-14.9079 C 51.0899,9.367302 38.6589,-1.044628 26.9206,0.08373201 22.3253,0.52547201 17.6068,4.271202 18.026,10.980502 c 0.1822,2.9156 1.6092,4.6364 3.9284,5.9594 2.2074,1.2593 5.0434,2.057 8.2584,2.9612 3.8834,1.0923 8.3881,2.3192 11.8503,4.8706 4.1494,3.0579 6.986,6.6026 6.0183,13.2283 z"
-     fill="#b9d9eb"
-     id="path839" />
+ d="m 48.0814,38.000002 c 2.1758,-3.5495 4.2801,-8.2822 3.8661,-14.9079 C 51.0899,9.367302 38.6589,-1.044628 26.9206,0.08373201 22.3253,0.52547201 17.6068,4.271202 18.026,10.980502 c 0.1822,2.9156 1.6092,4.6364 3.9284,5.9594 2.2074,1.2593 5.0434,2.057 8.2584,2.9612 3.8834,1.0923 8.3881,2.3192 11.8503,4.8706 4.1494,3.0579 6.986,6.6026 6.0183,13.2283 z"
+ fill="#b9d9eb"
+     id="path839"/>
   <path
-     d="m 3.9186101,14.000002 c -2.17585,3.5495 -4.28011604,8.2822 -3.86611704,14.9079 0.8575789,13.7248 13.28860994,24.1367 25.02690994,23.0084 4.5953,-0.4418 9.3138,-4.1875 8.8946,-10.8968 -0.1822,-2.9156 -1.6093,-4.6364 -3.9284,-5.9594 -2.2074,-1.2593 -5.0434,-2.057 -8.2584,-2.9612 -3.8834,-1.0923 -8.3881,-2.3192 -11.8502499,-4.8706 -4.14948,-3.0579 -6.98603,-6.6026 -6.01834,-13.2283 z"
-     fill="#00a3e0"
-     id="path841" />
+ d="m 3.9186101,14.000002 c -2.17585,3.5495 -4.28011604,8.2822 -3.86611704,14.9079 0.8575789,13.7248 13.28860994,24.1367 25.02690994,23.0084 4.5953,-0.4418 9.3138,-4.1875 8.8946,-10.8968 -0.1822,-2.9156 -1.6093,-4.6364 -3.9284,-5.9594 -2.2074,-1.2593 -5.0434,-2.057 -8.2584,-2.9612 -3.8834,-1.0923 -8.3881,-2.3192 -11.8502499,-4.8706 -4.14948,-3.0579 -6.98603,-6.6026 -6.01834,-13.2283 z"
+ fill="#00a3e0"
+     id="path841"/>
 </svg>
