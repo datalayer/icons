@@ -244,7 +244,7 @@ async function buildExports(flavors) {
 async function main(package) {
 
   const cjsPackageJson = { module: './esm/index.js', sideEffects: false };
-  const esmPackageJson = { type: 'module', sideEffects: false };
+  const esmPackageJson = { type: 'module', sideEffects: false, peerDependencies: { react: '*' } };
 
   console.log(`Building ${package} package...`);
 
