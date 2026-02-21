@@ -1,3 +1,3 @@
-# Ξ 🎉 Datalayer Icons
+# ☰ 🎉 Datalayer Icons
 
 Every subfolder represents a `style`.
