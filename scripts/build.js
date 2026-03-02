@@ -15,7 +15,16 @@ let transforms = {
 
   'icons-react': async (svg, componentName, format, style) => {
 
-    let component = await svgr(svg, { ref: true, titleProp: true }, { componentName })
+    // Strip fill="currentColor" from child SVG elements (path, circle, rect, etc.)
+    // so they INHERIT from the <svg> root, which can be overridden by caller props.
+    // Without this, child elements always resolve currentColor via CSS `color`,
+    // ignoring any `fill` prop passed to the <svg>.
+    const svgCleaned = svg.replace(
+      /<(path|circle|rect|polygon|polyline|ellipse|line|g)\b([^>]*?)\s+fill\s*=\s*"currentColor"/g,
+      '<$1$2'
+    );
+
+    let component = await svgr(svgCleaned, { ref: true, titleProp: true }, { componentName })
     let { code } = await babel.transformAsync(component, {
       plugins: [[require('@babel/plugin-transform-react-jsx'), { useBuiltIns: true }]],
     })
@@ -48,7 +57,18 @@ let transforms = {
 
     if (!componentName.endsWith('NoopIcon')) {
       if (style !== 'data2') {
-        code = code.replaceAll(/fill: "([#a-zA-Z0-9]+)",/g, `fill: colored ? '$1' : (['#fff', '#fffff', 'white', '#FFF', '#FFFFFF'].includes('$1') ? 'white' : 'currentColor'),`);
+        // White fills stay white; all other fills use currentColor (inherits CSS color)
+        // when colored=false, or preserve the original colour when colored=true.
+        const WHITE_FILLS = new Set(['#fff', '#fffff', 'white', '#FFF', '#FFFFFF']);
+        code = code.replaceAll(/fill: "([#a-zA-Z0-9]+)",/g, (_match, origFill) => {
+          if (origFill === 'currentColor') {
+            return `fill: "currentColor",`;
+          }
+          if (WHITE_FILLS.has(origFill)) {
+            return `fill: colored ? '${origFill}' : 'white',`;
+          }
+          return `fill: colored ? '${origFill}' : 'currentColor',`;
+        });
       }
     }
 
