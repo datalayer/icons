@@ -35,6 +35,37 @@ render(
 )
 ```
 
+Example with `AiAgentIcon` and theme-aware color.
+
+```tsx
+import React from 'react';
+import { AiAgentIcon } from '@datalayer/icons-react';
+import {
+  ThemedProvider,
+  AppearanceControlsWithStore,
+  useThemeStore,
+  useColorPalette,
+} from '@datalayer/primer-addons';
+
+const AiAgentIconExample = () => {
+  const palette = useColorPalette();
+
+  return (
+    <div style={{ display: 'flex', alignItems: 'center', gap: 12 }}>
+      <AiAgentIcon size="large" colored style={{ color: palette.primary }} />
+      <AiAgentIcon size="large" style={{ color: palette.primary }} />
+    </div>
+  );
+};
+
+export const App = () => (
+  <ThemedProvider useStore={useThemeStore}>
+    <AppearanceControlsWithStore useStore={useThemeStore} />
+    <AiAgentIconExample />
+  </ThemedProvider>
+);
+```
+
 ## For JupyterLab developers
 
 [JupyterLab](https://github.com/jupyterlab/jupyterlab) icons need to be created with the [LabIcon](https://github.com/jupyterlab/jupyterlab/blob/main/packages/ui-components/README.md#labicon---set-up-and-render-icons) class. JupyterLab machinary are some restrictions as not being able to create a `LabIcon` from a React.js component (though being able to export a React.js component from a LabIcon), or not being able to load a SVG from a remote location (like a HTTP or S3 server).
@@ -70,7 +101,7 @@ For that, the initial steps is to clone this repository and install the dependen
 ```bash
 git clone https://github.com/datalayer/icons
 cd icons
-yarn
+npm install
 ```
 
 Designers will create a SVG and add it in one of the `svg` subfolder of this repository.
@@ -106,9 +137,9 @@ You can download a `PNG` or `SVG` version of the icon from https://datalayer.des
 To view an gallery of available icons, run the following commands.
 
 ```bash
-yarn
+npm install
 npm run build
-npm vite
+npm run dev
 ```
 
 ## Icon Properties
