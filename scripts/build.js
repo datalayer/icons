@@ -107,6 +107,14 @@ let transforms = {
       '  const _svgEl = $1;\n  if (!inverseColormode) return _svgEl;\n  return /*#__PURE__*/React.createElement(_DlIconInverseColormode, {\n    mode: typeof inverseColormode === "string" ? inverseColormode : undefined\n  }, _svgEl);\n}\nconst ForwardRef'
     );
 
+    // Ensure the explicit `color` prop always wins over inherited
+    // `--datalayer-icon-fg` by setting a local CSS variable on the <svg>.
+    // This keeps existing behavior intact when `color` is not provided.
+    code = code.replace(
+      '  }, props),',
+      '  }, props, {\n    style: props && props.color != null ? Object.assign({}, props.style, {\n      "--datalayer-icon-fg": props.color\n    }) : props && props.style\n  }),'
+    );
+
     if (format === 'esm') {
       return code
     }

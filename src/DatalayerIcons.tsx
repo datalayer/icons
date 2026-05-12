@@ -125,7 +125,7 @@ const IconLine = (props: { name: string, icon: any }) => {
                   justifyContent: 'center',
                   p: 1,
                   borderRadius: 2,
-                  bg: 'canvas.default',
+                  backgroundColor: inversePalette.bg,
                   border: '1px solid',
                   borderColor: inversePalette.primary,
                   '--datalayer-icon-fg': inversePalette.primary,
@@ -136,6 +136,13 @@ const IconLine = (props: { name: string, icon: any }) => {
             </BaseStyles>
           </ThemeProvider>
         </Box>
+      </BorderStyle>
+      <BorderStyle>
+        <SpanStyle>
+          <span>
+            <IconComponent size="large" color={palette.flame} />
+          </span>
+        </SpanStyle>
       </BorderStyle>
       <ThemeProvider colorMode="day">
         <IconButton aria-labelledby="" size="medium" sx={{marginRight: "15px"}} icon={ColoredStyledIcon} ref={refDayColoredStyled} onClick={(e: React.MouseEvent<HTMLElement>) => downloadPNG(e, refDayColoredStyled, "day_colored")}/>
@@ -335,7 +342,7 @@ const DatalayerIcons = () => {
                 <Link href="https://github.com/datalayer/icons" target="_blank">datalayer/icons repository</Link>.
               </Text>
               <Text as="p" sx={{ mt: 2, mb: 0, color: 'fg.muted' }}>
-                Preview columns configuration: (1) themed colored icon, (2) themed colored icon with border, (3) themed plain icon, (4) themed previewed in inverse colormode.
+                Preview columns configuration: (1) themed colored icon, (2) themed colored icon with border, (3) themed plain icon, (4) themed previewed in inverse colormode, (5) icon with explicit color attribute using palette flame.
               </Text>
               <Text as="p" sx={{ mt: 1, mb: 0, color: 'fg.muted' }}>
                 Open{' '}
