@@ -18,6 +18,7 @@ import {
   AppearanceControlsWithStore,
   useThemeStore,
   useColorPalette,
+  getColorPalette,
 } from '@datalayer/primer-addons';
 import { toPng, toSvg } from 'html-to-image';
 import styled from "styled-components";
@@ -38,8 +39,8 @@ const BorderStyle = styled.span`
   }
 `;
 
-const IconLine = (props: { name: string, icon: any }) => {
-  const { name, icon } = props;
+const IconLine = (props: { name: string, icon: any, inversePreviewMode: 'day' | 'night', inversePalette: any }) => {
+  const { name, icon, inversePreviewMode, inversePalette } = props;
   const refColored = useRef<any>(null);
   const refDayColoredStyled = useRef<any>(null);
   const refNightColredStyled = useRef<any>(null);
@@ -110,9 +111,26 @@ const IconLine = (props: { name: string, icon: any }) => {
       </BorderStyle>
       <BorderStyle>
         <SpanStyle>
-          <span>
-            <ThemeProvider colorMode="night">
-              <IconComponent size="large" style={{ color: 'rgb(173, 186, 199)' }} />
+          <span style={{ display: 'inline-flex' }}>
+            <ThemeProvider colorMode={inversePreviewMode}>
+              <BaseStyles style={{ display: 'inline-flex' }}>
+                <Box
+                  as="span"
+                  sx={{
+                    display: 'inline-flex',
+                    alignItems: 'center',
+                    justifyContent: 'center',
+                    px: 1,
+                    py: 1,
+                    borderRadius: 2,
+                    backgroundColor: inversePalette.isLight ? '#ffffff' : '#0d1117',
+                    border: '1px solid',
+                    borderColor: inversePalette.primary,
+                  }}
+                >
+                  <IconComponent colored size="large" inverseColormode={inversePreviewMode === 'night' ? 'dark' : 'light'} />
+                </Box>
+              </BaseStyles>
             </ThemeProvider>
           </span>
         </SpanStyle>
@@ -215,10 +233,14 @@ const SummaryIcons = (props: {names: string[], icons: any}) => {
 
 const DetailledIcons = (props: {names: string[], icons: any}) => {
   const { names, icons } = props;
+  const palette = useColorPalette();
+  const { theme } = useThemeStore();
+  const inversePreviewMode: 'day' | 'night' = palette.isLight ? 'night' : 'day';
+  const inversePalette = getColorPalette(theme, palette.isLight ? 'dark' : 'light');
   return (
     <>
       {names.map((name) => {
-        return <IconLine name={name} icon={icons[name]} key={name}/>
+        return <IconLine name={name} icon={icons[name]} inversePreviewMode={inversePreviewMode} inversePalette={inversePalette} key={name}/>
       })}
     </>
   )
@@ -315,13 +337,15 @@ const DatalayerIcons = () => {
                 <Link href="https://github.com/datalayer/icons" target="_blank">datalayer/icons repository</Link>.
               </Text>
               <Text as="p" sx={{ mt: 2, mb: 0, color: 'fg.muted' }}>
-                Preview columns configuration: (1) themed colored icon, (2) themed colored icon with border, (3) themed plain icon, (4) themed plain icon previewed in night mode.
-                {' '}Open{' '}
+                Preview columns configuration: (1) themed colored icon, (2) themed colored icon with border, (3) themed plain icon, (4) themed previewed in inverse colormode.
+              </Text>
+              <Text as="p" sx={{ mt: 1, mb: 0, color: 'fg.muted' }}>
+                Open{' '}
                 <Link
                   href="https://github.com/datalayer/icons/blob/main/README.md"
                   target="_blank"
                 >
-                  AiAgentIcon details and code example
+                  code example
                 </Link>
                 {' '}for a concrete usage snippet.
               </Text>

@@ -5,7 +5,11 @@ const { rimraf } = require('rimraf');
 const babel = require('@babel/core');
 const camelcase = require('camelcase');
 const cheerio = require('cheerio');
-const { transform: svgr } = require('@svgr/core');
+// `@svgr/core` v6+ exports its async converter as `default`; older v5 exposed
+// `transform`. Handle both so the build works regardless of the installed
+// version.
+const svgrCore = require('@svgr/core');
+const svgr = svgrCore.transform || svgrCore.default;
 
 const { compile: compileVue } = require('@vue/compiler-dom')
 
@@ -79,6 +83,27 @@ let transforms = {
         });
       }
     }
+
+    // Inject `inverseColormode` prop support. When truthy, the rendered SVG is
+    // wrapped in a <span> whose `data-color-mode` is the inverse of the nearest
+    // ancestor's resolved color mode (or the explicit value if passed as
+    // 'light' | 'dark'). This causes Primer's CSS variables to resolve to the
+    // opposite theme inside the wrapper, effectively rendering the icon in the
+    // inverted colormode without affecting siblings.
+    const inverseHelper = `function _DlIconInverseColormode({\n  mode,\n  children\n}) {\n  const ref = React.useRef(null);\n  const [resolved, setResolved] = React.useState(typeof mode === "string" ? mode : null);\n  React.useLayoutEffect(() => {\n    if (typeof mode === "string") {\n      setResolved(mode);\n      return;\n    }\n    if (typeof document === "undefined") return;\n    let cur = null;\n    let el = ref.current && ref.current.parentElement;\n    while (el) {\n      const m = el.getAttribute && el.getAttribute("data-color-mode");\n      if (m) { cur = m; break; }\n      el = el.parentElement;\n    }\n    if (!cur || cur === "auto") {\n      cur = (typeof window !== "undefined" && window.matchMedia && window.matchMedia("(prefers-color-scheme: dark)").matches) ? "dark" : "light";\n    }\n    setResolved(cur === "dark" ? "light" : "dark");\n  }, [mode]);\n  return /*#__PURE__*/React.createElement("span", {\n    ref: ref,\n    "data-color-mode": resolved || "light",\n    "data-light-theme": "light",\n    "data-dark-theme": "dark",\n    style: { display: "inline-flex", lineHeight: 0 }\n  }, children);\n}\n\n`;
+
+    // 1) Inject the helper before the icon component declaration.
+    code = code.replace(/(function \w+\(\{)/, inverseHelper + '$1');
+
+    // 2) Add `inverseColormode` to the destructured props (just before `...props`).
+    code = code.replace(/(  \.\.\.props\n\}, svgRef\) \{)/, '  inverseColormode,\n$1');
+
+    // 3) Wrap the returned svg element so it can be conditionally placed inside
+    //    the inverse-colormode wrapper.
+    code = code.replace(
+      /  return (\/\*#__PURE__\*\/React\.createElement\("svg",[\s\S]*?\));\n\}\nconst ForwardRef/,
+      '  const _svgEl = $1;\n  if (!inverseColormode) return _svgEl;\n  return /*#__PURE__*/React.createElement(_DlIconInverseColormode, {\n    mode: typeof inverseColormode === "string" ? inverseColormode : undefined\n  }, _svgEl);\n}\nconst ForwardRef'
+    );
 
     if (format === 'esm') {
       return code
@@ -170,7 +195,7 @@ async function buildIcons(package, flavor, format) {
 
       let types = package === 'icons-react'
           ? `import * as React from 'react';
-declare const ${componentName}: React.ForwardRefExoticComponent<React.PropsWithoutRef<React.SVGProps<SVGSVGElement>> & { title?: string, titleId?: string, size?: "small" | "medium" | "large" | number, colored?: boolean } & React.RefAttributes<SVGSVGElement>>;
+declare const ${componentName}: React.ForwardRefExoticComponent<React.PropsWithoutRef<React.SVGProps<SVGSVGElement>> & { title?: string, titleId?: string, size?: "small" | "medium" | "large" | number, colored?: boolean, inverseColormode?: boolean | "light" | "dark" } & React.RefAttributes<SVGSVGElement>>;
 export default ${componentName};`
           : `import type { FunctionalComponent, HTMLAttributes, VNodeProps } from 'vue';
 declare const ${componentName}: FunctionalComponent<HTMLAttributes & VNodeProps>;
