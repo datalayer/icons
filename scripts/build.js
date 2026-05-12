@@ -5,7 +5,7 @@ const { rimraf } = require('rimraf');
 const babel = require('@babel/core');
 const camelcase = require('camelcase');
 const cheerio = require('cheerio');
-const svgr = require('@svgr/core').default;
+const { transform: svgr } = require('@svgr/core');
 
 const { compile: compileVue } = require('@vue/compiler-dom')
 
@@ -24,9 +24,17 @@ let transforms = {
       '<$1$2'
     );
 
-    let component = await svgr(svgCleaned, { ref: true, titleProp: true }, { componentName })
+    let component = await svgr(
+      svgCleaned,
+      {
+        ref: true,
+        titleProp: true,
+        plugins: ['@svgr/plugin-svgo', '@svgr/plugin-jsx'],
+      },
+      { componentName }
+    )
     let { code } = await babel.transformAsync(component, {
-      plugins: [[require('@babel/plugin-transform-react-jsx'), { useBuiltIns: true }]],
+      plugins: [[require('@babel/plugin-transform-react-jsx'), { useBuiltIns: true, throwIfNamespace: false }]],
     })
 
     const SIZE_MAP = {
