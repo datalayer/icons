@@ -69,17 +69,19 @@ let transforms = {
 
     if (!componentName.endsWith('NoopIcon')) {
       if (style !== 'data2') {
-        // White fills stay white; all other fills use currentColor (inherits CSS color)
-        // when colored=false, or preserve the original colour when colored=true.
+        // White fills stay white; all other fills use var(--datalayer-icon-fg)
+        // (falls back to currentColor) when colored=false, or preserve the
+        // original colour when colored=true. The var lets each icon "auto
+        // detect" the active theme primary colour set by an ancestor.
         const WHITE_FILLS = new Set(['#fff', '#fffff', 'white', '#FFF', '#FFFFFF']);
         code = code.replaceAll(/fill: "([#a-zA-Z0-9]+)",/g, (_match, origFill) => {
           if (origFill === 'currentColor') {
-            return `fill: "currentColor",`;
+            return `fill: "var(--datalayer-icon-fg, currentColor)",`;
           }
           if (WHITE_FILLS.has(origFill)) {
             return `fill: colored ? '${origFill}' : 'white',`;
           }
-          return `fill: colored ? '${origFill}' : 'currentColor',`;
+          return `fill: colored ? '${origFill}' : 'var(--datalayer-icon-fg, currentColor)',`;
         });
       }
     }

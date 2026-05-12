@@ -39,8 +39,12 @@ const BorderStyle = styled.span`
   }
 `;
 
-const IconLine = (props: { name: string, icon: any, inversePreviewMode: 'day' | 'night', inversePalette: any }) => {
-  const { name, icon, inversePreviewMode, inversePalette } = props;
+const IconLine = (props: { name: string, icon: any }) => {
+  const { name, icon } = props;
+  const palette = useColorPalette();
+  const { theme } = useThemeStore();
+  const inversePreviewMode: 'day' | 'night' = palette.isLight ? 'night' : 'day';
+  const inversePalette = getColorPalette(theme, palette.isLight ? 'dark' : 'light');
   const refColored = useRef<any>(null);
   const refDayColoredStyled = useRef<any>(null);
   const refNightColredStyled = useRef<any>(null);
@@ -110,30 +114,28 @@ const IconLine = (props: { name: string, icon: any, inversePreviewMode: 'day' | 
         </SpanStyle>
       </BorderStyle>
       <BorderStyle>
-        <SpanStyle>
-          <span style={{ display: 'inline-flex' }}>
-            <ThemeProvider colorMode={inversePreviewMode}>
-              <BaseStyles style={{ display: 'inline-flex' }}>
-                <Box
-                  as="span"
-                  sx={{
-                    display: 'inline-flex',
-                    alignItems: 'center',
-                    justifyContent: 'center',
-                    px: 1,
-                    py: 1,
-                    borderRadius: 2,
-                    backgroundColor: inversePalette.isLight ? '#ffffff' : '#0d1117',
-                    border: '1px solid',
-                    borderColor: inversePalette.primary,
-                  }}
-                >
-                  <IconComponent colored size="large" inverseColormode={inversePreviewMode === 'night' ? 'dark' : 'light'} />
-                </Box>
-              </BaseStyles>
-            </ThemeProvider>
-          </span>
-        </SpanStyle>
+        <Box sx={{ display: 'inline-flex', mr: '25px' }}>
+          <ThemeProvider colorMode={inversePreviewMode}>
+            <BaseStyles style={{ display: 'inline-flex' }}>
+              <Box
+                as="span"
+                sx={{
+                  display: 'inline-flex',
+                  alignItems: 'center',
+                  justifyContent: 'center',
+                  p: 1,
+                  borderRadius: 2,
+                  bg: 'canvas.default',
+                  border: '1px solid',
+                  borderColor: inversePalette.primary,
+                  '--datalayer-icon-fg': inversePalette.primary,
+                }}
+              >
+                <IconComponent colored size="large" inverseColormode={inversePreviewMode === 'night' ? 'dark' : 'light'} />
+              </Box>
+            </BaseStyles>
+          </ThemeProvider>
+        </Box>
       </BorderStyle>
       <ThemeProvider colorMode="day">
         <IconButton aria-labelledby="" size="medium" sx={{marginRight: "15px"}} icon={ColoredStyledIcon} ref={refDayColoredStyled} onClick={(e: React.MouseEvent<HTMLElement>) => downloadPNG(e, refDayColoredStyled, "day_colored")}/>
@@ -233,14 +235,10 @@ const SummaryIcons = (props: {names: string[], icons: any}) => {
 
 const DetailledIcons = (props: {names: string[], icons: any}) => {
   const { names, icons } = props;
-  const palette = useColorPalette();
-  const { theme } = useThemeStore();
-  const inversePreviewMode: 'day' | 'night' = palette.isLight ? 'night' : 'day';
-  const inversePalette = getColorPalette(theme, palette.isLight ? 'dark' : 'light');
   return (
     <>
       {names.map((name) => {
-        return <IconLine name={name} icon={icons[name]} inversePreviewMode={inversePreviewMode} inversePalette={inversePalette} key={name}/>
+        return <IconLine name={name} icon={icons[name]} key={name}/>
       })}
     </>
   )
