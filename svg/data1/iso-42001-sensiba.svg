@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" width="360" height="360" viewBox="0 0 360 360" fill="none" role="img" aria-labelledby="title desc">
+  <title id="title">ISO 42001 Sensiba</title>
+  <desc id="desc">Vector badge inspired by the Sensiba ISO IEC 42001 certification mark.</desc>
+
+  <!-- Square canvas guide area -->
+  <rect x="54" y="20" width="252" height="320" rx="14" fill="#FFFFFF" stroke="#1F2937" stroke-width="2"/>
+
+  <!-- Top brand strip -->
+  <rect x="54" y="20" width="252" height="64" rx="14" fill="#F6F7F9"/>
+  <path d="M54 70 H306" stroke="#D1D5DB" stroke-width="1"/>
+
+  <!-- Sensiba abstract logo bars -->
+  <g transform="translate(84 38)">
+    <rect x="0" y="0" width="10" height="18" rx="2" fill="#D97706"/>
+    <rect x="14" y="0" width="10" height="18" rx="2" fill="#F59E0B"/>
+    <rect x="28" y="0" width="10" height="18" rx="2" fill="#FCD34D"/>
+  </g>
+  <text x="130" y="50" text-anchor="start" font-family="Arial, Helvetica, sans-serif" font-size="18" font-weight="700" fill="#111827">Sensiba</text>
+
+  <!-- Middle section framing -->
+  <rect x="74" y="100" width="212" height="170" rx="10" fill="#FFFFFF" stroke="#111827" stroke-width="1.5"/>
+  <path d="M74 170 H286" stroke="#E5E7EB" stroke-width="1"/>
+  <path d="M74 214 H286" stroke="#E5E7EB" stroke-width="1"/>
+
+  <!-- ISO text block -->
+  <text x="180" y="134" text-anchor="middle" font-family="Arial, Helvetica, sans-serif" font-size="23" font-weight="700" fill="#111827">ISO/IEC</text>
+  <text x="180" y="162" text-anchor="middle" font-family="Arial, Helvetica, sans-serif" font-size="34" font-weight="800" fill="#111827">42001</text>
+  <text x="180" y="188" text-anchor="middle" font-family="Arial, Helvetica, sans-serif" font-size="16" font-weight="700" fill="#374151">:2023</text>
+  <text x="180" y="207" text-anchor="middle" font-family="Arial, Helvetica, sans-serif" font-size="10" font-weight="700" fill="#4B5563">CERTIFIED</text>
+  <text x="180" y="229" text-anchor="middle" font-family="Arial, Helvetica, sans-serif" font-size="9" font-weight="600" fill="#6B7280">ARTIFICIAL INTELLIGENCE</text>
+  <text x="180" y="243" text-anchor="middle" font-family="Arial, Helvetica, sans-serif" font-size="9" font-weight="600" fill="#6B7280">MANAGEMENT SYSTEM</text>
+
+  <!-- Bottom seal and ID area -->
+  <g transform="translate(180 294)">
+    <circle r="31" fill="#F9FAFB" stroke="#1F2937" stroke-width="1.5"/>
+    <circle r="23" fill="#FFFFFF" stroke="#9CA3AF" stroke-width="1"/>
+    <path d="M-12 3 L-2 13 L14 -7" stroke="#111827" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+  </g>
+
+  <text x="180" y="336" text-anchor="middle" font-family="Arial, Helvetica, sans-serif" font-size="8" font-weight="600" fill="#6B7280">CERTIFICATION BODY: SENSIBA LLP</text>
+</svg>
