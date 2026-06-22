@@ -60,7 +60,7 @@ let transforms = {
 
     if (!componentName.endsWith('NoopIcon')) {
       if (style !== 'data2') {
-        lines.splice(6, 0, `  colored,`);
+        lines.splice(6, 0, `  colored,`, `  themed,`);
       }
     }
 
@@ -69,42 +69,43 @@ let transforms = {
 
     if (!componentName.endsWith('NoopIcon')) {
       if (style !== 'data2') {
-        // White fills stay white; all other fills use var(--datalayer-icon-fg)
-        // (falls back to currentColor) when colored=false, or preserve the
-        // original colour when colored=true. The var lets each icon "auto
-        // detect" the active theme primary colour set by an ancestor.
+        // White fills stay white. Every other (non-colored) fill defaults to
+        // plain `currentColor`. Theming is opt-in: when `themed` is true the
+        // fill instead uses `var(--datalayer-icon-fg, currentColor)`, letting
+        // each icon "auto detect" the active theme primary colour set by an
+        // ancestor. When `colored` is true the original brand colour is kept.
         const WHITE_FILLS = new Set(['#fff', '#fffff', 'white', '#FFF', '#FFFFFF']);
         code = code.replaceAll(/fill: "([#a-zA-Z0-9]+)",/g, (_match, origFill) => {
           if (origFill === 'currentColor') {
-            return `fill: "var(--datalayer-icon-fg, currentColor)",`;
+            return `fill: themed ? 'var(--datalayer-icon-fg, currentColor)' : 'currentColor',`;
           }
           if (WHITE_FILLS.has(origFill)) {
             return `fill: colored ? '${origFill}' : 'white',`;
           }
-          return `fill: colored ? '${origFill}' : 'var(--datalayer-icon-fg, currentColor)',`;
+          return `fill: colored ? '${origFill}' : (themed ? 'var(--datalayer-icon-fg, currentColor)' : 'currentColor'),`;
         });
       }
     }
 
-    // Inject `inverseColormode` prop support. When truthy, the rendered SVG is
-    // wrapped in a <span> whose `data-color-mode` is the inverse of the nearest
-    // ancestor's resolved color mode (or the explicit value if passed as
-    // 'light' | 'dark'). This causes Primer's CSS variables to resolve to the
-    // opposite theme inside the wrapper, effectively rendering the icon in the
-    // inverted colormode without affecting siblings.
+    // Inject `colormoded` prop support (opt-in, default false). When truthy,
+    // the rendered SVG is wrapped in a <span> whose `data-color-mode` is the
+    // inverse of the nearest ancestor's resolved color mode (or the explicit
+    // value if passed as 'light' | 'dark'). This causes Primer's CSS variables
+    // to resolve to the opposite theme inside the wrapper, effectively
+    // rendering the icon in the inverted colormode without affecting siblings.
     const inverseHelper = `function _DlIconInverseColormode({\n  mode,\n  children\n}) {\n  const ref = React.useRef(null);\n  const [resolved, setResolved] = React.useState(typeof mode === "string" ? mode : null);\n  React.useLayoutEffect(() => {\n    if (typeof mode === "string") {\n      setResolved(mode);\n      return;\n    }\n    if (typeof document === "undefined") return;\n    let cur = null;\n    let el = ref.current && ref.current.parentElement;\n    while (el) {\n      const m = el.getAttribute && el.getAttribute("data-color-mode");\n      if (m) { cur = m; break; }\n      el = el.parentElement;\n    }\n    if (!cur || cur === "auto") {\n      cur = (typeof window !== "undefined" && window.matchMedia && window.matchMedia("(prefers-color-scheme: dark)").matches) ? "dark" : "light";\n    }\n    setResolved(cur === "dark" ? "light" : "dark");\n  }, [mode]);\n  return /*#__PURE__*/React.createElement("span", {\n    ref: ref,\n    "data-color-mode": resolved || "light",\n    "data-light-theme": "light",\n    "data-dark-theme": "dark",\n    style: { display: "inline-flex", lineHeight: 0 }\n  }, children);\n}\n\n`;
 
     // 1) Inject the helper before the icon component declaration.
     code = code.replace(/(function \w+\(\{)/, inverseHelper + '$1');
 
-    // 2) Add `inverseColormode` to the destructured props (just before `...props`).
-    code = code.replace(/(  \.\.\.props\n\}, svgRef\) \{)/, '  inverseColormode,\n$1');
+    // 2) Add `colormoded` to the destructured props (just before `...props`).
+    code = code.replace(/(  \.\.\.props\n\}, svgRef\) \{)/, '  colormoded,\n$1');
 
     // 3) Wrap the returned svg element so it can be conditionally placed inside
     //    the inverse-colormode wrapper.
     code = code.replace(
       /  return (\/\*#__PURE__\*\/React\.createElement\("svg",[\s\S]*?\));\n\}\nconst ForwardRef/,
-      '  const _svgEl = $1;\n  if (!inverseColormode) return _svgEl;\n  return /*#__PURE__*/React.createElement(_DlIconInverseColormode, {\n    mode: typeof inverseColormode === "string" ? inverseColormode : undefined\n  }, _svgEl);\n}\nconst ForwardRef'
+      '  const _svgEl = $1;\n  if (!colormoded) return _svgEl;\n  return /*#__PURE__*/React.createElement(_DlIconInverseColormode, {\n    mode: typeof colormoded === "string" ? colormoded : undefined\n  }, _svgEl);\n}\nconst ForwardRef'
     );
 
     // Ensure the explicit `color` prop always wins over inherited
@@ -205,7 +206,7 @@ async function buildIcons(package, flavor, format) {
 
       let types = package === 'icons-react'
           ? `import * as React from 'react';
-declare const ${componentName}: React.ForwardRefExoticComponent<React.PropsWithoutRef<React.SVGProps<SVGSVGElement>> & { title?: string, titleId?: string, size?: "small" | "medium" | "large" | number, colored?: boolean, inverseColormode?: boolean | "light" | "dark" } & React.RefAttributes<SVGSVGElement>>;
+declare const ${componentName}: React.ForwardRefExoticComponent<React.PropsWithoutRef<React.SVGProps<SVGSVGElement>> & { title?: string, titleId?: string, size?: "small" | "medium" | "large" | number, colored?: boolean, themed?: boolean, colormoded?: boolean | "light" | "dark" } & React.RefAttributes<SVGSVGElement>>;
 export default ${componentName};`
           : `import type { FunctionalComponent, HTMLAttributes, VNodeProps } from 'vue';
 declare const ${componentName}: FunctionalComponent<HTMLAttributes & VNodeProps>;
