@@ -211,7 +211,21 @@ export default ${componentName};`
           : `import type { FunctionalComponent, HTMLAttributes, VNodeProps } from 'vue';
 declare const ${componentName}: FunctionalComponent<HTMLAttributes & VNodeProps>;
 export default ${componentName};`
-      ensureWrite(`${outDir}/${componentName}.svg`, svg);
+      // Strip the `class` attribute from the ROOT <svg> element before writing
+      // the .svg that LabIcon imports as its `svgstr`. JupyterLab's
+      // LabIcon.getReactAttrs() renders the root svg as a React element and
+      // camelCases attribute names — but camelCase('class') === 'class', so a
+      // root `class` becomes an invalid React DOM prop and triggers: "Invalid
+      // DOM property `class`. Did you mean `className`?". Only the root class is
+      // removed (leftover design-tool marker like `cls-1`/`feather`/`lucide`);
+      // child element classes and any <style> blocks are preserved. This .svg
+      // file is consumed ONLY by the LabIcon variant — the React/JSX variant is
+      // generated in-memory via svgr (which converts class -> className).
+      const svgForLabIcon = svg.replace(
+        /(<svg\b[^>]*?)\s+class\s*=\s*(?:"[^"]*"|'[^']*')/i,
+        '$1'
+      );
+      ensureWrite(`${outDir}/${componentName}.svg`, svgForLabIcon);
 
       labComponentName = componentName.replace('Icon', 'IconJupyterLab');
       labComponentInstance = componentInstance.replace('Icon', 'IconJupyterLab');
