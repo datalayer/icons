@@ -1,7 +1,8 @@
 import { StrictMode } from 'react';
 import { createRoot } from 'react-dom/client';
 import { setupPrimerPortals } from '@datalayer/primer-addons/lib/utils/Portals';
-import DatalayerIcons from './DatalayerIcons';
+import { App } from './App';
+
 import '../style/primer-primitives.css';
 
 setupPrimerPortals();
@@ -12,6 +13,6 @@ const root = createRoot(div);
 
 root.render(
   <StrictMode>
-    <DatalayerIcons />
+    <App />
   </StrictMode>
 );
