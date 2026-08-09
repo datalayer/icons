@@ -87,7 +87,7 @@ let transforms = {
       }
     }
 
-    // Inject `colormoded` prop support (opt-in, default false). When truthy,
+    // Inject `colormode` prop support (opt-in, default false). When truthy,
     // the rendered SVG is wrapped in a <span> whose `data-color-mode` is the
     // inverse of the nearest ancestor's resolved color mode (or the explicit
     // value if passed as 'light' | 'dark'). This causes Primer's CSS variables
@@ -98,14 +98,14 @@ let transforms = {
     // 1) Inject the helper before the icon component declaration.
     code = code.replace(/(function \w+\(\{)/, inverseHelper + '$1');
 
-    // 2) Add `colormoded` to the destructured props (just before `...props`).
-    code = code.replace(/(  \.\.\.props\n\}, svgRef\) \{)/, '  colormoded,\n$1');
+    // 2) Add `colormode` to the destructured props (just before `...props`).
+    code = code.replace(/(  \.\.\.props\n\}, svgRef\) \{)/, '  colormode,\n$1');
 
     // 3) Wrap the returned svg element so it can be conditionally placed inside
     //    the inverse-colormode wrapper.
     code = code.replace(
       /  return (\/\*#__PURE__\*\/React\.createElement\("svg",[\s\S]*?\));\n\}\nconst ForwardRef/,
-      '  const _svgEl = $1;\n  if (!colormoded) return _svgEl;\n  return /*#__PURE__*/React.createElement(_DlIconInverseColormode, {\n    mode: typeof colormoded === "string" ? colormoded : undefined\n  }, _svgEl);\n}\nconst ForwardRef'
+      '  const _svgEl = $1;\n  if (!colormode) return _svgEl;\n  return /*#__PURE__*/React.createElement(_DlIconInverseColormode, {\n    mode: typeof colormode === "string" ? colormode : undefined\n  }, _svgEl);\n}\nconst ForwardRef'
     );
 
     // Ensure the explicit `color` prop always wins over inherited
@@ -206,7 +206,7 @@ async function buildIcons(package, flavor, format) {
 
       let types = package === 'icons-react'
           ? `import * as React from 'react';
-declare const ${componentName}: React.ForwardRefExoticComponent<React.PropsWithoutRef<React.SVGProps<SVGSVGElement>> & { title?: string, titleId?: string, size?: "small" | "medium" | "large" | number, colored?: boolean, themed?: boolean, colormoded?: boolean | "light" | "dark" } & React.RefAttributes<SVGSVGElement>>;
+declare const ${componentName}: React.ForwardRefExoticComponent<React.PropsWithoutRef<React.SVGProps<SVGSVGElement>> & { title?: string, titleId?: string, size?: "small" | "medium" | "large" | number, colored?: boolean, themed?: boolean, colormode?: boolean | "light" | "dark" } & React.RefAttributes<SVGSVGElement>>;
 export default ${componentName};`
           : `import type { FunctionalComponent, HTMLAttributes, VNodeProps } from 'vue';
 declare const ${componentName}: FunctionalComponent<HTMLAttributes & VNodeProps>;

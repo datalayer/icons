@@ -247,7 +247,7 @@ const IconLine = (props: { name: string, icon: any }) => {
             '--datalayer-icon-fg': inversePalette.primary,
           }}
         >
-          <IconComponent colored size="large" colormoded={inversePreviewMode} />
+          <IconComponent colored size="large" colormode={inversePreviewMode} />
         </Swatch>
 
         {/* Downloads */}
