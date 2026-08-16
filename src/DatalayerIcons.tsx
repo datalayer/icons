@@ -1,568 +1,688 @@
-
-import { useState, useEffect, useRef } from 'react';
 import {
-  ThemeProvider,
-  IconButton,
-  Text,
+  type ComponentType,
+  type KeyboardEvent,
+  type SVGProps,
+  useEffect,
+  useMemo,
+  useRef,
+  useState,
+} from "react";
+import {
   Box,
-  Link,
-  TextInput,
-  Tooltip,
+  Button,
+  Dialog,
   Flash,
   Heading,
-  Button,
-} from '@primer/react';
-import { SearchIcon } from '@primer/octicons-react';
+  Link,
+  Text,
+  TextInput,
+} from "@primer/react";
+import { DownloadIcon, SearchIcon } from "@primer/octicons-react";
 import {
+  getColorPalette,
   useColorPalette,
   useThemeStore,
-  getColorPalette,
-} from '@datalayer/primer-addons';
-import { toPng, toSvg } from 'html-to-image';
-import * as dataIcons from "../icons-react";
-import * as eggsIcons from "../icons-react/eggs";
+} from "@datalayer/primer-addons";
+import { toJpeg, toPng } from "html-to-image";
+import * as dataIconExports from "@datalayer/icons-react";
+import * as eggIconExports from "@datalayer/icons-react/eggs";
 
+type IconComponent = ComponentType<
+  SVGProps<SVGSVGElement> & {
+    size?: "small" | "medium" | "large" | number;
+    colored?: boolean;
+    themed?: boolean;
+    colormode?: boolean | "light" | "dark";
+  }
+>;
+type IconCollection = Record<string, IconComponent>;
+type SelectedIcon = { name: string; icon: IconComponent };
+type DownloadFormat = "png" | "jpg" | "svg";
+type VariantKey = "colored" | "mono" | "accent" | "inverse";
+type IconVariant = {
+  key: VariantKey;
+  title: string;
+  hint: string;
+  example: string;
+};
+
+const dataIcons = dataIconExports as IconCollection;
+const eggsIcons = eggIconExports as IconCollection;
 const SWATCH_SIZE = 64;
+const GRID_TEMPLATE = `minmax(210px, 1.6fr) repeat(4, ${SWATCH_SIZE + 28}px) 92px`;
 
-// Preview columns shown for every icon. One source of truth keeps the header,
-// the legend and the rows aligned.
-const ICON_COLUMNS = [
-  {
-    key: 'colored',
-    title: 'Colored',
-    hint: 'Full brand artwork in its native multi-color palette.',
-  },
-  {
-    key: 'mono',
-    title: 'Monochrome',
-    hint: 'Single flat color inherited from the current theme foreground.',
-  },
-  {
-    key: 'accent',
-    title: 'Accent',
-    hint: 'Forced to one accent color through the color prop.',
-  },
-  {
-    key: 'inverse',
-    title: 'On dark',
-    hint: 'Colored icon on the opposite color mode surface to check contrast.',
-  },
-] as const;
+function iconVariants(isLight: boolean): IconVariant[] {
+  const inverseMode = isLight ? "dark" : "light";
+  return [
+    {
+      key: "mono",
+      title: "Monochrome",
+      hint: "One theme hue with tonal contrast that preserves artwork details.",
+      example: "<DatalayerIcon />",
+    },
+    {
+      key: "colored",
+      title: "Colored",
+      hint: "Full brand artwork in its native multi-color palette.",
+      example: "<DatalayerIcon colored />",
+    },
+    {
+      key: "accent",
+      title: "Accent",
+      hint: "One supplied accent hue with the original tonal detail preserved.",
+      example: "<DatalayerIcon color={palette.flame} />",
+    },
+    {
+      key: "inverse",
+      title: `On ${inverseMode}`,
+      hint: `Colored artwork on the ${inverseMode} theme surface to check contrast.`,
+      example: `<DatalayerIcon colored colormode="${inverseMode}" />`,
+    },
+  ];
+}
 
-const GRID_TEMPLATE = `minmax(200px, 1.6fr) repeat(${ICON_COLUMNS.length}, ${SWATCH_SIZE + 28}px) minmax(110px, 150px)`;
+function triggerDownload(dataUrl: string, filename: string) {
+  const link = document.createElement("a");
+  link.download = filename;
+  link.href = dataUrl;
+  link.click();
+}
 
-// The inverse-preview column flips with the active mode: a light app previews
-// on dark, a dark app previews on light.
-const columnTitle = (key: string, fallback: string, isLight: boolean) =>
-  key === 'inverse' ? (isLight ? 'On dark' : 'On light') : fallback;
+function serializeSvg(container: HTMLElement) {
+  const source = container.querySelector("svg");
+  if (!source)
+    throw new Error("The icon preview does not contain an SVG element.");
 
-const Swatch = (props: {
-  children: React.ReactNode;
-  sx?: Record<string, unknown>;
-}) => (
-  <Box
-    sx={{
-      width: SWATCH_SIZE,
-      height: SWATCH_SIZE,
-      mx: 'auto',
-      display: 'flex',
-      alignItems: 'center',
-      justifyContent: 'center',
-      borderRadius: 2,
-      border: '1px solid',
-      borderColor: 'border.default',
-      backgroundColor: 'canvas.subtle',
-      ...props.sx,
-    }}
-  >
-    {props.children}
-  </Box>
-);
+  const clone = source.cloneNode(true) as SVGSVGElement;
+  const sourceElements = [source, ...source.querySelectorAll("*")];
+  const cloneElements = [clone, ...clone.querySelectorAll("*")];
+  sourceElements.forEach((element, index) => {
+    const target = cloneElements[index] as SVGElement;
+    const computed = window.getComputedStyle(element);
+    target.style.fill = computed.fill;
+    target.style.stroke = computed.stroke;
+    target.style.color = computed.color;
+    target.style.opacity = computed.opacity;
+    target.style.strokeWidth = computed.strokeWidth;
+  });
+  clone.querySelectorAll("style").forEach((style) => style.remove());
+  clone.setAttribute("xmlns", "http://www.w3.org/2000/svg");
+  clone.setAttribute("width", "512");
+  clone.setAttribute("height", "512");
+  clone.removeAttribute("aria-hidden");
+  return `data:image/svg+xml;charset=utf-8,${encodeURIComponent(
+    new XMLSerializer().serializeToString(clone),
+  )}`;
+}
 
-// Small dashed-border chip used in the per-icon subline for the rendered
-// (function-call) variants.
-const DashedIcon = (props: { label: string; children: React.ReactNode }) => (
-  <Box
-    as="span"
-    title={props.label}
-    sx={{
-      display: 'inline-flex',
-      alignItems: 'center',
-      justifyContent: 'center',
-      p: 1,
-      borderRadius: 2,
-      border: '1px dashed',
-      borderColor: 'border.default',
-    }}
-  >
-    {props.children}
-  </Box>
-);
+async function downloadVariant(
+  container: HTMLElement,
+  name: string,
+  variant: VariantKey,
+  format: DownloadFormat,
+) {
+  const filename = `${name}_${variant}.${format}`;
+  if (format === "svg") {
+    triggerDownload(serializeSvg(container), filename);
+    return;
+  }
+  const options = {
+    cacheBust: true,
+    pixelRatio: 4,
+    ...(format === "jpg"
+      ? {
+          backgroundColor: window.getComputedStyle(container).backgroundColor,
+          quality: 0.96,
+        }
+      : {}),
+  };
+  const dataUrl =
+    format === "jpg"
+      ? await toJpeg(container, options)
+      : await toPng(container, options);
+  triggerDownload(dataUrl, filename);
+}
 
-const IconTableHeader = () => {
+function VariantIcon({
+  icon: Icon,
+  variant,
+  size,
+}: {
+  icon: IconComponent;
+  variant: VariantKey;
+  size: number;
+}) {
   const palette = useColorPalette();
+  const inverseMode: "light" | "dark" = palette.isLight ? "dark" : "light";
+  if (variant === "colored") return <Icon colored size={size} />;
+  if (variant === "accent") return <Icon size={size} color={palette.flame} />;
+  if (variant === "inverse") {
+    return <Icon colored size={size} colormode={inverseMode} />;
+  }
+  return <Icon size={size} />;
+}
+
+function useVariantSurface(variant: VariantKey) {
+  const palette = useColorPalette();
+  const { theme } = useThemeStore();
+  const inverseMode: "light" | "dark" = palette.isLight ? "dark" : "light";
+  const inversePalette = getColorPalette(theme, inverseMode);
+  if (variant !== "inverse") {
+    return {
+      backgroundColor: "canvas.subtle",
+      borderColor: "border.default",
+    };
+  }
+  return {
+    backgroundColor: inversePalette.bg,
+    borderColor: inversePalette.primary,
+    color: inversePalette.primary,
+    "--datalayer-icon-fg": inversePalette.primary,
+  };
+}
+
+function Swatch({
+  icon,
+  variant,
+}: {
+  icon: IconComponent;
+  variant: VariantKey;
+}) {
+  const surface = useVariantSurface(variant);
   return (
     <Box
       sx={{
-        position: 'sticky',
+        width: SWATCH_SIZE,
+        height: SWATCH_SIZE,
+        mx: "auto",
+        display: "flex",
+        alignItems: "center",
+        justifyContent: "center",
+        borderRadius: 2,
+        border: "1px solid",
+        ...surface,
+      }}
+    >
+      <VariantIcon icon={icon} variant={variant} size={42} />
+    </Box>
+  );
+}
+
+function DetailVariant({
+  icon,
+  variant,
+  setExportNode,
+  onDownload,
+  downloading,
+}: {
+  icon: IconComponent;
+  variant: IconVariant;
+  setExportNode: (node: HTMLDivElement | null) => void;
+  onDownload: (format: DownloadFormat) => void;
+  downloading: boolean;
+}) {
+  const surface = useVariantSurface(variant.key);
+  return (
+    <Box
+      sx={{
+        border: "1px solid",
+        borderColor: "border.default",
+        borderRadius: 2,
+        overflow: "hidden",
+      }}
+    >
+      <Box
+        ref={setExportNode}
+        sx={{
+          height: 176,
+          display: "flex",
+          alignItems: "center",
+          justifyContent: "center",
+          ...surface,
+        }}
+      >
+        <VariantIcon icon={icon} variant={variant.key} size={112} />
+      </Box>
+      <Box sx={{ p: 3, borderTop: "1px solid", borderColor: "border.default" }}>
+        <Text sx={{ display: "block", fontWeight: 600 }}>{variant.title}</Text>
+        <Text
+          as="code"
+          sx={{
+            display: "block",
+            mt: 1,
+            fontSize: 0,
+            color: "fg.muted",
+            overflowWrap: "anywhere",
+          }}
+        >
+          {variant.example}
+        </Text>
+        <Box sx={{ display: "flex", gap: 2, mt: 3 }}>
+          {(["png", "jpg", "svg"] as DownloadFormat[]).map((format) => (
+            <Button
+              key={format}
+              size="small"
+              leadingVisual={DownloadIcon}
+              disabled={downloading}
+              onClick={() => onDownload(format)}
+            >
+              {format.toUpperCase()}
+            </Button>
+          ))}
+        </Box>
+      </Box>
+    </Box>
+  );
+}
+
+function IconDetailsDialog({
+  selected,
+  onClose,
+}: {
+  selected: SelectedIcon;
+  onClose: () => void;
+}) {
+  const variants = iconVariants(useColorPalette().isLight);
+  const exportNodes = useRef<Partial<Record<VariantKey, HTMLDivElement>>>({});
+  const [downloading, setDownloading] = useState<string | null>(null);
+
+  const handleDownload = async (
+    variant: VariantKey,
+    format: DownloadFormat,
+  ) => {
+    const node = exportNodes.current[variant];
+    if (!node) return;
+    const job = `${variant}-${format}`;
+    setDownloading(job);
+    try {
+      await downloadVariant(node, selected.name, variant, format);
+    } catch (error) {
+      console.error(`Unable to download ${selected.name} as ${format}.`, error);
+    } finally {
+      setDownloading(null);
+    }
+  };
+
+  return (
+    <Dialog
+      title={selected.name}
+      subtitle="Preview and download each supported icon treatment."
+      width="xlarge"
+      height="large"
+      onClose={onClose}
+    >
+      <Box
+        sx={{
+          display: "grid",
+          gridTemplateColumns: ["1fr", "1fr 1fr"],
+          gap: 3,
+          p: 3,
+        }}
+      >
+        {variants.map((variant) => (
+          <DetailVariant
+            key={variant.key}
+            icon={selected.icon}
+            variant={variant}
+            setExportNode={(node) => {
+              if (node) exportNodes.current[variant.key] = node;
+            }}
+            onDownload={(format) => void handleDownload(variant.key, format)}
+            downloading={downloading !== null}
+          />
+        ))}
+      </Box>
+    </Dialog>
+  );
+}
+
+function IconTableHeader() {
+  const variants = iconVariants(useColorPalette().isLight);
+  return (
+    <Box
+      sx={{
+        position: "sticky",
         top: 0,
         zIndex: 1,
-        display: 'grid',
+        display: "grid",
         gridTemplateColumns: GRID_TEMPLATE,
-        alignItems: 'center',
+        alignItems: "center",
         gap: 3,
         px: 3,
         py: 3,
-        backgroundColor: 'canvas.default',
-        borderBottom: '2px solid',
-        borderColor: 'border.default',
+        backgroundColor: "canvas.default",
       }}
     >
-      <Text sx={{ fontSize: 1, fontWeight: 'bold' }}>Icon</Text>
-      {ICON_COLUMNS.map(col => (
+      <Text sx={{ fontSize: 1, fontWeight: 600 }}>Icon</Text>
+      {variants.map((variant) => (
         <Text
-          key={col.key}
-          sx={{
-            display: 'block',
-            textAlign: 'center',
-            fontSize: 1,
-            fontWeight: 'bold',
-          }}
+          key={variant.key}
+          sx={{ fontSize: 1, fontWeight: 600, textAlign: "center" }}
         >
-          {columnTitle(col.key, col.title, palette.isLight)}
+          {variant.title}
         </Text>
       ))}
-      <Text sx={{ fontSize: 1, fontWeight: 'bold', textAlign: 'right' }}>
-        Download
+      <Text sx={{ fontSize: 1, fontWeight: 600, textAlign: "right" }}>
+        Details
       </Text>
     </Box>
   );
-};
+}
 
-const IconLine = (props: { name: string, icon: any }) => {
-  const { name, icon } = props;
-  const palette = useColorPalette();
-  const { theme } = useThemeStore();
-  const inversePreviewMode: 'light' | 'dark' = palette.isLight ? 'dark' : 'light';
-  const inversePalette = getColorPalette(theme, inversePreviewMode);
-  const refColored = useRef<any>(null);
-  const refDayColoredStyled = useRef<any>(null);
-  const refNightColoredStyled = useRef<any>(null);
-  const refDayStyled = useRef<any>(null);
-  const refNightStyled = useRef<any>(null);
-  const downloadPNG = (e: React.MouseEvent<HTMLElement>, ref: React.MutableRefObject<any>, type: string) => {
-    e.preventDefault();
-    if (ref.current === null) {
-      return
+function IconLine({
+  name,
+  icon,
+  onSelect,
+}: SelectedIcon & { onSelect: (icon: SelectedIcon) => void }) {
+  const open = () => onSelect({ name, icon });
+  const handleKeyDown = (event: KeyboardEvent<HTMLDivElement>) => {
+    if (event.key === "Enter" || event.key === " ") {
+      event.preventDefault();
+      open();
     }
-    toPng(ref.current, { cacheBust: true, width: 1000, height: 1000 })
-      .then((dataUrl: string) => {
-        const link = document.createElement('a');
-        link.download = `${name}_${type}.png`;
-        link.href = dataUrl;
-        link.click();
-      })
-      .catch((err: Error) => {
-        console.log(err)
-      })
   };
-  const downloadSVG = (e: React.MouseEvent<HTMLElement>, ref: React.MutableRefObject<any>) => {
-    e.preventDefault();
-    if (ref.current === null) {
-      return
-    }
-    toSvg(ref.current, { cacheBust: true, })
-    .then((dataUrl: string) => {
-      const link = document.createElement('a');
-      link.download = `${name}.svg`;
-      link.href = dataUrl;
-      link.click();
-    })
-    .catch((err: Error) => {
-      console.log(err)
-    })
-  };
-  const IconComponent = icon;
-  const StyledIcon = () => <IconComponent />;
-  const ColoredStyledIcon = () => <IconComponent colored />;
-  const iconLine = (
+  return (
     <Box
+      role="button"
+      tabIndex={0}
+      aria-label={`View ${name} details`}
+      onClick={open}
+      onKeyDown={handleKeyDown}
       sx={{
-        borderTop: '1px solid',
-        borderColor: 'border.muted',
-        ':hover': { backgroundColor: 'canvas.subtle' },
+        display: "grid",
+        gridTemplateColumns: GRID_TEMPLATE,
+        alignItems: "center",
+        gap: 3,
+        px: 3,
+        py: 2,
+        borderTop: "1px solid",
+        borderColor: "border.muted",
+        cursor: "pointer",
+        ":hover": { backgroundColor: "canvas.subtle" },
+        ":focus-visible": {
+          outline: "2px solid",
+          outlineColor: "accent.fg",
+          outlineOffset: -2,
+        },
       }}
     >
-      {/* Primary row: labeled variant columns */}
-      <Box
-        sx={{
-          display: 'grid',
-          gridTemplateColumns: GRID_TEMPLATE,
-          alignItems: 'center',
-          gap: 3,
-          px: 3,
-          pt: 2,
-        }}
-      >
-        <Box sx={{ display: 'flex', alignItems: 'center', gap: 2, minWidth: 0 }}>
-          <Box as="span" sx={{ display: 'inline-flex', flexShrink: 0 }}>
-            <IconComponent colored size="medium" />
-          </Box>
-          <Text
-            sx={{
-              fontFamily: 'mono',
-              fontSize: 1,
-              whiteSpace: 'nowrap',
-              overflow: 'hidden',
-              textOverflow: 'ellipsis',
-            }}
-            title={name}
-          >
-            {name}
-          </Text>
+      <Box sx={{ display: "flex", alignItems: "center", gap: 2, minWidth: 0 }}>
+        <Box as="span" sx={{ display: "inline-flex", flexShrink: 0 }}>
+          <VariantIcon icon={icon} variant="colored" size={32} />
         </Box>
-
-        {/* Colored: also the source node for PNG/SVG export */}
-        <Swatch>
-          <Box as="span" ref={refColored} sx={{ display: 'inline-flex' }}>
-            <IconComponent colored size="large" />
-          </Box>
-        </Swatch>
-
-        {/* Monochrome: inherits --datalayer-icon-fg from the theme */}
-        <Swatch>
-          <IconComponent size="large" />
-        </Swatch>
-
-        {/* Accent: explicit color prop */}
-        <Swatch>
-          <IconComponent size="large" color={palette.flame} />
-        </Swatch>
-
-        {/* Inverse: surface + icon color follow the opposite color mode */}
-        <Swatch
+        <Text
           sx={{
-            backgroundColor: inversePalette.bg,
-            borderColor: inversePalette.primary,
-            '--datalayer-icon-fg': inversePalette.primary,
+            fontFamily: "mono",
+            fontSize: 1,
+            overflow: "hidden",
+            textOverflow: "ellipsis",
           }}
         >
-          <IconComponent colored size="large" colormode={inversePreviewMode} />
-        </Swatch>
-
-        {/* Downloads */}
-        <Box sx={{ display: 'flex', gap: 3, justifyContent: 'flex-end' }}>
-          <Link
-            href=""
-            title="Download colored PNG"
-            onClick={(e: React.MouseEvent<HTMLElement>) => downloadPNG(e, refColored, 'colored')}
-          >
-            PNG
-          </Link>
-          <Link
-            href=""
-            title="Download SVG"
-            onClick={(e: React.MouseEvent<HTMLElement>) => downloadSVG(e, refColored)}
-          >
-            SVG
-          </Link>
-        </Box>
-      </Box>
-
-      {/* Subline: click-to-download buttons + rendered (dashed) variants */}
-      <Box
-        sx={{
-          display: 'flex',
-          flexWrap: 'wrap',
-          alignItems: 'center',
-          gap: 2,
-          px: 3,
-          pt: 1,
-          pb: 2,
-        }}
-      >
-        <Text sx={{ fontSize: 0, color: 'fg.muted', mr: 1 }}>
-          Click to download PNG
+          {name}
         </Text>
-        <ThemeProvider colorMode="day">
-          <IconButton
-            aria-label={`${name} colored on light`}
-            size="small"
-            icon={ColoredStyledIcon}
-            ref={refDayColoredStyled}
-            onClick={(e: React.MouseEvent<HTMLElement>) => downloadPNG(e, refDayColoredStyled, 'day_colored')}
-          />
-        </ThemeProvider>
-        <ThemeProvider colorMode="night">
-          <IconButton
-            aria-label={`${name} colored on dark`}
-            size="small"
-            icon={ColoredStyledIcon}
-            ref={refNightColoredStyled}
-            onClick={(e: React.MouseEvent<HTMLElement>) => downloadPNG(e, refNightColoredStyled, 'night_colored')}
-          />
-        </ThemeProvider>
-        <ThemeProvider colorMode="day">
-          <IconButton
-            aria-label={`${name} monochrome on light`}
-            size="small"
-            icon={StyledIcon}
-            ref={refDayStyled}
-            onClick={(e: React.MouseEvent<HTMLElement>) => downloadPNG(e, refDayStyled, 'day')}
-          />
-        </ThemeProvider>
-        <ThemeProvider colorMode="night">
-          <IconButton
-            aria-label={`${name} monochrome on dark`}
-            size="small"
-            icon={StyledIcon}
-            ref={refNightStyled}
-            onClick={(e: React.MouseEvent<HTMLElement>) => downloadPNG(e, refNightStyled, 'night')}
-          />
-        </ThemeProvider>
-
-        <Box sx={{ width: '1px', alignSelf: 'stretch', mx: 2, backgroundColor: 'border.muted' }} />
-
-        <Text sx={{ fontSize: 0, color: 'fg.muted', mr: 1 }}>Rendered</Text>
-        <DashedIcon label="Colored, rendered inline">
-          {ColoredStyledIcon()}
-        </DashedIcon>
-        <DashedIcon label="Monochrome, rendered inline">
-          {StyledIcon()}
-        </DashedIcon>
       </Box>
+      {(["mono", "colored", "accent", "inverse"] as VariantKey[]).map(
+        (variant) => (
+          <Swatch key={variant} icon={icon} variant={variant} />
+        ),
+      )}
+      <Button
+        size="small"
+        onClick={(event) => {
+          event.stopPropagation();
+          open();
+        }}
+      >
+        View
+      </Button>
     </Box>
-  )
-  return iconLine;
-}
-
-const IconSummary = (props: { name: string, icon: any }) => {
-  const { name, icon } = props;
-  const IconComponent = icon;
-  const SummaryIcon = () => (
-    <IconComponent
-      colored
-      size="medium"
-    />
   );
-  return (
-    <Box mr={1}>
-      <Tooltip aria-label={name} text={name}>
-        <IconButton
-          aria-label={name}
-          icon={SummaryIcon}
-          variant="invisible"
-          size="small"
-          sx={{
-            border: '1px solid',
-            borderColor: 'border.default',
-            borderRadius: 2,
-          }}
-        />
-      </Tooltip>
-    </Box>
-  )
 }
 
-const SummaryIcons = (props: {names: string[], icons: any}) => {
-  const { names, icons } = props;
-  return (
-    <>
-      <Box sx={{display: 'flex'}}>
-        {names.map((name) => {
-          return <IconSummary name={name} icon={icons[name]} key={name}/>
-        })}
-      </Box>
-    </>
-  )
-}
-
-const DetailledIcons = (props: {names: string[], icons: any}) => {
-  const { names, icons } = props;
+function SearchResults({
+  names,
+  icons,
+  onSelect,
+}: {
+  names: string[];
+  icons: IconCollection;
+  onSelect: (icon: SelectedIcon) => void;
+}) {
   return (
     <Box
       sx={{
-        border: '1px solid',
-        borderColor: 'border.default',
-        borderRadius: 2,
-        overflow: 'hidden',
+        display: "grid",
+        gridTemplateColumns: "repeat(auto-fill, minmax(180px, 1fr))",
+        gap: 3,
       }}
     >
-      <IconTableHeader />
-      {names.map((name) => (
-        <IconLine name={name} icon={icons[name]} key={name} />
-      ))}
-    </Box>
-  )
-}
-
-const DatalayerIcons = () => {
-  const palette = useColorPalette();
-  const [filter, setFilter] = useState('');
-//  const [debouncedFilter, setDebouncedFilter] = useState('');
-  const [icons, setIcons] = useState<any>(dataIcons);
-  const [names, setNames] = useState(Object.keys(dataIcons));
-  useEffect(() => {
-    const queryParams = new URLSearchParams(window.location.search);
-    const q = queryParams.get("q");
-    q ? setFilter(q) : setFilter('');
-//    q ? setDebouncedFilter(q) : setDebouncedFilter('');
-    const eggs = queryParams.get("eggs");
-    if (eggs !== null) {
-      setIcons(eggsIcons);
-      setNames(Object.keys(eggsIcons));
-    }  
-  }, []);
-  const changeUrl = (title: string, url: string) => {
-    const obj = {
-      Title: title,
-      Url: url,
-    };
-    history.pushState(obj, obj.Title, obj.Url);
-  }
-  const filterIcons = (filter: string) => {
-    if (filter === '') {
-      setNames(Object.keys(icons));
-      changeUrl(document.title, window.location.protocol + "//" + window.location.host);
-    } else {
-      const f = filter.toLocaleLowerCase();
-      const filteredNames = Object.keys(icons).filter((name => name.toLowerCase().includes(f)));
-      setNames(filteredNames);
-      changeUrl(document.title, window.location.protocol + "//" + window.location.host + "?q=" + f);
-    }
-  }
-  const handleFilterChange = (event: React.ChangeEvent<HTMLInputElement>) => {
-    setFilter(event.target.value);
-    filterIcons(event.target.value);
-  };
-  useEffect(() => {
-    if (filter) filterIcons(filter);
-  }, [filter]);
-  /*
-  const [_, __] = useDebounce(
-    () => {
-      setDebouncedFilter(filter);
-      filterIcons();
-    },
-    0,
-    [filter]
-  );
-  */
-  return (
-    <>
-      <Box sx={{ px: 4, py: 4 }}>
-        <Box
-          sx={{
-            maxWidth: 1200,
-            mx: 'auto',
-            '--datalayer-icon-fg': palette.primary,
-          }}
-        >
-        <Box sx={{ display: 'flex', alignItems: 'flex-start', justifyContent: 'space-between', gap: 3, flexWrap: 'wrap' }}>
-          <Box>
-            <Heading as="h1" sx={{ m: 0, mb: 2, fontSize: 5 }}>
-              React icons for data products
-            </Heading>
-            <Text sx={{ color: 'fg.muted' }}>
-              ☰ 🎉 {Object.keys(icons).length} curated icons for data product design.
+      {names.map((name) => {
+        const Icon = icons[name];
+        return (
+          <Box
+            as="button"
+            type="button"
+            key={name}
+            onClick={() => onSelect({ name, icon: Icon })}
+            sx={{
+              minWidth: 0,
+              height: 176,
+              p: 3,
+              display: "flex",
+              flexDirection: "column",
+              alignItems: "center",
+              justifyContent: "center",
+              gap: 3,
+              color: "fg.default",
+              backgroundColor: "canvas.subtle",
+              border: "1px solid",
+              borderColor: "border.default",
+              borderRadius: 2,
+              cursor: "pointer",
+              ":hover": {
+                borderColor: "accent.fg",
+                backgroundColor: "canvas.default",
+              },
+              ":focus-visible": {
+                outline: "2px solid",
+                outlineColor: "accent.fg",
+                outlineOffset: 2,
+              },
+            }}
+          >
+            <Icon colored size={96} />
+            <Text
+              sx={{
+                maxWidth: "100%",
+                fontFamily: "mono",
+                fontSize: 1,
+                overflow: "hidden",
+                textOverflow: "ellipsis",
+              }}
+            >
+              {name}
             </Text>
           </Box>
-        </Box>
+        );
+      })}
+    </Box>
+  );
+}
+
+export function DatalayerIcons() {
+  const palette = useColorPalette();
+  const [filter, setFilter] = useState(() => {
+    if (typeof window === "undefined") return "";
+    return new URLSearchParams(window.location.search).get("q") ?? "";
+  });
+  const [icons] = useState<IconCollection>(() => {
+    if (typeof window === "undefined") return dataIcons;
+    return new URLSearchParams(window.location.search).has("eggs")
+      ? eggsIcons
+      : dataIcons;
+  });
+  const [selected, setSelected] = useState<SelectedIcon | null>(null);
+  const variants = iconVariants(palette.isLight);
+  const names = useMemo(() => {
+    const query = filter.trim().toLocaleLowerCase();
+    return Object.keys(icons).filter(
+      (name) => !query || name.toLocaleLowerCase().includes(query),
+    );
+  }, [filter, icons]);
+
+  useEffect(() => {
+    if (typeof window === "undefined") return;
+    const url = new URL(window.location.href);
+    if (filter.trim()) url.searchParams.set("q", filter.trim());
+    else url.searchParams.delete("q");
+    window.history.replaceState({}, document.title, url);
+  }, [filter]);
+
+  return (
+    <Box sx={{ px: 4, py: 4 }}>
+      <Box
+        sx={{
+          maxWidth: 1200,
+          mx: "auto",
+          "--datalayer-icon-fg": palette.primary,
+        }}
+      >
+        <Heading as="h1" sx={{ m: 0, mb: 2, fontSize: 5 }}>
+          React icons for data products
+        </Heading>
+        <Text sx={{ color: "fg.muted" }}>
+          {Object.keys(icons).length} curated icons for data product design.
+        </Text>
 
         <Flash variant="warning" sx={{ mt: 3 }}>
-          Some icons may not be 100% compatible with existing design guidelines.
-          Please open an issue on{' '}
-          <Link href="https://github.com/datalayer/icons/issues" target="_blank">
-            github.com/datalayer/icons/issues
+          Some icons may not be fully compatible with existing design
+          guidelines. Report issues on{" "}
+          <Link
+            href="https://github.com/datalayer/icons/issues"
+            target="_blank"
+          >
+            GitHub
           </Link>
           .
         </Flash>
 
-        <Box mt={3} mb={3}>
-          <Text as="p" sx={{ m: 0 }}>
-            Every row renders the same icon four ways across the columns below,
-            with a subline of one-click PNG downloads and inline-rendered
-            variants. Search to inspect a single icon, and use the PNG / SVG
-            links to download it. Sources live in the{' '}
-            <Link href="https://github.com/datalayer/icons" target="_blank">datalayer/icons repository</Link>.
-          </Text>
+        <Text as="p" sx={{ mt: 3, mb: 0 }}>
+          Browse each icon in four theme-aware treatments. Select any row or
+          search result to inspect larger previews and download PNG, JPG, or SVG
+          variants.
+        </Text>
 
-          <Box
-            sx={{
-              mt: 3,
-              display: 'grid',
-              gap: 2,
-              gridTemplateColumns: [
-                '1fr',
-                '1fr 1fr',
-                'repeat(2, 1fr)',
-                'repeat(4, 1fr)',
-              ],
-            }}
-          >
-            {ICON_COLUMNS.map(col => (
-              <Box
-                key={col.key}
+        <Box
+          sx={{
+            mt: 3,
+            display: "grid",
+            gap: 2,
+            gridTemplateColumns: ["1fr", "1fr 1fr", "repeat(4, 1fr)"],
+          }}
+        >
+          {variants.map((variant) => (
+            <Box
+              key={variant.key}
+              sx={{
+                border: "1px solid",
+                borderColor: "border.muted",
+                borderRadius: 2,
+                p: 3,
+              }}
+            >
+              <Text sx={{ display: "block", fontWeight: 600, mb: 1 }}>
+                {variant.title}
+              </Text>
+              <Text
                 sx={{
-                  border: '1px solid',
-                  borderColor: 'border.muted',
-                  borderRadius: 2,
-                  p: 3,
+                  display: "block",
+                  minHeight: 40,
+                  fontSize: 1,
+                  color: "fg.muted",
                 }}
               >
-                <Text sx={{ display: 'block', fontWeight: 'bold', mb: 1 }}>
-                  {columnTitle(col.key, col.title, palette.isLight)}
-                </Text>
-                <Text sx={{ display: 'block', fontSize: 1, color: 'fg.muted' }}>
-                  {col.hint}
-                </Text>
-              </Box>
-            ))}
+                {variant.hint}
+              </Text>
+              <Text
+                as="code"
+                sx={{
+                  display: "block",
+                  mt: 2,
+                  fontSize: 0,
+                  overflowWrap: "anywhere",
+                }}
+              >
+                {variant.example}
+              </Text>
+            </Box>
+          ))}
+        </Box>
+
+        <Box sx={{ mt: 3, mb: 3 }}>
+          <TextInput
+            block
+            value={filter}
+            leadingVisual={SearchIcon}
+            placeholder="Search icons"
+            aria-label="Search icons"
+            onChange={(event) => setFilter(event.target.value)}
+          />
+          <Box
+            sx={{
+              mt: 2,
+              display: "flex",
+              justifyContent: "space-between",
+              alignItems: "center",
+            }}
+          >
+            <Text sx={{ fontSize: 1, color: "fg.muted" }}>
+              {names.length} {names.length === 1 ? "icon" : "icons"}
+            </Text>
+            {filter ? (
+              <Button
+                size="small"
+                variant="invisible"
+                onClick={() => setFilter("")}
+              >
+                Clear
+              </Button>
+            ) : null}
           </Box>
-
-          <Text as="p" sx={{ mt: 3, mb: 0, color: 'fg.muted' }}>
-            The inverse-preview column flips with the active mode — it shows the
-            icon on dark while you browse in light, and on light while you browse
-            in dark — pulling its surface and icon color from the theme palette so
-            it previews correctly across the Datalayer, Ivory and Sun themes. Open
-            the{' '}
-            <Link
-              href="https://github.com/datalayer/icons/blob/main/README.md"
-              target="_blank"
-            >
-              code example
-            </Link>
-            {' '}for a concrete usage snippet.
-          </Text>
         </Box>
 
-        <Box sx={{ display: 'flex', gap: 2, alignItems: 'center', flexWrap: 'wrap', mb: 3 }}>
-          <Box sx={{ flex: '1 1 340px', minWidth: 260 }}>
-            <TextInput
-              block
-              value={filter}
-              leadingVisual={SearchIcon}
-              placeholder="Search icons"
-              autoFocus={true}
-              onChange={handleFilterChange}
-              sx={{
-                border: '1px solid',
-                borderColor: 'border.default',
-              }}
-            />
+        {filter.trim() ? (
+          <SearchResults names={names} icons={icons} onSelect={setSelected} />
+        ) : (
+          <Box
+            sx={{
+              overflowX: "auto",
+              border: "1px solid",
+              borderColor: "border.default",
+              borderRadius: 2,
+            }}
+          >
+            <Box sx={{ minWidth: 900 }}>
+              <IconTableHeader />
+              {names.map((name) => (
+                <IconLine
+                  key={name}
+                  name={name}
+                  icon={icons[name]}
+                  onSelect={setSelected}
+                />
+              ))}
+            </Box>
           </Box>
-          <Button onClick={() => filterIcons(filter)}>Apply</Button>
-        </Box>
-
-        {(filter === '') ?
-          <DetailledIcons names={names} icons={icons} />
-        :
-          <SummaryIcons names={names} icons={icons} />
-        }
-        </Box>
+        )}
       </Box>
-    </>
-  )
+      {selected ? (
+        <IconDetailsDialog
+          selected={selected}
+          onClose={() => setSelected(null)}
+        />
+      ) : null}
+    </Box>
+  );
 }
 
 export default DatalayerIcons;
