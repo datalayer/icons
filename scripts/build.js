@@ -441,10 +441,21 @@ export default ${componentName};`;
         // child element classes and any <style> blocks are preserved. This .svg
         // file is consumed ONLY by the LabIcon variant — the React/JSX variant is
         // generated in-memory via svgr (which converts class -> className).
-        const svgForLabIcon = svg.replace(
+        let svgForLabIcon = svg.replace(
           /(<svg\b[^>]*?)\s+class\s*=\s*(?:"[^"]*"|'[^']*')/i,
           "$1",
         );
+        // Give the root <svg> an intrinsic size when it has none. LabIcon
+        // inlines the markup as it is, and an inline svg without width and
+        // height falls back to the replaced-element default of 300×150 —
+        // a sidebar tab icon the size of the sidebar. JupyterLab's own
+        // icons carry `width="16"` for exactly this reason.
+        if (!/<svg\b[^>]*\bwidth\s*=/i.test(svgForLabIcon)) {
+          svgForLabIcon = svgForLabIcon.replace(
+            /<svg\b/i,
+            '<svg width="16" height="16"',
+          );
+        }
         ensureWrite(`${outDir}/${componentName}.svg`, svgForLabIcon);
 
         labComponentName = componentName.replace("Icon", "IconJupyterLab");
@@ -452,11 +463,15 @@ export default ${componentName};`;
           "Icon",
           "IconJupyterLab",
         );
-        const labIconType = `import { LabIcon } from "@jupyterlab/ui-components/lib/icon/labicon";
+        const labIconType = `import { LabIcon } from "@jupyterlab/ui-components";
 declare const ${labComponentInstance}: LabIcon;
 export default ${labComponentInstance};`;
         ensureWrite(`${outDir}/${labComponentName}.d.ts`, labIconType);
-        const labIcon = `import { LabIcon } from '@jupyterlab/ui-components/lib/icon/labicon';
+        const labIcon = `// The root import, not lib/icon/labicon: inside JupyterLab the root is a
+// federation singleton, so this LabIcon is the class the host recognises
+// with instanceof — a deep import bundles a private copy the host would
+// not style (the icon then renders unstyled, at its intrinsic size).
+import { LabIcon } from '@jupyterlab/ui-components';
 import ${componentName}SvgStr from './${componentName}.svg';
 const ${labComponentInstance} = new LabIcon({
     name: '@datalayer/icons:${svgName}',
