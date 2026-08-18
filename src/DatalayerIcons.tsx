@@ -24,7 +24,8 @@ import {
   useThemeStore,
 } from "@datalayer/primer-addons";
 import { toJpeg, toPng } from "html-to-image";
-import * as dataIconExports from "@datalayer/icons-react";
+import * as data1IconExports from "@datalayer/icons-react/data1";
+import * as data2IconExports from "@datalayer/icons-react/data2";
 import * as eggIconExports from "@datalayer/icons-react/eggs";
 
 type IconComponent = ComponentType<
@@ -46,8 +47,77 @@ type IconVariant = {
   example: string;
 };
 
-const dataIcons = dataIconExports as IconCollection;
-const eggsIcons = eggIconExports as IconCollection;
+/**
+ * Every icon of the given sets, under the name it is imported by.
+ *
+ * The sets are read one by one rather than through the barrel of the package:
+ * five names — `AngularIcon`, `AppleRainbowIcon`, `StudentIcon`, `UserIcon`
+ * and `UsersIcon` — are carried by both `data1` and `data2`, and a single
+ * barrel can only hand out one binding per name. Here the first set to carry
+ * a name keeps it bare and the other is listed under `set/Name`, so both
+ * drawings are shown instead of one hiding the other.
+ *
+ * @param sets The sets to gather, in order of precedence
+ */
+function gatherIcons(sets: [string, object][]): IconCollection {
+  const gathered: IconCollection = {};
+  for (const [set, exported] of sets) {
+    for (const [name, icon] of Object.entries(exported)) {
+      if (!icon || name === "default") {
+        continue;
+      }
+      gathered[name in gathered ? `${set}/${name}` : name] =
+        icon as IconComponent;
+    }
+  }
+  return gathered;
+}
+
+/** The name of the component itself, whichever set it was listed under. */
+function componentNameOf(listedName: string): string {
+  return listedName.slice(listedName.lastIndexOf("/") + 1);
+}
+
+/** The catalog: the two sets of icons the product is drawn with. */
+const dataIcons = gatherIcons([
+  ["data1", data1IconExports],
+  ["data2", data2IconExports],
+]);
+
+/** The eggs, which are shown only when the address asks for them. */
+const eggsIcons = gatherIcons([["eggs", eggIconExports]]);
+
+/** Whether the address asks for the eggs. */
+function eggsRequested(): boolean {
+  if (typeof window === "undefined") {
+    return false;
+  }
+  return new URLSearchParams(window.location.search).has("eggs");
+}
+
+/**
+ * Whether the eggs are on show, following the address as it changes.
+ *
+ * The rule belongs to this component rather than to whoever renders it: the
+ * gallery is shown by the icons application and by the design one alike —
+ * both import this very view — and the eggs are hidden from both unless the
+ * address carries `?eggs`. Read on mount and again on `popstate`, so walking
+ * back and forth over the link that adds it is honoured rather than frozen
+ * at whatever the first render saw.
+ */
+function useEggsShown(): boolean {
+  const [shown, setShown] = useState(eggsRequested);
+  useEffect(() => {
+    if (typeof window === "undefined") {
+      return;
+    }
+    const update = () => setShown(eggsRequested());
+    update();
+    window.addEventListener("popstate", update);
+    return () => window.removeEventListener("popstate", update);
+  }, []);
+  return shown;
+}
 const SWATCH_SIZE = 64;
 const GRID_TEMPLATE = `minmax(210px, 1.6fr) repeat(4, ${SWATCH_SIZE + 28}px) 92px`;
 
@@ -293,8 +363,10 @@ function IconDetailsDialog({
   onClose: () => void;
 }) {
   // The examples name the very icon being looked at, so they can be copied
-  // into a page as they read.
-  const variants = iconVariants(useColorPalette().isLight, selected.name);
+  // into a page as they read — the component's own name, never the `set/Name`
+  // an icon listed by two sets is shown under.
+  const componentName = componentNameOf(selected.name);
+  const variants = iconVariants(useColorPalette().isLight, componentName);
   const exportNodes = useRef<Partial<Record<VariantKey, HTMLDivElement>>>({});
   const [downloading, setDownloading] = useState<string | null>(null);
 
@@ -307,7 +379,7 @@ function IconDetailsDialog({
     const job = `${variant}-${format}`;
     setDownloading(job);
     try {
-      await downloadVariant(node, selected.name, variant, format);
+      await downloadVariant(node, componentName, variant, format);
     } catch (error) {
       console.error(`Unable to download ${selected.name} as ${format}.`, error);
     } finally {
@@ -317,8 +389,8 @@ function IconDetailsDialog({
 
   return (
     <Dialog
-      title={selected.name}
-      subtitle="Preview and download each supported icon treatment."
+      title={componentName}
+      subtitle={`${selected.name.includes("/") ? `${selected.name.split("/")[0]} set — ` : ""}preview and download each supported icon treatment.`}
       width="xlarge"
       height="large"
       /*
@@ -534,12 +606,8 @@ export function DatalayerIcons() {
     if (typeof window === "undefined") return "";
     return new URLSearchParams(window.location.search).get("q") ?? "";
   });
-  const [icons] = useState<IconCollection>(() => {
-    if (typeof window === "undefined") return dataIcons;
-    return new URLSearchParams(window.location.search).has("eggs")
-      ? eggsIcons
-      : dataIcons;
-  });
+  const eggsShown = useEggsShown();
+  const icons = eggsShown ? eggsIcons : dataIcons;
   const [selected, setSelected] = useState<SelectedIcon | null>(null);
   const variants = iconVariants(palette.isLight);
   const names = useMemo(() => {
