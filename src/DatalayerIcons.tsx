@@ -51,32 +51,42 @@ const eggsIcons = eggIconExports as IconCollection;
 const SWATCH_SIZE = 64;
 const GRID_TEMPLATE = `minmax(210px, 1.6fr) repeat(4, ${SWATCH_SIZE + 28}px) 92px`;
 
-function iconVariants(isLight: boolean): IconVariant[] {
+/** What an example names the component when no icon is in hand. */
+const ANY_ICON_NAME = "DatalayerIcon";
+
+/**
+ * The treatments an icon supports, with the code each one is written as.
+ *
+ * @param isLight Whether the page is on its light color mode
+ * @param iconName The icon the examples are written for; a stand-in name is
+ *   used for the legend of the page, which speaks of no icon in particular
+ */
+function iconVariants(isLight: boolean, iconName = ANY_ICON_NAME): IconVariant[] {
   const inverseMode = isLight ? "dark" : "light";
   return [
     {
       key: "mono",
       title: "Monochrome",
       hint: "One theme hue with tonal contrast that preserves artwork details.",
-      example: "<DatalayerIcon />",
+      example: `<${iconName} />`,
     },
     {
       key: "colored",
       title: "Colored",
       hint: "Full brand artwork in its native multi-color palette.",
-      example: "<DatalayerIcon colored />",
+      example: `<${iconName} colored />`,
     },
     {
       key: "accent",
       title: "Accent",
       hint: "One supplied accent hue with the original tonal detail preserved.",
-      example: "<DatalayerIcon color={palette.flame} />",
+      example: `<${iconName} color={palette.flame} />`,
     },
     {
       key: "inverse",
       title: `On ${inverseMode}`,
       hint: `Colored artwork on the ${inverseMode} theme surface to check contrast.`,
-      example: `<DatalayerIcon colored colormode="${inverseMode}" />`,
+      example: `<${iconName} colored colormode="${inverseMode}" />`,
     },
   ];
 }
@@ -282,7 +292,9 @@ function IconDetailsDialog({
   selected: SelectedIcon;
   onClose: () => void;
 }) {
-  const variants = iconVariants(useColorPalette().isLight);
+  // The examples name the very icon being looked at, so they can be copied
+  // into a page as they read.
+  const variants = iconVariants(useColorPalette().isLight, selected.name);
   const exportNodes = useRef<Partial<Record<VariantKey, HTMLDivElement>>>({});
   const [downloading, setDownloading] = useState<string | null>(null);
 
