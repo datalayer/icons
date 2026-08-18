@@ -321,6 +321,13 @@ function IconDetailsDialog({
       subtitle="Preview and download each supported icon treatment."
       width="xlarge"
       height="large"
+      /*
+       * Taller than the 640px `large` stands for, which is the tallest the
+       * dialog names: the four treatments sit two by two, and a card is its
+       * preview plus the code and the downloads under it, so the second row
+       * is cut in half. Bounded by the window, as the dialog bounds itself.
+       */
+      sx={{ height: 'min(820px, calc(100dvh - 64px))' }}
       onClose={onClose}
     >
       <Box
