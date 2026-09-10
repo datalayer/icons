@@ -34,7 +34,7 @@
     "@datalayer/icons-react": "^1.0.9",
     "@datalayer/primer-addons": "^1.0.12",
     "@jupyterlab/ui-components": "^4.0.0",
-    "@primer/octicons-react": "^19.29.1",
+    "@primer/octicons-react": "^19.35.0",
     "@primer/react": "^37.31.0",
     "html-to-image": "^1.9.0",
     "react": "19.2.8",
