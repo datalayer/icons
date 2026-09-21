@@ -362,10 +362,20 @@ let transforms = {
       return code;
     }
 
+    // Every import from React, not only the namespace one. svgr's `ref: true`
+    // adds `import { forwardRef } from "react"` beside it, and left in place
+    // that one ESM line made every CommonJS icon unloadable by Node — a
+    // `require("@datalayer/icons-react")` threw "Cannot use import statement
+    // outside a module", which is what broke every Jest suite importing an
+    // icon.
     return code
       .replace(
         'import * as React from "react"',
         'const React = require("react")',
+      )
+      .replace(
+        /import \{([^}]+)\} from "react";?/g,
+        'const {$1} = require("react");',
       )
       .replace("export default", "module.exports =");
   },
