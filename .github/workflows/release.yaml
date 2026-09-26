@@ -1,0 +1,140 @@
+# Copyright (c) 2023-2026 Datalayer, Inc.
+# Distributed under the terms of the MIT License.
+
+# Publishes the release a tag names to npm, with no stored token: npm trusts
+# this workflow file (OIDC trusted publishing, through the `npm` environment,
+# with provenance). The tag must name @datalayer/icons-react's version
+# (icons-react/package.json); @datalayer/icons-all, the root package, is
+# published too whenever its own version is not on npm yet. A package
+# already published at its version is skipped, so a re-run after a partial
+# upload publishes the rest. See RELEASE.md.
+
+name: Release
+
+on:
+  push:
+    tags:
+      - 'v*'
+
+concurrency:
+  group: release-${{ github.ref }}
+  cancel-in-progress: false
+
+permissions:
+  contents: read
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    outputs:
+      npm: ${{ steps.plan.outputs.npm }}
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+
+      - name: Check the tag names the version icons-react carries
+        run: |
+          set -euo pipefail
+          tag="${GITHUB_REF_NAME#v}"
+          version="$(node -p "require('./icons-react/package.json').version")"
+          echo "tag=$tag @datalayer/icons-react=$version"
+          test "$tag" = "$version"
+
+      - name: Find what is not published yet
+        id: plan
+        run: |
+          set -euo pipefail
+          todo=""
+          for pkg in icons-react .; do
+            name="$(node -p "require('./$pkg/package.json').name")"
+            version="$(node -p "require('./$pkg/package.json').version")"
+            if npm view "$name@$version" version >/dev/null 2>&1; then
+              echo "npm: $name@$version is already published, skipping"
+            else
+              echo "npm: $name@$version will be published"
+              todo="$todo $pkg"
+            fi
+          done
+          echo "npm=${todo# }" >> "$GITHUB_OUTPUT"
+
+      - name: Build
+        if: steps.plan.outputs.npm != ''
+        run: |
+          set -eux
+          corepack enable
+          yarn set version 3.5.0
+          yarn install
+          # The icons (svgo, then the React components into icons-react/), and
+          # the root package's lib/ for @datalayer/icons-all.
+          yarn run build
+
+      - name: Pack
+        if: steps.plan.outputs.npm != ''
+        run: |
+          set -euo pipefail
+          mkdir -p dist-npm
+          for pkg in ${{ steps.plan.outputs.npm }}; do
+            (cd "$pkg" && npm pack --pack-destination "$GITHUB_WORKSPACE/dist-npm")
+          done
+          ls -la dist-npm
+
+      - uses: actions/upload-artifact@v4
+        if: steps.plan.outputs.npm != ''
+        with:
+          name: npm
+          path: dist-npm/*.tgz
+
+  npm:
+    needs: build
+    if: needs.build.outputs.npm != ''
+    runs-on: ubuntu-latest
+    environment: npm
+    permissions:
+      id-token: write
+    steps:
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+          registry-url: 'https://registry.npmjs.org'
+      # Trusted publishing needs npm 11.5.1 or later.
+      - run: npm install -g npm@^11.5.1 && npm --version
+      - uses: actions/download-artifact@v4
+        with:
+          name: npm
+          path: dist
+      - name: Publish
+        run: |
+          set -euo pipefail
+          for tarball in dist/*.tgz; do
+            name="$(tar -xOzf "$tarball" package/package.json | node -p "JSON.parse(require('fs').readFileSync(0)).name")"
+            version="$(tar -xOzf "$tarball" package/package.json | node -p "JSON.parse(require('fs').readFileSync(0)).version")"
+            if npm view "$name@$version" version >/dev/null 2>&1; then
+              echo "$name@$version is already published, skipping"
+              continue
+            fi
+            # "./": npm reads a bare "dist/x.tgz" as the GitHub shorthand
+            # github:dist/x.tgz and refuses to fetch it (EALLOWGIT).
+            npm publish "./$tarball" --provenance --access public
+          done
+
+  release:
+    name: GitHub release
+    needs: [build, npm]
+    if: always() && needs.build.result == 'success' && needs.npm.result != 'failure'
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - name: Create the release with generated notes
+        run: |
+          version="${GITHUB_REF_NAME#v}"
+          gh release view "$GITHUB_REF_NAME" >/dev/null 2>&1 && exit 0
+          gh release create "$GITHUB_REF_NAME" --title "Release $version" --generate-notes \
+            --notes "- [npm @datalayer/icons-react](https://www.npmjs.com/package/@datalayer/icons-react/v/$version)"
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}

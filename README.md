@@ -111,7 +111,7 @@ To add an icon to this repository, add the SVG (preferably of viewBox `0 0 20 20
 TODO: Describe the difference between `data1` and `data2`.
 
 ```bash
-npm run build-icons
+npm run build:icons
 ```
 
 You can preview the icons running the following command (sometimes the colors do not correspond due to many icons being shown).
