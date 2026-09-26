@@ -12,7 +12,6 @@ import {
   Button,
   Dialog,
   Flash,
-  Heading,
   Link,
   Text,
   TextInput,
@@ -634,9 +633,9 @@ export function DatalayerIcons() {
           "--datalayer-icon-fg": palette.primary,
         }}
       >
-        <Heading as="h1" sx={{ m: 0, mb: 2, fontSize: 5 }}>
+        <Text as="h1" sx={{ m: 0, mb: 2, fontSize: 5, fontWeight: 600 }}>
           React icons for data products
-        </Heading>
+        </Text>
         <Text sx={{ color: "fg.muted" }}>
           {Object.keys(icons).length} curated icons for data product design.
         </Text>
