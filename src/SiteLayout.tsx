@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react';
-import { Box, Link, Text } from '@primer/react';
-import { AppearanceControlsWithStore, useThemeStore } from '@datalayer/primer-addons';
+import { Link, Text } from '@primer/react';
+import { AppearanceControlsWithStore, Box, useThemeStore } from '@datalayer/primer-addons';
 import { DatalayerLogoText } from '@datalayer/primer-addons';
 import { Link as RouterLink, Outlet, useLocation, useSearchParams } from 'react-router-dom';
 
@@ -68,22 +68,21 @@ export function SiteLayout() {
   }, []);
 
   return (
-    <Box sx={{ minHeight: '100vh', display: 'flex', flexDirection: 'column', bg: 'canvas.default' }}>
+    <Box minHeight="100vh" display="flex" flexDirection="column" bg="canvas.default">
       <Box
         as="header"
-        sx={{
-          borderBottom: '1px solid',
-          borderColor: 'border.default',
-          px: 4,
-          py: 3,
-          position: 'sticky',
-          top: 0,
-          bg: 'canvas.default',
-          zIndex: 10,
-        }}
+        borderBottom="1px solid"
+        borderColor="border.default"
+        px={4}
+        py={3}
+        position="sticky"
+        top={0}
+        bg="canvas.default"
+        backdropFilter="blur(12px)"
+        zIndex={10}
       >
-        <Box sx={{ maxWidth: 1200, mx: 'auto', display: 'flex', alignItems: 'center', justifyContent: 'space-between', gap: 3, flexWrap: 'wrap' }}>
-          <Box sx={{ display: 'flex', alignItems: 'center', minHeight: 28 }}>
+        <Box maxWidth={1200} mx="auto" display="flex" alignItems="center" justifyContent="space-between" gap={3} flexWrap="wrap">
+          <Box display="flex" alignItems="center" minHeight={28}>
             <Link
               as={RouterLink}
               to="/"
@@ -102,8 +101,8 @@ export function SiteLayout() {
               />
             </Link>
           </Box>
-          <Box sx={{ display: 'flex', alignItems: 'center', gap: 3, flexWrap: 'wrap' }}>
-            <Box as="nav" sx={{ display: 'flex', gap: 2 }}>
+          <Box display="flex" alignItems="center" gap={3} flexWrap="wrap">
+            <Box as="nav" display="flex" gap={2}>
               {NAV_ITEMS.map((item) => {
                 const active = location.pathname === item.to || (item.to !== '/' && location.pathname.startsWith(item.to));
                 return (
@@ -117,7 +116,7 @@ export function SiteLayout() {
                       fontWeight: active ? 600 : 400,
                       px: 2,
                       py: 1,
-                      borderRadius: 2,
+                      borderRadius: 'var(--theme-radius-control)',
                       ':hover': { bg: 'canvas.subtle' },
                     }}
                   >
@@ -131,16 +130,16 @@ export function SiteLayout() {
         </Box>
       </Box>
 
-      <Box as="main" sx={{ flex: 1 }}>
+      <Box as="main" flex={1}>
         <Outlet />
       </Box>
 
-      <Box as="footer" sx={{ borderTop: '1px solid', borderColor: 'border.default', px: 4, py: 4, bg: 'canvas.subtle' }}>
-        <Box sx={{ maxWidth: 1200, mx: 'auto', display: 'flex', justifyContent: 'space-between', gap: 3, flexWrap: 'wrap' }}>
+      <Box as="footer" borderTop="1px solid" borderColor="border.default" px={4} py={4} bg="canvas.subtle">
+        <Box maxWidth={1200} mx="auto" display="flex" justifyContent="space-between" gap={3} flexWrap="wrap">
           <Text sx={{ color: 'fg.muted', fontSize: 1 }}>
             Datalayer Design
           </Text>
-          <Box sx={{ display: 'flex', gap: 3 }}>
+          <Box display="flex" gap={3}>
             <Link href="https://datalayer.ai" target="_blank">Datalayer</Link>
             <Link href="https://datalayer.ai/docs" target="_blank">Docs</Link>
             <Link href="https://github.com/datalayer" target="_blank">GitHub</Link>

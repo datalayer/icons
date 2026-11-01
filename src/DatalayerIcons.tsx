@@ -1,5 +1,6 @@
 import {
   type ComponentType,
+  type CSSProperties,
   type KeyboardEvent,
   type SVGProps,
   useEffect,
@@ -8,7 +9,6 @@ import {
   useState,
 } from "react";
 import {
-  Box,
   Button,
   Dialog,
   Flash,
@@ -18,6 +18,9 @@ import {
 } from "@primer/react";
 import { DownloadIcon, SearchIcon } from "@primer/octicons-react";
 import {
+  Box,
+  type BoxProps,
+  Card,
   getColorPalette,
   useColorPalette,
   useThemeStore,
@@ -241,22 +244,23 @@ function VariantIcon({
   return <Icon size={size} />;
 }
 
-function useVariantSurface(variant: VariantKey) {
+/**
+ * What an icon stands on: the theme's own surface, or, to check contrast, the
+ * other colour mode's, which the page's tokens cannot name.
+ */
+function useVariantSurface(variant: VariantKey): BoxProps {
   const palette = useColorPalette();
   const { theme } = useThemeStore();
   const inverseMode: "light" | "dark" = palette.isLight ? "dark" : "light";
   const inversePalette = getColorPalette(theme, inverseMode);
   if (variant !== "inverse") {
-    return {
-      backgroundColor: "canvas.subtle",
-      borderColor: "border.default",
-    };
+    return { bg: "canvas.subtle", borderColor: "border.default" };
   }
   return {
-    backgroundColor: inversePalette.bg,
+    bg: inversePalette.bg,
     borderColor: inversePalette.primary,
     color: inversePalette.primary,
-    "--datalayer-icon-fg": inversePalette.primary,
+    style: { "--datalayer-icon-fg": inversePalette.primary } as CSSProperties,
   };
 }
 
@@ -270,17 +274,15 @@ function Swatch({
   const surface = useVariantSurface(variant);
   return (
     <Box
-      sx={{
-        width: SWATCH_SIZE,
-        height: SWATCH_SIZE,
-        mx: "auto",
-        display: "flex",
-        alignItems: "center",
-        justifyContent: "center",
-        borderRadius: 2,
-        border: "1px solid",
-        ...surface,
-      }}
+      width={SWATCH_SIZE}
+      height={SWATCH_SIZE}
+      mx="auto"
+      display="flex"
+      alignItems="center"
+      justifyContent="center"
+      borderRadius="small"
+      border="1px solid"
+      {...surface}
     >
       <VariantIcon icon={icon} variant={variant} size={42} />
     </Box>
@@ -302,27 +304,18 @@ function DetailVariant({
 }) {
   const surface = useVariantSurface(variant.key);
   return (
-    <Box
-      sx={{
-        border: "1px solid",
-        borderColor: "border.default",
-        borderRadius: 2,
-        overflow: "hidden",
-      }}
-    >
+    <Card border shadow="none" rounded="small" overflow="hidden">
       <Box
         ref={setExportNode}
-        sx={{
-          height: 176,
-          display: "flex",
-          alignItems: "center",
-          justifyContent: "center",
-          ...surface,
-        }}
+        height={176}
+        display="flex"
+        alignItems="center"
+        justifyContent="center"
+        {...surface}
       >
         <VariantIcon icon={icon} variant={variant.key} size={112} />
       </Box>
-      <Box sx={{ p: 3, borderTop: "1px solid", borderColor: "border.default" }}>
+      <Card.Content borderTop="1px solid" borderColor="border.default">
         <Text sx={{ display: "block", fontWeight: 600 }}>{variant.title}</Text>
         <Text
           as="code"
@@ -336,7 +329,7 @@ function DetailVariant({
         >
           {variant.example}
         </Text>
-        <Box sx={{ display: "flex", gap: 2, mt: 3 }}>
+        <Box display="flex" gap={2} mt={3}>
           {(["png", "jpg", "svg"] as DownloadFormat[]).map((format) => (
             <Button
               key={format}
@@ -349,8 +342,8 @@ function DetailVariant({
             </Button>
           ))}
         </Box>
-      </Box>
-    </Box>
+      </Card.Content>
+    </Card>
   );
 }
 
@@ -402,12 +395,10 @@ function IconDetailsDialog({
       onClose={onClose}
     >
       <Box
-        sx={{
-          display: "grid",
-          gridTemplateColumns: ["1fr", "1fr 1fr"],
-          gap: 3,
-          p: 3,
-        }}
+        display="grid"
+        gridTemplateColumns={["1fr", "1fr 1fr"]}
+        gap={3}
+        p={3}
       >
         {variants.map((variant) => (
           <DetailVariant
@@ -430,18 +421,16 @@ function IconTableHeader() {
   const variants = iconVariants(useColorPalette().isLight);
   return (
     <Box
-      sx={{
-        position: "sticky",
-        top: 0,
-        zIndex: 1,
-        display: "grid",
-        gridTemplateColumns: GRID_TEMPLATE,
-        alignItems: "center",
-        gap: 3,
-        px: 3,
-        py: 3,
-        backgroundColor: "canvas.default",
-      }}
+      position="sticky"
+      top={0}
+      zIndex={1}
+      display="grid"
+      gridTemplateColumns={GRID_TEMPLATE}
+      alignItems="center"
+      gap={3}
+      px={3}
+      py={3}
+      bg="canvas.default"
     >
       <Text sx={{ fontSize: 1, fontWeight: 600 }}>Icon</Text>
       {variants.map((variant) => (
@@ -478,26 +467,24 @@ function IconLine({
       aria-label={`View ${name} details`}
       onClick={open}
       onKeyDown={handleKeyDown}
-      sx={{
-        display: "grid",
-        gridTemplateColumns: GRID_TEMPLATE,
-        alignItems: "center",
-        gap: 3,
-        px: 3,
-        py: 2,
-        borderTop: "1px solid",
-        borderColor: "border.muted",
-        cursor: "pointer",
-        ":hover": { backgroundColor: "canvas.subtle" },
-        ":focus-visible": {
-          outline: "2px solid",
-          outlineColor: "accent.fg",
-          outlineOffset: -2,
-        },
+      display="grid"
+      gridTemplateColumns={GRID_TEMPLATE}
+      alignItems="center"
+      gap={3}
+      px={3}
+      py={2}
+      borderTop="1px solid"
+      borderColor="border.muted"
+      cursor="pointer"
+      hover={{ bg: "canvas.subtle" }}
+      focusVisible={{
+        outline: "2px solid",
+        outlineColor: "accent.fg",
+        outlineOffset: "-2px",
       }}
     >
-      <Box sx={{ display: "flex", alignItems: "center", gap: 2, minWidth: 0 }}>
-        <Box as="span" sx={{ display: "inline-flex", flexShrink: 0 }}>
+      <Box display="flex" alignItems="center" gap={2} minWidth={0}>
+        <Box as="span" display="inline-flex" flexShrink={0}>
           <VariantIcon icon={icon} variant="colored" size={32} />
         </Box>
         <Text
@@ -540,45 +527,27 @@ function SearchResults({
 }) {
   return (
     <Box
-      sx={{
-        display: "grid",
-        gridTemplateColumns: "repeat(auto-fill, minmax(180px, 1fr))",
-        gap: 3,
-      }}
+      display="grid"
+      gridTemplateColumns="repeat(auto-fill, minmax(180px, 1fr))"
+      gap={3}
     >
       {names.map((name) => {
         const Icon = icons[name];
         return (
-          <Box
+          <Card
             as="button"
             type="button"
             key={name}
             onClick={() => onSelect({ name, icon: Icon })}
-            sx={{
-              minWidth: 0,
-              height: 176,
-              p: 3,
-              display: "flex",
-              flexDirection: "column",
-              alignItems: "center",
-              justifyContent: "center",
-              gap: 3,
-              color: "fg.default",
-              backgroundColor: "canvas.subtle",
-              border: "1px solid",
-              borderColor: "border.default",
-              borderRadius: 2,
-              cursor: "pointer",
-              ":hover": {
-                borderColor: "accent.fg",
-                backgroundColor: "canvas.default",
-              },
-              ":focus-visible": {
-                outline: "2px solid",
-                outlineColor: "accent.fg",
-                outlineOffset: 2,
-              },
-            }}
+            variant="subtle"
+            interactive
+            shadow="none"
+            minWidth={0}
+            height={176}
+            p={3}
+            alignItems="center"
+            justifyContent="center"
+            gap={3}
           >
             <Icon colored size={96} />
             <Text
@@ -592,7 +561,7 @@ function SearchResults({
             >
               {name}
             </Text>
-          </Box>
+          </Card>
         );
       })}
     </Box>
@@ -625,13 +594,11 @@ export function DatalayerIcons() {
   }, [filter]);
 
   return (
-    <Box sx={{ px: 4, py: 4 }}>
+    <Box px={4} py={4}>
       <Box
-        sx={{
-          maxWidth: 1200,
-          mx: "auto",
-          "--datalayer-icon-fg": palette.primary,
-        }}
+        maxWidth={1200}
+        mx="auto"
+        style={{ "--datalayer-icon-fg": palette.primary } as CSSProperties}
       >
         <Text as="h1" sx={{ m: 0, mb: 2, fontSize: 5, fontWeight: 600 }}>
           React icons for data products
@@ -659,23 +626,13 @@ export function DatalayerIcons() {
         </Text>
 
         <Box
-          sx={{
-            mt: 3,
-            display: "grid",
-            gap: 2,
-            gridTemplateColumns: ["1fr", "1fr 1fr", "repeat(4, 1fr)"],
-          }}
+          mt={3}
+          display="grid"
+          gap={2}
+          gridTemplateColumns={["1fr", "1fr 1fr", "repeat(4, 1fr)"]}
         >
           {variants.map((variant) => (
-            <Box
-              key={variant.key}
-              sx={{
-                border: "1px solid",
-                borderColor: "border.muted",
-                borderRadius: 2,
-                p: 3,
-              }}
-            >
+            <Card key={variant.key} variant="subtle" border shadow="none" p={3}>
               <Text sx={{ display: "block", fontWeight: 600, mb: 1 }}>
                 {variant.title}
               </Text>
@@ -700,11 +657,11 @@ export function DatalayerIcons() {
               >
                 {variant.example}
               </Text>
-            </Box>
+            </Card>
           ))}
         </Box>
 
-        <Box sx={{ mt: 3, mb: 3 }}>
+        <Box mt={3} mb={3}>
           <TextInput
             block
             value={filter}
@@ -714,12 +671,10 @@ export function DatalayerIcons() {
             onChange={(event) => setFilter(event.target.value)}
           />
           <Box
-            sx={{
-              mt: 2,
-              display: "flex",
-              justifyContent: "space-between",
-              alignItems: "center",
-            }}
+            mt={2}
+            display="flex"
+            justifyContent="space-between"
+            alignItems="center"
           >
             <Text sx={{ fontSize: 1, color: "fg.muted" }}>
               {names.length} {names.length === 1 ? "icon" : "icons"}
@@ -739,15 +694,8 @@ export function DatalayerIcons() {
         {filter.trim() ? (
           <SearchResults names={names} icons={icons} onSelect={setSelected} />
         ) : (
-          <Box
-            sx={{
-              overflowX: "auto",
-              border: "1px solid",
-              borderColor: "border.default",
-              borderRadius: 2,
-            }}
-          >
-            <Box sx={{ minWidth: 900 }}>
+          <Card border shadow="none" overflowX="auto">
+            <Box minWidth={900}>
               <IconTableHeader />
               {names.map((name) => (
                 <IconLine
@@ -758,7 +706,7 @@ export function DatalayerIcons() {
                 />
               ))}
             </Box>
-          </Box>
+          </Card>
         )}
       </Box>
       {selected ? (
