@@ -235,11 +235,17 @@ function VariantIcon({
   size: number;
 }) {
   const palette = useColorPalette();
+  const { theme } = useThemeStore();
   const inverseMode: "light" | "dark" = palette.isLight ? "dark" : "light";
   if (variant === "colored") return <Icon colored size={size} />;
   if (variant === "accent") return <Icon size={size} color={palette.flame} />;
   if (variant === "inverse") {
-    return <Icon colored size={size} colormode={inverseMode} />;
+    // A mono icon takes the other mode's colour here: the theme's variables
+    // are set on the page, so its own text colour would stay this mode's.
+    const paint = {
+      "--datalayer-icon-color": getColorPalette(theme, inverseMode).primary,
+    } as CSSProperties;
+    return <Icon colored size={size} colormode={inverseMode} style={paint} />;
   }
   return <Icon size={size} />;
 }
