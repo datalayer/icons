@@ -669,6 +669,7 @@ export function DatalayerIcons() {
 
         <Box mt={3} mb={3}>
           <TextInput
+          autoFocus
             block
             value={filter}
             leadingVisual={SearchIcon}
