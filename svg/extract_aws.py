@@ -4,7 +4,9 @@
 # Datalayer License
 
 """
-Extract one SVG per AWS Architecture Icon into ``svg/aws``.
+Extract one SVG per AWS Architecture Icon: the top ones into ``svg/aws``,
+built into the package, every other one into ``svg/aws2``, kept in the
+repository and left out of the package.
 
 The AWS Architecture Icons package (https://aws.amazon.com/architecture/icons/)
 ships each icon in several sizes (16, 32, 48, 64) and, for some resource
@@ -19,7 +21,9 @@ Names say what kind of icon it is, so that none clashes with another set:
 - an architecture group icon           -> ``aws-group-<group>.svg``
 
 Usage:
-    python svg/extract_aws.py <unzipped AWS icon package> [--out svg/aws]
+    python svg/extract_aws.py <unzipped AWS icon package>
+
+To build another icon into the package, add its name to ``TOP`` and run it again.
 """
 
 from __future__ import annotations
@@ -29,6 +33,32 @@ import re
 import shutil
 import sys
 from pathlib import Path
+
+#: The icons built into the package (``svg/aws``): the services Datalayer's
+#: agents run on and watch, and AWS's own mark. Every other one is kept in
+#: ``svg/aws2``, which is not built.
+TOP = (
+    "aws-amazon-bedrock-agentcore",
+    "aws-amazon-bedrock",
+    "aws-amazon-elastic-kubernetes-service",
+    "aws-amazon-ec2",
+    "aws-amazon-simple-storage-service",
+    "aws-aws-lambda",
+    "aws-aws-identity-and-access-management",
+    "aws-amazon-cloudwatch",
+    "aws-aws-cost-explorer",
+    "aws-aws-marketplace-light",
+    "aws-amazon-elastic-container-registry",
+    "aws-amazon-rds",
+    "aws-amazon-dynamodb",
+    "aws-aws-cloudformation",
+    "aws-aws-organizations",
+    "aws-aws-security-hub",
+    "aws-aws-trusted-advisor",
+    "aws-aws-compute-optimizer",
+    "aws-amazon-sagemaker-ai",
+    "aws-group-aws-cloud-logo",
+)
 
 #: Sizes in order of preference, the largest first.
 SIZES = ("64", "48", "32", "16")
@@ -73,6 +103,7 @@ def main() -> int:
     parser = argparse.ArgumentParser(description=__doc__.splitlines()[1])
     parser.add_argument("package", type=Path)
     parser.add_argument("--out", type=Path, default=Path(__file__).parent / "aws")
+    parser.add_argument("--rest", type=Path, default=Path(__file__).parent / "aws2")
     args = parser.parse_args()
 
     if not args.package.is_dir():
@@ -93,11 +124,16 @@ def main() -> int:
         if name not in chosen or key < chosen[name][0]:
             chosen[name] = (key, path)
 
-    if args.out.exists():
-        shutil.rmtree(args.out)
-    args.out.mkdir(parents=True)
+    missing = [name for name in TOP if name not in chosen]
+    if missing:
+        print(f"Not in this package: {', '.join(missing)}: TOP names an icon AWS no longer ships", file=sys.stderr)
+        return 1
+    for folder in (args.out, args.rest):
+        if folder.exists():
+            shutil.rmtree(folder)
+        folder.mkdir(parents=True)
     for name, (_, path) in sorted(chosen.items()):
-        shutil.copyfile(path, args.out / f"{name}.svg")
+        shutil.copyfile(path, (args.out if name in TOP else args.rest) / f"{name}.svg")
 
     kinds: dict[str, int] = {}
     for name in chosen:
@@ -108,7 +144,10 @@ def main() -> int:
             else "service"
         )
         kinds[kind] = kinds.get(kind, 0) + 1
-    print(f"{len(chosen)} icons into {args.out}: " + ", ".join(f"{v} {k}" for k, v in sorted(kinds.items())))
+    print(
+        f"{len(chosen)} icons ({', '.join(f'{v} {k}' for k, v in sorted(kinds.items()))}): "
+        f"{len(TOP)} into {args.out}, {len(chosen) - len(TOP)} into {args.rest}"
+    )
     return 0
 
 

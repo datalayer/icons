@@ -664,11 +664,13 @@ async function main(package) {
 
   console.log(`Building ${package} package...`);
 
+  // rimraf 4 and later take a pattern only with `glob: true`: without it the
+  // folders were never emptied, and an icon removed from svg/ stayed published.
   await Promise.all([
-    rimraf(`./${package}/data1/*`),
-    rimraf(`./${package}/data2/*`),
-    rimraf(`./${package}/eggs/*`),
-    rimraf(`./${package}/aws/*`),
+    rimraf(`./${package}/data1/*`, { glob: true }),
+    rimraf(`./${package}/data2/*`, { glob: true }),
+    rimraf(`./${package}/eggs/*`, { glob: true }),
+    rimraf(`./${package}/aws/*`, { glob: true }),
   ]);
 
   await Promise.all([
@@ -700,7 +702,11 @@ async function main(package) {
     await fs.readFile(`./${package}/package.json`, "utf8"),
   );
 
-  packageJson.exports = await buildExports(["data1", "data2", "eggs", "aws"]);
+  const flavors = ["data1", "data2", "eggs", "aws"];
+  packageJson.exports = await buildExports(flavors);
+  // What is packed follows the same list as the exports: a folder exported
+  // but not listed here was left out of the published package.
+  packageJson.files = ["README.md", "index.d.ts", "index.esm.js", "index.js", ...flavors];
 
   await ensureWriteJson(`./${package}/package.json`, packageJson);
 

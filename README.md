@@ -24,18 +24,38 @@ We are looking to connect with existing data developers community, like the [Jup
 
 ## AWS icons
 
-The `aws` set carries the [AWS Architecture Icons](https://aws.amazon.com/architecture/icons/), one SVG per icon (the largest size AWS ships, its light variant), named by kind:
+The `aws` set carries 20 of the [AWS Architecture Icons](https://aws.amazon.com/architecture/icons/): the services Datalayer's agents run on and watch, and AWS's own mark.
 
-- an AWS service: `AwsAmazonBedrockAgentcoreIcon`, `AwsAmazonEksAnywhereIcon`
-- a resource: `AwsRes…Icon`
-- a category: `AwsCategory…Icon`
-- an architecture group: `AwsGroup…Icon`
+| Icon | |
+|---|---|
+| `AwsAmazonBedrockAgentcoreIcon` | Amazon Bedrock AgentCore |
+| `AwsAmazonBedrockIcon` | Amazon Bedrock |
+| `AwsAmazonElasticKubernetesServiceIcon` | Amazon EKS |
+| `AwsAmazonEc2Icon` | Amazon EC2 |
+| `AwsAmazonSimpleStorageServiceIcon` | Amazon S3 |
+| `AwsAwsLambdaIcon` | AWS Lambda |
+| `AwsAwsIdentityAndAccessManagementIcon` | AWS IAM |
+| `AwsAmazonCloudwatchIcon` | Amazon CloudWatch |
+| `AwsAwsCostExplorerIcon` | AWS Cost Explorer |
+| `AwsAwsMarketplaceLightIcon` | AWS Marketplace |
+| `AwsAmazonElasticContainerRegistryIcon` | Amazon ECR |
+| `AwsAmazonRdsIcon` | Amazon RDS |
+| `AwsAmazonDynamodbIcon` | Amazon DynamoDB |
+| `AwsAwsCloudformationIcon` | AWS CloudFormation |
+| `AwsAwsOrganizationsIcon` | AWS Organizations |
+| `AwsAwsSecurityHubIcon` | AWS Security Hub |
+| `AwsAwsTrustedAdvisorIcon` | AWS Trusted Advisor |
+| `AwsAwsComputeOptimizerIcon` | AWS Compute Optimizer |
+| `AwsAmazonSagemakerAiIcon` | Amazon SageMaker AI |
+| `AwsGroupAwsCloudLogoIcon` | the AWS Cloud logo |
 
 ```typescript
 import { AwsAmazonBedrockAgentcoreIcon } from "@datalayer/icons-react/aws";
 ```
 
-The files are extracted from the icon package AWS publishes on that page: download it, unzip it, and run `python svg/extract_aws.py <unzipped folder>` to refresh `svg/aws`, then `npm run build:lib`. AWS allows these icons for architecture diagrams and materials such as whitepapers, presentations, data sheets and posters; read [their page](https://aws.amazon.com/architecture/icons/) for what is allowed.
+Every other icon of AWS's package (788 more: services, resources, categories, groups) is kept in `svg/aws2`, in the repository and out of the package. To build one into the package, add its name to `TOP` in `svg/extract_aws.py`, download and unzip AWS's icon package, run `python svg/extract_aws.py <unzipped folder>`, then `npm run build:lib`.
+
+AWS allows these icons for architecture diagrams and materials such as whitepapers, presentations, data sheets and posters; read [their page](https://aws.amazon.com/architecture/icons/) for what is allowed.
 
 ## For React.js developers
 
