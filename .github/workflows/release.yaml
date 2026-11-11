@@ -63,12 +63,17 @@ jobs:
         if: steps.plan.outputs.npm != ''
         run: |
           set -eux
-          corepack enable
-          yarn set version 3.5.0
-          yarn install
+          # @datalayer/icons-all depends on the @datalayer/icons-react being
+          # released, not yet on npm: for the build, from its own folder.
+          range="$(node -p "require('./package.json').dependencies['@datalayer/icons-react']")"
+          echo "ICONS_REACT_RANGE=$range" >> "$GITHUB_ENV"
+          npm pkg set "dependencies.@datalayer/icons-react=file:./icons-react"
+          npm install --no-audit --no-fund --legacy-peer-deps
           # The icons (svgo, then the React components into icons-react/), and
           # the root package's lib/ for @datalayer/icons-all.
-          yarn run build
+          npm run build
+          # Packed with the range it names, never the build's local folder.
+          npm pkg set "dependencies.@datalayer/icons-react=$range"
 
       - name: Pack
         if: steps.plan.outputs.npm != ''
