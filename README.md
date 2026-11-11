@@ -22,6 +22,21 @@ Please open an [issue](https://github.com/datalayer/icons/issues) or a [pull req
 
 We are looking to connect with existing data developers community, like the [Jupyter community](https://github.com/datalayer/icons/issues/31).
 
+## AWS icons
+
+The `aws` set carries the [AWS Architecture Icons](https://aws.amazon.com/architecture/icons/), one SVG per icon (the largest size AWS ships, its light variant), named by kind:
+
+- an AWS service: `AwsAmazonBedrockAgentcoreIcon`, `AwsAmazonEksAnywhereIcon`
+- a resource: `AwsRes…Icon`
+- a category: `AwsCategory…Icon`
+- an architecture group: `AwsGroup…Icon`
+
+```typescript
+import { AwsAmazonBedrockAgentcoreIcon } from "@datalayer/icons-react/aws";
+```
+
+The files are extracted from the icon package AWS publishes on that page: download it, unzip it, and run `python svg/extract_aws.py <unzipped folder>` to refresh `svg/aws`, then `npm run build:lib`. AWS allows these icons for architecture diagrams and materials such as whitepapers, presentations, data sheets and posters; read [their page](https://aws.amazon.com/architecture/icons/) for what is allowed.
+
 ## For React.js developers
 
 Add `@datalayer/icons-react` as dependency, import an icon and render it.

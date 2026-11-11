@@ -29,6 +29,7 @@ import { toJpeg, toPng } from "html-to-image";
 import * as data1IconExports from "@datalayer/icons-react/data1";
 import * as data2IconExports from "@datalayer/icons-react/data2";
 import * as eggIconExports from "@datalayer/icons-react/eggs";
+import * as awsIconExports from "@datalayer/icons-react/aws";
 
 type IconComponent = ComponentType<
   SVGProps<SVGSVGElement> & {
@@ -84,6 +85,8 @@ function componentNameOf(listedName: string): string {
 const dataIcons = gatherIcons([
   ["data1", data1IconExports],
   ["data2", data2IconExports],
+  // The AWS Architecture Icons, each named Aws…: search "aws" to see them.
+  ["aws", awsIconExports],
 ]);
 
 /** The eggs, which are shown only when the address asks for them. */

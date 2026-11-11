@@ -668,6 +668,7 @@ async function main(package) {
     rimraf(`./${package}/data1/*`),
     rimraf(`./${package}/data2/*`),
     rimraf(`./${package}/eggs/*`),
+    rimraf(`./${package}/aws/*`),
   ]);
 
   await Promise.all([
@@ -686,15 +687,20 @@ async function main(package) {
     buildIcons(package, "eggs", "esm"),
     ensureWriteJson(`./${package}/eggs/esm/package.json`, esmPackageJson),
     ensureWriteJson(`./${package}/eggs/package.json`, cjsPackageJson),
+    // The AWS Architecture Icons (svg/extract_aws.py): one file per icon.
+    buildIcons(package, "aws", "cjs"),
+    buildIcons(package, "aws", "esm"),
+    ensureWriteJson(`./${package}/aws/esm/package.json`, esmPackageJson),
+    ensureWriteJson(`./${package}/aws/package.json`, cjsPackageJson),
   ]);
 
-  await buildRootIndexes(package, ["data1", "data2", "eggs"]);
+  await buildRootIndexes(package, ["data1", "data2", "eggs", "aws"]);
 
   let packageJson = JSON.parse(
     await fs.readFile(`./${package}/package.json`, "utf8"),
   );
 
-  packageJson.exports = await buildExports(["data1", "data2", "eggs"]);
+  packageJson.exports = await buildExports(["data1", "data2", "eggs", "aws"]);
 
   await ensureWriteJson(`./${package}/package.json`, packageJson);
 

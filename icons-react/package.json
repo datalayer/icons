@@ -130,6 +130,38 @@
     "./eggs/esm/*.svg": {
       "types": "./eggs/*.d.ts",
       "import": "./eggs/esm/*.svg"
+    },
+    "./aws": {
+      "types": "./aws/index.d.ts",
+      "import": "./aws/esm/index.js",
+      "require": "./aws/index.js"
+    },
+    "./aws/*": {
+      "types": "./aws/*.d.ts",
+      "import": "./aws/esm/*.js",
+      "require": "./aws/*.js"
+    },
+    "./aws/*.js": {
+      "types": "./aws/*.d.ts",
+      "import": "./aws/esm/*.js",
+      "require": "./aws/*.js"
+    },
+    "./aws/*.svg": {
+      "types": "./aws/*.d.ts",
+      "import": "./aws/esm/*.svg",
+      "require": "./aws/*.svg"
+    },
+    "./aws/esm/*": {
+      "types": "./aws/*.d.ts",
+      "import": "./aws/esm/*.js"
+    },
+    "./aws/esm/*.js": {
+      "types": "./aws/*.d.ts",
+      "import": "./aws/esm/*.js"
+    },
+    "./aws/esm/*.svg": {
+      "types": "./aws/*.d.ts",
+      "import": "./aws/esm/*.svg"
     }
   },
   "publishConfig": {
