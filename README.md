@@ -77,7 +77,7 @@ import React from 'react';
 import { AiAgentIcon } from '@datalayer/icons-react';
 import {
   ThemedProvider,
-  AppearanceControlsWithStore,
+  AppearanceControls,
   useThemeStore,
   useColorPalette,
 } from '@datalayer/primer-addons';
@@ -95,7 +95,7 @@ const AiAgentIconExample = () => {
 
 export const App = () => (
   <ThemedProvider useStore={useThemeStore}>
-    <AppearanceControlsWithStore useStore={useThemeStore} />
+    <AppearanceControls layout="inline" useStore={useThemeStore} />
     <AiAgentIconExample />
   </ThemedProvider>
 );

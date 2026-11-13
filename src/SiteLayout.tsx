@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react';
 import { Link, Text } from '@primer/react';
-import { AppearanceControlsWithStore, Box, useThemeStore } from '@datalayer/primer-addons';
+import { AppearanceControls, Box, useThemeStore } from '@datalayer/primer-addons';
 import { DatalayerLogoText } from '@datalayer/primer-addons';
 import { Link as RouterLink, Outlet, useLocation, useSearchParams } from 'react-router-dom';
 
@@ -125,7 +125,7 @@ export function SiteLayout() {
                 );
               })}
             </Box>
-            <AppearanceControlsWithStore useStore={useThemeStore} />
+            <AppearanceControls layout="inline" useStore={useThemeStore} />
           </Box>
         </Box>
       </Box>
