@@ -466,14 +466,14 @@ function IconDetailsDialog({
       title={componentName}
       subtitle={`${selected.name.includes("/") ? `${selected.name.split("/")[0]} set — ` : ""}preview and download each supported icon treatment.`}
       width="xlarge"
-      height="large"
       /*
-       * Taller than the 640px `large` stands for, which is the tallest the
-       * dialog names: the four treatments sit two by two, and a card is its
-       * preview plus the code and the downloads under it, so the second row
-       * is cut in half. Bounded by the window, as the dialog bounds itself.
+       * As tall as its four treatments, two by two, each a preview with its
+       * code and downloads under it: the 640px `large` cut the second row in
+       * half. Primer bounds the dialog by the window (100dvh - 64px) and the
+       * body scrolls beyond that. (Primer's Dialog takes no `sx` here: a
+       * height given through it was never applied.)
        */
-      sx={{ height: 'min(820px, calc(100dvh - 64px))' }}
+      height="auto"
       onClose={onClose}
     >
       <Box
