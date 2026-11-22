@@ -286,8 +286,18 @@ let transforms = {
       lines.splice(6, 0, `  colored,`, `  themed,`);
     }
 
+    // Among the props of the root <svg>, right after the line that opens
+    // them: at a fixed line it landed inside the root's `style` object when
+    // the source carried one (CodexColorIcon), where the `style` the
+    // component sets after it erased it, and the icon drew unsized, huge.
+    const svgPropsLine = lines.findIndex((line) =>
+      line.includes('React.createElement("svg", Object.assign({'),
+    );
+    if (svgPropsLine < 0) {
+      throw new Error(`${componentName}: no props of the root <svg> to size.`);
+    }
     lines.splice(
-      14,
+      svgPropsLine + 1,
       0,
       `    ${width >= height ? "width" : "height"}: size ? typeof size === "string" ? sizeMap[size] : size : "16px",`,
     );
