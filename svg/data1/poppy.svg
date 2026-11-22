@@ -1,0 +1,23 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24">
+  <title>Poppy</title>
+  <!-- Four overlapping petals, seen from above. -->
+  <ellipse cx="12" cy="6.6" rx="5.6" ry="5" fill="#E8322B"/>
+  <ellipse cx="17.4" cy="12" rx="5" ry="5.6" fill="#D62A24"/>
+  <ellipse cx="12" cy="17.4" rx="5.6" ry="5" fill="#E8322B"/>
+  <ellipse cx="6.6" cy="12" rx="5" ry="5.6" fill="#D62A24"/>
+  <!-- The petals' darker hearts. -->
+  <circle cx="12" cy="12" r="5.2" fill="#B81F1B"/>
+  <!-- The dark centre and its stamens. -->
+  <circle cx="12" cy="12" r="3.1" fill="#1E1B1A"/>
+  <circle cx="12" cy="12" r="1.1" fill="#4A4442"/>
+  <g fill="#1E1B1A">
+    <circle cx="12" cy="7.9" r="0.55"/>
+    <circle cx="14.9" cy="9.1" r="0.55"/>
+    <circle cx="16.1" cy="12" r="0.55"/>
+    <circle cx="14.9" cy="14.9" r="0.55"/>
+    <circle cx="12" cy="16.1" r="0.55"/>
+    <circle cx="9.1" cy="14.9" r="0.55"/>
+    <circle cx="7.9" cy="12" r="0.55"/>
+    <circle cx="9.1" cy="9.1" r="0.55"/>
+  </g>
+</svg>
