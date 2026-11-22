@@ -15,3 +15,19 @@ You can preview the icons on https://datalayer.design.
 </div>
 
 Please open an [issue](https://github.com/datalayer/icons/issues) or a [pull request](https://github.com/datalayer/icons/pulls) to update, add... your icons or for any suggestion, question about this repository content.
+
+## The icons viewer
+
+The searchable viewer of datalayer.design ships with the package, by its own
+subpath only, so importing the icons never loads it:
+
+```tsx
+import { lazy } from "react";
+
+const DatalayerIconsViewer = lazy(() => import("@datalayer/icons-react/viewer"));
+```
+
+It needs `@primer/react`, `@primer/octicons-react`, `@datalayer/primer-addons`
+and `html-to-image` (optional peer dependencies, needed by the viewer alone),
+under the `ThemedProvider` of `@datalayer/primer-addons`. The icon sets load
+when the viewer mounts.
