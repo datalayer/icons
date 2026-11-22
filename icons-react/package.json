@@ -1,7 +1,7 @@
 {
   "name": "@datalayer/icons-react",
   "license": "MIT",
-  "version": "1.0.19",
+  "version": "1.1.0",
   "description": "React.js and JupyterLab icons for data products.",
   "keywords": [
     "icons",
@@ -24,7 +24,8 @@
     "data1",
     "data2",
     "eggs",
-    "aws"
+    "aws",
+    "viewer"
   ],
   "sideEffects": false,
   "exports": {
@@ -35,6 +36,11 @@
     },
     "./package.json": {
       "default": "./package.json"
+    },
+    "./viewer": {
+      "types": "./viewer/index.d.ts",
+      "import": "./viewer/esm/index.js",
+      "require": "./viewer/index.js"
     },
     "./data1": {
       "types": "./data1/index.d.ts",
@@ -169,6 +175,24 @@
     "access": "public"
   },
   "peerDependencies": {
+    "@datalayer/primer-addons": "^1.0.48",
+    "@primer/octicons-react": "^19.0.0",
+    "@primer/react": "^37.31.0",
+    "html-to-image": "^1.9.0",
     "react": "^18.3.1 || ^19.0.0"
+  },
+  "peerDependenciesMeta": {
+    "@datalayer/primer-addons": {
+      "optional": true
+    },
+    "@primer/octicons-react": {
+      "optional": true
+    },
+    "@primer/react": {
+      "optional": true
+    },
+    "html-to-image": {
+      "optional": true
+    }
   }
 }

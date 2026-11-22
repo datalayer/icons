@@ -29,3 +29,6 @@ jobs:
         npm pkg set "dependencies.@datalayer/icons-react=file:./icons-react"
         npm install --no-audit --no-fund --legacy-peer-deps
         npm run build
+    - name: Test
+      # The viewer is shipped by its subpath alone, out of every barrel.
+      run: npm test

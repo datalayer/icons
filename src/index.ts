@@ -3,6 +3,6 @@
 import * as icons from "@datalayer/icons-react";
 
 // With its extension: Node resolves an ES module's relative import only so.
-export { DatalayerIcons } from "./DatalayerIcons.js";
+export { DatalayerIcons, DatalayerIconsViewer } from "./DatalayerIcons.js";
 
 export default icons;

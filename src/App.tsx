@@ -2,6 +2,7 @@ import { useEffect } from 'react';
 import { ThemedProvider, useThemeStore } from '@datalayer/primer-addons';
 import { BrowserRouter, Navigate, Route, Routes } from 'react-router-dom';
 import { SiteLayout } from './SiteLayout';
+// The one viewer, which @datalayer/icons-react ships as its viewer subpath.
 import IconsPage from './DatalayerIcons';
 
 export function App() {

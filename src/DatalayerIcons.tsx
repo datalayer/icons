@@ -1,7 +1,22 @@
+/**
+ * The icons viewer: every icon in four theme-aware treatments, searchable,
+ * with larger previews and PNG, JPG or SVG downloads.
+ *
+ * One source, two homes. The icons application renders it from here, and
+ * `scripts/build.js` compiles this very file into `@datalayer/icons-react`
+ * as the subpath `@datalayer/icons-react/viewer` (the set imports below are
+ * rewritten to the package's own folders). It is in no barrel: importing
+ * `@datalayer/icons-react`, a set or a single icon never loads it nor what it
+ * depends on (`@primer/react`, `@primer/octicons-react`,
+ * `@datalayer/primer-addons`, `html-to-image`, all optional peers of the
+ * package). And importing it does not load the icons either: the sets are
+ * imported dynamically once the viewer mounts, the eggs only when asked for.
+ */
 import {
   type ComponentType,
   type CSSProperties,
   type KeyboardEvent,
+  type ReactElement,
   type SVGProps,
   useEffect,
   useMemo,
@@ -13,6 +28,7 @@ import {
   Dialog,
   Flash,
   Link,
+  Spinner,
   Text,
   TextInput,
 } from "@primer/react";
@@ -26,10 +42,6 @@ import {
   useThemeStore,
 } from "@datalayer/primer-addons";
 import { toJpeg, toPng } from "html-to-image";
-import * as data1IconExports from "@datalayer/icons-react/data1";
-import * as data2IconExports from "@datalayer/icons-react/data2";
-import * as eggIconExports from "@datalayer/icons-react/eggs";
-import * as awsIconExports from "@datalayer/icons-react/aws";
 
 type IconComponent = ComponentType<
   SVGProps<SVGSVGElement> & {
@@ -81,16 +93,77 @@ function componentNameOf(listedName: string): string {
   return listedName.slice(listedName.lastIndexOf("/") + 1);
 }
 
-/** The catalog: the two sets of icons the product is drawn with. */
-const dataIcons = gatherIcons([
-  ["data1", data1IconExports],
-  ["data2", data2IconExports],
-  // The AWS Architecture Icons, each named Aws…: search "aws" to see them.
-  ["aws", awsIconExports],
-]);
+let dataIconsLoading: Promise<IconCollection> | null = null;
+let eggsIconsLoading: Promise<IconCollection> | null = null;
 
-/** The eggs, which are shown only when the address asks for them. */
-const eggsIcons = gatherIcons([["eggs", eggIconExports]]);
+/**
+ * The catalog: the two sets of icons the product is drawn with, and the AWS
+ * Architecture Icons, each named Aws… (search "aws" to see them).
+ *
+ * Imported when first asked for, not when this module is: a page that only
+ * imports the viewer, or has it behind a toggle, loads none of the icons.
+ * Asked for once; a failed load is forgotten so the next mount tries again.
+ */
+function loadDataIcons(): Promise<IconCollection> {
+  dataIconsLoading ??= Promise.all([
+    import("@datalayer/icons-react/data1"),
+    import("@datalayer/icons-react/data2"),
+    import("@datalayer/icons-react/aws"),
+  ]).then(
+    ([data1, data2, aws]) =>
+      gatherIcons([
+        ["data1", data1],
+        ["data2", data2],
+        ["aws", aws],
+      ]),
+    (error: unknown) => {
+      dataIconsLoading = null;
+      throw error;
+    },
+  );
+  return dataIconsLoading;
+}
+
+/** The eggs, which are shown (and loaded) only when the address asks. */
+function loadEggsIcons(): Promise<IconCollection> {
+  eggsIconsLoading ??= import("@datalayer/icons-react/eggs").then(
+    (eggs) => gatherIcons([["eggs", eggs]]),
+    (error: unknown) => {
+      eggsIconsLoading = null;
+      throw error;
+    },
+  );
+  return eggsIconsLoading;
+}
+
+/**
+ * The icons on show, once loaded: `null` while they load, an `Error` if they
+ * could not be.
+ */
+function useIconCollection(eggsShown: boolean): IconCollection | Error | null {
+  const [loaded, setLoaded] = useState<{
+    eggs: boolean;
+    icons: IconCollection | Error;
+  } | null>(null);
+  useEffect(() => {
+    let current = true;
+    (eggsShown ? loadEggsIcons() : loadDataIcons()).then(
+      (icons) => current && setLoaded({ eggs: eggsShown, icons }),
+      (error: unknown) =>
+        current &&
+        setLoaded({
+          eggs: eggsShown,
+          icons: error instanceof Error ? error : new Error(String(error)),
+        }),
+    );
+    return () => {
+      current = false;
+    };
+  }, [eggsShown]);
+  return loaded && loaded.eggs === eggsShown ? loaded.icons : null;
+}
+
+const NO_ICONS: IconCollection = {};
 
 /** Whether the address asks for the eggs. */
 function eggsRequested(): boolean {
@@ -577,14 +650,21 @@ function SearchResults({
   );
 }
 
-export function DatalayerIcons() {
+/**
+ * The icons viewer. Rendered by the icons application, and shipped as
+ * `@datalayer/icons-react/viewer` for any page that wants it (datalayer.design
+ * among them). It needs the `ThemedProvider` of `@datalayer/primer-addons`
+ * above it, as any page drawn with primer-addons does.
+ */
+export function DatalayerIconsViewer(): ReactElement {
   const palette = useColorPalette();
   const [filter, setFilter] = useState(() => {
     if (typeof window === "undefined") return "";
     return new URLSearchParams(window.location.search).get("q") ?? "";
   });
   const eggsShown = useEggsShown();
-  const icons = eggsShown ? eggsIcons : dataIcons;
+  const collection = useIconCollection(eggsShown);
+  const icons = collection && !(collection instanceof Error) ? collection : NO_ICONS;
   const [selected, setSelected] = useState<SelectedIcon | null>(null);
   const variants = iconVariants(palette.isLight);
   const names = useMemo(() => {
@@ -613,7 +693,9 @@ export function DatalayerIcons() {
           React icons for data products
         </Text>
         <Text sx={{ color: "fg.muted" }}>
-          {Object.keys(icons).length} curated icons for data product design.
+          {collection === null
+            ? "Curated icons for data product design."
+            : `${Object.keys(icons).length} curated icons for data product design.`}
         </Text>
 
         <Flash variant="warning" sx={{ mt: 3 }}>
@@ -701,7 +783,23 @@ export function DatalayerIcons() {
           </Box>
         </Box>
 
-        {filter.trim() ? (
+        {collection === null ? (
+          <Box
+            display="flex"
+            flexDirection="column"
+            alignItems="center"
+            justifyContent="center"
+            gap={3}
+            minHeight={240}
+          >
+            <Spinner size="large" />
+            <Text sx={{ color: "fg.muted" }}>Loading the icons…</Text>
+          </Box>
+        ) : collection instanceof Error ? (
+          <Flash variant="danger">
+            The icons could not be loaded: {collection.message}
+          </Flash>
+        ) : filter.trim() ? (
           <SearchResults names={names} icons={icons} onSelect={setSelected} />
         ) : (
           <Card border shadow="none" overflowX="auto">
@@ -729,4 +827,7 @@ export function DatalayerIcons() {
   );
 }
 
-export default DatalayerIcons;
+/** The viewer under the name the icons application first gave it. */
+export const DatalayerIcons: typeof DatalayerIconsViewer = DatalayerIconsViewer;
+
+export default DatalayerIconsViewer;
