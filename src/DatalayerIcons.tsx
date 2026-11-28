@@ -52,7 +52,8 @@ type IconComponent = ComponentType<
   }
 >;
 type IconCollection = Record<string, IconComponent>;
-type SelectedIcon = { name: string; icon: IconComponent };
+/** An icon opened in the details dialog: its listed name (`set/Name` when two sets list it) and its component. */
+export type SelectedIcon = { name: string; icon: IconComponent };
 type DownloadFormat = "png" | "jpg" | "svg";
 type VariantKey = "colored" | "mono" | "accent" | "inverse";
 type IconVariant = {
@@ -429,13 +430,18 @@ function DetailVariant({
   );
 }
 
-function IconDetailsDialog({
+/**
+ * An icon's details — each treatment previewed, its code, downloads — as the
+ * viewer opens it; exported so another listing of the icons (the design
+ * site's grid, the user, 28 November 2026) opens the same dialog.
+ */
+export function IconDetailsDialog({
   selected,
   onClose,
 }: {
   selected: SelectedIcon;
   onClose: () => void;
-}) {
+}): ReactElement {
   // The examples name the very icon being looked at, so they can be copied
   // into a page as they read — the component's own name, never the `set/Name`
   // an icon listed by two sets is shown under.
